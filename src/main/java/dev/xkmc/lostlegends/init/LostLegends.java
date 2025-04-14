@@ -3,6 +3,8 @@ package dev.xkmc.lostlegends.init;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +19,9 @@ import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(LostLegends.MODID)
 @EventBusSubscriber(modid = LostLegends.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -30,7 +35,11 @@ public class LostLegends {
 	public static final Reg REG = new Reg(MODID);
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
+	private static final List<LLModuleBase> MODULES = new ArrayList<>();
+
 	public LostLegends(IEventBus bus) {
+		REGISTRATE.buildModCreativeTab("main", "The Lost Legends", b -> b.icon(DeepNether.BLOCKS.RAGING_OBSIDIAN::asStack));
+		MODULES.add(new DeepNether());
 	}
 
 	private static void initHandlers() {
@@ -40,6 +49,8 @@ public class LostLegends {
 	public static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			LostLegends.initHandlers();
+			for (var e : MODULES)
+				e.commonInit();
 		});
 	}
 

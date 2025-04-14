@@ -2,6 +2,8 @@ package dev.xkmc.lostlegends.modules.nethertribes.init;
 
 public class NetherModule {
 
-	public static void
+	public static void init() {
+
+	}
 
 }
