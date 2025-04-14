@@ -1,0 +1,227 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.80'
+    id 'net.darkhax.curseforgegradle' version '[1.1.24,)'
+    id "at.stnwtr.gradle-secrets-plugin" version "1.0.1"
+    id "com.modrinth.minotaur" version "2.+"
+}
+
+version = mod_version
+group = 'dev.xkmc'
+
+repositories {
+    mavenLocal()
+}
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    withSourcesJar()
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+sourceSets {
+    client {}
+    server {}
+    data {}
+    common {}
+}
+
+neoForge {
+    // We currently only support NeoForge versions later than 21.0.x
+    // See https://projects.neoforged.net/neoforged/neoforge for the latest updates
+    version = "${neo_version}"
+
+    // Validate AT files and raise errors when they have invalid targets
+    // This option is false by default, but turning it on is recommended
+    validateAccessTransformers = true
+
+    runs {
+        client {
+            client()
+        }
+        data {
+            data()
+
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+
+        }
+        server {
+            server()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version, minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version, neo_version_range: neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors            : mod_authors, mod_description: mod_description,
+            l2library_version_range: l2library_version_range,
+            l2complements_version_range: l2complements_version_range,
+            l2backpack_version_range: l2backpack_version_range,
+            curios_version_range   : curios_version_range,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+// Example configuration to allow publishing using the maven-publish plugin
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+jar {
+    manifest {
+        attributes([
+                "Automatic-Module-Name"   : "${mod_id}",
+                "Specification-Title"     : "${mod_id}",
+                "Specification-Vendor"    : "xkmc",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "xkmc",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs'            : "${mod_id}.mixins.json"
+        ])
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    maven { // Registrate
+        url "https://maven.ithundxr.dev/snapshots"
+    }
+    maven {
+        // Location of the maven for vazkii's mods
+        name 'blamejared'
+        url 'https://maven.blamejared.com'
+    }
+    maven {
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven { url = "https://maven.createmod.net" }
+    maven {
+        name = "OctoStudios"
+        url = uri("https://maven.octo-studios.com/releases")
+    }
+    mavenLocal();
+}
+
+dependencies {
+    implementation "com.tterrag.registrate:Registrate:${registrate_version}"
+    implementation "dev.xkmc:l2serial:${l2serial_ver}"
+    implementation "dev.xkmc:l2modularblocks:${l2modularblocks_ver}"
+    implementation "dev.xkmc:l2core:${l2core_ver}"
+    implementation "dev.xkmc:l2tabs:${l2tabs_ver}"
+    implementation "dev.xkmc:l2menustacker:${l2menustacker_ver}"
+    implementation "dev.xkmc:l2itemselector:${l2itemselector_ver}"
+    implementation "dev.xkmc:l2library:${l2library_ver}-slim"
+    implementation "dev.xkmc:l2damagetracker:${l2damagetracker_ver}"
+
+    implementation jarJar(group: 'dev.xkmc', name: 'l2magic', version: "[${l2magic_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'fast_projectile_api', version: "[${fast_projectile_api_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2harvester', version: "[${l2harvester_ver},)")
+
+    implementation "curse.maven:patchouli-306770:6164617"
+
+    runtimeOnly "dev.xkmc:l2complements:${l2complements_ver}-slim"
+    runtimeOnly "dev.xkmc:better_creative_tabs:0.1.2"
+    runtimeOnly "curse.maven:jade-324717:5813144"
+
+    implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    runtimeOnly "maven.modrinth:sodium:mc1.21.1-0.6.9-neoforge"
+    //implementation "maven.modrinth:iris:1.8.1+1.21.1-neoforge"
+
+
+    testImplementation "com.mojang:datafixerupper:8.0.16"
+    testImplementation "com.google.guava:guava:32.1.2-jre"
+}
+
+/*
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = secrets.get("curseforge_token")
+    def mainFile = upload(project.curseforge_project, new File("./build/libs/${mod_id}-${mod_version}.jar"))
+    mainFile.changelog = new File('./changelog.txt')
+    mainFile.addEnvironment("Client", "Server")
+    mainFile.addGameVersion("1.21.1")
+    mainFile.addModLoader("NeoForge")
+    mainFile.addRequirement(
+            "l2library",
+            "curios",
+            "patchouli",
+            "l2-backpack",
+            "l2-complements"
+    )
+    mainFile.addOptional("l2hostility","apotheosis")
+    mainFile.releaseType = "release"
+    disableVersionDetection()
+}
+
+modrinth {
+    token = secrets.get("modrinth_token")
+    projectId = project.modrinth_project
+    versionName = "Glimmering Tales ${project.mod_version}"
+    versionNumber = project.mod_version
+    versionType = "release"
+    uploadFile = new File("./build/libs/${mod_id}-${mod_version}.jar")
+    gameVersions = ["1.21.1"]
+    loaders = ["neoforge"]
+    changelog = new File('./changelog.txt').text.split("\n\n")[0]
+    dependencies {
+        required.project "l2library"
+        required.project "curios"
+        required.project "l2backpack"
+        required.project "l2-complements"
+        required.project "patchouli"
+    }
+}
+
+ */
