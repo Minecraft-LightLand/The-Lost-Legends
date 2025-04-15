@@ -18,9 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import javax.annotation.Nullable;
 
@@ -64,7 +62,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.delta().firePatch()
-							.stoneBolb().magmaBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
@@ -74,7 +72,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulfirePatch().pillar()
-							.stoneBolb().magmaBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
@@ -84,7 +82,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulfirePatch().pillar()
-							.stoneBolb().magmaBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
@@ -94,7 +92,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().pillar()
-							.stoneBolb().magmaBolb().soulsandBolb()
+							.blackstoneBolb().magmaBolb().soulsandBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
@@ -104,7 +102,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.stoneBolb().magmaBolb().soulsandBolb()
+							.blackstoneBolb().magmaBolb().soulsandBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
@@ -114,7 +112,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.stoneBolb().ores().mushrooms()
+							.blackstoneBolb().ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -123,7 +121,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.stoneBolb().ores().mushrooms()
+							.blackstoneBolb().ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -132,7 +130,7 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.stoneBolb().magmaBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().crimson()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)

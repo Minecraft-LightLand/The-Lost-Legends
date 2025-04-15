@@ -17,6 +17,8 @@ public class DNBiomeDecoBuilder {
 	public DNBiomeDecoBuilder(HolderGetter<PlacedFeature> pf, HolderGetter<ConfiguredWorldCarver<?>> cw) {
 		builder = new BiomeGenerationSettings.Builder(pf, cw);
 		builder.addCarver(GenerationStep.Carving.AIR, DNBiomeGen.DEEP_CARVER);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_RACK_SMALL);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_RACK_LARGE);
 	}
 
 	public DNBiomeDecoBuilder lavaSprings() {
@@ -49,24 +51,24 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
-	public DNBiomeDecoBuilder stoneBolb() {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_BLACKSTONE);
+	public DNBiomeDecoBuilder blackstoneBolb() {
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_BLACKSTONE);
 		return this;
 	}
 
 	public DNBiomeDecoBuilder magmaBolb() {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);//TODO
 		return this;
 	}
 
 	public DNBiomeDecoBuilder soulsandBolb() {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_SOUL_SAND);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_SOUL_SAND);//TODO
 		return this;
 	}
 
 	public DNBiomeDecoBuilder ores() {
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_LARGE);
-		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_SMALL);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_DEBRIS_SMALL);
+		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_DEBRIS_LARGE);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_GOLD);
 		builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DNFeatures.PF_HEARTH);
 		return this;

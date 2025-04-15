@@ -6,6 +6,7 @@ import dev.xkmc.lostlegends.foundation.dimension.ParamDiv;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.chunk.DNAquifer;
 import dev.xkmc.lostlegends.modules.deepnether.chunk.DNChunkGenerator;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -57,7 +58,7 @@ public class DNDimensionGen {
 			var np = ctx.lookup(Registries.NOISE);
 			ctx.register(NGS_DEEP, new NoiseGeneratorSettings(
 					new NoiseSettings(0, 256, 2, 1),
-					Blocks.NETHERRACK.defaultBlockState(), Blocks.LAVA.defaultBlockState(),
+					DeepNether.BLOCKS.DEEP_NETHERRACK.get().defaultBlockState(), Blocks.LAVA.defaultBlockState(),
 					VanillaNoiseRouterData.nether(df, np, 256), biomeSet.buildRules(),
 					List.of(), 32, false,
 					false, false, true

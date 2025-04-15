@@ -31,7 +31,7 @@ public class DNBlocks extends LLRegBase {
 			DEEP_NETHERRACK = block("deep_netherrack", Block::new)
 					.prop(MapColor.NETHER, SoundType.STONE).strength(1f)
 					.cubeAll().pickaxe()
-					.tag(BlockTags.INFINIBURN_OVERWORLD)
+					.tag(BlockTags.INFINIBURN_OVERWORLD, BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
 					.register();
 

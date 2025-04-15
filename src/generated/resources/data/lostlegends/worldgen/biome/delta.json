@@ -34,13 +34,15 @@
     [],
     [],
     [
+      "lostlegends:blob_netherrack_small",
+      "lostlegends:blob_netherrack_large",
       "minecraft:spring_delta",
       "minecraft:spring_closed_double",
       "minecraft:patch_fire",
-      "minecraft:ore_blackstone",
+      "lostlegends:blob_blackstone",
       "minecraft:ore_magma",
-      "minecraft:ore_ancient_debris_large",
-      "minecraft:ore_debris_small",
+      "lostlegends:ore_debris_small",
+      "lostlegends:ore_debris_large",
       "lostlegends:ore_gold_debris",
       "lostlegends:ore_hearth_crystal"
     ],

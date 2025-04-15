@@ -1,9 +1,9 @@
 {
-  "feature": "lostlegends:ore_gold_debris",
+  "feature": "lostlegends:ore_debris_large",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 20
+      "count": 2
     },
     {
       "type": "minecraft:in_square"
@@ -13,7 +13,7 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 250
+          "absolute": 128
         },
         "min_inclusive": {
           "absolute": 10

@@ -11,7 +11,6 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public class DNSurfaceRuleData {
 	private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
-	private static final SurfaceRules.RuleSource NETHERRACK = makeStateRule(Blocks.NETHERRACK);
 	private static final SurfaceRules.RuleSource SOUL_SAND = makeStateRule(Blocks.SOUL_SAND);
 	private static final SurfaceRules.RuleSource SOUL_SOIL = makeStateRule(Blocks.SOUL_SOIL);
 	private static final SurfaceRules.RuleSource BASALT = makeStateRule(Blocks.BASALT);
@@ -41,7 +40,7 @@ public class DNSurfaceRuleData {
 				VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK);
 		builder.conditional(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof",
 				VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK);
-		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), NETHERRACK);
+		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), deepRack);
 
 		var dead = builder.start().vege(e -> e.get(-1));
 		dead.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_DELTA, 0.1f)
@@ -68,10 +67,7 @@ public class DNSurfaceRuleData {
 				.addRule(SurfaceRules.UNDER_CEILING, ashStone)
 				.addRule(SurfaceRules.UNDER_FLOOR, ash, ashStone);
 		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0.1f);
-		builder.conditional(
-				SurfaceRules.verticalGradient("deep_netherrack",
-						VerticalAnchor.absolute(120), VerticalAnchor.absolute(128)), deepRack);
-		builder.standalone(NETHERRACK);
+		builder.standalone(deepRack);
 		return builder.buildRules();
 	}
 

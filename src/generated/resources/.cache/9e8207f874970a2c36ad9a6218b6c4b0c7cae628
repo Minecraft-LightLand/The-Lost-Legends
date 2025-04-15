@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-15T23:25:18.818973	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
+// 1.21.1	2025-04-16T00:18:56.246385	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
 45c1315dd3583bd77fa0ee09debc2889d71cd3d2 assets/lostlegends/blockstates/ash_stone.json
@@ -46,20 +46,31 @@ b59f4c5be80cae82742e42f30f6a02e6f1c11f02 data/lostlegends/loot_table/blocks/hear
 b93eca5d3cc12f29ff1eb99439d02b1fef40b940 data/lostlegends/loot_table/blocks/nether_nylium.json
 3cbcffb3d848067d20dbfdfa244f5ddb47b4810d data/lostlegends/loot_table/blocks/nether_soil.json
 7e9e4d8ca03ad9b9abdf6c3ffda1c11d002c81ac data/lostlegends/loot_table/blocks/raging_obsidian.json
-3af2521118f1519f9545143e54084dfb8dc3ccdb data/lostlegends/worldgen/biome/ash.json
-c75a192264508e3ba4a162ffcc3b949786a5345c data/lostlegends/worldgen/biome/crimson.json
-5cbd66b8e4acce3b94167941ab63775fc0882d82 data/lostlegends/worldgen/biome/delta.json
-6ee9935c7f1068de771b2fc92edaa7eb70c17853 data/lostlegends/worldgen/biome/golden.json
-6ee9935c7f1068de771b2fc92edaa7eb70c17853 data/lostlegends/worldgen/biome/golden_heart.json
-fc3069709ce043a876b71f34cec032ec96fbb798 data/lostlegends/worldgen/biome/soul.json
-fc3069709ce043a876b71f34cec032ec96fbb798 data/lostlegends/worldgen/biome/soul_heart.json
-77c068c1bba83a9e76849edb5d8ec7503fa03bf3 data/lostlegends/worldgen/biome/waste.json
+e46e3e9149a640f326855c19f36a0fa5d83f5c07 data/lostlegends/worldgen/biome/ash.json
+bc1967424a021888e06228f046d6b8ff9d804890 data/lostlegends/worldgen/biome/crimson.json
+843c21e8377a7b14d3ea6f52a0192bd5459d689f data/lostlegends/worldgen/biome/delta.json
+a5145f6411dab30793e592c3b29b3b12060c2f10 data/lostlegends/worldgen/biome/golden.json
+a5145f6411dab30793e592c3b29b3b12060c2f10 data/lostlegends/worldgen/biome/golden_heart.json
+5f7bcc09da920ed5c292d894a2729abeb8848a28 data/lostlegends/worldgen/biome/soul.json
+5f7bcc09da920ed5c292d894a2729abeb8848a28 data/lostlegends/worldgen/biome/soul_heart.json
+4e6ba218c1558e71635e053801013c735a59cb58 data/lostlegends/worldgen/biome/waste.json
 46d22766780964de3737197015a4da8a59bbdd4b data/lostlegends/worldgen/configured_carver/deep_nether_carver.json
+c5261a17f6cf013b16a6013413d64352e72798a5 data/lostlegends/worldgen/configured_feature/blob_blackstone.json
+f7cb489bea2ca99817b5abf4767f923c88ce1ca3 data/lostlegends/worldgen/configured_feature/blob_netherrack_large.json
+df8368f552291bddf7e2d97b1009bcf6e7b3bbb4 data/lostlegends/worldgen/configured_feature/blob_netherrack_small.json
+8548eaa4e8bf2e5adb031893d52775456af7575e data/lostlegends/worldgen/configured_feature/ore_debris_large.json
+683325097e8bdf41f30aa8f953e8dd3e846562d9 data/lostlegends/worldgen/configured_feature/ore_debris_small.json
 073eb129e2baf1b71cca86f22f49f2d5e73733e6 data/lostlegends/worldgen/configured_feature/ore_gold_debris.json
 2a09887208a8ed8bf94f83b11668ea1156fdcce5 data/lostlegends/worldgen/configured_feature/ore_hearth_crystal.json
-9b0b23e7f18533e23e39032dfcdd7d6ab3c34233 data/lostlegends/worldgen/noise_settings/deep_nether.json
-ef38b884269262b420517941b6d1bf1349f6b639 data/lostlegends/worldgen/placed_feature/ore_gold_debris.json
+2b4f7b1a001bae96444148457d9a531922b9bb38 data/lostlegends/worldgen/noise_settings/deep_nether.json
+255132e6e30c58adfef35fbfa052ff505083a6eb data/lostlegends/worldgen/placed_feature/blob_blackstone.json
+8a10cf37a8d6ac0eb8f9c8001015b10c08d80ae0 data/lostlegends/worldgen/placed_feature/blob_netherrack_large.json
+7704aa479650581b93f4694ec28e7066cd9add06 data/lostlegends/worldgen/placed_feature/blob_netherrack_small.json
+58740fcfd7affdf70424ad327ddffcc6257ba184 data/lostlegends/worldgen/placed_feature/ore_debris_large.json
+00ce0e94012a5531031d3cdfdeca4c61e7647f5f data/lostlegends/worldgen/placed_feature/ore_debris_small.json
+f716445f585ba944743d342b6950f1d3933ef505 data/lostlegends/worldgen/placed_feature/ore_gold_debris.json
 7346e4e1b662fffb844f5b7f15f08c31ffe9f135 data/lostlegends/worldgen/placed_feature/ore_hearth_crystal.json
+e209629d0cfb7d5efc0f1074cd58997b73bf8bbc data/minecraft/tags/block/base_stone_nether.json
 8b58d0f59abe93c93970bed45792a5ae2b8d7ef6 data/minecraft/tags/block/infiniburn_overworld.json
 c3bd1a8981e0e4bfe1202cfb0ff5cf9405755fc1 data/minecraft/tags/block/mineable/pickaxe.json
 15a34de8469798556ca0ab9ff9d8aea6d8d4d449 data/minecraft/tags/block/mineable/shovel.json
