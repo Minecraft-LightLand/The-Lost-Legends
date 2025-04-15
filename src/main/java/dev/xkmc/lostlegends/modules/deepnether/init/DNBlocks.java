@@ -5,17 +5,20 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.AshBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.DNNyliumBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.DarkStoneBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 public class DNBlocks extends LLRegBase {
 
-	public final BlockEntry<Block> NETHER_SOIL, DARK_STONE, ASH_STONE, RAGING_OBSIDIAN;
+	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, RAGING_OBSIDIAN;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
+	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<DNNyliumBlock> NETHER_NYLIUM;
 	public final BlockEntry<FlowerBlock> ASH_BLOSSOM;
 
@@ -34,7 +37,7 @@ public class DNBlocks extends LLRegBase {
 
 			NETHER_NYLIUM = block("nether_nylium", DNNyliumBlock::new)
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
-					.prop(p -> p.randomTicks())
+					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
 							pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(ctx.getName(),
 									blockLoc(ctx.getName() + "_side"),
@@ -61,8 +64,9 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			DARK_STONE = block("dark_stone", Block::new)
+			DARK_STONE = block("dark_stone", DarkStoneBlock::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(1f, 5f)
+					.prop(p -> p.lightLevel(state -> 7))
 					.cubeAll().pickaxe()
 					.simpleItem()
 					.register();

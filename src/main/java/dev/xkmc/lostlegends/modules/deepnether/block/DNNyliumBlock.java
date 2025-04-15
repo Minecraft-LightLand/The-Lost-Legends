@@ -39,11 +39,27 @@ public class DNNyliumBlock extends Block implements BonemealableBlock {
 		return light < level.getMaxLightLevel();
 	}
 
+	private static boolean canPropagate(BlockState state, LevelReader level, BlockPos pos) {
+		return canBeNylium(state, level, pos) && level.getFluidState(pos.above()).isEmpty();
+	}
+
+
 	protected void randomTick(BlockState state, ServerLevel sl, BlockPos pos, RandomSource rand) {
 		if (!canBeNylium(state, sl, pos)) {
 			sl.setBlockAndUpdate(pos, DeepNether.BLOCKS.NETHER_SOIL.get().defaultBlockState());
+		} else {
+			if (!sl.isAreaLoaded(pos, 3)) return;
+			BlockState blockstate = this.defaultBlockState();
+			for (int i = 0; i < 4; i++) {
+				BlockPos blockpos = pos.offset(
+						rand.nextInt(3) - 1,
+						rand.nextInt(5) - 3,
+						rand.nextInt(3) - 1);
+				if (sl.getBlockState(blockpos).is(DeepNether.BLOCKS.NETHER_SOIL) && canPropagate(blockstate, sl, blockpos)) {
+					sl.setBlockAndUpdate(blockpos, blockstate);
+				}
+			}
 		}
-
 	}
 
 	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {

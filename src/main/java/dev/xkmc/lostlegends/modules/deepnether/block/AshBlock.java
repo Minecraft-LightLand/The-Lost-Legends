@@ -28,7 +28,9 @@ public class AshBlock extends Block implements IFogBlock {
 	public static final MapCodec<AshBlock> CODEC = simpleCodec(AshBlock::new);
 	private static final VoxelShape FALLING_COLLISION_SHAPE =
 			Shapes.box(0, 0, 0, 1, 0.9F, 1);
-	private static final FogConfig FOG = new FogConfig(0.1f, 0.1f, 0.1f);
+	private static final FogConfig FOG = new FogConfig(FogConfig.Type.VIEWPORT,
+			0.1f, 0.1f, 0.1f,
+			0f, 2f, true);
 
 	public MapCodec<AshBlock> codec() {
 		return CODEC;
@@ -90,7 +92,7 @@ public class AshBlock extends Block implements IFogBlock {
 
 	@Override
 	public FogType getFogType() {
-		return FogType.POWDER_SNOW;
+		return FogType.NONE;
 	}
 
 	@Override
