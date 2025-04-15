@@ -43,7 +43,7 @@ neoForge {
     // Validate AT files and raise errors when they have invalid targets
     // This option is false by default, but turning it on is recommended
     validateAccessTransformers = true
-    accessTransformers.from "../src/main/resources/META-INF/accesstransformer.cfg"
+    accessTransformers.from "./src/main/resources/META-INF/accesstransformer.cfg"
 
     runs {
         client {

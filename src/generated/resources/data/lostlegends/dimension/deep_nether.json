@@ -1,12 +1,66 @@
 {
   "type": "lostlegends:deep_nether",
   "generator": {
-    "type": "minecraft:noise",
+    "type": "lostlegends:deep_nether",
     "biome_source": {
       "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "lostlegends:delta",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              -1.0,
+              -0.55
+            ],
+            "offset": 0.1,
+            "temperature": [
+              0.05,
+              1.0
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:soul",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              -1.0,
+              -0.55
+            ],
+            "offset": 0.1,
+            "temperature": [
+              -1.0,
+              -0.05
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:soul_heart",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              -1.0,
+              -0.7
+            ],
+            "offset": 0.0,
+            "temperature": [
+              -1.0,
+              -0.3
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:golden",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -24,42 +78,6 @@
           }
         },
         {
-          "biome": "lostlegends:soul",
-          "parameters": {
-            "continentalness": 0.0,
-            "depth": 0.0,
-            "erosion": 0.0,
-            "humidity": [
-              -1.0,
-              -0.55
-            ],
-            "offset": 0.0,
-            "temperature": [
-              0.05,
-              1.0
-            ],
-            "weirdness": 0.0
-          }
-        },
-        {
-          "biome": "lostlegends:golden",
-          "parameters": {
-            "continentalness": 0.0,
-            "depth": 0.0,
-            "erosion": 0.0,
-            "humidity": [
-              0.55,
-              1.0
-            ],
-            "offset": 0.375,
-            "temperature": [
-              -1.0,
-              -0.05
-            ],
-            "weirdness": 0.0
-          }
-        },
-        {
           "biome": "lostlegends:crimson",
           "parameters": {
             "continentalness": 0.0,
@@ -69,7 +87,7 @@
               0.55,
               1.0
             ],
-            "offset": 0.0,
+            "offset": 0.1,
             "temperature": [
               0.05,
               1.0
@@ -87,7 +105,7 @@
               -0.45,
               0.45
             ],
-            "offset": 0.0,
+            "offset": 0.1,
             "temperature": [
               -1.0,
               -0.05
@@ -105,7 +123,7 @@
               -0.45,
               0.45
             ],
-            "offset": 0.0,
+            "offset": 0.1,
             "temperature": [
               0.05,
               1.0
@@ -115,6 +133,28 @@
         }
       ]
     },
-    "settings": "lostlegends:deep_nether"
+    "settings": "lostlegends:deep_nether",
+    "special_fluids": [
+      {
+        "barrier": {
+          "Name": "minecraft:bone_block",
+          "Properties": {
+            "axis": "y"
+          }
+        },
+        "barrier_thickness": 0.01,
+        "fluid": {
+          "Name": "minecraft:water",
+          "Properties": {
+            "level": "0"
+          }
+        },
+        "humidity_max": -0.6,
+        "humidity_min": -1.0,
+        "offset": 0.05,
+        "temperature_max": -0.1,
+        "temperature_min": -1.0
+      }
+    ]
   }
 }

@@ -20,9 +20,11 @@ public class DNBiomeGen {
 
 	public static final ResourceKey<Biome> BIOME_DELTA = biome("delta");
 	public static final ResourceKey<Biome> BIOME_SOUL = biome("soul");
+	public static final ResourceKey<Biome> BIOME_SOUL_HEART = biome("soul_heart");
 	public static final ResourceKey<Biome> BIOME_ASH = biome("ash");
 	public static final ResourceKey<Biome> BIOME_WASTE = biome("waste");
 	public static final ResourceKey<Biome> BIOME_GOLDEN = biome("golden");
+	public static final ResourceKey<Biome> BIOME_GOLDEN_HEART = biome("golden_heart");
 	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
 
 
@@ -51,6 +53,11 @@ public class DNBiomeGen {
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
+			ctx.register(BIOME_SOUL_HEART, biome(1787717,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
+			));
 
 			ctx.register(BIOME_ASH, biome(6840176,
 					new MobSpawnSettings.Builder(),
@@ -65,6 +72,12 @@ public class DNBiomeGen {
 			));
 
 			ctx.register(BIOME_GOLDEN, biome(1705242,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
+			));
+
+			ctx.register(BIOME_GOLDEN_HEART, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new BiomeGenerationSettings.Builder(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)

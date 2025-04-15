@@ -4,6 +4,8 @@ import com.tterrag.registrate.providers.DataProviderInitializer;
 import dev.xkmc.lostlegends.foundation.dimension.ClimateBuilder;
 import dev.xkmc.lostlegends.foundation.dimension.ParamDiv;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.deepnether.chunk.DNAquifer;
+import dev.xkmc.lostlegends.modules.deepnether.chunk.DNChunkGenerator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +16,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.NoiseSettings;
 
@@ -69,8 +70,11 @@ public class DNDimensionGen {
 			var noise = ctx.lookup(Registries.NOISE_SETTINGS);
 
 			ctx.register(LEVEL_DEEP, new LevelStem(dt.getOrThrow(DT_DEEP),
-					new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
-							noise.getOrThrow(NGS_DEEP))));
+					new DNChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
+							noise.getOrThrow(NGS_DEEP), List.of(
+							new DNAquifer.Entry(-1, -0.1, -1, -0.6, 0.05, 0.01,
+									Blocks.WATER.defaultBlockState(), Blocks.BONE_BLOCK.defaultBlockState())
+					))));
 		});
 
 	}

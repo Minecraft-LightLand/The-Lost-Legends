@@ -35,53 +35,51 @@ public class DNSurfaceRuleData {
 
 		SurfaceRules.ConditionSource above30 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0);
 		SurfaceRules.ConditionSource above31 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(31), 0);
-		SurfaceRules.ConditionSource above32 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(32), 0);
 		SurfaceRules.ConditionSource below35 = SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(35), 0));
 		SurfaceRules.ConditionSource hole = SurfaceRules.hole();
 		SurfaceRules.ConditionSource soulNoise = SurfaceRules.noiseCondition(Noises.SOUL_SAND_LAYER, -0.012);
 		SurfaceRules.ConditionSource gravelNoise = SurfaceRules.noiseCondition(Noises.GRAVEL_LAYER, -0.012);
 		SurfaceRules.ConditionSource patchNoise = SurfaceRules.noiseCondition(Noises.PATCH, -0.012);
-		SurfaceRules.ConditionSource rackNoise = SurfaceRules.noiseCondition(Noises.NETHERRACK, 0.54);
 		SurfaceRules.ConditionSource selNoise = SurfaceRules.noiseCondition(Noises.NETHER_STATE_SELECTOR, 0.0);
 		SurfaceRules.RuleSource gravelLayer = SurfaceRules.ifTrue(
 				patchNoise, SurfaceRules.ifTrue(above30, SurfaceRules.ifTrue(below35, GRAVEL))
 		);
 
-		SurfaceRules.RuleSource ash = SurfaceRules.ifTrue(
+		SurfaceRules.RuleSource ash = SurfaceRules.ifTrue(above31, SurfaceRules.ifTrue(
 				SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.45, 0.58), ashBlock
-		);
+		));
 
-
-		// bedrock floor
 		builder.conditional(SurfaceRules.verticalGradient("bedrock_floor",
 				VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK);
-		// bedrock roof
 		builder.conditional(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof",
 				VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK);
-		// fill netherrack ceiling for 5 blocks, covering bedrock roof
 		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), NETHERRACK);
 
-		var dead = builder.start();
-		dead.temp(e -> e.get(-1)).vege(e -> e.get(1)).biome(DNBiomeGen.BIOME_DELTA, 0.1f)
+		var dead = builder.start().vege(e -> e.get(-1));
+		dead.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_DELTA, 0.1f)
 				.addRule(SurfaceRules.UNDER_CEILING, BASALT)
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, BASALT), BLACKSTONE);
-		dead.temp(e -> e.get(0)).vege(e -> e.get(-1)).biome(DNBiomeGen.BIOME_SOUL, 0f)
+		dead.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_SOUL, 0.1f)
+				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL)
+				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL);
+
+		builder.start().vege(e -> e.tip(-0.7f)).temp(e -> e.tip(-0.3f)).biome(DNBiomeGen.BIOME_SOUL_HEART, 0f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL)
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL);
 
 		var forest = builder.start().vege(e -> e.get(1));
-		forest.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_GOLDEN, 0.375f)
+		forest.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_GOLDEN, 0.1f)
 				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, nylium))
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, soil));
-		forest.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_CRIMSON, 0f)
+		forest.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_CRIMSON, 0.1f)
 				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31,
-						SurfaceRules.sequence( CRIMSON_NYLIUM)));
+						SurfaceRules.sequence(CRIMSON_NYLIUM)));
 
 		var waste = builder.start().vege(e -> e.get(0));
-		waste.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_ASH, 0f)
-				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, BLACKSTONE), ashStone)
-				.addRule(SurfaceRules.UNDER_FLOOR, ash, SurfaceRules.ifTrue(selNoise, BLACKSTONE), ashStone);
-		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0f);
+		waste.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_ASH, 0.1f)
+				.addRule(SurfaceRules.UNDER_CEILING, ashStone)
+				.addRule(SurfaceRules.UNDER_FLOOR, ash, ashStone);
+		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0.1f);
 		builder.standalone(NETHERRACK);
 		return builder.buildRules();
 	}
