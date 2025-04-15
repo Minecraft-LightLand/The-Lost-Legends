@@ -57,9 +57,10 @@ public class DNSurfaceRuleData {
 		// bedrock roof
 		builder.conditional(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof",
 				VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK);
-		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), NETHERRACK);
-		var root = builder.start();
 		// fill netherrack ceiling for 5 blocks, covering bedrock roof
+		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), NETHERRACK);
+		
+		var root = builder.start();
 		root.temp(e -> e.get(1)).vege(e -> e.get(0)).biome(Biomes.BASALT_DELTAS, 0.1f)
 				// basalt ceiling
 				.addRule(SurfaceRules.UNDER_CEILING, BASALT)
@@ -95,6 +96,7 @@ public class DNSurfaceRuleData {
 						SurfaceRules.sequence(
 								SurfaceRules.ifTrue(above32, GRAVEL),
 								SurfaceRules.ifTrue(SurfaceRules.not(hole), GRAVEL))))));
+		// fill everything else with netherrack
 		builder.standalone(NETHERRACK);
 		return root.buildRules();
 	}
