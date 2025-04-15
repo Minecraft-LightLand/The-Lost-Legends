@@ -30,8 +30,8 @@ public class DNDimensionGen {
 	public static void init(DataProviderInitializer init) {
 		var biomeSet = new ClimateBuilder(
 				null, null,
-				ParamDiv.point(),
-				ParamDiv.point()
+				ParamDiv.polar(),
+				ParamDiv.trinary(0.5f)
 		);
 		DNSurfaceRuleData.nether(biomeSet);
 

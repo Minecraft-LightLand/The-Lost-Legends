@@ -6,14 +6,20 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "lostlegends:basalt",
+          "biome": "lostlegends:delta",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": 0.0,
+            "humidity": [
+              0.55,
+              1.0
+            ],
             "offset": 0.1,
-            "temperature": 0.5,
+            "temperature": [
+              -1.0,
+              -0.05
+            ],
             "weirdness": 0.0
           }
         },
@@ -23,21 +29,33 @@
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": -0.5,
+            "humidity": [
+              -1.0,
+              -0.55
+            ],
             "offset": 0.0,
-            "temperature": 0.0,
+            "temperature": [
+              0.05,
+              1.0
+            ],
             "weirdness": 0.0
           }
         },
         {
-          "biome": "lostlegends:warped",
+          "biome": "lostlegends:golden",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": 0.5,
+            "humidity": [
+              0.55,
+              1.0
+            ],
             "offset": 0.375,
-            "temperature": 0.0,
+            "temperature": [
+              -1.0,
+              -0.05
+            ],
             "weirdness": 0.0
           }
         },
@@ -47,9 +65,33 @@
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": 0.0,
+            "humidity": [
+              0.55,
+              1.0
+            ],
             "offset": 0.0,
-            "temperature": -0.5,
+            "temperature": [
+              0.05,
+              1.0
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:ash",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              -0.45,
+              0.45
+            ],
+            "offset": 0.0,
+            "temperature": [
+              -1.0,
+              -0.05
+            ],
             "weirdness": 0.0
           }
         },
@@ -59,9 +101,15 @@
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": 0.0,
+            "humidity": [
+              -0.45,
+              0.45
+            ],
             "offset": 0.0,
-            "temperature": 0.0,
+            "temperature": [
+              0.05,
+              1.0
+            ],
             "weirdness": 0.0
           }
         }

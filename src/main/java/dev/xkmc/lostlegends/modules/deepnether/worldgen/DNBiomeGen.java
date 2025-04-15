@@ -18,11 +18,12 @@ import javax.annotation.Nullable;
 public class DNBiomeGen {
 
 
-	public static final ResourceKey<Biome> BIOME_BASALT = biome("basalt");
+	public static final ResourceKey<Biome> BIOME_DELTA = biome("delta");
 	public static final ResourceKey<Biome> BIOME_SOUL = biome("soul");
-	public static final ResourceKey<Biome> BIOME_WARPED = biome("warped");
-	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
+	public static final ResourceKey<Biome> BIOME_ASH = biome("ash");
 	public static final ResourceKey<Biome> BIOME_WASTE = biome("waste");
+	public static final ResourceKey<Biome> BIOME_GOLDEN = biome("golden");
+	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
 
 
 	public static void init(DataProviderInitializer init) {
@@ -38,7 +39,7 @@ public class DNBiomeGen {
 			var pf = ctx.lookup(Registries.PLACED_FEATURE);
 			var wc = ctx.lookup(Registries.CONFIGURED_CARVER);
 
-			ctx.register(BIOME_BASALT, biome(6840176,
+			ctx.register(BIOME_DELTA, biome(6840176,
 					new MobSpawnSettings.Builder(),
 					new BiomeGenerationSettings.Builder(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
@@ -50,7 +51,20 @@ public class DNBiomeGen {
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
-			ctx.register(BIOME_WARPED, biome(1705242,
+
+			ctx.register(BIOME_ASH, biome(6840176,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
+			));
+
+			ctx.register(BIOME_WASTE, biome(3344392,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
+			));
+
+			ctx.register(BIOME_GOLDEN, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new BiomeGenerationSettings.Builder(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
@@ -62,11 +76,6 @@ public class DNBiomeGen {
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));
 
-			ctx.register(BIOME_WASTE, biome(3344392,
-					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
-					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
-			));
 
 		});
 	}
