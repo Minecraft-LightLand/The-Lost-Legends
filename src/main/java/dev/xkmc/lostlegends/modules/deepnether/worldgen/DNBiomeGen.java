@@ -6,6 +6,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -13,7 +15,15 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import javax.annotation.Nullable;
 
-public class GLBiomeGen {
+public class DNBiomeGen {
+
+
+	public static final ResourceKey<Biome> BIOME_BASALT = biome("basalt");
+	public static final ResourceKey<Biome> BIOME_SOUL = biome("soul");
+	public static final ResourceKey<Biome> BIOME_WARPED = biome("warped");
+	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
+	public static final ResourceKey<Biome> BIOME_WASTE = biome("waste");
+
 
 	public static void init(DataProviderInitializer init) {
 		init.add(Registries.CONFIGURED_FEATURE, (ctx) -> {
@@ -27,6 +37,36 @@ public class GLBiomeGen {
 		init.add(Registries.BIOME, (ctx) -> {
 			var pf = ctx.lookup(Registries.PLACED_FEATURE);
 			var wc = ctx.lookup(Registries.CONFIGURED_CARVER);
+
+			ctx.register(BIOME_BASALT, biome(6840176,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
+			));
+
+			ctx.register(BIOME_SOUL, biome(1787717,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
+			));
+
+			ctx.register(BIOME_WARPED, biome(1705242,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
+			));
+
+			ctx.register(BIOME_CRIMSON, biome(3343107,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
+			));
+
+			ctx.register(BIOME_WASTE, biome(3344392,
+					new MobSpawnSettings.Builder(),
+					new BiomeGenerationSettings.Builder(pf, wc),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
+			));
 
 		});
 	}
@@ -44,26 +84,26 @@ public class GLBiomeGen {
 	}
 
 
-	private static Biome biome(
+	private static Biome biome(int fogColor,
 			MobSpawnSettings.Builder spawns,
 			BiomeGenerationSettings.PlainBuilder gen,
 			@Nullable Music bgm
 	) {
-		return biome(false, 0.5f, 0.5f, spawns, gen, bgm);
+		return biome(false, 2, 0, fogColor, spawns, gen, bgm);
 	}
 
 	private static Biome biome(
-			boolean hasPercipitation, float temperature, float downfall,
+			boolean hasPercipitation, float temperature, float downfall, int fogColor,
 			MobSpawnSettings.Builder spawns,
 			BiomeGenerationSettings.PlainBuilder gen,
 			@Nullable Music bgm
 	) {
-		return biome(hasPercipitation, temperature, downfall, 4159204, 329011, null, null, spawns, gen, bgm);
+		return biome(hasPercipitation, temperature, downfall, 4159204, 329011, fogColor, null, null, spawns, gen, bgm);
 	}
 
 	private static Biome biome(
 			boolean hasPrecipitation, float temperature, float downfall,
-			int waterColor, int waterFogColor,
+			int waterColor, int waterFogColor, int fogColor,
 			@Nullable Integer grassCol, @Nullable Integer foliageCol,
 			MobSpawnSettings.Builder spawns,
 			BiomeGenerationSettings.PlainBuilder gen,
@@ -72,7 +112,7 @@ public class GLBiomeGen {
 		BiomeSpecialEffects.Builder biomespecialeffects$builder = new BiomeSpecialEffects.Builder()
 				.waterColor(waterColor)
 				.waterFogColor(waterFogColor)
-				.fogColor(12638463)
+				.fogColor(fogColor)
 				.skyColor(calculateSkyColor(temperature))
 				.ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
 				.backgroundMusic(bgm);

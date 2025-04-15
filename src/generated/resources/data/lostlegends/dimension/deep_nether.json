@@ -6,7 +6,7 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "minecraft:basalt_deltas",
+          "biome": "lostlegends:basalt",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -18,7 +18,7 @@
           }
         },
         {
-          "biome": "minecraft:soul_sand_valley",
+          "biome": "lostlegends:soul",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -30,7 +30,7 @@
           }
         },
         {
-          "biome": "minecraft:warped_forest",
+          "biome": "lostlegends:warped",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -42,7 +42,7 @@
           }
         },
         {
-          "biome": "minecraft:crimson_forest",
+          "biome": "lostlegends:crimson",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -54,7 +54,7 @@
           }
         },
         {
-          "biome": "minecraft:nether_wastes",
+          "biome": "lostlegends:waste",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
@@ -67,6 +67,6 @@
         }
       ]
     },
-    "settings": "minecraft:nether"
+    "settings": "lostlegends:deep_nether"
   }
 }

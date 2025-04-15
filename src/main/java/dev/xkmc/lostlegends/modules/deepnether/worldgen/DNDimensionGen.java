@@ -69,9 +69,8 @@ public class DNDimensionGen {
 			var noise = ctx.lookup(Registries.NOISE_SETTINGS);
 
 			ctx.register(LEVEL_DEEP, new LevelStem(dt.getOrThrow(DT_DEEP),
-					new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(
-							biomeSet.climate(biome)
-					), noise.getOrThrow(NoiseGeneratorSettings.NETHER))));
+					new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
+							noise.getOrThrow(NGS_DEEP))));
 		});
 
 	}

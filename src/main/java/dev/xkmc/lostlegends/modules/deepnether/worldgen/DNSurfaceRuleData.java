@@ -3,7 +3,6 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen;
 
 import dev.xkmc.lostlegends.foundation.dimension.ClimateBuilder;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -40,7 +39,6 @@ public class DNSurfaceRuleData {
 		SurfaceRules.ConditionSource gravelNoise = SurfaceRules.noiseCondition(Noises.GRAVEL_LAYER, -0.012);
 		SurfaceRules.ConditionSource patchNoise = SurfaceRules.noiseCondition(Noises.PATCH, -0.012);
 		SurfaceRules.ConditionSource rackNoise = SurfaceRules.noiseCondition(Noises.NETHERRACK, 0.54);
-		SurfaceRules.ConditionSource wartNoise = SurfaceRules.noiseCondition(Noises.NETHER_WART, 1.17);
 		SurfaceRules.ConditionSource selNoise = SurfaceRules.noiseCondition(Noises.NETHER_STATE_SELECTOR, 0.0);
 		SurfaceRules.RuleSource gravelLayer = SurfaceRules.ifTrue(
 				patchNoise, SurfaceRules.ifTrue(above30, SurfaceRules.ifTrue(below35, GRAVEL))
@@ -59,14 +57,14 @@ public class DNSurfaceRuleData {
 				VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK);
 		// fill netherrack ceiling for 5 blocks, covering bedrock roof
 		builder.conditional(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), NETHERRACK);
-		
+
 		var root = builder.start();
-		root.temp(e -> e.get(1)).vege(e -> e.get(0)).biome(Biomes.BASALT_DELTAS, 0.1f)
+		root.temp(e -> e.get(1)).vege(e -> e.get(0)).biome(DNBiomeGen.BIOME_BASALT, 0.1f)
 				// basalt ceiling
 				.addRule(SurfaceRules.UNDER_CEILING, BASALT)
 				// gravel / basalt / blackstone floor
 				.addRule(SurfaceRules.UNDER_FLOOR, gravelLayer, SurfaceRules.ifTrue(selNoise, BASALT), BLACKSTONE);
-		root.temp(e -> e.get(0)).vege(e -> e.get(-1)).biome(Biomes.SOUL_SAND_VALLEY, 0f)
+		root.temp(e -> e.get(0)).vege(e -> e.get(-1)).biome(DNBiomeGen.BIOME_SOUL, 0f)
 				// soul sand / soul soil ceiling
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL)
 				// gravel / soul sand / soul soil floor
@@ -75,16 +73,16 @@ public class DNSurfaceRuleData {
 		r0.startRule(SurfaceRules.ON_FLOOR);
 		// fill holes with lava <y32
 		r0.addRule(SurfaceRules.not(above32), SurfaceRules.ifTrue(hole, LAVA));
-		r0.temp(e -> e.get(0)).vege(e -> e.get(1)).biome(Biomes.WARPED_FOREST, 0.375f)
+		r0.temp(e -> e.get(0)).vege(e -> e.get(1)).biome(DNBiomeGen.BIOME_WARPED, 0.375f)
 				// rack noise or <y31 -> rack, wart noise -> wart, otherwise nylium
 				.addRule(SurfaceRules.not(rackNoise), SurfaceRules.ifTrue(above31,
-						SurfaceRules.sequence(SurfaceRules.ifTrue(wartNoise, WARPED_WART_BLOCK), WARPED_NYLIUM)));
-		r0.temp(e -> e.get(-1)).vege(e -> e.get(0)).biome(Biomes.CRIMSON_FOREST, 0f)
+						SurfaceRules.sequence(WARPED_NYLIUM)));
+		r0.temp(e -> e.get(-1)).vege(e -> e.get(0)).biome(DNBiomeGen.BIOME_CRIMSON, 0f)
 				// rack noise or <y31 -> rack, wart noise -> wart, otherwise nylium
 				.addRule(SurfaceRules.not(rackNoise), SurfaceRules.ifTrue(above31,
-						SurfaceRules.sequence(SurfaceRules.ifTrue(wartNoise, NETHER_WART_BLOCK), CRIMSON_NYLIUM)));
+						SurfaceRules.sequence( CRIMSON_NYLIUM)));
 
-		root.temp(e -> e.get(0)).vege(e -> e.get(0)).biome(Biomes.NETHER_WASTES, 0f)
+		root.temp(e -> e.get(0)).vege(e -> e.get(0)).biome(DNBiomeGen.BIOME_WASTE, 0f)
 				// y30-35: fill soul sand with noise
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(soulNoise, SurfaceRules.sequence(
 						SurfaceRules.ifTrue(SurfaceRules.not(hole), SurfaceRules.ifTrue(above30, SurfaceRules.ifTrue(below35, SOUL_SAND))),
@@ -98,7 +96,7 @@ public class DNSurfaceRuleData {
 								SurfaceRules.ifTrue(SurfaceRules.not(hole), GRAVEL))))));
 		// fill everything else with netherrack
 		builder.standalone(NETHERRACK);
-		return root.buildRules();
+		return builder.buildRules();
 	}
 
 }
