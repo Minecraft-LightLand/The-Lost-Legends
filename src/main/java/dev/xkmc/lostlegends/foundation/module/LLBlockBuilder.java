@@ -9,12 +9,17 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class LLBlockBuilder<T extends Block> {
 
@@ -109,6 +114,20 @@ public class LLBlockBuilder<T extends Block> {
 
 	public LLBlockBuilder<T> silkTouchOr(ItemLike other) {
 		builder.loot((pvd, block) -> pvd.add(block, pvd.createSingleItemTableWithSilkTouch(block, other)));
+		return this;
+	}
+
+	public LLBlockBuilder<T> oreLoot(ItemLike other) {
+		builder.loot((pvd, block) -> pvd.add(block, pvd.createOreDrop(block, other.asItem())));
+		return this;
+	}
+
+	public LLBlockBuilder<T> multiOreLoot(ItemLike other, int min, int max) {
+		builder.loot((pvd, block) -> pvd.add(block, pvd.createSilkTouchDispatchTable(
+				block, LootItem.lootTableItem(other)
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+						.apply(ApplyBonusCount.addOreBonusCount(pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE)))
+		)));
 		return this;
 	}
 

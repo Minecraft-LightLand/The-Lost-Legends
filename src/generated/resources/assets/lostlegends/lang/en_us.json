@@ -2,11 +2,16 @@
   "block.lostlegends.ash_block": "Ash Block",
   "block.lostlegends.ash_blossom": "Ash Blossom",
   "block.lostlegends.ash_stone": "Ash Stone",
+  "block.lostlegends.buried_gold_debris": "Buried Gold Debris",
   "block.lostlegends.dark_stone": "Dark Stone",
+  "block.lostlegends.deep_netherrack": "Deep Netherrack",
+  "block.lostlegends.hearth_ore": "Hearth Ore",
   "block.lostlegends.nether_nylium": "Nether Nylium",
   "block.lostlegends.nether_soil": "Nether Soil",
   "block.lostlegends.raging_obsidian": "Raging Obsidian",
   "item.lostlegends.dark_cobble": "Dark Cobble",
+  "item.lostlegends.gold_debris": "Gold Debris",
+  "item.lostlegends.hearth_crystal": "Hearth Crystal",
   "itemGroup.lostlegends.main": "The Lost Legends",
   "lostlegends.title": "The Lost Legends"
 }

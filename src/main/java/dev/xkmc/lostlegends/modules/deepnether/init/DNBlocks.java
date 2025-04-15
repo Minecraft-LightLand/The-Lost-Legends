@@ -16,7 +16,7 @@ import net.minecraft.world.level.material.MapColor;
 
 public class DNBlocks extends LLRegBase {
 
-	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, RAGING_OBSIDIAN;
+	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, RAGING_OBSIDIAN, DEEP_NETHERRACK, HEARTH_ORE, BURIED_GOLD_DEBRIS;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<DNNyliumBlock> NETHER_NYLIUM;
@@ -28,6 +28,29 @@ public class DNBlocks extends LLRegBase {
 
 		// stone
 		{
+			DEEP_NETHERRACK = block("deep_netherrack", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f)
+					.cubeAll().pickaxe()
+					.tag(BlockTags.INFINIBURN_OVERWORLD)
+					.simpleItem()
+					.register();
+
+			HEARTH_ORE = block("hearth_ore", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f)
+					.cubeAll().pickaxe()
+					.tag(BlockTags.INFINIBURN_OVERWORLD)
+					.simpleItem()
+					.multiOreLoot(() -> DeepNether.ITEMS.HEARTH_CRYSTAL.get(), 1, 2)
+					.register();
+
+			BURIED_GOLD_DEBRIS = block("buried_gold_debris", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f)
+					.cubeAll().pickaxe()
+					.tag(BlockTags.INFINIBURN_OVERWORLD)
+					.simpleItem()
+					.multiOreLoot(() -> DeepNether.ITEMS.GOLD_DEBRIS.get(), 1, 2)
+					.register();
+
 			NETHER_SOIL = block("nether_soil", Block::new)
 					.prop(MapColor.NETHER, SoundType.GRAVEL).strength(0.5F)
 					.cubeAll().shovel()

@@ -11,16 +11,11 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public class DNSurfaceRuleData {
 	private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
-	private static final SurfaceRules.RuleSource GRAVEL = makeStateRule(Blocks.GRAVEL);
-	private static final SurfaceRules.RuleSource LAVA = makeStateRule(Blocks.LAVA);
 	private static final SurfaceRules.RuleSource NETHERRACK = makeStateRule(Blocks.NETHERRACK);
 	private static final SurfaceRules.RuleSource SOUL_SAND = makeStateRule(Blocks.SOUL_SAND);
 	private static final SurfaceRules.RuleSource SOUL_SOIL = makeStateRule(Blocks.SOUL_SOIL);
 	private static final SurfaceRules.RuleSource BASALT = makeStateRule(Blocks.BASALT);
 	private static final SurfaceRules.RuleSource BLACKSTONE = makeStateRule(Blocks.BLACKSTONE);
-	private static final SurfaceRules.RuleSource WARPED_WART_BLOCK = makeStateRule(Blocks.WARPED_WART_BLOCK);
-	private static final SurfaceRules.RuleSource WARPED_NYLIUM = makeStateRule(Blocks.WARPED_NYLIUM);
-	private static final SurfaceRules.RuleSource NETHER_WART_BLOCK = makeStateRule(Blocks.NETHER_WART_BLOCK);
 	private static final SurfaceRules.RuleSource CRIMSON_NYLIUM = makeStateRule(Blocks.CRIMSON_NYLIUM);
 
 	private static SurfaceRules.RuleSource makeStateRule(Block block) {
@@ -28,6 +23,7 @@ public class DNSurfaceRuleData {
 	}
 
 	public static SurfaceRules.RuleSource nether(ClimateBuilder builder) {
+		var deepRack = makeStateRule(DeepNether.BLOCKS.DEEP_NETHERRACK.get());
 		var ashBlock = makeStateRule(DeepNether.BLOCKS.ASH_BLOCK.get());
 		var ashStone = makeStateRule(DeepNether.BLOCKS.ASH_STONE.get());
 		var soil = makeStateRule(DeepNether.BLOCKS.NETHER_SOIL.get());
@@ -72,6 +68,9 @@ public class DNSurfaceRuleData {
 				.addRule(SurfaceRules.UNDER_CEILING, ashStone)
 				.addRule(SurfaceRules.UNDER_FLOOR, ash, ashStone);
 		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0.1f);
+		builder.conditional(
+				SurfaceRules.verticalGradient("deep_netherrack",
+						VerticalAnchor.absolute(120), VerticalAnchor.absolute(128)), deepRack);
 		builder.standalone(NETHERRACK);
 		return builder.buildRules();
 	}

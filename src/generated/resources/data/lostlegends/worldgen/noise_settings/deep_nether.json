@@ -594,6 +594,25 @@
         }
       },
       {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "false_at_and_above": {
+            "absolute": 128
+          },
+          "random_name": "minecraft:deep_netherrack",
+          "true_at_and_below": {
+            "absolute": 120
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "lostlegends:deep_netherrack"
+          }
+        }
+      },
+      {
         "type": "minecraft:block",
         "result_state": {
           "Name": "minecraft:netherrack"

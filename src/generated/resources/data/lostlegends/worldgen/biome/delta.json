@@ -26,23 +26,26 @@
     [],
     [],
     [],
-    [],
+    [
+      "minecraft:delta",
+      "minecraft:small_basalt_columns",
+      "minecraft:large_basalt_columns"
+    ],
     [],
     [],
     [
-      "minecraft:spring_open",
-      "minecraft:spring_closed",
+      "minecraft:spring_delta",
+      "minecraft:spring_closed_double",
       "minecraft:patch_fire",
-      "minecraft:ore_magma",
       "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
+      "minecraft:ore_magma",
       "minecraft:ore_ancient_debris_large",
-      "minecraft:ore_debris_small"
+      "minecraft:ore_debris_small",
+      "lostlegends:ore_gold_debris",
+      "lostlegends:ore_hearth_crystal"
     ],
     [],
     [
-      "minecraft:spring_lava",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ]

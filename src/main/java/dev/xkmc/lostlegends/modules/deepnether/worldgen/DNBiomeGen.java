@@ -5,10 +5,6 @@ import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
-import net.minecraft.data.worldgen.placement.NetherPlacements;
-import net.minecraft.data.worldgen.placement.OrePlacements;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
@@ -19,7 +15,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
@@ -31,7 +26,6 @@ import javax.annotation.Nullable;
 
 public class DNBiomeGen {
 
-
 	public static final ResourceKey<Biome> BIOME_DELTA = biome("delta");
 	public static final ResourceKey<Biome> BIOME_SOUL = biome("soul");
 	public static final ResourceKey<Biome> BIOME_SOUL_HEART = biome("soul_heart");
@@ -42,7 +36,6 @@ public class DNBiomeGen {
 	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
 
 	public static final ResourceKey<ConfiguredWorldCarver<?>> DEEP_CARVER = carver("deep_nether_carver");
-
 
 	public static void init(DataProviderInitializer init) {
 
@@ -62,13 +55,6 @@ public class DNBiomeGen {
 			));
 		});
 
-		init.add(Registries.CONFIGURED_FEATURE, (ctx) -> {
-		});
-
-		init.add(Registries.PLACED_FEATURE, (ctx) -> {
-			var cf = ctx.lookup(Registries.CONFIGURED_FEATURE);
-		});
-
 
 		init.add(Registries.BIOME, (ctx) -> {
 			var pf = ctx.lookup(Registries.PLACED_FEATURE);
@@ -76,54 +62,79 @@ public class DNBiomeGen {
 
 			ctx.register(BIOME_DELTA, biome(6840176,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc),
+					new DNBiomeDecoBuilder(pf, wc)
+							.delta().firePatch()
+							.stoneBolb().magmaBolb()
+							.ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
 
 			ctx.register(BIOME_SOUL, biome(1787717,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc)
-							.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE)
-							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
+					new DNBiomeDecoBuilder(pf, wc)
+							.firePatch().soulfirePatch().pillar()
+							.stoneBolb().magmaBolb()
+							.ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
 			ctx.register(BIOME_SOUL_HEART, biome(1787717,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc)
-							.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE)
-							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
+					new DNBiomeDecoBuilder(pf, wc)
+							.firePatch().soulfirePatch().pillar()
+							.stoneBolb().magmaBolb()
+							.ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
 			ctx.register(BIOME_ASH, biome(6840176,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc)
-							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch().pillar()
+							.stoneBolb().magmaBolb().soulsandBolb()
+							.ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
 
 			ctx.register(BIOME_WASTE, biome(3344392,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.stoneBolb().magmaBolb().soulsandBolb()
+							.ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
 			));
 
 			ctx.register(BIOME_GOLDEN, biome(1705242,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.stoneBolb().ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
 
 			ctx.register(BIOME_GOLDEN_HEART, biome(1705242,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.stoneBolb().ores().mushrooms()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
 
 			ctx.register(BIOME_CRIMSON, biome(3343107,
 					new MobSpawnSettings.Builder(),
-					defaultNether(pf, wc),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.stoneBolb().magmaBolb()
+							.ores().mushrooms().crimson()
+							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));
 
@@ -137,35 +148,6 @@ public class DNBiomeGen {
 
 	private static ResourceKey<ConfiguredWorldCarver<?>> carver(String id) {
 		return ResourceKey.create(Registries.CONFIGURED_CARVER, loc(id));
-	}
-
-	private static ResourceKey<ConfiguredFeature<?, ?>> configured(String id) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, loc(id));
-	}
-
-	private static ResourceKey<PlacedFeature> place(String id) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, loc(id));
-	}
-
-	private static BiomeGenerationSettings.Builder defaultNether(HolderGetter<PlacedFeature> pf, HolderGetter<ConfiguredWorldCarver<?>> cw) {
-		var ans = new BiomeGenerationSettings.Builder(pf, cw)
-				.addCarver(GenerationStep.Carving.AIR, DEEP_CARVER)
-				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MiscOverworldPlacements.SPRING_LAVA);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
-		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA);
-		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
-		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_GRAVEL_NETHER);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_BLACKSTONE);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_GOLD_NETHER);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_QUARTZ_NETHER);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_LARGE);
-		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_SMALL);
-		ans.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NORMAL);
-		ans.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_NORMAL);
-		return ans;
 	}
 
 	private static Biome biome(int fogColor,
