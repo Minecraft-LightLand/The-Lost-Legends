@@ -35,15 +35,7 @@ public class DNSurfaceRuleData {
 
 		SurfaceRules.ConditionSource above30 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0);
 		SurfaceRules.ConditionSource above31 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(31), 0);
-		SurfaceRules.ConditionSource below35 = SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(35), 0));
-		SurfaceRules.ConditionSource hole = SurfaceRules.hole();
-		SurfaceRules.ConditionSource soulNoise = SurfaceRules.noiseCondition(Noises.SOUL_SAND_LAYER, -0.012);
-		SurfaceRules.ConditionSource gravelNoise = SurfaceRules.noiseCondition(Noises.GRAVEL_LAYER, -0.012);
-		SurfaceRules.ConditionSource patchNoise = SurfaceRules.noiseCondition(Noises.PATCH, -0.012);
 		SurfaceRules.ConditionSource selNoise = SurfaceRules.noiseCondition(Noises.NETHER_STATE_SELECTOR, 0.0);
-		SurfaceRules.RuleSource gravelLayer = SurfaceRules.ifTrue(
-				patchNoise, SurfaceRules.ifTrue(above30, SurfaceRules.ifTrue(below35, GRAVEL))
-		);
 
 		SurfaceRules.RuleSource ash = SurfaceRules.ifTrue(above31, SurfaceRules.ifTrue(
 				SurfaceRules.noiseCondition(Noises.POWDER_SNOW, 0.45, 0.58), ashBlock

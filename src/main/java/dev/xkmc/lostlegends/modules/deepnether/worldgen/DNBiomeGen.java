@@ -2,15 +2,29 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen;
 
 import com.tterrag.registrate.providers.DataProviderInitializer;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.data.worldgen.placement.NetherPlacements;
+import net.minecraft.data.worldgen.placement.OrePlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import javax.annotation.Nullable;
@@ -27,8 +41,27 @@ public class DNBiomeGen {
 	public static final ResourceKey<Biome> BIOME_GOLDEN_HEART = biome("golden_heart");
 	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
 
+	public static final ResourceKey<ConfiguredWorldCarver<?>> DEEP_CARVER = carver("deep_nether_carver");
+
 
 	public static void init(DataProviderInitializer init) {
+
+		init.add(Registries.CONFIGURED_CARVER, (ctx) -> {
+			HolderGetter<Block> blocks = ctx.lookup(Registries.BLOCK);
+			ctx.register(DEEP_CARVER, DeepNether.WG.DEEP_CARVER.get().configured(
+					new CaveCarverConfiguration(
+							0.2F,
+							UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.belowTop(1)),
+							ConstantFloat.of(0.5F),
+							VerticalAnchor.aboveBottom(10),
+							blocks.getOrThrow(BlockTags.NETHER_CARVER_REPLACEABLES),
+							ConstantFloat.of(1.0F),
+							ConstantFloat.of(1.0F),
+							ConstantFloat.of(-0.7F)
+					)
+			));
+		});
+
 		init.add(Registries.CONFIGURED_FEATURE, (ctx) -> {
 		});
 
@@ -43,49 +76,54 @@ public class DNBiomeGen {
 
 			ctx.register(BIOME_DELTA, biome(6840176,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
 
 			ctx.register(BIOME_SOUL, biome(1787717,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc)
+							.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE)
+							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
 			ctx.register(BIOME_SOUL_HEART, biome(1787717,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc)
+							.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE)
+							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
 
 			ctx.register(BIOME_ASH, biome(6840176,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc)
+							.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
 
 			ctx.register(BIOME_WASTE, biome(3344392,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
 			));
 
 			ctx.register(BIOME_GOLDEN, biome(1705242,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
 
 			ctx.register(BIOME_GOLDEN_HEART, biome(1705242,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
 
 			ctx.register(BIOME_CRIMSON, biome(3343107,
 					new MobSpawnSettings.Builder(),
-					new BiomeGenerationSettings.Builder(pf, wc),
+					defaultNether(pf, wc),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));
 
@@ -97,6 +135,10 @@ public class DNBiomeGen {
 		return ResourceKey.create(Registries.BIOME, loc(id));
 	}
 
+	private static ResourceKey<ConfiguredWorldCarver<?>> carver(String id) {
+		return ResourceKey.create(Registries.CONFIGURED_CARVER, loc(id));
+	}
+
 	private static ResourceKey<ConfiguredFeature<?, ?>> configured(String id) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, loc(id));
 	}
@@ -105,6 +147,26 @@ public class DNBiomeGen {
 		return ResourceKey.create(Registries.PLACED_FEATURE, loc(id));
 	}
 
+	private static BiomeGenerationSettings.Builder defaultNether(HolderGetter<PlacedFeature> pf, HolderGetter<ConfiguredWorldCarver<?>> cw) {
+		var ans = new BiomeGenerationSettings.Builder(pf, cw)
+				.addCarver(GenerationStep.Carving.AIR, DEEP_CARVER)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MiscOverworldPlacements.SPRING_LAVA);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_OPEN);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.SPRING_CLOSED);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_FIRE);
+		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE_EXTRA);
+		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.GLOWSTONE);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);
+		//ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_GRAVEL_NETHER);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_BLACKSTONE);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_GOLD_NETHER);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_QUARTZ_NETHER);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_LARGE);
+		ans.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, OrePlacements.ORE_ANCIENT_DEBRIS_SMALL);
+		ans.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NORMAL);
+		ans.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_NORMAL);
+		return ans;
+	}
 
 	private static Biome biome(int fogColor,
 			MobSpawnSettings.Builder spawns,
