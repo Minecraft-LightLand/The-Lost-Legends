@@ -70,18 +70,19 @@ public class DNSurfaceRuleData {
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL)
 				// gravel / soul sand / soul soil floor
 				.addRule(SurfaceRules.UNDER_FLOOR, gravelLayer, SurfaceRules.ifTrue(selNoise, SOUL_SAND), SOUL_SOIL);
-		root.startRule(SurfaceRules.ON_FLOOR);
+		var r0 = builder.start();
+		r0.startRule(SurfaceRules.ON_FLOOR);
 		// fill holes with lava <y32
-		root.addRule(SurfaceRules.not(above32), SurfaceRules.ifTrue(hole, LAVA));
-		root.temp(e -> e.get(0)).vege(e -> e.get(1)).biome(Biomes.WARPED_FOREST, 0.375f)
+		r0.addRule(SurfaceRules.not(above32), SurfaceRules.ifTrue(hole, LAVA));
+		r0.temp(e -> e.get(0)).vege(e -> e.get(1)).biome(Biomes.WARPED_FOREST, 0.375f)
 				// rack noise or <y31 -> rack, wart noise -> wart, otherwise nylium
 				.addRule(SurfaceRules.not(rackNoise), SurfaceRules.ifTrue(above31,
 						SurfaceRules.sequence(SurfaceRules.ifTrue(wartNoise, WARPED_WART_BLOCK), WARPED_NYLIUM)));
-		root.temp(e -> e.get(-1)).vege(e -> e.get(0)).biome(Biomes.CRIMSON_FOREST, 0f)
+		r0.temp(e -> e.get(-1)).vege(e -> e.get(0)).biome(Biomes.CRIMSON_FOREST, 0f)
 				// rack noise or <y31 -> rack, wart noise -> wart, otherwise nylium
 				.addRule(SurfaceRules.not(rackNoise), SurfaceRules.ifTrue(above31,
 						SurfaceRules.sequence(SurfaceRules.ifTrue(wartNoise, NETHER_WART_BLOCK), CRIMSON_NYLIUM)));
-		root.endRule();
+
 		root.temp(e -> e.get(0)).vege(e -> e.get(0)).biome(Biomes.NETHER_WASTES, 0f)
 				// y30-35: fill soul sand with noise
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(soulNoise, SurfaceRules.sequence(

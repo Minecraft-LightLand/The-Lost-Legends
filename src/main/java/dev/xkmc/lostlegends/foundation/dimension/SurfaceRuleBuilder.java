@@ -21,7 +21,11 @@ public class SurfaceRuleBuilder {
 	}
 
 	public void add(SurfaceRules.RuleSource rule) {
-		list.add(rule);
+		if (self != null) {
+			var ins = new SurfaceRuleBuilder(null, null);
+			ins.add(rule);
+			self.surfaceList.add(ins);
+		} else list.add(rule);
 	}
 
 	public SurfaceRules.RuleSource buildRules() {

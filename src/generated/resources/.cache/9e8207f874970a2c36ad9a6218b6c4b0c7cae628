@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-15T11:18:53.807635	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
+// 1.21.1	2025-04-15T11:31:19.825332	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
 45c1315dd3583bd77fa0ee09debc2889d71cd3d2 assets/lostlegends/blockstates/ash_stone.json
@@ -32,7 +32,7 @@ d5e8e6e9ec3273cf6760484af8573e3ad89dab93 data/lostlegends/loot_table/blocks/dark
 b93eca5d3cc12f29ff1eb99439d02b1fef40b940 data/lostlegends/loot_table/blocks/nether_nylium.json
 3cbcffb3d848067d20dbfdfa244f5ddb47b4810d data/lostlegends/loot_table/blocks/nether_soil.json
 7e9e4d8ca03ad9b9abdf6c3ffda1c11d002c81ac data/lostlegends/loot_table/blocks/raging_obsidian.json
-de8a26995d489ff7f691c4fac2af9033a08c0fd1 data/lostlegends/worldgen/noise_settings/deep_nether.json
+7fcb85016f42fd2f6051421b0a7a3a325dbca727 data/lostlegends/worldgen/noise_settings/deep_nether.json
 b291e6983f64251222b30a6e189692279b239dbd data/minecraft/tags/block/infiniburn_overworld.json
 2f8e6c20f24ec6cc297ad583dd19a6eb9d6ef30f data/minecraft/tags/block/mineable/pickaxe.json
 15a34de8469798556ca0ab9ff9d8aea6d8d4d449 data/minecraft/tags/block/mineable/shovel.json
