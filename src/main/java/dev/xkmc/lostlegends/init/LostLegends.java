@@ -74,6 +74,8 @@ public class LostLegends {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		for (var e : MODULES)
+			e.gatherData(event);
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOW)
