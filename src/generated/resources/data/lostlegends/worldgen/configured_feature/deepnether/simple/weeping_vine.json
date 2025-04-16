@@ -1,0 +1,10 @@
+{
+  "type": "lostlegends:weeping_vines",
+  "config": {
+    "stop_chance": 0.125,
+    "vine_spread": 8,
+    "vine_trial": 16,
+    "wart_spread": 6,
+    "wart_trial": 32
+  }
+}

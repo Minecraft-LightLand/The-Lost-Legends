@@ -26,7 +26,7 @@ public class FeatureKey {
 		pf = group.place(id);
 	}
 
-	private FeatureKey(FeatureGroup group, ResourceKey<ConfiguredFeature<?, ?>> cf, String id) {
+	FeatureKey(FeatureGroup group, ResourceKey<ConfiguredFeature<?, ?>> cf, String id) {
 		this.group = group;
 		this.cf = cf;
 		this.id = id;

@@ -32,20 +32,24 @@ public abstract class FeatureGroup {
 		return HeightRangePlacement.uniform(VerticalAnchor.absolute(min), VerticalAnchor.absolute(max));
 	}
 
-	public List<PlacementModifier> orePlace(PlacementModifier count, PlacementModifier range) {
+	public List<PlacementModifier> spread(PlacementModifier count, PlacementModifier range) {
 		return List.of(count, InSquarePlacement.spread(), range, BiomeFilter.biome());
 	}
 
-	public List<PlacementModifier> orePlace(int count, PlacementModifier m) {
-		return orePlace(CountPlacement.of(count), m);
+	public List<PlacementModifier> spread(int count, PlacementModifier m) {
+		return spread(CountPlacement.of(count), m);
 	}
 
-	public List<PlacementModifier> orePlace(int min, int max, PlacementModifier m) {
-		return orePlace(CountPlacement.of(UniformInt.of(min, max)), m);
+	public List<PlacementModifier> spread(int min, int max, PlacementModifier m) {
+		return spread(CountPlacement.of(UniformInt.of(min, max)), m);
 	}
 
 	public FeatureKey uni(String id) {
 		return new FeatureKey(this, id);
+	}
+
+	public FeatureKey wrap(ResourceKey<ConfiguredFeature<?, ?>> key, String id) {
+		return new FeatureKey(this, key, id);
 	}
 
 	public ResourceKey<ConfiguredFeature<?, ?>> configured(String id) {

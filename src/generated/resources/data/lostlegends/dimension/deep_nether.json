@@ -13,7 +13,7 @@
             "erosion": 0.0,
             "humidity": [
               -1.0,
-              -0.55
+              -0.45
             ],
             "offset": 0.1,
             "temperature": [
@@ -31,7 +31,7 @@
             "erosion": 0.0,
             "humidity": [
               -1.0,
-              -0.55
+              -0.45
             ],
             "offset": 0.1,
             "temperature": [
@@ -49,7 +49,7 @@
             "erosion": 0.0,
             "humidity": [
               -1.0,
-              -0.7
+              -0.3
             ],
             "offset": 0.0,
             "temperature": [
@@ -60,13 +60,13 @@
           }
         },
         {
-          "biome": "lostlegends:golden",
+          "biome": "lostlegends:golden_forest",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
             "humidity": [
-              0.55,
+              0.45,
               1.0
             ],
             "offset": 0.1,
@@ -78,16 +78,52 @@
           }
         },
         {
-          "biome": "lostlegends:crimson",
+          "biome": "lostlegends:crimson_forest",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
             "humidity": [
-              0.55,
+              0.45,
               1.0
             ],
             "offset": 0.1,
+            "temperature": [
+              0.05,
+              1.0
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:golden_plains",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              0.05,
+              1.0
+            ],
+            "offset": 0.15,
+            "temperature": [
+              -1.0,
+              -0.05
+            ],
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "lostlegends:crimson_plains",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": [
+              0.05,
+              1.0
+            ],
+            "offset": 0.15,
             "temperature": [
               0.05,
               1.0
@@ -102,10 +138,10 @@
             "depth": 0.0,
             "erosion": 0.0,
             "humidity": [
-              -0.45,
-              0.45
+              -1.0,
+              -0.05
             ],
-            "offset": 0.1,
+            "offset": 0.15,
             "temperature": [
               -1.0,
               -0.05
@@ -120,10 +156,10 @@
             "depth": 0.0,
             "erosion": 0.0,
             "humidity": [
-              -0.45,
-              0.45
+              -1.0,
+              -0.05
             ],
-            "offset": 0.1,
+            "offset": 0.15,
             "temperature": [
               0.05,
               1.0
@@ -152,7 +188,7 @@
         "humidity_max": -0.6,
         "humidity_min": -1.0,
         "offset": 0.05,
-        "temperature_max": -0.1,
+        "temperature_max": -0.6,
         "temperature_min": -1.0
       }
     ]

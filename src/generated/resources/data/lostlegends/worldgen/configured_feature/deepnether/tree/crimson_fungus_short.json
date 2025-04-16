@@ -1,0 +1,23 @@
+{
+  "type": "lostlegends:huge_fungus",
+  "config": {
+    "decor_state": {
+      "Name": "minecraft:shroomlight"
+    },
+    "hat_state": {
+      "Name": "minecraft:nether_wart_block"
+    },
+    "huge_chance": 0.125,
+    "max_height": 7,
+    "min_height": 4,
+    "planted": false,
+    "stem_state": {
+      "Name": "minecraft:crimson_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "thick_chance": 0.0,
+    "weeping": true
+  }
+}

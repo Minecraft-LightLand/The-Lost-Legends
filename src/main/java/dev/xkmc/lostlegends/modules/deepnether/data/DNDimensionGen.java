@@ -4,9 +4,9 @@ import com.tterrag.registrate.providers.DataProviderInitializer;
 import dev.xkmc.lostlegends.foundation.dimension.ClimateBuilder;
 import dev.xkmc.lostlegends.foundation.dimension.ParamDiv;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNAquifer;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNChunkGenerator;
-import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +33,7 @@ public class DNDimensionGen {
 		var biomeSet = new ClimateBuilder(
 				null, null,
 				ParamDiv.polar(),
-				ParamDiv.trinary(0.5f)
+				ParamDiv.polar()
 		);
 		DNSurfaceRuleData.nether(biomeSet);
 
@@ -59,7 +59,7 @@ public class DNDimensionGen {
 			ctx.register(NGS_DEEP, new NoiseGeneratorSettings(
 					new NoiseSettings(0, 256, 2, 1),
 					DeepNether.BLOCKS.DEEP_NETHERRACK.get().defaultBlockState(), Blocks.LAVA.defaultBlockState(),
-					VanillaNoiseRouterData.nether(df, np, 256), biomeSet.buildRules(),
+					DNNoiseRouterData.nether(df, np, 0.25, 0.125, 256), biomeSet.buildRules(),
 					List.of(), 32, false,
 					false, false, true
 			));
@@ -73,7 +73,7 @@ public class DNDimensionGen {
 			ctx.register(LEVEL_DEEP, new LevelStem(dt.getOrThrow(DT_DEEP),
 					new DNChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
 							noise.getOrThrow(NGS_DEEP), List.of(
-							new DNAquifer.Entry(-1, -0.1, -1, -0.6, 0.05, 0.01,
+							new DNAquifer.Entry(-1, -0.6, -1, -0.6, 0.05, 0.01,
 									Blocks.WATER.defaultBlockState(), Blocks.BONE_BLOCK.defaultBlockState())
 					))));
 		});

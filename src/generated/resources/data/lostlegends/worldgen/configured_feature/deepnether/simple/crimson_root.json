@@ -26,8 +26,8 @@
               {
                 "type": "minecraft:matching_blocks",
                 "blocks": [
-                  "minecraft:soul_soil",
-                  "minecraft:soul_sand"
+                  "lostlegends:dementing_soil",
+                  "lostlegends:weeping_sand"
                 ],
                 "offset": [
                   0,

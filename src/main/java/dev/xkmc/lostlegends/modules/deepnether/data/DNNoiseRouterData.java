@@ -10,7 +10,7 @@ import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
-public class VanillaNoiseRouterData {
+public class DNNoiseRouterData {
 	private static final ResourceKey<DensityFunction> SHIFT_X = createKey("shift_x");
 	private static final ResourceKey<DensityFunction> SHIFT_Z = createKey("shift_z");
 	private static final ResourceKey<DensityFunction> BASE_3D_NOISE_NETHER = createKey("nether/base_3d_noise");
@@ -29,13 +29,14 @@ public class VanillaNoiseRouterData {
 	}
 
 	private static NoiseRouter noNewCaves(
-			HolderGetter<DensityFunction> p_255724_, HolderGetter<NormalNoise.NoiseParameters> p_255986_, DensityFunction p_256378_
+			HolderGetter<DensityFunction> df, HolderGetter<NormalNoise.NoiseParameters> np, DensityFunction base,
+			double tempScale, double humiScale
 	) {
-		DensityFunction sx = getFunction(p_255724_, SHIFT_X);
-		DensityFunction sz = getFunction(p_255724_, SHIFT_Z);
-		DensityFunction temp = DensityFunctions.shiftedNoise2d(sx, sz, 0.25, p_255986_.getOrThrow(Noises.TEMPERATURE));
-		DensityFunction humi = DensityFunctions.shiftedNoise2d(sx, sz, 0.25, p_255986_.getOrThrow(Noises.VEGETATION));
-		DensityFunction ans = postProcess(p_256378_);
+		DensityFunction sx = getFunction(df, SHIFT_X);
+		DensityFunction sz = getFunction(df, SHIFT_Z);
+		DensityFunction temp = DensityFunctions.shiftedNoise2d(sx, sz, tempScale, np.getOrThrow(Noises.TEMPERATURE));
+		DensityFunction humi = DensityFunctions.shiftedNoise2d(sx, sz, humiScale, np.getOrThrow(Noises.VEGETATION));
+		DensityFunction ans = postProcess(base);
 		return new NoiseRouter(
 				DensityFunctions.zero(),
 				DensityFunctions.zero(),
@@ -59,8 +60,9 @@ public class VanillaNoiseRouterData {
 		return slide(getFunction(p_256084_, BASE_3D_NOISE_NETHER), p_255802_, p_255834_, 24, 0, 0.9375, -8, 24, 2.5);
 	}
 
-	public static NoiseRouter nether(HolderGetter<DensityFunction> df, HolderGetter<NormalNoise.NoiseParameters> np, int maxY) {
-		return noNewCaves(df, np, slideNetherLike(df, 0, maxY));
+	public static NoiseRouter nether(HolderGetter<DensityFunction> df, HolderGetter<NormalNoise.NoiseParameters> np,
+									 double tempScale, double humiScale, int maxY) {
+		return noNewCaves(df, np, slideNetherLike(df, 0, maxY), tempScale, humiScale);
 	}
 
 	protected static NoiseRouter none() {

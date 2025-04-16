@@ -13,7 +13,7 @@ public abstract class OnGroundFeature<T extends FeatureConfiguration> extends Fe
 		super(codec);
 	}
 
-	protected @Nullable BlockPos findValid(FeaturePlaceContext<StonePile.Data> ctx, int maxStep) {
+	protected @Nullable BlockPos findValid(FeaturePlaceContext<T> ctx, int maxStep) {
 		var pos = new BlockPos.MutableBlockPos();
 		pos.set(ctx.origin());
 		while (ctx.level().isEmptyBlock(pos)) {

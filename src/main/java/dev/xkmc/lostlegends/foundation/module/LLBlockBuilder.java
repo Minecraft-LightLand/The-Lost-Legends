@@ -44,6 +44,16 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
+	public LLBlockBuilder<T> fullBlock() {
+		builder.properties(p -> p
+				.isValidSpawn((a, b, c, d) -> true)
+				.isRedstoneConductor((a, b, c) -> true)
+				.isViewBlocking((a, b, c) -> true)
+				.isSuffocating((a, b, c) -> true));
+		builder.tag(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON);
+		return this;
+	}
+
 	public LLBlockBuilder<T> strength(float v) {
 		builder.properties(p -> p.strength(v));
 		return this;

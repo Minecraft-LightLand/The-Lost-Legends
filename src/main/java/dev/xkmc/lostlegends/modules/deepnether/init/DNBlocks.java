@@ -3,21 +3,18 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
-import dev.xkmc.lostlegends.modules.deepnether.block.AshBlock;
-import dev.xkmc.lostlegends.modules.deepnether.block.AshBlossomBlock;
-import dev.xkmc.lostlegends.modules.deepnether.block.DNNyliumBlock;
-import dev.xkmc.lostlegends.modules.deepnether.block.DarkStoneBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 public class DNBlocks extends LLRegBase {
 
-	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, RAGING_OBSIDIAN, DEEP_NETHERRACK, HEARTH_ORE, BURIED_GOLD_DEBRIS;
+	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, RAGING_OBSIDIAN, DEEP_NETHERRACK, HEARTH_ORE, BURIED_GOLD_DEBRIS;
+	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<DNNyliumBlock> NETHER_NYLIUM;
@@ -55,7 +52,7 @@ public class DNBlocks extends LLRegBase {
 			NETHER_SOIL = block("nether_soil", Block::new)
 					.prop(MapColor.NETHER, SoundType.GRAVEL).strength(0.5F)
 					.cubeAll().shovel()
-					.tag(BlockTags.INFINIBURN_OVERWORLD)
+					.tag(BlockTags.INFINIBURN_OVERWORLD, BlockTags.NETHER_CARVER_REPLACEABLES)
 					.simpleItem()
 					.register();
 
@@ -68,6 +65,7 @@ public class DNBlocks extends LLRegBase {
 									blockLoc("nether_soil"),
 									blockLoc(ctx.getName() + "_top"))))
 					.shovel()
+					.tag(BlockTags.NYLIUM, BlockTags.NETHER_CARVER_REPLACEABLES)
 					.silkTouchOr(NETHER_SOIL)
 					.simpleItem()
 					.register();
@@ -79,6 +77,7 @@ public class DNBlocks extends LLRegBase {
 											pvd.mcLoc("block/powder_snow"))
 									.texture("texture", blockLoc(ctx.getName()))))
 					.shovel()
+					.tag(BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
 					.register();
 
@@ -86,6 +85,21 @@ public class DNBlocks extends LLRegBase {
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(0.8F, 12f)
 					.cubeAll().pickaxe()
 					.tag(BlockTags.BASE_STONE_NETHER)
+					.simpleItem()
+					.register();
+
+			WEEPING_SAND = block("weeping_sand", WeepingSandBlock::new)
+					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SAND).strength(0.5f)
+					.prop(p -> p.speedFactor(0.4F))
+					.fullBlock().cubeAll().shovel()
+					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
+					.simpleItem()
+					.register();
+
+			DEMENTING_SOIL = block("dementing_soil", Block::new)
+					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SOIL).strength(0.5f)
+					.cubeAll().shovel()
+					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
 					.register();
 

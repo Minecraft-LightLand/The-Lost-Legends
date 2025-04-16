@@ -4,7 +4,7 @@
   },
   "downfall": 0.0,
   "effects": {
-    "fog_color": 3344392,
+    "fog_color": 1705242,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -15,7 +15,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.nether.nether_wastes"
+      "sound": "minecraft:music.nether.warped_forest"
     },
     "sky_color": 7254527,
     "water_color": 4159204,
@@ -35,9 +35,7 @@
       "lostlegends:deepnether/simple/spring_open",
       "lostlegends:deepnether/simple/spring_close",
       "lostlegends:deepnether/simple/fire_patch",
-      "lostlegends:deepnether/struct/darkstone_pile",
       "lostlegends:deepnether/blob/blackstone",
-      "minecraft:ore_magma",
       "lostlegends:deepnether/ore/debris_large",
       "lostlegends:deepnether/ore/debris_small",
       "lostlegends:deepnether/ore/hearth_crystal",

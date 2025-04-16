@@ -1,13 +1,9 @@
 {
-  "feature": "lostlegends:deepnether/simple/fire_patch",
+  "feature": "lostlegends:deepnether/simple/weeping_vine",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 5,
-        "min_inclusive": 2
-      }
+      "count": 20
     },
     {
       "type": "minecraft:in_square"

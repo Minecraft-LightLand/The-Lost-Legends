@@ -29,9 +29,11 @@ public class DNBiomeGen {
 	public static final ResourceKey<Biome> BIOME_SOUL_HEART = biome("soul_heart");
 	public static final ResourceKey<Biome> BIOME_ASH = biome("ash");
 	public static final ResourceKey<Biome> BIOME_WASTE = biome("waste");
-	public static final ResourceKey<Biome> BIOME_GOLDEN = biome("golden");
+	public static final ResourceKey<Biome> BIOME_GOLDEN_PLAINS = biome("golden_plains");
+	public static final ResourceKey<Biome> BIOME_GOLDEN_FOREST = biome("golden_forest");
 	public static final ResourceKey<Biome> BIOME_GOLDEN_HEART = biome("golden_heart");
-	public static final ResourceKey<Biome> BIOME_CRIMSON = biome("crimson");
+	public static final ResourceKey<Biome> BIOME_CRIMSON_PLAINS = biome("crimson_plains");
+	public static final ResourceKey<Biome> BIOME_CRIMSON_FOREST = biome("crimson_forest");
 
 	public static final ResourceKey<ConfiguredWorldCarver<?>> DEEP_CARVER = carver("deep_nether_carver");
 
@@ -95,7 +97,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
 							.pillar().darkstonePile()
-							.blackstoneBolb().magmaBolb().soulsandBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().ashBlossom()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
@@ -106,13 +108,22 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
 							.darkstonePile()
-							.blackstoneBolb().magmaBolb().soulsandBolb()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
 			));
 
-			ctx.register(BIOME_GOLDEN, biome(1705242,
+			ctx.register(BIOME_GOLDEN_PLAINS, biome(1705242,
+					new MobSpawnSettings.Builder(),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.blackstoneBolb().ores().mushrooms()
+							.build(),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
+			));
+
+			ctx.register(BIOME_GOLDEN_FOREST, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
@@ -130,12 +141,22 @@ public class DNBiomeGen {
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
 
-			ctx.register(BIOME_CRIMSON, biome(3343107,
+			ctx.register(BIOME_CRIMSON_PLAINS, biome(3343107,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms().crimson()
+							.ores().mushrooms().crimsonPlains()
+							.build(),
+					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
+			));
+
+			ctx.register(BIOME_CRIMSON_FOREST, biome(3343107,
+					new MobSpawnSettings.Builder(),
+					new DNBiomeDecoBuilder(pf, wc)
+							.lavaSprings().firePatch()
+							.blackstoneBolb().magmaBolb()
+							.ores().mushrooms().crimsonForest()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));
