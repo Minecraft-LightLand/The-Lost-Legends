@@ -74,7 +74,7 @@ public class DNBiomeGen {
 							.firePatch().soulfirePatch()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
@@ -85,7 +85,7 @@ public class DNBiomeGen {
 							.firePatch().soulfirePatch()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
@@ -96,7 +96,7 @@ public class DNBiomeGen {
 							.lavaSprings().firePatch()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb().soulsandBolb()
-							.ores().mushrooms()
+							.ores().mushrooms().ashBlossom()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));

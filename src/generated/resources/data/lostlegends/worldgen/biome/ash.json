@@ -44,12 +44,14 @@
       "lostlegends:deepnether/ore/debris_large",
       "lostlegends:deepnether/ore/debris_small",
       "lostlegends:deepnether/ore/hearth_crystal",
-      "lostlegends:deepnether/ore/gold_debris"
+      "lostlegends:deepnether/ore/gold_debris",
+      "lostlegends:deepnether/ore/gold_debris_close"
     ],
     [],
     [
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal"
+      "minecraft:brown_mushroom_nether",
+      "minecraft:red_mushroom_nether",
+      "lostlegends:deepnether/simple/ash_blossom"
     ]
   ],
   "has_precipitation": false,

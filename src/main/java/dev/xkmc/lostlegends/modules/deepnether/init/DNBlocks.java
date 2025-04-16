@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.AshBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.AshBlossomBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.DNNyliumBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.DarkStoneBlock;
 import net.minecraft.tags.BlockTags;
@@ -20,7 +21,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<DNNyliumBlock> NETHER_NYLIUM;
-	public final BlockEntry<FlowerBlock> ASH_BLOSSOM;
+	public final BlockEntry<AshBlossomBlock> ASH_BLOSSOM;
 
 
 	DNBlocks(L2Registrate reg, String path) {
@@ -84,6 +85,7 @@ public class DNBlocks extends LLRegBase {
 			ASH_STONE = block("ash_stone", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(0.8F, 12f)
 					.cubeAll().pickaxe()
+					.tag(BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
 					.register();
 
@@ -92,6 +94,7 @@ public class DNBlocks extends LLRegBase {
 					.prop(p -> p.lightLevel(state -> 7))
 					.cubeAll().pickaxe()
 					.simpleItem()
+					.shardLoot(() -> DeepNether.ITEMS.DARK_COBBLE.get(), 2, 4)
 					.register();
 
 			RAGING_OBSIDIAN = block("raging_obsidian", Block::new)
@@ -103,7 +106,8 @@ public class DNBlocks extends LLRegBase {
 		}
 
 		{
-			ASH_BLOSSOM = block("ash_blossom", p -> new FlowerBlock(MobEffects.WEAKNESS, 6.0F, p))
+			ASH_BLOSSOM = block("ash_blossom", p -> new AshBlossomBlock(MobEffects.WEAKNESS, 6.0F, p))
+					.prop(p -> p.lightLevel(stata -> 8))
 					.foliage()
 					.cross()
 					.simpleItem()

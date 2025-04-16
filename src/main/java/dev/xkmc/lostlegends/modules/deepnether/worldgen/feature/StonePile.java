@@ -4,11 +4,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class StonePile extends Feature<StonePile.Data> {
+public class StonePile extends OnGroundFeature<StonePile.Data> {
 
 	public StonePile(Codec<Data> codec) {
 		super(codec);
@@ -17,15 +16,17 @@ public class StonePile extends Feature<StonePile.Data> {
 	@Override
 	public boolean place(FeaturePlaceContext<Data> ctx) {
 		var data = ctx.config();
+		var origin = findValid(ctx, 8);
+		if (origin == null) return false;
 		var pos = new BlockPos.MutableBlockPos();
-		int nr = (int) Math.ceil(data.radius);
+		int nr = (int) Math.floor(data.radius);
 		for (int y = 0; y < data.height; y++) {
-			pos.set(ctx.origin()).offset(0, y, 0);
-			if (!ctx.level().getBlockState(ctx.origin()).isAir()) return false;
+			pos.set(origin).move(0, y, 0);
+			if (!ctx.level().isEmptyBlock(pos)) return false;
 		}
 		for (int x = -nr; x <= nr; x++) {
 			for (int z = -nr; z <= nr; z++) {
-				pos.set(ctx.origin()).offset(x, -1, z);
+				pos.set(origin).move(x, -1, z);
 				if (!ctx.level().getBlockState(pos).isCollisionShapeFullBlock(ctx.level(), pos))
 					return false;
 			}
@@ -39,9 +40,7 @@ public class StonePile extends Feature<StonePile.Data> {
 			for (int x = -mr; x <= mr; x++) {
 				for (int z = -mr; z <= mr; z++) {
 					if (x * x + z * z > r * r) continue;
-					pos.set(ctx.origin()).offset(x, y, z);
-					var old = ctx.level().getBlockState(pos);
-					if (!old.isAir()) continue;
+					pos.set(origin).move(x, y, z);
 					setBlock(ctx.level(), pos, y == data.height - 1 ? data.top : data.base);
 					success = true;
 				}
@@ -62,7 +61,6 @@ public class StonePile extends Feature<StonePile.Data> {
 				BlockState.CODEC.fieldOf("base").forGetter(Data::base),
 				BlockState.CODEC.fieldOf("top").forGetter(Data::top)
 		).apply(i, Data::new));
-
 
 	}
 

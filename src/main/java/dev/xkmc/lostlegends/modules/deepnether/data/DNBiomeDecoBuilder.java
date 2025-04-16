@@ -11,6 +11,7 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_DECORATION;
+import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.VEGETAL_DECORATION;
 
 public class DNBiomeDecoBuilder {
 
@@ -36,9 +37,9 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder delta() {
-		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.DELTA);//TODO
-		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.SMALL_BASALT_COLUMNS);//TODO
-		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.LARGE_BASALT_COLUMNS);//TODO
+		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.DELTA);
+		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.SMALL_BASALT_COLUMNS);
+		builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, NetherPlacements.LARGE_BASALT_COLUMNS);
 		builder.addFeature(UNDERGROUND_DECORATION, NetherPlacements.SPRING_DELTA);//TODO
 		ins.simple.springClose2.addTo(builder, UNDERGROUND_DECORATION);
 		return this;
@@ -55,7 +56,7 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder pillar() {
-		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR);//TODO
+		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, NetherPlacements.BASALT_PILLAR);
 		return this;
 	}
 
@@ -79,12 +80,24 @@ public class DNBiomeDecoBuilder {
 		ins.ore.debrisSmall.addTo(builder, UNDERGROUND_DECORATION);
 		ins.ore.hearth.addTo(builder, UNDERGROUND_DECORATION);
 		ins.ore.gold.addTo(builder, UNDERGROUND_DECORATION);
+		ins.ore.goldClose.addTo(builder, UNDERGROUND_DECORATION);
 		return this;
 	}
 
+	public DNBiomeDecoBuilder ashBlossom() {
+		ins.simple.ashBlossom.addTo(builder, VEGETAL_DECORATION);
+		return this;
+	}
+
+	public DNBiomeDecoBuilder crimsonRoot() {
+		ins.simple.crimsonRoot.addTo(builder, VEGETAL_DECORATION);
+		return this;
+	}
+
+
 	public DNBiomeDecoBuilder mushrooms() {
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NORMAL);//TODO
-		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_NORMAL);//TODO
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);//TODO
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);//TODO
 		return this;
 	}
 

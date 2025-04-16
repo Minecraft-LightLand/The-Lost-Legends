@@ -17,7 +17,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.material.Fluids;
@@ -40,6 +39,7 @@ public class DNFeatures extends LLFeatureReg {
 	public static class Ores extends FeatureGroup {
 
 		public final FeatureKey gold = uni("gold_debris");
+		public final FeatureKey goldClose = uni("gold_debris_close");
 		public final FeatureKey hearth = uni("hearth_crystal");
 		public final FeatureKey debrisSmall = uni("debris_small");
 		public final FeatureKey debrisLarge = uni("debris_large");
@@ -54,20 +54,23 @@ public class DNFeatures extends LLFeatureReg {
 			var deep = new BlockMatchTest(deepRack.get());
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(deep,
 					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10));
+			FeatureUtils.register(ctx, goldClose.cf, Feature.ORE, new OreConfiguration(deep,
+					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10, 0.8f));
 			FeatureUtils.register(ctx, hearth.cf, Feature.ORE, new OreConfiguration(deep,
 					DeepNether.BLOCKS.HEARTH_ORE.get().defaultBlockState(), 6));
 			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(deep,
-					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3));
+					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(deep,
-					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5));
+					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
 		}
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
 			gold.place(ctx, cf, orePlace(20, uniform(10, 250)));
-			hearth.place(ctx, cf, orePlace(20, uniform(5, 30)));
-			debrisSmall.place(ctx, cf, orePlace(3, uniform(10, 250)));
-			debrisLarge.place(ctx, cf, orePlace(2, uniform(10, 128)));
+			goldClose.place(ctx, cf, orePlace(20, uniform(10, 250)));
+			hearth.place(ctx, cf, orePlace(8, uniform(5, 30)));
+			debrisSmall.place(ctx, cf, orePlace(15, uniform(10, 250)));
+			debrisLarge.place(ctx, cf, orePlace(4, uniform(8, 70)));
 		}
 	}
 
@@ -111,6 +114,9 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey firePatch = uni("fire_patch");
 		public final FeatureKey soulfirePatch = uni("soul_fire_patch");
 
+		public final FeatureKey ashBlossom = uni("ash_blossom");
+		public final FeatureKey crimsonRoot = uni("crimson_root");
+
 		public Simple(LLFeatureReg parent, String type) {
 			super(parent, type);
 		}
@@ -118,6 +124,9 @@ public class DNFeatures extends LLFeatureReg {
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			var deepRack = DeepNether.BLOCKS.DEEP_NETHERRACK;
+			var ashStone = DeepNether.BLOCKS.ASH_STONE;
+			var blossom = DeepNether.BLOCKS.ASH_BLOSSOM;
+
 			FeatureUtils.register(ctx, springOpen.cf, Feature.SPRING, new SpringConfiguration(
 					Fluids.LAVA.defaultFluidState(), false, 4, 1, HolderSet.direct(deepRack)));
 			FeatureUtils.register(ctx, springClose.cf, Feature.SPRING, new SpringConfiguration(
@@ -129,6 +138,13 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, soulfirePatch.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)),
 					List.of(Blocks.SOUL_SOIL, Blocks.SOUL_SAND)));
+
+			FeatureUtils.register(ctx, ashBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(blossom.get())),
+					List.of(ashStone.get())));
+			FeatureUtils.register(ctx, crimsonRoot.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.CRIMSON_ROOTS)),
+					List.of(Blocks.SOUL_SOIL, Blocks.SOUL_SAND)));
 		}
 
 		@Override
@@ -139,6 +155,9 @@ public class DNFeatures extends LLFeatureReg {
 
 			firePatch.place(ctx, cf, orePlace(0, 5, PlacementUtils.RANGE_4_4));
 			soulfirePatch.place(ctx, cf, orePlace(0, 5, PlacementUtils.RANGE_4_4));
+
+			ashBlossom.place(ctx, cf, orePlace(0, 3, PlacementUtils.RANGE_10_10));
+			crimsonRoot.place(ctx, cf, orePlace(0, 3, PlacementUtils.RANGE_10_10));
 		}
 
 	}
@@ -160,7 +179,7 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
-			darkPile.place(ctx, cf, PlacementUtils.RANGE_10_10, BiomeFilter.biome());
+			darkPile.place(ctx, cf, orePlace(1, PlacementUtils.RANGE_10_10));
 		}
 
 	}

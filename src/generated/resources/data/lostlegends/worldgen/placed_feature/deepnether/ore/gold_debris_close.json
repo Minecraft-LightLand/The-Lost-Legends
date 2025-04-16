@@ -1,9 +1,9 @@
 {
-  "feature": "lostlegends:deepnether/ore/hearth_crystal",
+  "feature": "lostlegends:deepnether/ore/gold_debris_close",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 8
+      "count": 20
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 30
+          "absolute": 250
         },
         "min_inclusive": {
-          "absolute": 5
+          "absolute": 10
         }
       }
     },

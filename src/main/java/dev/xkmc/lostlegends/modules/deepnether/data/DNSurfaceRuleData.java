@@ -15,6 +15,7 @@ public class DNSurfaceRuleData {
 	private static final SurfaceRules.RuleSource SOUL_SOIL = makeStateRule(Blocks.SOUL_SOIL);
 	private static final SurfaceRules.RuleSource BASALT = makeStateRule(Blocks.BASALT);
 	private static final SurfaceRules.RuleSource BLACKSTONE = makeStateRule(Blocks.BLACKSTONE);
+	private static final SurfaceRules.RuleSource NETHERRACK = makeStateRule(Blocks.NETHERRACK);
 	private static final SurfaceRules.RuleSource CRIMSON_NYLIUM = makeStateRule(Blocks.CRIMSON_NYLIUM);
 
 	private static SurfaceRules.RuleSource makeStateRule(Block block) {
@@ -60,7 +61,8 @@ public class DNSurfaceRuleData {
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, soil));
 		forest.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_CRIMSON, 0.1f)
 				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31,
-						SurfaceRules.sequence(CRIMSON_NYLIUM)));
+						SurfaceRules.sequence(CRIMSON_NYLIUM)))
+				.addRule(SurfaceRules.UNDER_FLOOR, NETHERRACK);
 
 		var waste = builder.start().vege(e -> e.get(0));
 		waste.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_ASH, 0.1f)

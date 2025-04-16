@@ -16,8 +16,10 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.LimitCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -128,6 +130,15 @@ public class LLBlockBuilder<T extends Block> {
 						.apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
 						.apply(ApplyBonusCount.addOreBonusCount(pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE)))
 		)));
+		return this;
+	}
+
+	public LLBlockBuilder<T> shardLoot(ItemLike other, int min, int max) {
+		builder.loot((pvd, block) -> pvd.add(block, pvd.createSilkTouchDispatchTable(
+				block, LootItem.lootTableItem(other)
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+						.apply(ApplyBonusCount.addUniformBonusCount(pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE)))
+						.apply(LimitCount.limitCount(IntRange.range(1, max))))));
 		return this;
 	}
 
