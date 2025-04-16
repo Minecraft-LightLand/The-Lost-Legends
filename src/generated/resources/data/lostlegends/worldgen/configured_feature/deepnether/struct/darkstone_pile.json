@@ -1,0 +1,14 @@
+{
+  "type": "lostlegends:stone_pile",
+  "config": {
+    "base": {
+      "Name": "minecraft:blackstone"
+    },
+    "height": 3,
+    "radius": 1.5,
+    "slope": 0.5,
+    "top": {
+      "Name": "lostlegends:dark_stone"
+    }
+  }
+}

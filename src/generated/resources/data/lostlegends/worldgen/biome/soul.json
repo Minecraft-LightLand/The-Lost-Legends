@@ -32,16 +32,17 @@
     [],
     [],
     [
-      "lostlegends:blob_netherrack_small",
-      "lostlegends:blob_netherrack_large",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "lostlegends:blob_blackstone",
+      "lostlegends:deepnether/blob/netherrack_small",
+      "lostlegends:deepnether/blob/netherrack_large",
+      "lostlegends:deepnether/simple/fire_patch",
+      "lostlegends:deepnether/simple/soul_fire_patch",
+      "lostlegends:deepnether/struct/darkstone_pile",
+      "lostlegends:deepnether/blob/blackstone",
       "minecraft:ore_magma",
-      "lostlegends:ore_debris_small",
-      "lostlegends:ore_debris_large",
-      "lostlegends:ore_gold_debris",
-      "lostlegends:ore_hearth_crystal"
+      "lostlegends:deepnether/ore/debris_large",
+      "lostlegends:deepnether/ore/debris_small",
+      "lostlegends:deepnether/ore/hearth_crystal",
+      "lostlegends:deepnether/ore/gold_debris"
     ],
     [],
     [

@@ -2,10 +2,9 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.chunk.DNWorldGenReg;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.DNBiomeGen;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.DNDimensionGen;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.DNFeatures;
+import dev.xkmc.lostlegends.modules.deepnether.data.DNBiomeGen;
+import dev.xkmc.lostlegends.modules.deepnether.data.DNDimensionGen;
+import dev.xkmc.lostlegends.modules.deepnether.data.DNFeatures;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 public class DeepNether extends LLModuleBase {
@@ -22,7 +21,7 @@ public class DeepNether extends LLModuleBase {
 	@Override
 	public void gatherData(GatherDataEvent event) {
 		var init = LostLegends.REGISTRATE.getDataGenInitializer();
-		DNFeatures.init(init);
+		DNFeatures.INS.init(init);
 		DNBiomeGen.init(init);
 		DNDimensionGen.init(init);
 	}
