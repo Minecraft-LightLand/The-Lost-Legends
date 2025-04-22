@@ -7,7 +7,7 @@ import net.minecraft.world.item.Item;
 
 public class DNItems extends LLRegBase {
 
-	public final ItemEntry<Item> HEARTH_CRYSTAL, GOLD_DEBRIS, DARK_COBBLE;
+	public final ItemEntry<Item> HEARTH_CRYSTAL, GOLD_DEBRIS, DARK_COBBLE, AMARAST, RESONATING_SOULGEM;
 
 	public DNItems(L2Registrate reg, String path) {
 		super(reg, path);
@@ -18,6 +18,12 @@ public class DNItems extends LLRegBase {
 				.model(this::flatItem)
 				.register();
 		DARK_COBBLE = reg.item("dark_cobble",Item::new)
+				.model(this::flatItem)
+				.register();
+		AMARAST = reg.item("amarast", Item::new)
+				.model(this::flatItem)
+				.register();
+		RESONATING_SOULGEM = reg.item("resonating_soulgem", Item::new)
 				.model(this::flatItem)
 				.register();
 

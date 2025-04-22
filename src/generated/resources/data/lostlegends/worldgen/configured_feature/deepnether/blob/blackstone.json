@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "minecraft:blackstone"
+          "Name": "lostlegends:deep_blackstone"
         },
         "target": {
           "block": "lostlegends:deep_netherrack",

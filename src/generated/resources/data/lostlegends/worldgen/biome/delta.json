@@ -24,28 +24,32 @@
   "features": [
     [],
     [],
-    [],
-    [],
     [
       "minecraft:delta",
-      "minecraft:small_basalt_columns",
-      "minecraft:large_basalt_columns"
+      "lostlegends:deepnether/delta/small_bone_columns",
+      "lostlegends:deepnether/delta/large_bone_columns",
+      "minecraft:basalt_pillar"
+    ],
+    [
+      "lostlegends:deepnether/blob/netherrack_small",
+      "lostlegends:deepnether/blob/netherrack_large",
+      "lostlegends:deepnether/blob/blackstone",
+      "lostlegends:deepnether/blob/warped_stone",
+      "minecraft:ore_magma"
     ],
     [],
     [],
     [
-      "lostlegends:deepnether/blob/netherrack_small",
-      "lostlegends:deepnether/blob/netherrack_large",
-      "minecraft:spring_delta",
-      "lostlegends:deepnether/simple/spring_close_double",
-      "lostlegends:deepnether/simple/fire_patch",
-      "lostlegends:deepnether/blob/blackstone",
-      "minecraft:ore_magma",
+      "lostlegends:deepnether/ore/amarast",
+      "lostlegends:deepnether/ore/resonating_warped_stone",
       "lostlegends:deepnether/ore/debris_large",
       "lostlegends:deepnether/ore/debris_small",
       "lostlegends:deepnether/ore/hearth_crystal",
       "lostlegends:deepnether/ore/gold_debris",
       "lostlegends:deepnether/ore/gold_debris_close"
+    ],
+    [
+      "lostlegends:deepnether/simple/spring_close_double"
     ],
     [],
     [

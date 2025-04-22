@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "lostlegends:block/deepnether/dense_bone_top",
+    "side": "lostlegends:block/deepnether/dense_bone_side"
+  }
+}

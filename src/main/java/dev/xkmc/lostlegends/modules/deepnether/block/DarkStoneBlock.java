@@ -5,7 +5,6 @@ import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.FogType;
 
 public class DarkStoneBlock extends Block implements IFogBlock {
 
@@ -21,11 +20,6 @@ public class DarkStoneBlock extends Block implements IFogBlock {
 	@Override
 	protected MapCodec<? extends Block> codec() {
 		return CODEC;
-	}
-
-	@Override
-	public FogType getFogType() {
-		return FogType.NONE;
 	}
 
 	@Override

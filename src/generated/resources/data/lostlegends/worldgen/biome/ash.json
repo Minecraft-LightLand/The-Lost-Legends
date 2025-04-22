@@ -27,24 +27,27 @@
     [
       "minecraft:basalt_pillar"
     ],
-    [],
-    [],
-    [],
-    [],
     [
       "lostlegends:deepnether/blob/netherrack_small",
       "lostlegends:deepnether/blob/netherrack_large",
-      "lostlegends:deepnether/simple/spring_open",
-      "lostlegends:deepnether/simple/spring_close",
-      "lostlegends:deepnether/simple/fire_patch",
-      "lostlegends:deepnether/struct/darkstone_pile",
       "lostlegends:deepnether/blob/blackstone",
-      "minecraft:ore_magma",
+      "minecraft:ore_magma"
+    ],
+    [],
+    [],
+    [
+      "lostlegends:deepnether/ore/amarast",
       "lostlegends:deepnether/ore/debris_large",
       "lostlegends:deepnether/ore/debris_small",
       "lostlegends:deepnether/ore/hearth_crystal",
       "lostlegends:deepnether/ore/gold_debris",
       "lostlegends:deepnether/ore/gold_debris_close"
+    ],
+    [
+      "lostlegends:deepnether/simple/spring_open",
+      "lostlegends:deepnether/simple/spring_close",
+      "lostlegends:deepnether/simple/fire_patch",
+      "lostlegends:deepnether/struct/darkstone_pile"
     ],
     [],
     [

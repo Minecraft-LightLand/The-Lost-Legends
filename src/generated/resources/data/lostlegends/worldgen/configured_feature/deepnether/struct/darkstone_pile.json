@@ -2,7 +2,7 @@
   "type": "lostlegends:stone_pile",
   "config": {
     "base": {
-      "Name": "minecraft:blackstone"
+      "Name": "lostlegends:deep_blackstone"
     },
     "height": 3,
     "radius": 1.5,

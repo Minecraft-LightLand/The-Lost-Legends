@@ -1,0 +1,14 @@
+{
+  "type": "lostlegends:coluumn",
+  "config": {
+    "block": {
+      "Name": "lostlegends:bone_pile"
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 4,
+      "min_inclusive": 1
+    },
+    "reach": 1
+  }
+}

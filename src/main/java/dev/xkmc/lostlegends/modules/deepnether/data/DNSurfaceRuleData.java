@@ -12,7 +12,6 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 public class DNSurfaceRuleData {
 	private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
 	private static final SurfaceRules.RuleSource BASALT = makeStateRule(Blocks.BASALT);
-	private static final SurfaceRules.RuleSource BLACKSTONE = makeStateRule(Blocks.BLACKSTONE);
 	private static final SurfaceRules.RuleSource NETHERRACK = makeStateRule(Blocks.NETHERRACK);
 	private static final SurfaceRules.RuleSource CRIMSON_WART = makeStateRule(Blocks.NETHER_WART_BLOCK);
 	private static final SurfaceRules.RuleSource CRIMSON_NYLIUM = makeStateRule(Blocks.CRIMSON_NYLIUM);
@@ -29,6 +28,7 @@ public class DNSurfaceRuleData {
 		var nylium = makeStateRule(DeepNether.BLOCKS.NETHER_NYLIUM.get());
 		var soilSand = makeStateRule(DeepNether.BLOCKS.WEEPING_SAND.get());
 		var soulSoil = makeStateRule(DeepNether.BLOCKS.DEMENTING_SOIL.get());
+		var bone = makeStateRule(DeepNether.BLOCKS.DENSE_BONE.get());
 
 		var gold = makeStateRule(Blocks.GOLD_BLOCK);
 
@@ -50,21 +50,21 @@ public class DNSurfaceRuleData {
 
 		var dead = builder.start().vege(e -> e.tip(-0.45f));
 		dead.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_DELTA, 0.1f)
-				.addRule(SurfaceRules.UNDER_CEILING, BASALT)
-				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, BASALT), BLACKSTONE);
+				.addRule(SurfaceRules.UNDER_CEILING, bone)
+				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(lowSelNoise, BASALT), bone);
 		dead.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_SOUL, 0.1f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, soilSand), soulSoil)
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, soilSand), soulSoil);
 
-		builder.start().vege(e -> e.tip(-0.3f)).temp(e -> e.tip(-0.3f)).biome(DNBiomeGen.BIOME_SOUL_HEART, 0f)
+		builder.start().vege(e -> e.tip(-0.6f)).temp(e -> e.tip(-0.3f)).biome(DNBiomeGen.BIOME_SOUL_HEART, 0f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(selNoise, soilSand), soulSoil)
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(selNoise, soilSand), soulSoil);
 
-		var forest = builder.start().vege(e -> e.tip(0.45f));
-		forest.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_GOLDEN_FOREST, 0.1f)
+		var forest = builder.start().vege(e -> e.tip(0.35f));
+		forest.temp(e -> e.tip(-0.35f)).biome(DNBiomeGen.BIOME_GOLDEN_FOREST, 0.1f)
 				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, gold))
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, soil));
-		forest.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_CRIMSON_FOREST, 0.1f)
+		forest.temp(e -> e.tip(0.35f)).biome(DNBiomeGen.BIOME_CRIMSON_FOREST, 0.1f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(above31, SurfaceRules.ifTrue(wartNoise, CRIMSON_WART)))
 				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, CRIMSON_NYLIUM))
 				.addRule(SurfaceRules.UNDER_FLOOR, NETHERRACK);

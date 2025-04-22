@@ -63,8 +63,8 @@ public class DNBiomeGen {
 			ctx.register(BIOME_DELTA, biome(6840176,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.delta().firePatch()
-							.blackstoneBolb().magmaBolb()
+							.delta()
+							.pillar().blackstoneBolb().warpedBlob().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
@@ -75,7 +75,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulfirePatch()
 							.pillar().darkstonePile()
-							.blackstoneBolb().magmaBolb()
+							.blackstoneBolb().warpedBlob().magmaBolb()
 							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
@@ -86,7 +86,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulfirePatch()
 							.pillar().darkstonePile()
-							.blackstoneBolb().magmaBolb()
+							.blackstoneBolb().warpedBlob().magmaBolb()
 							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)

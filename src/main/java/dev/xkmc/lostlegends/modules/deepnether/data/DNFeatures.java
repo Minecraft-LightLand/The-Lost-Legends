@@ -4,6 +4,7 @@ import dev.xkmc.lostlegends.foundation.module.FeatureGroup;
 import dev.xkmc.lostlegends.foundation.module.FeatureKey;
 import dev.xkmc.lostlegends.foundation.module.LLFeatureReg;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.ColumnClusters;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.HugeFungus;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.StonePile;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.WeepingVines;
@@ -12,6 +13,8 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -24,6 +27,7 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
@@ -37,6 +41,7 @@ public class DNFeatures extends LLFeatureReg {
 	public final Simple simple = new Simple(this, "simple");
 	public final Structs struct = new Structs(this, "struct");
 	public final Tree tree = new Tree(this, "tree");
+	public final Delta delta = new Delta(this, "delta");
 
 	public DNFeatures(String path) {
 		super(path);
@@ -47,6 +52,8 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey gold = uni("gold_debris");
 		public final FeatureKey goldClose = uni("gold_debris_close");
 		public final FeatureKey hearth = uni("hearth_crystal");
+		public final FeatureKey amarast = uni("amarast");
+		public final FeatureKey resonant = uni("resonating_warped_stone");
 		public final FeatureKey debrisSmall = uni("debris_small");
 		public final FeatureKey debrisLarge = uni("debris_large");
 
@@ -56,17 +63,23 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
-			var deepRack = DeepNether.BLOCKS.DEEP_NETHERRACK;
-			var deep = new BlockMatchTest(deepRack.get());
-			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(deep,
+			var rack = new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get());
+			var black = new BlockMatchTest(DeepNether.BLOCKS.DEEP_BLACKSTONE.get());
+			var warped = new BlockMatchTest(DeepNether.BLOCKS.WARPED_STONE.get());
+			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
+			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10));
-			FeatureUtils.register(ctx, goldClose.cf, Feature.ORE, new OreConfiguration(deep,
+			FeatureUtils.register(ctx, goldClose.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10, 0.8f));
-			FeatureUtils.register(ctx, hearth.cf, Feature.ORE, new OreConfiguration(deep,
+			FeatureUtils.register(ctx, hearth.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.BLOCKS.HEARTH_ORE.get().defaultBlockState(), 6));
-			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(deep,
+			FeatureUtils.register(ctx, amarast.cf, Feature.ORE, new OreConfiguration(black,
+					DeepNether.BLOCKS.AMARAST_ORE.get().defaultBlockState(), 4));
+			FeatureUtils.register(ctx, resonant.cf, Feature.ORE, new OreConfiguration(warped,
+					DeepNether.BLOCKS.RESONATING_WARPED_STONE.get().defaultBlockState(), 4));
+			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
-			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(deep,
+			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
 		}
 
@@ -75,15 +88,17 @@ public class DNFeatures extends LLFeatureReg {
 			gold.place(ctx, cf, spread(20, uniform(10, 250)));
 			goldClose.place(ctx, cf, spread(10, uniform(10, 120)));
 			hearth.place(ctx, cf, spread(8, uniform(5, 30)));
+			amarast.place(ctx, cf, spread(40, uniform(10, 250)));
+			resonant.place(ctx, cf, spread(40, uniform(10, 250)));
 			debrisSmall.place(ctx, cf, spread(15, uniform(10, 250)));
 			debrisLarge.place(ctx, cf, spread(4, uniform(8, 70)));
 		}
 	}
 
-
 	public static class Blobs extends FeatureGroup {
 
 		public final FeatureKey blackstone = uni("blackstone");
+		public final FeatureKey warped = uni("warped_stone");
 		public final FeatureKey rackSmall = uni("netherrack_small");
 		public final FeatureKey rackLarge = uni("netherrack_large");
 
@@ -96,7 +111,9 @@ public class DNFeatures extends LLFeatureReg {
 			var deepRack = DeepNether.BLOCKS.DEEP_NETHERRACK;
 			var deep = new BlockMatchTest(deepRack.get());
 			FeatureUtils.register(ctx, blackstone.cf, Feature.ORE, new OreConfiguration(deep,
-					Blocks.BLACKSTONE.defaultBlockState(), 33));
+					DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(), 33));
+			FeatureUtils.register(ctx, warped.cf, Feature.ORE, new OreConfiguration(deep,
+					DeepNether.BLOCKS.WARPED_STONE.get().defaultBlockState(), 33));
 			FeatureUtils.register(ctx, rackSmall.cf, Feature.ORE, new OreConfiguration(deep,
 					Blocks.NETHERRACK.defaultBlockState(), 44));
 			FeatureUtils.register(ctx, rackLarge.cf, Feature.ORE, new OreConfiguration(deep,
@@ -105,7 +122,8 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
-			blackstone.place(ctx, reg, spread(2, uniform(10, 250)));
+			blackstone.place(ctx, reg, spread(3, uniform(10, 250)));
+			warped.place(ctx, reg, spread(5, uniform(10, 250)));
 			rackSmall.place(ctx, reg, spread(3, uniform(128, 250)));
 			rackLarge.place(ctx, reg, spread(2, uniform(180, 250)));
 		}
@@ -188,7 +206,7 @@ public class DNFeatures extends LLFeatureReg {
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			FeatureUtils.register(ctx, darkPile.cf, DeepNether.WG.F_PILE.get(), new StonePile.Data(
-					3, 1.5f, 0.5f, Blocks.BLACKSTONE.defaultBlockState(),
+					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(),
 					DeepNether.BLOCKS.DARK_STONE.getDefaultState()));
 		}
 
@@ -233,6 +251,30 @@ public class DNFeatures extends LLFeatureReg {
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
 			crimson.place(ctx, reg, CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
 			crimsonShort.place(ctx, reg, CountOnEveryLayerPlacement.of(UniformInt.of(0, 2)), BiomeFilter.biome());
+		}
+	}
+
+	public static class Delta extends FeatureGroup {
+
+		public final FeatureKey columnSmall = uni("small_bone_columns");
+		public final FeatureKey columnLarge = uni("large_bone_columns");
+
+		public Delta(LLFeatureReg parent, String type) {
+			super(parent, type);
+		}
+
+		@Override
+		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
+			var bone = DeepNether.BLOCKS.BONE_PILE.get().defaultBlockState();
+			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.F_COL.get(), new ColumnClusters.Data(bone, ConstantInt.of(1), UniformInt.of(1, 4)));
+			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.F_COL.get(), new ColumnClusters.Data(bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
+			);
+		}
+
+		@Override
+		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
+			columnSmall.place(ctx, reg, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
+			columnLarge.place(ctx, reg, CountOnEveryLayerPlacement.of(2), BiomeFilter.biome());
 		}
 	}
 

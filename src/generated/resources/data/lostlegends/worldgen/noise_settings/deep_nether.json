@@ -186,10 +186,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "minecraft:basalt",
-                  "Properties": {
-                    "axis": "y"
-                  }
+                  "Name": "lostlegends:dense_bone"
                 }
               }
             },
@@ -210,7 +207,7 @@
                     "if_true": {
                       "type": "minecraft:noise_threshold",
                       "max_threshold": 1.7976931348623157E308,
-                      "min_threshold": 0.0,
+                      "min_threshold": 0.2,
                       "noise": "minecraft:nether_state_selector"
                     },
                     "then_run": {
@@ -226,7 +223,7 @@
                   {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "minecraft:blackstone"
+                      "Name": "lostlegends:dense_bone"
                     }
                   }
                 ]

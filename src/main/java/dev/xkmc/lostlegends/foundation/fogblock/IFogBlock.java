@@ -5,8 +5,6 @@ import net.minecraft.world.level.material.FogType;
 
 public interface IFogBlock {
 
-	FogType getFogType();
-
 	FogConfig getFogConfig();
 
 	boolean isClear(Entity entity);

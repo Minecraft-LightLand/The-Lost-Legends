@@ -19,8 +19,8 @@ public class DNBiomeDecoBuilder {
 	public DNBiomeDecoBuilder(HolderGetter<PlacedFeature> pf, HolderGetter<ConfiguredWorldCarver<?>> cw) {
 		builder = new BiomeGenerationSettings.Builder(pf, cw);
 		builder.addCarver(GenerationStep.Carving.AIR, DNBiomeGen.DEEP_CARVER);
-		ins.blob.rackSmall.addTo(builder, UNDERGROUND_DECORATION);
-		ins.blob.rackLarge.addTo(builder, UNDERGROUND_DECORATION);
+		ins.blob.rackSmall.addTo(builder, UNDERGROUND_STRUCTURES);
+		ins.blob.rackLarge.addTo(builder, UNDERGROUND_STRUCTURES);
 	}
 
 	public DNBiomeDecoBuilder lavaSprings() {
@@ -35,10 +35,10 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder delta() {
-		builder.addFeature(SURFACE_STRUCTURES, NetherPlacements.DELTA);
-		builder.addFeature(SURFACE_STRUCTURES, NetherPlacements.SMALL_BASALT_COLUMNS);
-		builder.addFeature(SURFACE_STRUCTURES, NetherPlacements.LARGE_BASALT_COLUMNS);
-		builder.addFeature(UNDERGROUND_DECORATION, NetherPlacements.SPRING_DELTA);//TODO
+		builder.addFeature(LOCAL_MODIFICATIONS, NetherPlacements.DELTA);
+		ins.delta.columnSmall.addTo(builder, LOCAL_MODIFICATIONS);
+		ins.delta.columnLarge.addTo(builder, LOCAL_MODIFICATIONS);
+		//builder.addFeature(UNDERGROUND_DECORATION, NetherPlacements.SPRING_DELTA);
 		ins.simple.springClose2.addTo(builder, UNDERGROUND_DECORATION);
 		return this;
 	}
@@ -59,21 +59,28 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder blackstoneBolb() {
-		ins.blob.blackstone.addTo(builder, UNDERGROUND_DECORATION);
+		ins.blob.blackstone.addTo(builder, UNDERGROUND_STRUCTURES);
+		ins.ore.amarast.addTo(builder, UNDERGROUND_ORES);
+		return this;
+	}
+
+	public DNBiomeDecoBuilder warpedBlob() {
+		ins.blob.warped.addTo(builder, UNDERGROUND_STRUCTURES);
+		ins.ore.resonant.addTo(builder, UNDERGROUND_ORES);
 		return this;
 	}
 
 	public DNBiomeDecoBuilder magmaBolb() {
-		builder.addFeature(UNDERGROUND_DECORATION, OrePlacements.ORE_MAGMA);//TODO
+		builder.addFeature(UNDERGROUND_STRUCTURES, OrePlacements.ORE_MAGMA);//TODO
 		return this;
 	}
 
 	public DNBiomeDecoBuilder ores() {
-		ins.ore.debrisLarge.addTo(builder, UNDERGROUND_DECORATION);
-		ins.ore.debrisSmall.addTo(builder, UNDERGROUND_DECORATION);
-		ins.ore.hearth.addTo(builder, UNDERGROUND_DECORATION);
-		ins.ore.gold.addTo(builder, UNDERGROUND_DECORATION);
-		ins.ore.goldClose.addTo(builder, UNDERGROUND_DECORATION);
+		ins.ore.debrisLarge.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.debrisSmall.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.hearth.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.gold.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.goldClose.addTo(builder, UNDERGROUND_ORES);
 		return this;
 	}
 

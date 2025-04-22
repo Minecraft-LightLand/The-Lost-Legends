@@ -1,6 +1,7 @@
 package dev.xkmc.lostlegends.foundation.module;
 
 import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -9,6 +10,7 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -27,6 +29,8 @@ public class LLBlockBuilder<T extends Block> {
 
 	private final BlockBuilder<T, L2Registrate> builder;
 	private final String path;
+
+	private ItemBuilder<?,?> item;
 
 	LLBlockBuilder(BlockBuilder<T, L2Registrate> builder, String path) {
 		this.builder = builder;
@@ -50,6 +54,26 @@ public class LLBlockBuilder<T extends Block> {
 				.isRedstoneConductor((a, b, c) -> true)
 				.isViewBlocking((a, b, c) -> true)
 				.isSuffocating((a, b, c) -> true));
+		builder.tag(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON);
+		return this;
+	}
+
+	public LLBlockBuilder<T> fakeSolid() {
+		builder.properties(p -> p.noOcclusion()
+				.isValidSpawn((a, b, c, d) -> true)
+				.isRedstoneConductor((a, b, c) -> true)
+				.isViewBlocking((a, b, c) -> false)
+				.isSuffocating((a, b, c) -> false));
+		builder.tag(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON);
+		return this;
+	}
+
+	public LLBlockBuilder<T> nonSolid() {
+		builder.properties(p -> p.noOcclusion()
+				.isValidSpawn((a, b, c, d) -> false)
+				.isRedstoneConductor((a, b, c) -> false)
+				.isViewBlocking((a, b, c) -> false)
+				.isSuffocating((a, b, c) -> false));
 		builder.tag(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON);
 		return this;
 	}
@@ -83,6 +107,14 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
+	public LLBlockBuilder<T> cubeColumn() {
+		builder.blockstate((ctx, pvd) ->
+				pvd.simpleBlock(ctx.get(), pvd.models().cubeColumn(ctx.getName(),
+						pvd.modLoc("block/" + path + "/" + ctx.getName() + "_side"),
+						pvd.modLoc("block/" + path + "/" + ctx.getName() + "_top"))));
+		return this;
+	}
+
 	public LLBlockBuilder<T> cross() {
 		builder.blockstate((ctx, pvd) ->
 				pvd.simpleBlock(ctx.get(), pvd.models().cross(ctx.getName(),
@@ -99,6 +131,12 @@ public class LLBlockBuilder<T extends Block> {
 	@SafeVarargs
 	public final LLBlockBuilder<T> tag(TagKey<Block>... tags) {
 		builder.tag(tags);
+		return this;
+	}
+
+	@SafeVarargs
+	public final LLBlockBuilder<T> itemTag(TagKey<Item>... tags) {
+		item.tag(tags);
 		return this;
 	}
 
@@ -120,7 +158,7 @@ public class LLBlockBuilder<T extends Block> {
 	}
 
 	public LLBlockBuilder<T> simpleItem() {
-		builder.simpleItem();
+		item = builder.item();
 		return this;
 	}
 
@@ -153,6 +191,7 @@ public class LLBlockBuilder<T extends Block> {
 	}
 
 	public BlockEntry<T> register() {
+		item.build();
 		return builder.register();
 	}
 
