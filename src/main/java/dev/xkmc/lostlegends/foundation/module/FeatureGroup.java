@@ -32,6 +32,11 @@ public abstract class FeatureGroup {
 		return HeightRangePlacement.uniform(VerticalAnchor.absolute(min), VerticalAnchor.absolute(max));
 	}
 
+
+	public List<PlacementModifier> spreadRare(int rarity) {
+		return List.of(RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(), BiomeFilter.biome());
+	}
+
 	public List<PlacementModifier> spread(PlacementModifier count, PlacementModifier range) {
 		return List.of(count, InSquarePlacement.spread(), range, BiomeFilter.biome());
 	}

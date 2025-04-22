@@ -1,5 +1,5 @@
 
-package dev.xkmc.lostlegends.modules.deepnether.block;
+package dev.xkmc.lostlegends.modules.deepnether.block.surface;
 
 import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;

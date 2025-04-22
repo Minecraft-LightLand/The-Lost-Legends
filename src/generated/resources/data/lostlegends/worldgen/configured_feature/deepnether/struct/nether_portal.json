@@ -1,0 +1,20 @@
+{
+  "type": "lostlegends:nether_volcano_portal",
+  "config": {
+    "base": {
+      "Name": "lostlegends:deep_netherrack"
+    },
+    "bottom": 6,
+    "decoration": {
+      "Name": "minecraft:magma_block"
+    },
+    "decoration_chance": 0.5,
+    "erosion_chance": 0.3,
+    "max_depth": 52,
+    "max_radius": 6,
+    "min_depth": 32,
+    "min_radius": 4,
+    "size": 2,
+    "slope": 1.5
+  }
+}

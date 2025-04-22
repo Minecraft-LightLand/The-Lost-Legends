@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.deepnether.block;
+package dev.xkmc.lostlegends.modules.deepnether.block.portal;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

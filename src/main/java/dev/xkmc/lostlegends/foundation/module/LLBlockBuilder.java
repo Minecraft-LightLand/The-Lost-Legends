@@ -42,7 +42,6 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
-
 	public LLBlockBuilder<T> prop(NonNullUnaryOperator<BlockBehaviour.Properties> op) {
 		builder.properties(op);
 		return this;
@@ -123,6 +122,12 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
+	public LLBlockBuilder<T> noModel() {
+		builder.blockstate((ctx, pvd) ->
+				pvd.simpleBlock(ctx.get(), pvd.models().withExistingParent(ctx.getName(), pvd.mcLoc("block/air"))));
+		return this;
+	}
+
 	public LLBlockBuilder<T> blockstate(NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> cons) {
 		builder.blockstate(cons);
 		return this;
@@ -191,7 +196,7 @@ public class LLBlockBuilder<T extends Block> {
 	}
 
 	public BlockEntry<T> register() {
-		item.build();
+		if (item != null) item.build();
 		return builder.register();
 	}
 

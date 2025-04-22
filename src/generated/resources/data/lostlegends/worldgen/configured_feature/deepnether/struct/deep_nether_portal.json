@@ -1,0 +1,9 @@
+{
+  "type": "lostlegends:deep_nether_portal",
+  "config": {
+    "max_depth": 30,
+    "min_depth": 10,
+    "radius": 2,
+    "top": 6
+  }
+}

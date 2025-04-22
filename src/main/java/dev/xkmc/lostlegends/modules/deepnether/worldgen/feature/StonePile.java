@@ -16,7 +16,7 @@ public class StonePile extends OnGroundFeature<StonePile.Data> {
 	@Override
 	public boolean place(FeaturePlaceContext<Data> ctx) {
 		var data = ctx.config();
-		var origin = findValid(ctx, 8);
+		var origin = findValid(ctx.level(), ctx.origin(), 8);
 		if (origin == null) return false;
 		var pos = new BlockPos.MutableBlockPos();
 		int nr = (int) Math.floor(data.radius);

@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
@@ -28,6 +29,7 @@ public class DNDimensionGen {
 	public static final ResourceKey<DimensionType> DT_DEEP = ResourceKey.create(Registries.DIMENSION_TYPE, loc("deep_nether"));
 	public static final ResourceKey<NoiseGeneratorSettings> NGS_DEEP = ResourceKey.create(Registries.NOISE_SETTINGS, loc("deep_nether"));
 	public static final ResourceKey<LevelStem> LEVEL_DEEP = ResourceKey.create(Registries.LEVEL_STEM, loc("deep_nether"));
+	public static final ResourceKey<Level> DEEP_NETHER = Registries.levelStemToLevel(LEVEL_DEEP);
 
 	public static void init(DataProviderInitializer init) {
 		var biomeSet = new ClimateBuilder(

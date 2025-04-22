@@ -50,7 +50,9 @@
       "lostlegends:deepnether/simple/soul_fire_patch",
       "lostlegends:deepnether/struct/darkstone_pile"
     ],
-    [],
+    [
+      "lostlegends:deepnether/struct/deep_nether_portal"
+    ],
     [
       "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_nether",

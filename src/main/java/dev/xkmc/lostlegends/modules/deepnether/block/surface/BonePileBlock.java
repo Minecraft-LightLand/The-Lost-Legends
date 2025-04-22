@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.block;
+package dev.xkmc.lostlegends.modules.deepnether.block.surface;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;

@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.valueproviders.ConstantFloat;
@@ -19,8 +20,12 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import javax.annotation.Nullable;
+
+import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_DECORATION;
+import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
 
 public class DNBiomeGen {
 
@@ -38,6 +43,10 @@ public class DNBiomeGen {
 	public static final ResourceKey<ConfiguredWorldCarver<?>> DEEP_CARVER = carver("deep_nether_carver");
 
 	public static void init(DataProviderInitializer init) {
+
+		init.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ctx -> {
+			DNFeatures.INS.struct.netherPortal.asModifier(ctx, BiomeTags.IS_NETHER, UNDERGROUND_STRUCTURES);
+		});
 
 		init.add(Registries.CONFIGURED_CARVER, (ctx) -> {
 			HolderGetter<Block> blocks = ctx.lookup(Registries.BLOCK);
@@ -63,8 +72,8 @@ public class DNBiomeGen {
 			ctx.register(BIOME_DELTA, biome(6840176,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.delta()
-							.pillar().blackstoneBolb().warpedBlob().magmaBolb()
+							.delta().pillar()
+							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)

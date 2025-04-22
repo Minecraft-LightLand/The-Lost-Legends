@@ -2,15 +2,24 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
-import dev.xkmc.lostlegends.modules.deepnether.block.*;
+import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
+import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.AshBlossomBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.SoulBlossomBlock;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+
+import java.util.Set;
 
 public class DNBlocks extends LLRegBase {
 
@@ -25,7 +34,10 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<AshBlossomBlock> ASH_BLOSSOM;
+	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
 
+	public final BlockEntry<LavaPortalBlock> PORTAL;
+	public final SimpleEntry<PoiType> PORTAL_POI;
 
 	DNBlocks(L2Registrate reg, String path) {
 		super(reg, path);
@@ -169,6 +181,7 @@ public class DNBlocks extends LLRegBase {
 
 		}
 
+		// vegetation
 		{
 			ASH_BLOSSOM = block("ash_blossom", p -> new AshBlossomBlock(MobEffects.WEAKNESS, 6.0F, p))
 					.prop(p -> p.lightLevel(stata -> 8))
@@ -177,6 +190,27 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
+			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(MobEffects.WITHER, 6.0F, p))
+					.prop(p -> p.lightLevel(stata -> 13))
+					.foliage()
+					.cross()
+					.simpleItem()
+					.register();
+
+		}
+
+		//portal
+		{
+			PORTAL = block("lava_portal", LavaPortalBlock::new)
+					.prop(MapColor.FIRE, SoundType.GLASS)
+					.prop(p -> p.noCollission()
+							.strength(-1.0F)
+							.lightLevel(state -> 15)
+							.pushReaction(PushReaction.BLOCK))
+					.noModel()
+					.register();
+			PORTAL_POI = new SimpleEntry<>(reg.simple("lava_portal", Registries.POINT_OF_INTEREST_TYPE, () -> new PoiType(
+					Set.of(PORTAL.getDefaultState()), 0, 1)));
 		}
 
 	}

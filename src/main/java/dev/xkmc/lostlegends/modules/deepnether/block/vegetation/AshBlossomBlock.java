@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.block;
+package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;

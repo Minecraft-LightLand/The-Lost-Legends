@@ -44,12 +44,14 @@
       "lostlegends:deepnether/ore/gold_debris_close"
     ],
     [
-      "lostlegends:deepnether/simple/spring_open",
-      "lostlegends:deepnether/simple/spring_close",
       "lostlegends:deepnether/simple/fire_patch",
       "lostlegends:deepnether/struct/darkstone_pile"
     ],
-    [],
+    [
+      "lostlegends:deepnether/struct/deep_nether_portal",
+      "lostlegends:deepnether/simple/spring_open",
+      "lostlegends:deepnether/simple/spring_close"
+    ],
     [
       "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_nether",

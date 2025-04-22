@@ -4,10 +4,7 @@ import dev.xkmc.lostlegends.foundation.module.FeatureGroup;
 import dev.xkmc.lostlegends.foundation.module.FeatureKey;
 import dev.xkmc.lostlegends.foundation.module.LLFeatureReg;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.ColumnClusters;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.HugeFungus;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.StonePile;
-import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.WeepingVines;
+import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -197,6 +194,8 @@ public class DNFeatures extends LLFeatureReg {
 
 	public static class Structs extends FeatureGroup {
 
+		public final FeatureKey deepPortal = uni("deep_nether_portal");
+		public final FeatureKey netherPortal = uni("nether_portal");
 		public final FeatureKey darkPile = uni("darkstone_pile");
 
 		public Structs(LLFeatureReg parent, String type) {
@@ -205,6 +204,13 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
+			FeatureUtils.register(ctx, deepPortal.cf, DeepNether.WG.F_DEEP_PORTAL.get(),
+					new DeepNetherPortal.Data(2, 6, 10, 30));
+			FeatureUtils.register(ctx, netherPortal.cf, DeepNether.WG.F_NETHER_PORTAL.get(),
+					new NetherVolcanoPortal.Data(2, 6, 32, 52, 4, 6, 1.5f,
+							0.3f, DeepNether.BLOCKS.DEEP_NETHERRACK.get().defaultBlockState(),
+							0.5f, Blocks.MAGMA_BLOCK.defaultBlockState()
+					));
 			FeatureUtils.register(ctx, darkPile.cf, DeepNether.WG.F_PILE.get(), new StonePile.Data(
 					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(),
 					DeepNether.BLOCKS.DARK_STONE.getDefaultState()));
@@ -212,6 +218,8 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
+			deepPortal.place(ctx, cf, spreadRare(16));
+			netherPortal.place(ctx, cf, spreadRare(16));
 			darkPile.place(ctx, cf, spread(1, PlacementUtils.RANGE_10_10));
 		}
 
@@ -266,8 +274,8 @@ public class DNFeatures extends LLFeatureReg {
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			var bone = DeepNether.BLOCKS.BONE_PILE.get().defaultBlockState();
-			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.F_COL.get(), new ColumnClusters.Data(bone, ConstantInt.of(1), UniformInt.of(1, 4)));
-			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.F_COL.get(), new ColumnClusters.Data(bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
+			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(bone, ConstantInt.of(1), UniformInt.of(1, 4)));
+			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
 			);
 		}
 

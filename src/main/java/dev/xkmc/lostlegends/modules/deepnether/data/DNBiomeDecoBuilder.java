@@ -21,11 +21,12 @@ public class DNBiomeDecoBuilder {
 		builder.addCarver(GenerationStep.Carving.AIR, DNBiomeGen.DEEP_CARVER);
 		ins.blob.rackSmall.addTo(builder, UNDERGROUND_STRUCTURES);
 		ins.blob.rackLarge.addTo(builder, UNDERGROUND_STRUCTURES);
+		ins.struct.deepPortal.addTo(builder, FLUID_SPRINGS);
 	}
 
 	public DNBiomeDecoBuilder lavaSprings() {
-		ins.simple.springOpen.addTo(builder, UNDERGROUND_DECORATION);
-		ins.simple.springClose.addTo(builder, UNDERGROUND_DECORATION);
+		ins.simple.springOpen.addTo(builder, FLUID_SPRINGS);
+		ins.simple.springClose.addTo(builder, FLUID_SPRINGS);
 		return this;
 	}
 
@@ -39,7 +40,7 @@ public class DNBiomeDecoBuilder {
 		ins.delta.columnSmall.addTo(builder, LOCAL_MODIFICATIONS);
 		ins.delta.columnLarge.addTo(builder, LOCAL_MODIFICATIONS);
 		//builder.addFeature(UNDERGROUND_DECORATION, NetherPlacements.SPRING_DELTA);
-		ins.simple.springClose2.addTo(builder, UNDERGROUND_DECORATION);
+		ins.simple.springClose2.addTo(builder, FLUID_SPRINGS);
 		return this;
 	}
 
