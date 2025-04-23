@@ -75,8 +75,10 @@ public class DNDimensionGen {
 			ctx.register(LEVEL_DEEP, new LevelStem(dt.getOrThrow(DT_DEEP),
 					new DNChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
 							noise.getOrThrow(NGS_DEEP), List.of(
-							new DNAquifer.Entry(-1, -0.6, -1, -0.6, 0.05, 0.01,
-									Blocks.WATER.defaultBlockState(), Blocks.BONE_BLOCK.defaultBlockState())
+							new DNAquifer.Entry(-1, -0.1, -1, -0.4, 0.05, 0.01,
+									DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+									Blocks.CRYING_OBSIDIAN.defaultBlockState(),
+									DeepNether.BLOCKS.RAGING_OBSIDIAN.getDefaultState())
 					))));
 		});
 

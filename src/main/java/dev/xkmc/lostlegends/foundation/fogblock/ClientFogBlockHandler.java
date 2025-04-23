@@ -4,6 +4,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import org.jetbrains.annotations.Nullable;
@@ -124,6 +125,12 @@ public class ClientFogBlockHandler {
 			Vec3 vec31 = self.getPosition().add(vec3);
 			BlockPos blockpos = BlockPos.containing(vec31);
 			BlockState blockstate = level.getBlockState(blockpos);
+			FluidState fluidstate = level.getFluidState(blockpos);
+			if (fluidstate.getType().getFluidType() instanceof IFogBlock fog) {
+				if (vec31.y <= (double) (fluidstate.getHeight(level, blockpos) + blockpos.getY())) {
+					return fog;
+				}
+			}
 			if (blockstate.getBlock() instanceof IFogBlock fog && fog.getFogConfig().type() == FogConfig.Type.VIEWPORT)
 				return fog;
 		}

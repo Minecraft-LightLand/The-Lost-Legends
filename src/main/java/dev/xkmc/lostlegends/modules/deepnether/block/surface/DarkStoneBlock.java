@@ -11,7 +11,7 @@ public class DarkStoneBlock extends Block implements IFogBlock {
 	public static final MapCodec<DarkStoneBlock> CODEC = simpleCodec(DarkStoneBlock::new);
 	private static final FogConfig FOG = new FogConfig(FogConfig.Type.SURROUND,
 			0, 0, 0,
-			0f, 8f, false);
+			0f, 8f, 2f,24f, false);
 
 	public DarkStoneBlock(Properties p) {
 		super(p);
@@ -25,11 +25,6 @@ public class DarkStoneBlock extends Block implements IFogBlock {
 	@Override
 	public FogConfig getFogConfig() {
 		return FOG;
-	}
-
-	@Override
-	public boolean isClear(Entity entity) {
-		return entity.isSpectator();
 	}
 
 }

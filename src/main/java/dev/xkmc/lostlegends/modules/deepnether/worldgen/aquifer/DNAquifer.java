@@ -35,7 +35,7 @@ public record DNAquifer(RandomState rand, int y, BlockState fluid, List<Entry> e
 	}
 
 	public record Entry(double t0, double t1, double h0, double h1, double offset, double thickness,
-						BlockState fluid, BlockState barrier) {
+						BlockState fluid, BlockState innerBarrier, BlockState outerBarrier) {
 
 		public static final Codec<Entry> CODEC = RecordCodecBuilder.create(i -> i.group(
 				Codec.DOUBLE.fieldOf("temperature_min").forGetter(Entry::t0),
@@ -45,7 +45,8 @@ public record DNAquifer(RandomState rand, int y, BlockState fluid, List<Entry> e
 				Codec.DOUBLE.fieldOf("offset").forGetter(Entry::offset),
 				Codec.DOUBLE.fieldOf("barrier_thickness").forGetter(Entry::thickness),
 				BlockState.CODEC.fieldOf("fluid").forGetter(Entry::fluid),
-				BlockState.CODEC.fieldOf("barrier").forGetter(Entry::barrier)
+				BlockState.CODEC.fieldOf("inner_barrier").forGetter(Entry::innerBarrier),
+				BlockState.CODEC.fieldOf("outer_barrier").forGetter(Entry::outerBarrier)
 		).apply(i, Entry::new));
 
 		public @Nullable BlockState test(double t, double h) {
@@ -53,8 +54,9 @@ public record DNAquifer(RandomState rand, int y, BlockState fluid, List<Entry> e
 			double dv = h < h0 ? h0 - h : h > h1 ? h - h1 : 0;
 			double val = dt * dt + dv * dv;
 			double val1 = offset * offset;
-			double val2 = (offset + thickness) * (offset + thickness);
-			return val < val1 ? fluid : val < val2 ? barrier : null;
+			double val2 = (offset + thickness / 2) * (offset + thickness / 2);
+			double val3 = (offset + thickness) * (offset + thickness);
+			return val < val1 ? fluid : val < val2 ? innerBarrier : val < val3 ? outerBarrier : null;
 		}
 
 	}

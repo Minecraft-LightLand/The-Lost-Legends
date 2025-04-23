@@ -3,9 +3,13 @@ package dev.xkmc.lostlegends.modules.deepnether.block.portal;
 import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNDimensionGen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -133,6 +137,31 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 			e.setPortalCooldown(0);
 		}
 		return ans;
+	}
+
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
+		if (rand.nextInt(100) == 0) {
+			level.playLocalSound(
+					(double)pos.getX() + 0.5,
+					(double)pos.getY() + 0.5,
+					(double)pos.getZ() + 0.5,
+					SoundEvents.PORTAL_AMBIENT,
+					SoundSource.BLOCKS,
+					0.5F,
+					rand.nextFloat() * 0.4F + 0.8F,
+					false
+			);
+		}
+		for (int i = 0; i < 4; i++) {
+			double x = (double)pos.getX() + rand.nextDouble();
+			double y = (double)pos.getY() + rand.nextDouble();
+			double z = (double)pos.getZ() + rand.nextDouble();
+			double vx = ((double)rand.nextFloat() - 0.5) * 0.5;
+			double vy = ((double)rand.nextFloat() - 0.5) * 0.5;
+			double vz = ((double)rand.nextFloat() - 0.5) * 0.5;
+			level.addParticle(ParticleTypes.PORTAL, x, y, z, vx, vy, vz);
+		}
 	}
 
 

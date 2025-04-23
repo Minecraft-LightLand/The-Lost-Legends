@@ -5,6 +5,8 @@ import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNBiomeGen;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNDimensionGen;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNFeatures;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 public class DeepNether extends LLModuleBase {
@@ -16,6 +18,22 @@ public class DeepNether extends LLModuleBase {
 
 	@Override
 	public void commonInit() {
+		registerFluidInteraction(
+				BLOCKS.LIQUID_SOUL.get().getFluidType(),
+				NeoForgeMod.LAVA_TYPE.value(),
+				Blocks.CRYING_OBSIDIAN.defaultBlockState(),
+				BLOCKS.SOUL_SHELL.getDefaultState(),
+				BLOCKS.RAGING_OBSIDIAN.getDefaultState()
+		);
+
+		registerFluidInteraction(
+				BLOCKS.LIQUID_SOUL.get().getFluidType(),
+				NeoForgeMod.WATER_TYPE.value(),
+				Blocks.CRYING_OBSIDIAN.defaultBlockState(),
+				BLOCKS.DEMENTING_SOIL.getDefaultState(),
+				BLOCKS.WARPED_STONE.getDefaultState()
+		);
+
 	}
 
 	@Override

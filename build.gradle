@@ -127,7 +127,7 @@ repositories {
         dirs 'libs'
     }
     maven { // Registrate
-        url "https://maven.ithundxr.dev/snapshots"
+        url "https://mvn.devos.one/snapshots"
     }
     maven {
         // Location of the maven for vazkii's mods

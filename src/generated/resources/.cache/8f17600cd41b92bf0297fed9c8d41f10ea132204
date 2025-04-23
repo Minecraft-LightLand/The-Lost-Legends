@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-23T11:21:21.684656	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
+// 1.21.1	2025-04-23T16:41:01.077507	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
@@ -12,6 +12,7 @@ c17472bcd4471abbb746b249b2515820dd8739ab assets/lostlegends/blockstates/dark_sto
 7195326987c94fb655ddaba5cda5525c5098c1e6 assets/lostlegends/blockstates/dense_bone.json
 8d6014e4dc20f12b6b67d1fd533849cecfb6b9e5 assets/lostlegends/blockstates/hearth_ore.json
 d724e1aa948574b06076aec8543b200c7ff0c49a assets/lostlegends/blockstates/lava_portal.json
+7f39717b8fb518390077c39844250247533d5a89 assets/lostlegends/blockstates/liquid_soul.json
 4c1b8c6fee010d1e1f4566d32a8735982300a8b9 assets/lostlegends/blockstates/nether_nylium.json
 550bf8b89e59e128522a31b0368ba7b918d7eca1 assets/lostlegends/blockstates/nether_soil.json
 36011be4f414392a63c013a756ab7ab475606c87 assets/lostlegends/blockstates/raging_obsidian.json
@@ -19,10 +20,11 @@ de5d79a9d577761e64c839774c96d370442de50f assets/lostlegends/blockstates/resonati
 6158052e97cfb79d7273ab6c8be6e2495820ffb7 assets/lostlegends/blockstates/scorched_bone_vines.json
 625f415f565da2cfc011bbd46c46c7690d2d2bcb assets/lostlegends/blockstates/scorched_bone_vines_plant.json
 8f9b29483379f26379581856753de03981cc7efc assets/lostlegends/blockstates/soul_blossom.json
+48d187686477d383dc525dae86aecf3fa7847ec5 assets/lostlegends/blockstates/soul_shell.json
 abedd8af5d967fa5f2ae1a089f9a8e4d2b8c7a7b assets/lostlegends/blockstates/warped_stone.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-06b2bab22f36e325a6a6f77fef185ec17bdf5131 assets/lostlegends/lang/en_ud.json
-41838f0efeb33cd9e9d49d176a34d1ed83fdab84 assets/lostlegends/lang/en_us.json
+d1aeadcdadba97abf68f24d1fd1ed798d4e659cb assets/lostlegends/lang/en_ud.json
+584099eb02a9d498ebb31650d9268199e90540aa assets/lostlegends/lang/en_us.json
 848a0a793baec21b2c278f0069e0700b3d5bf5ea assets/lostlegends/models/block/amarast_ore.json
 a382827c899e230dc24685307d997ad0cf5a5346 assets/lostlegends/models/block/ash_block.json
 126974e48035293d7e5bca7b54cd6794d0bda1ee assets/lostlegends/models/block/ash_blossom.json
@@ -36,6 +38,7 @@ a6b9d388740e464c8c93c84dfe96900995e23c76 assets/lostlegends/models/block/bone_pi
 5c8f1cd46e75971d93c2ce22c6d3c8002bc33521 assets/lostlegends/models/block/dense_bone.json
 827fdde5ea0d8a86a676aad14ae443113bf32f71 assets/lostlegends/models/block/hearth_ore.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/lostlegends/models/block/lava_portal.json
+36f7d62d1cd8e99c755811c1ec1907a969ccc031 assets/lostlegends/models/block/liquid_soul.json
 1dc5b330bf7b908e269d3047067a9a352cae022d assets/lostlegends/models/block/nether_nylium.json
 98a4be0164a76e5e7b059b2a01a50cfd1b510716 assets/lostlegends/models/block/nether_soil.json
 6e1dcc36526e580809b4049dae52b1e2fe2c66c7 assets/lostlegends/models/block/raging_obsidian.json
@@ -43,6 +46,7 @@ a6b9d388740e464c8c93c84dfe96900995e23c76 assets/lostlegends/models/block/bone_pi
 d9f0d8ffd49dda816534287c03381a0ffa849ae5 assets/lostlegends/models/block/scorched_bone_vines.json
 dcb8e6790fdd069aec4745f7b543fcafc60bfb28 assets/lostlegends/models/block/scorched_bone_vines_plant.json
 44c30746dbb8d4ff0df27f48160d24343f394c0a assets/lostlegends/models/block/soul_blossom.json
+0856b47be3a3eaacf61ca27180dcb9510bdfec52 assets/lostlegends/models/block/soul_shell.json
 debfa239016c47413ecdf48ba5522d99ecf81c26 assets/lostlegends/models/block/warped_stone.json
 69da56a401e4ccb08b1252b8f640963b79716871 assets/lostlegends/models/block/weeping_sand.json
 c9afa290069b90829a5aac202ed2501b7fd095ff assets/lostlegends/models/item/amarast.json
@@ -61,6 +65,7 @@ b72cb2f6bb5f2c7d794134e62dafbb39d38b36ba assets/lostlegends/models/item/dense_bo
 bf60f4f64e575914861ce4b4c6c44b596fb728c6 assets/lostlegends/models/item/gold_debris.json
 6956935b81fd351cac0549f3c4d376984fa5ebbc assets/lostlegends/models/item/hearth_crystal.json
 d327e51fbc471d553077ad83a6e68499ae49e8cd assets/lostlegends/models/item/hearth_ore.json
+ec206ca4d43b0e1f9c8feba96a8dc3b45112e4c9 assets/lostlegends/models/item/liquid_soul_bucket.json
 d13fae617b5c667f8c76206800e0a434e17d4533 assets/lostlegends/models/item/nether_nylium.json
 6c9fb38a3805486ccb693f069de56456ef4ae583 assets/lostlegends/models/item/nether_soil.json
 976305172b56435741dddfac53b0b5b9b11c4e2d assets/lostlegends/models/item/raging_obsidian.json
@@ -68,9 +73,10 @@ d13fae617b5c667f8c76206800e0a434e17d4533 assets/lostlegends/models/item/nether_n
 5826838e622d140a04831798a267c8425f37da65 assets/lostlegends/models/item/resonating_warped_stone.json
 58419a5c60e884ffe70fbb67906a365a029d5984 assets/lostlegends/models/item/scorched_bone_vines.json
 29a1bfc0763279ffadc9c8f548e36db6192cb297 assets/lostlegends/models/item/soul_blossom.json
+20d447db117347a03e33eeb7177d5e315428e566 assets/lostlegends/models/item/soul_shell.json
 dffe6452d3cd85b2176dbd5be41abb1f591c808b assets/lostlegends/models/item/warped_stone.json
 93fe0d5aa2309ca3f6bbe0c81630110bbabf9614 assets/lostlegends/models/item/weeping_sand.json
-c49db5da9ff518c5641e6b4e103cc27eb821751b data/lostlegends/dimension/deep_nether.json
+6dea73ec8835a04f844138d005a6cdb212d9810d data/lostlegends/dimension/deep_nether.json
 f55d43ed2f378e0663e3379ff7ed5b8d1e367f60 data/lostlegends/dimension_type/deep_nether.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 870694c66cfd343d9eba4b2659ee2b26a0a6079e data/lostlegends/loot_table/blocks/ash_block.json
@@ -92,6 +98,7 @@ f270eee1f51f4c574698bbc91f4ddacdf1f0d2c9 data/lostlegends/loot_table/blocks/reso
 04920d2062d64a569e35626a64904237be7f925d data/lostlegends/loot_table/blocks/scorched_bone_vines.json
 d3c8298a1f07ab064c6259351a8ef630c975c832 data/lostlegends/loot_table/blocks/scorched_bone_vines_plant.json
 e6edcfea01f6fbe6686a147e9b7a2afe57b86304 data/lostlegends/loot_table/blocks/soul_blossom.json
+6fb10b0bcc7e4b16414cca9cfcd98593433f2df7 data/lostlegends/loot_table/blocks/soul_shell.json
 d1228803111351c0b694a962500ac35b1579d666 data/lostlegends/loot_table/blocks/warped_stone.json
 9629a2c45b7db1a7fcc1642d8d542b1fc893b661 data/lostlegends/loot_table/blocks/weeping_sand.json
 56f1d71acd0f9fc5abf6c2188304d54c3d5b89e5 data/lostlegends/neoforge/biome_modifier/deepnether/struct/nether_portal.json
@@ -161,18 +168,18 @@ aa9ff83170320172545679c789723b12a4f2d342 data/lostlegends/worldgen/placed_featur
 357a0f001612683a1b2e5b52049ca1810c2662b6 data/lostlegends/worldgen/placed_feature/deepnether/struct/nether_portal.json
 cf11dc607e95cf26fdbde8b2be7bed168db40fc7 data/lostlegends/worldgen/placed_feature/deepnether/tree/crimson_fungus.json
 fc871977bf83f81560d688ad7eb12ff7576962ea data/lostlegends/worldgen/placed_feature/deepnether/tree/crimson_fungus_short.json
-96d369af0f1afa4d78fdd9c8ba26533ea5eb6ce7 data/minecraft/tags/block/base_stone_nether.json
+47994c1219333acb1641960203f0ace46323e655 data/minecraft/tags/block/base_stone_nether.json
 f15acdcc80defe9f48ccd7f00123f30eea23dfb1 data/minecraft/tags/block/climbable.json
 bf2cb5c724adb1634308a86e3f8ee932da24fa06 data/minecraft/tags/block/flowers.json
 8b58d0f59abe93c93970bed45792a5ae2b8d7ef6 data/minecraft/tags/block/infiniburn_overworld.json
-f6074ca9f051d327432a1aa1e1078711e8c3f1d0 data/minecraft/tags/block/mineable/pickaxe.json
+e14e4a7d6bb4913ac977d2895e9eac2b710c452f data/minecraft/tags/block/mineable/pickaxe.json
 2829c7d7cb324b155a2f799206d73de0d8e09f4d data/minecraft/tags/block/mineable/shovel.json
 60f35aa5d4268e89d8d6588fe79741bdfbdf46f9 data/minecraft/tags/block/needs_diamond_tool.json
 2829c7d7cb324b155a2f799206d73de0d8e09f4d data/minecraft/tags/block/nether_carver_replaceables.json
 52ed1c448ceaa06b76db1bdec03c068dcc9580d1 data/minecraft/tags/block/nylium.json
 4904bdffb63b350ea5e70ae1d6ff196b059410fb data/minecraft/tags/block/sculk_replaceable.json
 0d49bbf176c7650a2f7fdf42f86fa8a15df4c4b9 data/minecraft/tags/block/snow_layer_can_survive_on.json
-6f23845f3a61b7b3b4c2dec33e688a14f486cc71 data/minecraft/tags/block/soul_fire_base_blocks.json
+d3e0aa3cbad9e88d6fe69514fc7d3cbf74e2ae7e data/minecraft/tags/block/soul_fire_base_blocks.json
 7ef15e48c5edc24792c5484bfde44f236c939561 data/minecraft/tags/block/soul_speed_blocks.json
 bc26a0c9ad14de6a6abdfab35231b2d4b7734a73 data/minecraft/tags/item/stone_crafting_materials.json
 bc26a0c9ad14de6a6abdfab35231b2d4b7734a73 data/minecraft/tags/item/stone_tool_materials.json

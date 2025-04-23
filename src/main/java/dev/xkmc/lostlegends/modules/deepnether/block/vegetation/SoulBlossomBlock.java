@@ -25,7 +25,7 @@ public class SoulBlossomBlock extends FlowerBlock implements IFogBlock {
 	protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 10, 14);
 	private static final FogConfig FOG = new FogConfig(FogConfig.Type.SURROUND,
 			0, 0.25f, 0.5f,
-			0f, 8f, false);
+			0f, 8f, 2f, 24f, false);
 
 	public SoulBlossomBlock(Holder<MobEffect> eff, float dur, Properties prop) {
 		super(eff, dur, prop);
@@ -42,11 +42,6 @@ public class SoulBlossomBlock extends FlowerBlock implements IFogBlock {
 	@Override
 	public FogConfig getFogConfig() {
 		return FOG;
-	}
-
-	@Override
-	public boolean isClear(Entity entity) {
-		return entity.isSpectator();//TODO
 	}
 
 	@Override

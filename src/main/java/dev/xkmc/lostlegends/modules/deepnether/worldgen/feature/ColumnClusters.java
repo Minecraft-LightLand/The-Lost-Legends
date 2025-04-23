@@ -75,8 +75,8 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 			if (p0 == null) continue;
 			int y = h - dist / 2;
 			for (BlockPos.MutableBlockPos p1 = p0.mutable(); y >= 0; y--) {
-				BlockState state = level.getBlockState(pos);
-				if (state.is(Blocks.LAVA) || state.isAir() && pos.getY() <= sea) {
+				BlockState state = level.getBlockState(p1);
+				if (state.is(Blocks.LAVA) || state.isAir() && p1.getY() <= sea) {
 					this.setBlock(level, p1, data.base);
 					success = true;
 				} else if (state.isAir()) {

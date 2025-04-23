@@ -25,7 +25,8 @@ public class ScorchedBoneVinesFeature extends OnGroundFeature<ScorchedBoneVinesF
 
 	@Override
 	protected boolean isEmpty(LevelAccessor level, BlockPos pos) {
-		return !level.getBlockState(pos).isSolid();
+		var state = level.getBlockState(pos);
+		return state.isAir() || state.is(Blocks.LAVA);
 	}
 
 	@Override
@@ -39,10 +40,18 @@ public class ScorchedBoneVinesFeature extends OnGroundFeature<ScorchedBoneVinesF
 		Data data = ctx.config();
 		int w = data.spread();
 		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-		for (int i = 0; i < data.trial(); i++) {
+		int n = data.trial();
+		if (origin.getY() <= ctx.chunkGenerator().getSeaLevel() - data.min()) {
+			n /= 2;
+		}
+		if (origin.getY() <= ctx.chunkGenerator().getSeaLevel() - data.max()) {
+			n /= 2;
+		}
+		for (int i = 0; i < n; i++) {
 			var ipos = findValid(level, origin.offset(Mth.nextInt(rand, -w, w), 0, Mth.nextInt(rand, -w, w)), 4);
 			if (ipos == null) continue;
 			if (!level.getBlockState(ipos).is(Blocks.LAVA)) continue;
+			if (!level.getBlockState(ipos.below()).isSolid()) continue;
 			mpos.set(ipos);
 			placeVinesColumn(level, rand, mpos, Mth.nextInt(rand, data.min, data.max), 17, 25);
 		}

@@ -1,10 +1,15 @@
 package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import dev.xkmc.lostlegends.foundation.block.LLFluidBlock;
+import dev.xkmc.lostlegends.foundation.block.LLFluidType;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
+import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
+import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.AshBlossomBlock;
@@ -26,8 +31,9 @@ import java.util.Set;
 
 public class DNBlocks extends LLRegBase {
 
-	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE;
-	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, WARPED_STONE, RESONATING_WARPED_STONE;
+	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
+			BURIED_GOLD_DEBRIS, AMARAST_ORE, WARPED_STONE, RESONATING_WARPED_STONE;
+	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL;
 
 	public final BlockEntry<SoilNyliumBlock> NETHER_NYLIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
@@ -43,6 +49,7 @@ public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;
+	public final FluidEntry<LiquidSoulFluid.Flowing> LIQUID_SOUL;
 
 	DNBlocks(L2Registrate reg, String path) {
 		super(reg, path);
@@ -169,6 +176,12 @@ public class DNBlocks extends LLRegBase {
 					.oreLoot(() -> DeepNether.ITEMS.RESONATING_SOULGEM.get())
 					.register();
 
+			SOUL_SHELL = block("soul_shell", Block::new)
+					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(0.5f)
+					.cubeAll().pickaxe()
+					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.BASE_STONE_NETHER)
+					.simpleItem()
+					.register();
 
 			DARK_STONE = block("dark_stone", DarkStoneBlock::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(1f, 5f)
@@ -225,7 +238,7 @@ public class DNBlocks extends LLRegBase {
 
 		}
 
-		//portal
+		// portal
 		{
 			PORTAL = block("lava_portal", LavaPortalBlock::new)
 					.prop(MapColor.FIRE, SoundType.GLASS)
@@ -239,5 +252,21 @@ public class DNBlocks extends LLRegBase {
 					Set.of(PORTAL.getDefaultState()), 0, 1)));
 		}
 
+		// fluid
+		{
+			var fog = new FogConfig(FogConfig.Type.VIEWPORT, 0, 0.25f, 0.5f,
+					0f, 8f, 2f, 24f, true);
+			LIQUID_SOUL = reg.fluid("liquid_soul",
+							blockLoc("liquid_soul_still"), blockLoc("liquid_soul_flow"),
+							(p, a, b) -> new LLFluidType(p, a, b, fog),
+							LiquidSoulFluid.Flowing::new)
+					.properties(p -> p.lightLevel(15).temperature(1500))
+					.fluidProperties(p -> p.explosionResistance(100).tickRate(10))
+					.source(LiquidSoulFluid.Source::new).block(LLFluidBlock::new).build()
+					.bucket().model(this::flatItem).build()
+					.register();
+		}
+
 	}
+
 }
