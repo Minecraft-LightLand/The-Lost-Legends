@@ -20,8 +20,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -135,8 +133,9 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey firePatch = uni("fire_patch");
 		public final FeatureKey soulfirePatch = uni("soul_fire_patch");
 
-		public final FeatureKey weepingVine = uni("weeping_vine");
+		public final FeatureKey weepingVine = uni("weeping_vines");
 		public final FeatureKey weepingVineSparse = weepingVine.variant("_sparse");
+		public final FeatureKey boneVine = uni("scorched_bone_vines");
 		public final FeatureKey ashBlossom = uni("ash_blossom");
 		public final FeatureKey crimsonRoot = uni("crimson_root");
 
@@ -164,8 +163,10 @@ public class DNFeatures extends LLFeatureReg {
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)),
 					List.of(soulSoil.get(), soilSand.get())));
 
-			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.F_WEEPING_VINE.get(), new WeepingVines.Data(
+			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.F_WEEPING_VINE.get(), new WeepingVinesFeature.Data(
 					32, 6, 16, 8, 1 / 8f));
+			FeatureUtils.register(ctx, boneVine.cf, DeepNether.WG.F_BONE_VINE.get(), new ScorchedBoneVinesFeature.Data(
+					8, 16, 3, 7));
 			FeatureUtils.register(ctx, ashBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(blossom.get())),
 					List.of(ashStone.get())));
@@ -184,6 +185,7 @@ public class DNFeatures extends LLFeatureReg {
 			soulfirePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
 
 			weepingVine.place(ctx, cf, spread(40, PlacementUtils.RANGE_4_4));
+			boneVine.place(ctx, cf, layer(4));
 			weepingVineSparse.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
 			ashBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
 			crimsonRoot.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_10_10));
@@ -257,8 +259,8 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
-			crimson.place(ctx, reg, CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
-			crimsonShort.place(ctx, reg, CountOnEveryLayerPlacement.of(UniformInt.of(0, 2)), BiomeFilter.biome());
+			crimson.place(ctx, reg, layer(8));
+			crimsonShort.place(ctx, reg, layer(0, 2));
 		}
 	}
 
@@ -273,16 +275,17 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
+			var dense = DeepNether.BLOCKS.DENSE_BONE.get().defaultBlockState();
 			var bone = DeepNether.BLOCKS.BONE_PILE.get().defaultBlockState();
-			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(bone, ConstantInt.of(1), UniformInt.of(1, 4)));
-			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
+			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(dense, bone, ConstantInt.of(1), UniformInt.of(1, 4)));
+			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.F_COLUMN.get(), new ColumnClusters.Data(dense, bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
 			);
 		}
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
-			columnSmall.place(ctx, reg, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
-			columnLarge.place(ctx, reg, CountOnEveryLayerPlacement.of(2), BiomeFilter.biome());
+			columnSmall.place(ctx, reg, layer(4));
+			columnLarge.place(ctx, reg, layer(2));
 		}
 	}
 

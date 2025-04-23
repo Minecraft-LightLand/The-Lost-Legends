@@ -12,7 +12,8 @@ public class DNWorldGenReg {
 	public final CdcVal<DNChunkGenerator> DNCG;
 	public final Val<DNCarver> DEEP_CARVER;
 	public final Val<HugeFungus> F_TREE;
-	public final Val<WeepingVines> F_WEEPING_VINE;
+	public final Val<WeepingVinesFeature> F_WEEPING_VINE;
+	public final Val<ScorchedBoneVinesFeature> F_BONE_VINE;
 	public final Val<StonePile> F_PILE;
 	public final Val<ColumnClusters> F_COLUMN;
 	public final Val<DeepNetherPortal> F_DEEP_PORTAL;
@@ -26,12 +27,13 @@ public class DNWorldGenReg {
 		DEEP_CARVER = carverReg.reg("deep_nether_carver", () -> new DNCarver(CaveCarverConfiguration.CODEC));
 
 		var freg = SR.of(reg, BuiltInRegistries.FEATURE);
-		F_TREE = freg.reg("huge_fungus", () -> new HugeFungus(HugeFungus.Data.CODEC));
-		F_WEEPING_VINE = freg.reg("weeping_vines", () -> new WeepingVines(WeepingVines.Data.CODEC));
-		F_PILE = freg.reg("stone_pile", () -> new StonePile(StonePile.Data.CODEC));
-		F_COLUMN = freg.reg("column", () -> new ColumnClusters(ColumnClusters.Data.CODEC));
-		F_DEEP_PORTAL = freg.reg("deep_nether_portal", () -> new DeepNetherPortal(DeepNetherPortal.Data.CODEC));
-		F_NETHER_PORTAL = freg.reg("nether_volcano_portal", () -> new NetherVolcanoPortal(NetherVolcanoPortal.Data.CODEC));
+		F_TREE = freg.reg("huge_fungus", HugeFungus::new);
+		F_WEEPING_VINE = freg.reg("weeping_vines", WeepingVinesFeature::new);
+		F_BONE_VINE = freg.reg("scorched_bone_vines", ScorchedBoneVinesFeature::new);
+		F_PILE = freg.reg("stone_pile", StonePile::new);
+		F_COLUMN = freg.reg("column", ColumnClusters::new);
+		F_DEEP_PORTAL = freg.reg("deep_nether_portal", DeepNetherPortal::new);
+		F_NETHER_PORTAL = freg.reg("nether_volcano_portal", NetherVolcanoPortal::new);
 
 	}
 

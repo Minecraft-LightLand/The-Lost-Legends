@@ -19,8 +19,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class HugeFungus extends Feature<HugeFungus.Data> {
 
-	public HugeFungus(Codec<Data> codec) {
-		super(codec);
+	public HugeFungus() {
+		super(Data.CODEC);
 	}
 
 	@Override

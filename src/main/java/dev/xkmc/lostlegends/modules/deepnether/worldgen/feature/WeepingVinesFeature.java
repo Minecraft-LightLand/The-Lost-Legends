@@ -16,11 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class WeepingVines extends OnCeilingFeature<WeepingVines.Data> {
+public class WeepingVinesFeature extends OnCeilingFeature<WeepingVinesFeature.Data> {
 	private static final Direction[] DIRECTIONS = Direction.values();
 
-	public WeepingVines(Codec<WeepingVines.Data> codec) {
-		super(codec);
+	public WeepingVinesFeature() {
+		super(Data.CODEC);
 	}
 
 	private boolean isValid(BlockState state) {
@@ -28,7 +28,7 @@ public class WeepingVines extends OnCeilingFeature<WeepingVines.Data> {
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<WeepingVines.Data> ctx) {
+	public boolean place(FeaturePlaceContext<WeepingVinesFeature.Data> ctx) {
 		WorldGenLevel level = ctx.level();
 		BlockPos pos = findValid(ctx.level(), ctx.origin(), 8);
 		if (pos == null) return false;

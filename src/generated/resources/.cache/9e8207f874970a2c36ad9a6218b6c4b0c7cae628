@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-23T08:38:54.157168	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
+// 1.21.1	2025-04-23T11:21:21.684656	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (enchantment), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
@@ -96,9 +96,9 @@ d1228803111351c0b694a962500ac35b1579d666 data/lostlegends/loot_table/blocks/warp
 9629a2c45b7db1a7fcc1642d8d542b1fc893b661 data/lostlegends/loot_table/blocks/weeping_sand.json
 56f1d71acd0f9fc5abf6c2188304d54c3d5b89e5 data/lostlegends/neoforge/biome_modifier/deepnether/struct/nether_portal.json
 7d33bacfc6a529c86b6a7ad9fd7a0ec4359147fc data/lostlegends/worldgen/biome/ash.json
-dbefe842cc48a17aabb73c3e0846179667d7cfac data/lostlegends/worldgen/biome/crimson_forest.json
-c48c1d9156bb66549c066ce7e025aca3e5dbee5c data/lostlegends/worldgen/biome/crimson_plains.json
-308e62a4dd5a4b708f2404cf94f5ed67216653b6 data/lostlegends/worldgen/biome/delta.json
+c050a2f57e5c36b071ca6c8f9dada9887b0b799d data/lostlegends/worldgen/biome/crimson_forest.json
+ff38c7682ee24f27522603d4e28be9eea286d354 data/lostlegends/worldgen/biome/crimson_plains.json
+3e0cec70e94f3ff366e3d75bc5087dd612f6ecec data/lostlegends/worldgen/biome/delta.json
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_forest.json
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_heart.json
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_plains.json
@@ -110,8 +110,8 @@ d1ff254d7d7162ac25d20d266298e0ed85f2c3da data/lostlegends/worldgen/configured_fe
 f7cb489bea2ca99817b5abf4767f923c88ce1ca3 data/lostlegends/worldgen/configured_feature/deepnether/blob/netherrack_large.json
 df8368f552291bddf7e2d97b1009bcf6e7b3bbb4 data/lostlegends/worldgen/configured_feature/deepnether/blob/netherrack_small.json
 3ce9a38f0fa63beeb82f07a4fa6aa6b06849befe data/lostlegends/worldgen/configured_feature/deepnether/blob/warped_stone.json
-d6c70d7d1f8f0266d617a750a10bf09c0d697617 data/lostlegends/worldgen/configured_feature/deepnether/delta/large_bone_columns.json
-e1a3ae74e70abcdf2ce0f366aee85a25aaf9ef32 data/lostlegends/worldgen/configured_feature/deepnether/delta/small_bone_columns.json
+00ba6d2b2cd87f5124de672f2f75f702ee317c8c data/lostlegends/worldgen/configured_feature/deepnether/delta/large_bone_columns.json
+f80da6afa6b2bc28adb654bf3031d99e20ff5b54 data/lostlegends/worldgen/configured_feature/deepnether/delta/small_bone_columns.json
 ba6863730d9c5dfe4ac9dea4100be9ee085ab61b data/lostlegends/worldgen/configured_feature/deepnether/ore/amarast.json
 8e42624b3073d3f017e619134f2c8f819fa3c880 data/lostlegends/worldgen/configured_feature/deepnether/ore/debris_large.json
 aedf3e583e15cbff25c2d01fd2d4ae3d4805eadd data/lostlegends/worldgen/configured_feature/deepnether/ore/debris_small.json
@@ -122,10 +122,11 @@ aedf3e583e15cbff25c2d01fd2d4ae3d4805eadd data/lostlegends/worldgen/configured_fe
 5f7b374a92cf043961a0f00df865cc91cbb9ff08 data/lostlegends/worldgen/configured_feature/deepnether/simple/ash_blossom.json
 e64ce8136190b3a2452e7b767af29e5b2ab4c540 data/lostlegends/worldgen/configured_feature/deepnether/simple/crimson_root.json
 3f5ae4f61b35d6bf260b597e8a73e8f72854b823 data/lostlegends/worldgen/configured_feature/deepnether/simple/fire_patch.json
+2bd80b6ea505fa8b35f69c0ba14cafc6b99689dc data/lostlegends/worldgen/configured_feature/deepnether/simple/scorched_bone_vines.json
 91a379461a6b7210edfb08e2402106f7847a3eb8 data/lostlegends/worldgen/configured_feature/deepnether/simple/soul_fire_patch.json
 86e4d1dc9efd5835f2e4b1c69d16f94b1300cd94 data/lostlegends/worldgen/configured_feature/deepnether/simple/spring_close.json
 ce363b422464773fd5bdc40cd6ac4c263dd0b8ce data/lostlegends/worldgen/configured_feature/deepnether/simple/spring_open.json
-8c3c86072f07b648d5dced751c1e1348fccd2ee8 data/lostlegends/worldgen/configured_feature/deepnether/simple/weeping_vine.json
+8c3c86072f07b648d5dced751c1e1348fccd2ee8 data/lostlegends/worldgen/configured_feature/deepnether/simple/weeping_vines.json
 3b648c8f743da116919a7b8fe940074e28985ebf data/lostlegends/worldgen/configured_feature/deepnether/struct/darkstone_pile.json
 cdd71070b4a5b5ebc09af2ecea66530196aebeb6 data/lostlegends/worldgen/configured_feature/deepnether/struct/deep_nether_portal.json
 823f9f4819943a33c58b39ca0e8e22177b04f982 data/lostlegends/worldgen/configured_feature/deepnether/struct/nether_portal.json
@@ -148,12 +149,13 @@ a59995160ea882c7f445b05bd73eabfe1b4555c9 data/lostlegends/worldgen/placed_featur
 6ddc52c52eb49af4f8070809178a99500816f99c data/lostlegends/worldgen/placed_feature/deepnether/simple/ash_blossom.json
 e0d68bf50d06a4eb3c738f44542af1752f7b3f38 data/lostlegends/worldgen/placed_feature/deepnether/simple/crimson_root.json
 2247caee97df7dd52ed80d1d2240dc0994ecbeff data/lostlegends/worldgen/placed_feature/deepnether/simple/fire_patch.json
+fc09117926c611cda8d884e064cf688c51be8a20 data/lostlegends/worldgen/placed_feature/deepnether/simple/scorched_bone_vines.json
 d88675e9ca34117e2519ec7ab55a9f46646bfafe data/lostlegends/worldgen/placed_feature/deepnether/simple/soul_fire_patch.json
 985c6f92a283f07cc5b6b1a471ea1b4e42348ec7 data/lostlegends/worldgen/placed_feature/deepnether/simple/spring_close.json
 b231d6ad8f7184ea98a9579843b5533704a55f45 data/lostlegends/worldgen/placed_feature/deepnether/simple/spring_close_double.json
 b217a5cad38c3724e98ceaad53b01a1efa72816a data/lostlegends/worldgen/placed_feature/deepnether/simple/spring_open.json
-c338ad7dde29a6248eb52aa4e3b379fc5f4d6575 data/lostlegends/worldgen/placed_feature/deepnether/simple/weeping_vine.json
-9df3018f5fd9882c8a9583310d0e791f6564a0da data/lostlegends/worldgen/placed_feature/deepnether/simple/weeping_vine_sparse.json
+4cca747ec8aea8fb871a7abc056dee37ba62c774 data/lostlegends/worldgen/placed_feature/deepnether/simple/weeping_vines.json
+26d3777351f3bce0d9a818ba706c1cbea8fa8499 data/lostlegends/worldgen/placed_feature/deepnether/simple/weeping_vines_sparse.json
 91311cd81d936c8520c58cd9535557cfaeba564d data/lostlegends/worldgen/placed_feature/deepnether/struct/darkstone_pile.json
 aa9ff83170320172545679c789723b12a4f2d342 data/lostlegends/worldgen/placed_feature/deepnether/struct/deep_nether_portal.json
 357a0f001612683a1b2e5b52049ca1810c2662b6 data/lostlegends/worldgen/placed_feature/deepnether/struct/nether_portal.json

@@ -49,6 +49,14 @@ public abstract class FeatureGroup {
 		return spread(CountPlacement.of(UniformInt.of(min, max)), m);
 	}
 
+	public List<PlacementModifier> layer(int count) {
+		return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome());
+	}
+
+	public List<PlacementModifier> layer(int min, int max) {
+		return List.of(CountOnEveryLayerPlacement.of(UniformInt.of(min, max)), BiomeFilter.biome());
+	}
+
 	public FeatureKey uni(String id) {
 		return new FeatureKey(this, id);
 	}

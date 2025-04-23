@@ -103,6 +103,7 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 		double scale = DimensionType.getTeleportationScale(level.dimensionType(), sl.dimensionType());
 		double targetY = isNether ? sl.getMaxBuildHeight() - 8 : sl.getMinBuildHeight() + 8;
 		BlockPos target = border.clampToBounds(e.getX() * scale, targetY, e.getZ() * scale);
+		int range = isNether ? 64 : 128;
 		long time = level.getGameTime();
 		if (e instanceof Player) {
 			long last = e.getPersistentData().getLong("LastLavaPortalFailTime");
@@ -111,19 +112,23 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 				return null;
 			}
 			if (time - last == 10) {
-				long first = e.getPersistentData().getLong("FirstLavaPortalFailTime");
-				if (time - first > 100) {
-					e.getPersistentData().putLong("FirstLavaPortalFailTime", time);
-				} else if (time - first >= 90) {
-					e.getPersistentData().putLong("FirstLavaPortalFailTime", 0);
-					return LavaPortalHelper.createExitPortal(sl, e, target);
+				var forcer = new LavaPortalForcer(sl);
+				if (forcer.isFeatureLoaded(sl, target, range)) {
+					long first = e.getPersistentData().getLong("FirstLavaPortalFailTime");
+					if (time - first > 60) {
+						e.getPersistentData().putLong("FirstLavaPortalFailTime", time);
+					} else if (time - first >= 50) {
+						e.getPersistentData().putLong("FirstLavaPortalFailTime", 0);
+						return LavaPortalHelper.createExitPortal(sl, e, target);
+					}
 				}
 			} else {
 				e.getPersistentData().putLong("FirstLavaPortalFailTime", 0);
 			}
 		}
-		var ans = LavaPortalHelper.getExitPortal(sl, e, target, border);
+		var ans = LavaPortalHelper.getExitPortal(sl, e, target, border, range);
 		if (ans == null && e instanceof Player) {
+			new LavaPortalForcer(sl).ensureFeatureLoaded(sl, target, range);
 			e.getPersistentData().putLong("LastLavaPortalFailTime", time);
 			e.setPortalCooldown(0);
 		}

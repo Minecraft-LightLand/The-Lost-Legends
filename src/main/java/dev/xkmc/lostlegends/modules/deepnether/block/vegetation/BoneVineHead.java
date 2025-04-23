@@ -3,7 +3,9 @@ package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -16,12 +18,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 
 public class BoneVineHead extends GrowingPlantHeadBlock implements SimpleLavaloggedBlock {
 	public static final MapCodec<BoneVineHead> CODEC = simpleCodec(BoneVineHead::new);
 	protected static final VoxelShape SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+	private static final double growPerTickProbability = 0.14;
 
 	@Override
 	public MapCodec<BoneVineHead> codec() {
@@ -29,7 +33,7 @@ public class BoneVineHead extends GrowingPlantHeadBlock implements SimpleLavalog
 	}
 
 	public BoneVineHead(BlockBehaviour.Properties prop) {
-		super(prop, Direction.UP, SHAPE, true, 0.14);
+		super(prop, Direction.UP, SHAPE, true, growPerTickProbability);
 	}
 
 	@Override
@@ -63,6 +67,24 @@ public class BoneVineHead extends GrowingPlantHeadBlock implements SimpleLavalog
 
 	protected BlockState updateBodyAfterConvertedFromHead(BlockState head, BlockState body) {
 		return body.setValue(LAVALOGGED, head.getValue(LAVALOGGED));
+	}
+
+	@Override
+	protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
+		if (state.getValue(AGE) >= 25) return;
+		BlockPos up = pos.relative(this.growthDirection);
+		BlockState upState = level.getBlockState(up);
+		if (this.canGrowInto(upState)) {
+			if (CommonHooks.canCropGrow(level, up, state, rand.nextDouble() < growPerTickProbability)) {
+				level.setBlockAndUpdate(up, getGrowIntoState(state, upState, level.random));
+				CommonHooks.fireCropGrowPost(level, up, upState);
+			}
+		}
+	}
+
+	protected BlockState getGrowIntoState(BlockState state, BlockState upState, RandomSource rand) {
+		boolean lava = upState.is(Blocks.LAVA);
+		return state.cycle(AGE).setValue(LAVALOGGED, lava);
 	}
 
 	@Override

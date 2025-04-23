@@ -10,8 +10,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class StonePile extends OnGroundFeature<StonePile.Data> {
 
-	public StonePile(Codec<Data> codec) {
-		super(codec);
+	public StonePile() {
+		super(Data.CODEC);
 	}
 
 	@Override

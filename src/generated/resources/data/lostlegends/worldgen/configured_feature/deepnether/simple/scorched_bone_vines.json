@@ -1,0 +1,9 @@
+{
+  "type": "lostlegends:scorched_bone_vines",
+  "config": {
+    "max_height": 7,
+    "min_height": 3,
+    "spread": 8,
+    "trial": 16
+  }
+}

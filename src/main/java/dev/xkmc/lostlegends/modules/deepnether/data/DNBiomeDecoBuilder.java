@@ -39,8 +39,8 @@ public class DNBiomeDecoBuilder {
 		builder.addFeature(LOCAL_MODIFICATIONS, NetherPlacements.DELTA);
 		ins.delta.columnSmall.addTo(builder, LOCAL_MODIFICATIONS);
 		ins.delta.columnLarge.addTo(builder, LOCAL_MODIFICATIONS);
-		//builder.addFeature(UNDERGROUND_DECORATION, NetherPlacements.SPRING_DELTA);
 		ins.simple.springClose2.addTo(builder, FLUID_SPRINGS);
+		ins.simple.boneVine.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 

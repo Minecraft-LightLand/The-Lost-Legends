@@ -12,8 +12,8 @@ import net.minecraft.world.level.material.Fluids;
 
 public class DeepNetherPortal extends OnCeilingFeature<DeepNetherPortal.Data> {
 
-	public DeepNetherPortal(Codec<Data> codec) {
-		super(codec);
+	public DeepNetherPortal() {
+		super(Data.CODEC);
 	}
 
 	@Override

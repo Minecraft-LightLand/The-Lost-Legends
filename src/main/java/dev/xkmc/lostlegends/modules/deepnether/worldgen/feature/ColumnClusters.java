@@ -29,8 +29,8 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 	private static final int UNCLUSTERED_REACH = 8;
 	private static final int UNCLUSTERED_SIZE = 15;
 
-	public ColumnClusters(Codec<Data> codec) {
-		super(codec);
+	public ColumnClusters() {
+		super(Data.CODEC);
 	}
 
 	@Override
@@ -75,7 +75,11 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 			if (p0 == null) continue;
 			int y = h - dist / 2;
 			for (BlockPos.MutableBlockPos p1 = p0.mutable(); y >= 0; y--) {
-				if (isAirOrLavaOcean(level, sea, p1)) {
+				BlockState state = level.getBlockState(pos);
+				if (state.is(Blocks.LAVA) || state.isAir() && pos.getY() <= sea) {
+					this.setBlock(level, p1, data.base);
+					success = true;
+				} else if (state.isAir()) {
 					this.setBlock(level, p1, data.block);
 					success = true;
 				} else {
@@ -132,9 +136,10 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 
 
 	public record Data(
-			BlockState block, IntProvider reach, IntProvider height
+			BlockState base, BlockState block, IntProvider reach, IntProvider height
 	) implements FeatureConfiguration {
 		public static final Codec<Data> CODEC = RecordCodecBuilder.create(i -> i.group(
+				BlockState.CODEC.fieldOf("base").forGetter(Data::base),
 				BlockState.CODEC.fieldOf("block").forGetter(Data::block),
 				IntProvider.codec(0, 3).fieldOf("reach").forGetter(Data::reach),
 				IntProvider.codec(1, 10).fieldOf("height").forGetter(Data::height)

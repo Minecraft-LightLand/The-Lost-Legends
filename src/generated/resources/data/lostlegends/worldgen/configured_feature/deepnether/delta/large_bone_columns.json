@@ -1,6 +1,9 @@
 {
   "type": "lostlegends:column",
   "config": {
+    "base": {
+      "Name": "lostlegends:dense_bone"
+    },
     "block": {
       "Name": "lostlegends:bone_pile"
     },

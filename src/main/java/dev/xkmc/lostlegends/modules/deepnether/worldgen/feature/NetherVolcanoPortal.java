@@ -16,8 +16,8 @@ import net.minecraft.world.phys.Vec3;
 
 public class NetherVolcanoPortal extends OnGroundFeature<NetherVolcanoPortal.Data> {
 
-	public NetherVolcanoPortal(Codec<Data> codec) {
-		super(codec);
+	public NetherVolcanoPortal() {
+		super(Data.CODEC);
 	}
 
 	@Override
