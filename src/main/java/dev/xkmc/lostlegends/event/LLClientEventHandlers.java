@@ -1,8 +1,8 @@
-package dev.xkmc.lostlegends.foundation.event;
+package dev.xkmc.lostlegends.event;
 
 import dev.xkmc.lostlegends.foundation.fogblock.ClientFogBlockHandler;
+import dev.xkmc.lostlegends.foundation.util.LavaHandlers;
 import dev.xkmc.lostlegends.init.LostLegends;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FogType;
 import net.neoforged.api.distmarker.Dist;
@@ -22,7 +22,7 @@ public class LLClientEventHandlers {
 	@SubscribeEvent
 	public static void renderFireOverlay(RenderBlockScreenEffectEvent event) {
 		if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE) {
-			if (event.getPlayer().hasEffect(MobEffects.FIRE_RESISTANCE)) {
+			if (LavaHandlers.noFire(event.getPlayer())) {
 				event.setCanceled(true);
 			}
 		}
@@ -31,7 +31,7 @@ public class LLClientEventHandlers {
 	@SubscribeEvent
 	public static void onFogSetup(ViewportEvent.RenderFog event) {
 		if (event.getType() == FogType.LAVA) {
-			if (event.getCamera().getEntity() instanceof LivingEntity le && le.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+			if (event.getCamera().getEntity() instanceof LivingEntity le && LavaHandlers.lavaVision(le)) {
 				event.setFarPlaneDistance(12f);
 			}
 		}

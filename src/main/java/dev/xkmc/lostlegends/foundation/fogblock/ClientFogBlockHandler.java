@@ -20,7 +20,6 @@ public class ClientFogBlockHandler {
 	private static double easing = 0, altEasing;
 	private static IFogBlock easingCache = null, altEasingCache = null;
 
-
 	public static void onFogColor(ViewportEvent.ComputeFogColor event) {
 		if (easingCache == null) return;
 		if (altEasingCache != null) {
@@ -36,14 +35,17 @@ public class ClientFogBlockHandler {
 		if (diffTick < 0) {
 			easingCache = null;
 			easing = 0;
+			altEasingCache = null;
+			altEasing = 0;
 			return;
 		}
 
 		var block = getFogBlock(cam, cam.getEntity().level());
 		FogConfig config;
 		if (block == null) {
-			if (easingCache == null)
+			if (easingCache == null) {
 				return;
+			}
 			block = easingCache;
 			config = block.getFogConfig();
 			if (config.immediate()) {
@@ -62,10 +64,16 @@ public class ClientFogBlockHandler {
 					altEasing = 0;
 					altEasingCache = null;
 				}
+				if (altEasing > 0 && easing == 0) {
+					easingCache = altEasingCache;
+					easing = altEasing;
+					altEasingCache = null;
+					altEasing = 0;
+				}
 			}
 		} else {
 			config = block.getFogConfig();
-			if (config.immediate()) {
+			if (config.immediate() || easingCache != null && easingCache.getFogConfig().immediate()) {
 				easing = MAX_EASING;
 				easingCache = block;
 				altEasing = 0;
@@ -91,7 +99,6 @@ public class ClientFogBlockHandler {
 			}
 		}
 	}
-
 
 	public static void onFogSetup(ViewportEvent.RenderFog event) {
 		checkEasing(event.getCamera());

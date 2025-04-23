@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
+package dev.xkmc.lostlegends.foundation.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

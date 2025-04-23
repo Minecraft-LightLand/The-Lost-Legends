@@ -2,6 +2,7 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.lostlegends.foundation.feature.OnCeilingFeature;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
@@ -63,6 +64,14 @@ public class DeepNetherPortal extends OnCeilingFeature<DeepNetherPortal.Data> {
 							level.scheduleTick(mpos.immutable(), Fluids.LAVA, 0);
 						}
 					}
+				}
+			}
+		}
+		for (int y = 1; y <= 3; y++) {
+			for (int x = r1 + 1; x < r0; x++) {
+				for (int z = r1 + 1; z < r0; z++) {
+					mpos.set(pos.getX() + x, pos.getY() - y, pos.getZ() + z);
+					setBlock(level, mpos, Blocks.AIR.defaultBlockState());
 				}
 			}
 		}

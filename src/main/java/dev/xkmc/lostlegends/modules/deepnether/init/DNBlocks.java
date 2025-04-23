@@ -3,10 +3,13 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.AshBlossomBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.BoneVineBody;
+import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.BoneVineHead;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.SoulBlossomBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
@@ -26,7 +29,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, WARPED_STONE, RESONATING_WARPED_STONE;
 
-	public final BlockEntry<DNNyliumBlock> NETHER_NYLIUM;
+	public final BlockEntry<SoilNyliumBlock> NETHER_NYLIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
@@ -35,6 +38,8 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<AshBlossomBlock> ASH_BLOSSOM;
 	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
+	public final BlockEntry<BoneVineHead> SCORCHED_BONE_VINE;
+	public final BlockEntry<BoneVineBody> SCORCHED_BONE_VINE_PLANT;
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;
@@ -88,7 +93,7 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			NETHER_NYLIUM = block("nether_nylium", DNNyliumBlock::new)
+			NETHER_NYLIUM = block("nether_nylium", SoilNyliumBlock::new)
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
@@ -187,14 +192,35 @@ public class DNBlocks extends LLRegBase {
 					.prop(p -> p.lightLevel(stata -> 8))
 					.foliage()
 					.cross()
+					.tag(BlockTags.FLOWERS)
 					.simpleItem()
 					.register();
 
 			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(MobEffects.WITHER, 6.0F, p))
-					.prop(p -> p.lightLevel(stata -> 13))
+					.prop(p -> p.lightLevel(stata -> 12))
 					.foliage()
 					.cross()
+					.tag(BlockTags.FLOWERS)
 					.simpleItem()
+					.register();
+
+			SCORCHED_BONE_VINE = block("scorched_bone_vines", BoneVineHead::new)
+					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
+					.prop(p -> p.randomTicks().lightLevel(state -> state.getValue(SimpleLavaloggedBlock.LAVALOGGED) ? 15 : 10))
+					.fragile()
+					.cross()
+					.tag(BlockTags.CLIMBABLE)
+					.simpleItem()
+					.itemModel(this::flatBlockItem)
+					.register();
+
+			SCORCHED_BONE_VINE_PLANT = block("scorched_bone_vines_plant", BoneVineBody::new)
+					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
+					.prop(p -> p.lightLevel(state -> state.getValue(SimpleLavaloggedBlock.LAVALOGGED) ? 15 : 10))
+					.fragile()
+					.cross()
+					.tag(BlockTags.CLIMBABLE)
+					.lootChance(0.1f)
 					.register();
 
 		}

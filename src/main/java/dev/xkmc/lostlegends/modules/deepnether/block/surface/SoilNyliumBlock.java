@@ -21,14 +21,14 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 
-public class DNNyliumBlock extends Block implements BonemealableBlock {
-	public static final MapCodec<DNNyliumBlock> CODEC = simpleCodec(DNNyliumBlock::new);
+public class SoilNyliumBlock extends Block implements BonemealableBlock {
+	public static final MapCodec<SoilNyliumBlock> CODEC = simpleCodec(SoilNyliumBlock::new);
 
-	public MapCodec<DNNyliumBlock> codec() {
+	public MapCodec<SoilNyliumBlock> codec() {
 		return CODEC;
 	}
 
-	public DNNyliumBlock(BlockBehaviour.Properties prop) {
+	public SoilNyliumBlock(BlockBehaviour.Properties prop) {
 		super(prop);
 	}
 

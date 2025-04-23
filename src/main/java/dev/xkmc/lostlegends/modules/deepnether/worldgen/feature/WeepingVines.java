@@ -2,6 +2,7 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.lostlegends.foundation.feature.OnCeilingFeature;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

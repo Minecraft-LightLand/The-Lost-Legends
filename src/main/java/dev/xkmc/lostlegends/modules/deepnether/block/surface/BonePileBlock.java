@@ -30,17 +30,17 @@ public class BonePileBlock extends Block {
 	}
 
 	@Override
-	protected VoxelShape getCollisionShape(BlockState p_56702_, BlockGetter p_56703_, BlockPos p_56704_, CollisionContext p_56705_) {
+	protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		return SHAPE;
 	}
 
 	@Override
-	protected VoxelShape getBlockSupportShape(BlockState p_56707_, BlockGetter p_56708_, BlockPos p_56709_) {
+	protected VoxelShape getBlockSupportShape(BlockState state, BlockGetter level, BlockPos pos) {
 		return Shapes.block();
 	}
 
 	@Override
-	protected VoxelShape getVisualShape(BlockState p_56684_, BlockGetter p_56685_, BlockPos p_56686_, CollisionContext p_56687_) {
+	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		return Shapes.block();
 	}
 

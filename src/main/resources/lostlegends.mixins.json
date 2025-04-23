@@ -4,8 +4,11 @@
 	"package": "dev.xkmc.lostlegends.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"ILivingEntityExtensionMixin",
+		"LivingEntityMixin"
 	],
 	"client": [
+		"LocalPlayerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -32,8 +32,12 @@ public class LLRegBase {
 		return reg.loc("item/" + path + "/" + id);
 	}
 
-	public void flatItem(DataGenContext<Item, Item> ctx, RegistrateItemModelProvider pvd) {
+	public <T extends Item> void flatItem(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
 		pvd.generated(ctx, itemLoc(ctx.getName()));
+	}
+
+	public <T extends Item> void flatBlockItem(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
+		pvd.generated(ctx, blockLoc(ctx.getName()));
 	}
 
 }

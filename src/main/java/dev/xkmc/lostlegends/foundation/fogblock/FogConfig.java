@@ -27,8 +27,10 @@ public record FogConfig(
 			n1 = nearPlane();
 			f1 = farPlane();
 		}
-		event.setNearPlaneDistance(Mth.lerp(perc, n0, n1));
-		event.setFarPlaneDistance(Mth.lerp(perc, f0, f1));
+		if (n0 > n1)
+			event.setNearPlaneDistance(Mth.lerp(perc, n0, n1));
+		if (f0 > f1)
+			event.setFarPlaneDistance(Mth.lerp(perc, f0, f1));
 	}
 
 	public enum Type {

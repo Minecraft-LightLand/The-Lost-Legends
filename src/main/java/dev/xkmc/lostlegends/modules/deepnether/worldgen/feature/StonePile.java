@@ -2,6 +2,7 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.lostlegends.foundation.feature.OnGroundFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
