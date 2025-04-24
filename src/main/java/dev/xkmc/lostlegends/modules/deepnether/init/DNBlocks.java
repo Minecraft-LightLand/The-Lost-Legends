@@ -142,6 +142,7 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().pickaxe()
 					.tag(BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
+					.itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
 					.register();
 
 			WEEPING_SAND = block("weeping_sand", WeepingSandBlock::new)
@@ -164,6 +165,7 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().pickaxe()
 					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
+					.itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
 					.register();
 
 			RESONANT_TWISTONE = block("resonant_twistone", Block::new)

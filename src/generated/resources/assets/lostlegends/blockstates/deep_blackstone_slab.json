@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostlegends:block/deep_blackstone_slab"
+    },
+    "type=double": {
+      "model": "lostlegends:block/deep_blackstone"
+    },
+    "type=top": {
+      "model": "lostlegends:block/deep_blackstone_slab_top"
+    }
+  }
+}

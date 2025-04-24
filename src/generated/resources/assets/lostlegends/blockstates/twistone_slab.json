@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostlegends:block/twistone_slab"
+    },
+    "type=double": {
+      "model": "lostlegends:block/twistone"
+    },
+    "type=top": {
+      "model": "lostlegends:block/twistone_slab_top"
+    }
+  }
+}

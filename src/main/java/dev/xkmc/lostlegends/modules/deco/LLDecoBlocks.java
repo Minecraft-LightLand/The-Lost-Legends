@@ -20,11 +20,15 @@ public class LLDecoBlocks extends LLModuleBase {
 	private static final String ID = "deco";
 	private static final LLRegBase reg = new LLRegBase(LostLegends.REGISTRATE, ID);
 
-	public static final BrickSet TWISTONE, CHISELED_TWISTONE, CHISELED_RESONANT_TWISTONE;
+	public static final BrickSet DEEP_BLACKSTONE, ASH_STONE, TWISTONE,
+			TWISTONE_BRICKS, CHISELED_TWISTONE, CHISELED_RESONANT_TWISTONE;
 	public static final BlockEntry<Block> RESONANT_TWISTONE;
 
 	static {
-		TWISTONE = new BrickSet(reg, "twistone", DeepNether.BLOCKS.TWISTONE);
+		DEEP_BLACKSTONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.DEEP_BLACKSTONE);
+		ASH_STONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.ASH_STONE);
+		TWISTONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.TWISTONE);
+		TWISTONE_BRICKS = new BrickSet(reg, "twistone", DeepNether.BLOCKS.TWISTONE);
 		CHISELED_TWISTONE = new BrickSet(reg, "chiseled_twistone", DeepNether.BLOCKS.TWISTONE);
 		RESONANT_TWISTONE = reg.block("resonant_twistone_bricks", Block::new)
 				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE)
@@ -44,14 +48,14 @@ public class LLDecoBlocks extends LLModuleBase {
 	public static class RecipeGen extends LLRecipeGen {
 
 		public static void genRecipe(RegistrateRecipeProvider pvd) {
-			square(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE.bricks);
-			square(pvd, TWISTONE.bricks, CHISELED_TWISTONE.bricks);
-			square(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.bricks);
+			square(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
+			square(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
+			square(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
 
-			cut(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE.bricks);
-			cut(pvd, DeepNether.BLOCKS.TWISTONE, CHISELED_TWISTONE.bricks);
-			cut(pvd, TWISTONE.bricks, CHISELED_TWISTONE.bricks);
-			cut(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.bricks);
+			cut(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
+			cut(pvd, DeepNether.BLOCKS.TWISTONE, CHISELED_TWISTONE.block);
+			cut(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
+			cut(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
 
 			shaped(pvd, RESONANT_TWISTONE.get(), 8, DeepNether.ITEMS.RESONANT_SOULGEM)
 					.pattern("XXX").pattern("XAX").pattern("XXX")
@@ -61,7 +65,7 @@ public class LLDecoBlocks extends LLModuleBase {
 
 			shaped(pvd, RESONANT_TWISTONE.get(), 8, DeepNether.ITEMS.RESONANT_SOULGEM)
 					.pattern("XXX").pattern("XAX").pattern("XXX")
-					.define('X', TWISTONE.bricks)
+					.define('X', TWISTONE_BRICKS.block)
 					.define('A', DeepNether.ITEMS.RESONANT_SOULGEM)
 					.save(pvd, RESONANT_TWISTONE.getId().withSuffix("_alt"));
 

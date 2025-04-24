@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:ash_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "lostlegends:ash_stone_wall"
+  }
+}

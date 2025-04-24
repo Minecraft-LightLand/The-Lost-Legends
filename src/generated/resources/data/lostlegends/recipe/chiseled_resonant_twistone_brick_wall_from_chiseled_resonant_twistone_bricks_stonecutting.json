@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:chiseled_resonant_twistone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "lostlegends:chiseled_resonant_twistone_brick_wall"
+  }
+}

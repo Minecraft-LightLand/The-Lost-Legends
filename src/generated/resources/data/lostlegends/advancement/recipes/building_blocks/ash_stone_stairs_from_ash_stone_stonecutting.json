@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ash_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "lostlegends:ash_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:ash_stone_stairs_from_ash_stone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ash_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:ash_stone_stairs_from_ash_stone_stonecutting"
+    ]
+  }
+}

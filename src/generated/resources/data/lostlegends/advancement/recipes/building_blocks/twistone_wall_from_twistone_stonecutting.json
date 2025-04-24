@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:twistone_wall_from_twistone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_twistone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "lostlegends:twistone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_twistone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:twistone_wall_from_twistone_stonecutting"
+    ]
+  }
+}
