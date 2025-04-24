@@ -4,6 +4,7 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
+import dev.xkmc.lostlegends.modules.deco.LLDecoBlocks;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;
@@ -40,6 +41,7 @@ public class LostLegends {
 	public LostLegends(IEventBus bus) {
 		REGISTRATE.buildModCreativeTab("main", "The Lost Legends", b -> b.icon(DeepNether.BLOCKS.RAGING_OBSIDIAN::asStack));
 		MODULES.add(new DeepNether());
+		MODULES.add(new LLDecoBlocks());
 	}
 
 	private static void initHandlers() {

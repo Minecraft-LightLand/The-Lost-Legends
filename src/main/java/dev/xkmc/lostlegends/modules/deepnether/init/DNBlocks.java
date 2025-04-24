@@ -28,10 +28,10 @@ import java.util.Set;
 public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
-			BURIED_GOLD_DEBRIS, AMARAST_ORE, WARPED_STONE, RESONATING_WARPED_STONE;
+			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL;
 
-	public final BlockEntry<SoilNyliumBlock> NETHER_NYLIUM;
+	public final BlockEntry<SoilNyliumBlock> SCARLET_NYLIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
@@ -98,7 +98,7 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			NETHER_NYLIUM = block("nether_nylium", SoilNyliumBlock::new)
+			SCARLET_NYLIUM = block("scarlet_nylium", SoilNyliumBlock::new)
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
@@ -159,19 +159,19 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			WARPED_STONE = block("warped_stone", Block::new)
+			TWISTONE = block("twistone", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(0.5f)
 					.cubeAll().pickaxe()
 					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
 					.register();
 
-			RESONATING_WARPED_STONE = block("resonating_warped_stone", Block::new)
+			RESONANT_TWISTONE = block("resonant_twistone", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(1f)
 					.cubeAll().pickaxe()
 					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS)
 					.simpleItem()
-					.oreLoot(() -> DeepNether.ITEMS.RESONATING_SOULGEM.get())
+					.oreLoot(() -> DeepNether.ITEMS.RESONANT_SOULGEM.get())
 					.register();
 
 			SOUL_SHELL = block("soul_shell", Block::new)

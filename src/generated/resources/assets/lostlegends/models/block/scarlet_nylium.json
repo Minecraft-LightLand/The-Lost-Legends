@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "lostlegends:block/deepnether/nether_soil",
+    "side": "lostlegends:block/deepnether/scarlet_nylium_side",
+    "top": "lostlegends:block/deepnether/scarlet_nylium_top"
+  }
+}

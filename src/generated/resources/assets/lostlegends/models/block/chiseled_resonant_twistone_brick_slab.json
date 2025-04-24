@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "lostlegends:block/deco/chiseled_resonant_twistone_bricks",
+    "side": "lostlegends:block/deco/chiseled_resonant_twistone_bricks",
+    "top": "lostlegends:block/deco/chiseled_resonant_twistone_bricks"
+  }
+}

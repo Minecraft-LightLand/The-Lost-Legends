@@ -5,6 +5,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
@@ -47,6 +48,11 @@ public class LLBlockBuilder<T extends Block> {
 
 	public LLBlockBuilder<T> prop(NonNullUnaryOperator<BlockBehaviour.Properties> op) {
 		builder.properties(op);
+		return this;
+	}
+
+	public LLBlockBuilder<T> copyProp(BlockEntry<?> base) {
+		builder.initialProperties(base);
 		return this;
 	}
 
@@ -209,6 +215,11 @@ public class LLBlockBuilder<T extends Block> {
 						.when(BonusLevelTableCondition.bonusLevelFlatChance(
 								pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE),
 								min, min * 1.4f, min * 1.7f, min * 2f)))));
+		return this;
+	}
+
+	public LLBlockBuilder<T> recipe(NonNullBiConsumer<DataGenContext<Block, T>, RegistrateRecipeProvider> cons) {
+		builder.recipe(cons);
 		return this;
 	}
 

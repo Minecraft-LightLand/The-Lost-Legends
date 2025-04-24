@@ -31,14 +31,14 @@
       "lostlegends:deepnether/blob/netherrack_small",
       "lostlegends:deepnether/blob/netherrack_large",
       "lostlegends:deepnether/blob/blackstone",
-      "lostlegends:deepnether/blob/warped_stone",
+      "lostlegends:deepnether/blob/twistone",
       "minecraft:ore_magma"
     ],
     [],
     [],
     [
       "lostlegends:deepnether/ore/amarast",
-      "lostlegends:deepnether/ore/resonating_warped_stone",
+      "lostlegends:deepnether/ore/resonating_twistone",
       "lostlegends:deepnether/ore/debris_large",
       "lostlegends:deepnether/ore/debris_small",
       "lostlegends:deepnether/ore/hearth_crystal",

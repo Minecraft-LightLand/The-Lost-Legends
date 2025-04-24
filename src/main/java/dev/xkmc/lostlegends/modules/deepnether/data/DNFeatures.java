@@ -48,7 +48,7 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey goldClose = uni("gold_debris_close");
 		public final FeatureKey hearth = uni("hearth_crystal");
 		public final FeatureKey amarast = uni("amarast");
-		public final FeatureKey resonant = uni("resonating_warped_stone");
+		public final FeatureKey resonant = uni("resonating_twistone");
 		public final FeatureKey debrisSmall = uni("debris_small");
 		public final FeatureKey debrisLarge = uni("debris_large");
 
@@ -60,7 +60,7 @@ public class DNFeatures extends LLFeatureReg {
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			var rack = new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get());
 			var black = new BlockMatchTest(DeepNether.BLOCKS.DEEP_BLACKSTONE.get());
-			var warped = new BlockMatchTest(DeepNether.BLOCKS.WARPED_STONE.get());
+			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10));
@@ -71,7 +71,7 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, amarast.cf, Feature.ORE, new OreConfiguration(black,
 					DeepNether.BLOCKS.AMARAST_ORE.get().defaultBlockState(), 4));
 			FeatureUtils.register(ctx, resonant.cf, Feature.ORE, new OreConfiguration(warped,
-					DeepNether.BLOCKS.RESONATING_WARPED_STONE.get().defaultBlockState(), 4));
+					DeepNether.BLOCKS.RESONANT_TWISTONE.get().defaultBlockState(), 4));
 			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
@@ -93,7 +93,7 @@ public class DNFeatures extends LLFeatureReg {
 	public static class Blobs extends FeatureGroup {
 
 		public final FeatureKey blackstone = uni("blackstone");
-		public final FeatureKey warped = uni("warped_stone");
+		public final FeatureKey twist = uni("twistone");
 		public final FeatureKey rackSmall = uni("netherrack_small");
 		public final FeatureKey rackLarge = uni("netherrack_large");
 
@@ -107,8 +107,8 @@ public class DNFeatures extends LLFeatureReg {
 			var deep = new BlockMatchTest(deepRack.get());
 			FeatureUtils.register(ctx, blackstone.cf, Feature.ORE, new OreConfiguration(deep,
 					DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(), 33));
-			FeatureUtils.register(ctx, warped.cf, Feature.ORE, new OreConfiguration(deep,
-					DeepNether.BLOCKS.WARPED_STONE.get().defaultBlockState(), 33));
+			FeatureUtils.register(ctx, twist.cf, Feature.ORE, new OreConfiguration(deep,
+					DeepNether.BLOCKS.TWISTONE.get().defaultBlockState(), 33));
 			FeatureUtils.register(ctx, rackSmall.cf, Feature.ORE, new OreConfiguration(deep,
 					Blocks.NETHERRACK.defaultBlockState(), 44));
 			FeatureUtils.register(ctx, rackLarge.cf, Feature.ORE, new OreConfiguration(deep,
@@ -118,7 +118,7 @@ public class DNFeatures extends LLFeatureReg {
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> reg) {
 			blackstone.place(ctx, reg, spread(3, uniform(10, 250)));
-			warped.place(ctx, reg, spread(5, uniform(10, 250)));
+			twist.place(ctx, reg, spread(5, uniform(10, 250)));
 			rackSmall.place(ctx, reg, spread(3, uniform(128, 250)));
 			rackLarge.place(ctx, reg, spread(2, uniform(180, 250)));
 		}

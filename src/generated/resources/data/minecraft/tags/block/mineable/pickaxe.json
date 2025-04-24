@@ -8,10 +8,14 @@
     "lostlegends:dense_bone",
     "lostlegends:bone_pile",
     "lostlegends:ash_stone",
-    "lostlegends:warped_stone",
-    "lostlegends:resonating_warped_stone",
+    "lostlegends:twistone",
+    "lostlegends:resonant_twistone",
     "lostlegends:soul_shell",
     "lostlegends:dark_stone",
-    "lostlegends:raging_obsidian"
+    "lostlegends:raging_obsidian",
+    "lostlegends:twistone_bricks",
+    "lostlegends:chiseled_twistone_bricks",
+    "lostlegends:resonant_twistone_bricks",
+    "lostlegends:chiseled_resonant_twistone_bricks"
   ]
 }

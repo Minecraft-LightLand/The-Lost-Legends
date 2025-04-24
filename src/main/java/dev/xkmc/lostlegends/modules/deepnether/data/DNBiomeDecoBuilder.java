@@ -67,7 +67,7 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder warpedBlob() {
-		ins.blob.warped.addTo(builder, UNDERGROUND_STRUCTURES);
+		ins.blob.twist.addTo(builder, UNDERGROUND_STRUCTURES);
 		ins.ore.resonant.addTo(builder, UNDERGROUND_ORES);
 		return this;
 	}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:twistone"
+  },
+  "result": {
+    "count": 1,
+    "id": "lostlegends:twistone_bricks"
+  }
+}

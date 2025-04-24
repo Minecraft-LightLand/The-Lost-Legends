@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:chiseled_twistone_bricks_from_twistone_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_twistone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "lostlegends:twistone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_twistone_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:chiseled_twistone_bricks_from_twistone_bricks_stonecutting"
+    ]
+  }
+}

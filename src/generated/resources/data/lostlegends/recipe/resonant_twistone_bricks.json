@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "lostlegends:resonant_soulgem"
+    },
+    "X": {
+      "item": "lostlegends:twistone"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XAX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lostlegends:resonant_twistone_bricks"
+  }
+}

@@ -32,7 +32,7 @@ public class DeepNether extends LLModuleBase {
 				NeoForgeMod.WATER_TYPE.value(),
 				Blocks.CRYING_OBSIDIAN.defaultBlockState(),
 				BLOCKS.DEMENTING_SOIL.getDefaultState(),
-				BLOCKS.WARPED_STONE.getDefaultState()
+				BLOCKS.TWISTONE.getDefaultState()
 		);
 
 	}
