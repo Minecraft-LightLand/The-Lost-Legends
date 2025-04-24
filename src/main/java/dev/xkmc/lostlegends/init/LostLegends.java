@@ -39,7 +39,6 @@ public class LostLegends {
 	private static final List<LLModuleBase> MODULES = new ArrayList<>();
 
 	public LostLegends(IEventBus bus) {
-		REGISTRATE.buildModCreativeTab("main", "The Lost Legends", b -> b.icon(DeepNether.BLOCKS.RAGING_OBSIDIAN::asStack));
 		MODULES.add(new DeepNether());
 		MODULES.add(new LLDecoBlocks());
 	}

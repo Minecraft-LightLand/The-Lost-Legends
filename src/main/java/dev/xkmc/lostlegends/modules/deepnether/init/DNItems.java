@@ -1,6 +1,8 @@
 package dev.xkmc.lostlegends.modules.deepnether.init;
 
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.item.PortalDissonator;
@@ -29,9 +31,17 @@ public class DNItems extends LLRegBase {
 				.model(this::flatItem)
 				.register();
 
-		PORTAL_DISSONATOR = reg.item("portal_dissonator", PortalDissonator::new)
+		PORTAL_DISSONATOR = descItem("portal_dissonator", PortalDissonator::new, "Right click nether / deep nether portal blocks to destroy them.")
 				.model(this::flatItem)
 				.register();
 
 	}
+
+
+	public <T extends Item> ItemBuilder<T, L2Registrate> descItem(String id, NonNullFunction<Item.Properties, T> factory, String str) {
+		var builder = reg.item(id, factory);
+		builder.getOwner().addRawLang("item." + builder.getOwner().getModid() + "." + builder.getName() + ".desc", str);
+		return builder;
+	}
+
 }

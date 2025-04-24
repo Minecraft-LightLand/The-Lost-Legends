@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostlegends:block/deep_netherrack_slab"
+    },
+    "type=double": {
+      "model": "lostlegends:block/deep_netherrack"
+    },
+    "type=top": {
+      "model": "lostlegends:block/deep_netherrack_slab_top"
+    }
+  }
+}

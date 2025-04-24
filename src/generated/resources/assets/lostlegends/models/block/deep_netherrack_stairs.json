@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "lostlegends:block/deepnether/deep_netherrack",
+    "side": "lostlegends:block/deepnether/deep_netherrack",
+    "top": "lostlegends:block/deepnether/deep_netherrack"
+  }
+}

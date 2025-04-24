@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lostlegends:scorched_bone_vines"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bone_meal"
+  }
+}

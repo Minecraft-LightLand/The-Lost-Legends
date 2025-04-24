@@ -223,6 +223,11 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
+	public LLBlockBuilder<T> desc(String str) {
+		builder.getOwner().addRawLang("block." + builder.getOwner().getModid() + "." + builder.getName() + ".desc", str);
+		return this;
+	}
+
 	public BlockEntry<T> register() {
 		if (item != null) item.build();
 		return builder.register();

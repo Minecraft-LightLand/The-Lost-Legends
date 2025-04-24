@@ -31,7 +31,7 @@ public class DNBlocks extends LLRegBase {
 			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL;
 
-	public final BlockEntry<SoilNyliumBlock> SCARLET_NYLIUM;
+	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
@@ -98,7 +98,7 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			SCARLET_NYLIUM = block("scarlet_nylium", SoilNyliumBlock::new)
+			CRIMSON_MYCELIUM = block("crimson_mycelium", SoilNyliumBlock::new)
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->

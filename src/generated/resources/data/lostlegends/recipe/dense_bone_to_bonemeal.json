@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lostlegends:dense_bone"
+    }
+  ],
+  "result": {
+    "count": 32,
+    "id": "minecraft:bone_meal"
+  }
+}

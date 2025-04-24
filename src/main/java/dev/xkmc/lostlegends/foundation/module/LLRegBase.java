@@ -16,7 +16,7 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 public class LLRegBase {
 
 	private final String path;
-	private final L2Registrate reg;
+	protected final L2Registrate reg;
 
 	public LLRegBase(L2Registrate reg, String path) {
 		this.path = path;

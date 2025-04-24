@@ -21,16 +21,16 @@ public class BrickSet {
 	public final BlockEntry<SlabBlock> slab;
 	public final BlockEntry<WallBlock> wall;
 
-	public BrickSet(LLRegBase reg, LLRegBase source, BlockEntry<Block> base) {
-		this(reg, base.getId().getPath(), base, source.blockLoc(base.getId().getPath()), base);
+	public static BrickSet from(LLRegBase reg, LLRegBase source, BlockEntry<Block> base) {
+		return new BrickSet(reg, base.getId().getPath(), base, source.blockLoc(base.getId().getPath()), base);
 	}
 
-	public BrickSet(LLRegBase reg, String id, BlockEntry<Block> base) {
-		this(reg, id + "_brick", base, reg.blockLoc(id + "_bricks"),
+	public static BrickSet of(LLRegBase reg, String id, BlockEntry<Block> base) {
+		return new BrickSet(reg, id + "_brick", base, reg.blockLoc(id + "_bricks"),
 				reg.block(id + "_bricks", Block::new).copyProp(base).cubeAll().pickaxe().simpleItem().register());
 	}
 
-	public BrickSet(LLRegBase reg, String id, BlockEntry<Block> base, ResourceLocation side, BlockEntry<Block> block) {
+	private BrickSet(LLRegBase reg, String id, BlockEntry<Block> base, ResourceLocation side, BlockEntry<Block> block) {
 		this.block = block;
 		stairs = reg.block(id + "_stairs", p -> new StairBlock(block.getDefaultState(), p))
 				.copyProp(base)

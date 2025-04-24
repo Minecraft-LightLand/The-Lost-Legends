@@ -1,12 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.item;
 
+import dev.xkmc.lostlegends.foundation.item.TooltipItem;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
 
-public class PortalDissonator extends Item {
+public class PortalDissonator extends TooltipItem {
 
 	public PortalDissonator(Properties properties) {
 		super(properties);
@@ -24,8 +24,10 @@ public class PortalDissonator extends Item {
 					ctx.getItemInHand().shrink(1);
 				}
 			}
-			return InteractionResult.CONSUME;
+			return InteractionResult.SUCCESS;
 		}
 		return super.useOn(ctx);
 	}
+
+
 }

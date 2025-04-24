@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.block.fluid;
 import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import dev.xkmc.lostlegends.modules.deepnether.util.SoulDamageHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
@@ -31,17 +32,7 @@ public abstract class LiquidSoulFluid extends BaseFlowingFluid implements LLFlow
 
 	@Override
 	public void entityInside(Entity e) {
-		if (e instanceof LivingEntity le) {
-			if (getFluidType() instanceof IFogBlock type && type.isClear(le)) {
-				return;
-			}
-			le.addEffect(new MobEffectInstance(DeepNether.EFFECTS.SOUL_DRAIN, 40));
-			le.setDeltaMovement(le.getDeltaMovement().add(0, -0.012, 0));
-		}
-		boolean hurt = e.hurt(e.damageSources().magic(), 4) || e.hurt(e.damageSources().lava(), 4);
-		if (hurt) {
-			e.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2 + e.getRandom().nextFloat() * 0.4F);
-		}
+		SoulDamageHelper.deal(e);
 	}
 
 	@Override

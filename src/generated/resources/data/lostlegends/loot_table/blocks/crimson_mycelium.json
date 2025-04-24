@@ -26,7 +26,7 @@
                   }
                 }
               ],
-              "name": "lostlegends:scarlet_nylium"
+              "name": "lostlegends:crimson_mycelium"
             },
             {
               "type": "minecraft:item",
@@ -43,5 +43,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lostlegends:blocks/scarlet_nylium"
+  "random_sequence": "lostlegends:blocks/crimson_mycelium"
 }

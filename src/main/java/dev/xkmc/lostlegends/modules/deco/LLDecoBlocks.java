@@ -4,6 +4,7 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.foundation.module.LLRecipeGen;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
@@ -11,6 +12,7 @@ import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -20,20 +22,24 @@ public class LLDecoBlocks extends LLModuleBase {
 	private static final String ID = "deco";
 	private static final LLRegBase reg = new LLRegBase(LostLegends.REGISTRATE, ID);
 
-	public static final BrickSet DEEP_BLACKSTONE, ASH_STONE, TWISTONE,
+	public static SimpleEntry<CreativeModeTab> TAB = LostLegends.REGISTRATE.buildModCreativeTab(ID,
+			"The Lost Legends - Building Blocks", b -> b.icon(LLDecoBlocks.RESONANT_TWISTONE::asStack));
+
+	public static final BrickSet DEEP_NETHERRACK, DEEP_BLACKSTONE, ASH_STONE, TWISTONE,
 			TWISTONE_BRICKS, CHISELED_TWISTONE, CHISELED_RESONANT_TWISTONE;
 	public static final BlockEntry<Block> RESONANT_TWISTONE;
 
 	static {
-		DEEP_BLACKSTONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.DEEP_BLACKSTONE);
-		ASH_STONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.ASH_STONE);
-		TWISTONE = new BrickSet(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.TWISTONE);
-		TWISTONE_BRICKS = new BrickSet(reg, "twistone", DeepNether.BLOCKS.TWISTONE);
-		CHISELED_TWISTONE = new BrickSet(reg, "chiseled_twistone", DeepNether.BLOCKS.TWISTONE);
+		DEEP_NETHERRACK = BrickSet.from(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.DEEP_NETHERRACK);
+		DEEP_BLACKSTONE = BrickSet.from(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.DEEP_BLACKSTONE);
+		ASH_STONE = BrickSet.from(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.ASH_STONE);
+		TWISTONE = BrickSet.from(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.TWISTONE);
+
+		TWISTONE_BRICKS = BrickSet.of(reg, "twistone", DeepNether.BLOCKS.TWISTONE);
+		CHISELED_TWISTONE = BrickSet.of(reg, "chiseled_twistone", DeepNether.BLOCKS.TWISTONE);
 		RESONANT_TWISTONE = reg.block("resonant_twistone_bricks", Block::new)
-				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE)
-				.cubeAll().pickaxe().simpleItem().register();
-		CHISELED_RESONANT_TWISTONE = new BrickSet(reg, "chiseled_resonant_twistone", DeepNether.BLOCKS.RESONANT_TWISTONE);
+				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE).cubeAll().pickaxe().simpleItem().register();
+		CHISELED_RESONANT_TWISTONE = BrickSet.of(reg, "chiseled_resonant_twistone", DeepNether.BLOCKS.RESONANT_TWISTONE);
 	}
 
 	public LLDecoBlocks() {

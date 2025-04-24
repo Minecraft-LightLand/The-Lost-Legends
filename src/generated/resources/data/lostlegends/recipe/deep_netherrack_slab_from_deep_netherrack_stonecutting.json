@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:deep_netherrack"
+  },
+  "result": {
+    "count": 2,
+    "id": "lostlegends:deep_netherrack_slab"
+  }
+}

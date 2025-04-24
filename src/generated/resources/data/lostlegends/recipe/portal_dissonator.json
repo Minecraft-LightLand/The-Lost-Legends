@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "lostlegends:amarast"
+    },
+    "X": {
+      "item": "lostlegends:resonant_soulgem"
+    }
+  },
+  "pattern": [
+    " B ",
+    "AXA",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "lostlegends:portal_dissonator"
+  }
+}

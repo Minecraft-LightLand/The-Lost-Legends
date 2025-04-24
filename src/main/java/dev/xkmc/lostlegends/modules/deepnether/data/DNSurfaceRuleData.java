@@ -24,7 +24,7 @@ public class DNSurfaceRuleData {
 		var ashBlock = makeStateRule(DeepNether.BLOCKS.ASH_BLOCK.get());
 		var ashStone = makeStateRule(DeepNether.BLOCKS.ASH_STONE.get());
 		var soil = makeStateRule(DeepNether.BLOCKS.NETHER_SOIL.get());
-		var nylium = makeStateRule(DeepNether.BLOCKS.SCARLET_NYLIUM.get());
+		var nylium = makeStateRule(DeepNether.BLOCKS.CRIMSON_MYCELIUM.get());
 		var soilSand = makeStateRule(DeepNether.BLOCKS.WEEPING_SAND.get());
 		var soulSoil = makeStateRule(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 		var bone = makeStateRule(DeepNether.BLOCKS.DENSE_BONE.get());
