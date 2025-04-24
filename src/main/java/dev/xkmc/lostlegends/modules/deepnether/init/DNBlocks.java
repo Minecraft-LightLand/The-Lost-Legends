@@ -4,12 +4,10 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
-import dev.xkmc.lostlegends.foundation.block.LLFluidBlock;
-import dev.xkmc.lostlegends.foundation.block.LLFluidType;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
-import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
+import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.AshBlossomBlock;
@@ -254,16 +252,10 @@ public class DNBlocks extends LLRegBase {
 
 		// fluid
 		{
-			var fog = new FogConfig(FogConfig.Type.VIEWPORT, 0, 0.25f, 0.5f,
-					0f, 8f, 2f, 24f, true);
-			LIQUID_SOUL = reg.fluid("liquid_soul",
-							blockLoc("liquid_soul_still"), blockLoc("liquid_soul_flow"),
-							(p, a, b) -> new LLFluidType(p, a, b, fog),
-							LiquidSoulFluid.Flowing::new)
+			LIQUID_SOUL = fluid("liquid_soul", LiquidSoulFluidType::new,
+					LiquidSoulFluid.Flowing::new, LiquidSoulFluid.Source::new)
 					.properties(p -> p.lightLevel(15).temperature(1500))
 					.fluidProperties(p -> p.explosionResistance(100).tickRate(10))
-					.source(LiquidSoulFluid.Source::new).block(LLFluidBlock::new).build()
-					.bucket().model(this::flatItem).build()
 					.register();
 		}
 

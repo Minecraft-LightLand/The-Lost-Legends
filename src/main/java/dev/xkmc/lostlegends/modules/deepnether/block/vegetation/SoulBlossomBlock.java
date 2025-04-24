@@ -2,8 +2,10 @@ package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 
 import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffect;
@@ -34,9 +36,18 @@ public class SoulBlossomBlock extends FlowerBlock implements IFogBlock {
 	@Override
 	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity e) {
 		if (level.isClientSide || level.getDifficulty() == Difficulty.PEACEFUL) return;
-		if (e instanceof LivingEntity le && !le.isInvulnerableTo(level.damageSources().wither())) {
-			le.addEffect(new MobEffectInstance(MobEffects.WITHER, 40));//TODO
+		if (e instanceof LivingEntity le && !isClear(le)) {
+			le.addEffect(new MobEffectInstance(DeepNether.EFFECTS.SOUL_DRAIN, 40));
+			boolean hurt = e.hurt(e.damageSources().magic(), 4) || e.hurt(e.damageSources().lava(), 4);
+			if (hurt) {
+				e.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2 + e.getRandom().nextFloat() * 0.4F);
+			}
 		}
+	}
+
+	@Override
+	public boolean isClear(LivingEntity le) {
+		return le.hasEffect(DeepNether.EFFECTS.SOUL_SHELTER);
 	}
 
 	@Override

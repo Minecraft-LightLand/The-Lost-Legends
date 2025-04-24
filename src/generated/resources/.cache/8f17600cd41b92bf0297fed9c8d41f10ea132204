@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-23T16:41:01.077507	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-04-24T09:32:07.009336	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
@@ -23,8 +23,8 @@ de5d79a9d577761e64c839774c96d370442de50f assets/lostlegends/blockstates/resonati
 48d187686477d383dc525dae86aecf3fa7847ec5 assets/lostlegends/blockstates/soul_shell.json
 abedd8af5d967fa5f2ae1a089f9a8e4d2b8c7a7b assets/lostlegends/blockstates/warped_stone.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-d1aeadcdadba97abf68f24d1fd1ed798d4e659cb assets/lostlegends/lang/en_ud.json
-584099eb02a9d498ebb31650d9268199e90540aa assets/lostlegends/lang/en_us.json
+a1161dcede0504574fadb7da37d2f4c6d6e4b308 assets/lostlegends/lang/en_ud.json
+bfc98bedefdff52f50cd10dd29ae4a9dc4c5f5e0 assets/lostlegends/lang/en_us.json
 848a0a793baec21b2c278f0069e0700b3d5bf5ea assets/lostlegends/models/block/amarast_ore.json
 a382827c899e230dc24685307d997ad0cf5a5346 assets/lostlegends/models/block/ash_block.json
 126974e48035293d7e5bca7b54cd6794d0bda1ee assets/lostlegends/models/block/ash_blossom.json
@@ -68,6 +68,7 @@ d327e51fbc471d553077ad83a6e68499ae49e8cd assets/lostlegends/models/item/hearth_o
 ec206ca4d43b0e1f9c8feba96a8dc3b45112e4c9 assets/lostlegends/models/item/liquid_soul_bucket.json
 d13fae617b5c667f8c76206800e0a434e17d4533 assets/lostlegends/models/item/nether_nylium.json
 6c9fb38a3805486ccb693f069de56456ef4ae583 assets/lostlegends/models/item/nether_soil.json
+723a7b12d5e5593d98ce738f5583f279749b93c4 assets/lostlegends/models/item/portal_dissonator.json
 976305172b56435741dddfac53b0b5b9b11c4e2d assets/lostlegends/models/item/raging_obsidian.json
 1230088d333e556868e077402e70c66857c6846c assets/lostlegends/models/item/resonating_soulgem.json
 5826838e622d140a04831798a267c8425f37da65 assets/lostlegends/models/item/resonating_warped_stone.json
@@ -77,7 +78,7 @@ d13fae617b5c667f8c76206800e0a434e17d4533 assets/lostlegends/models/item/nether_n
 dffe6452d3cd85b2176dbd5be41abb1f591c808b assets/lostlegends/models/item/warped_stone.json
 93fe0d5aa2309ca3f6bbe0c81630110bbabf9614 assets/lostlegends/models/item/weeping_sand.json
 6dea73ec8835a04f844138d005a6cdb212d9810d data/lostlegends/dimension/deep_nether.json
-f55d43ed2f378e0663e3379ff7ed5b8d1e367f60 data/lostlegends/dimension_type/deep_nether.json
+a73c56eec604af3a6b665cca5ce54aef90160694 data/lostlegends/dimension_type/deep_nether.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 870694c66cfd343d9eba4b2659ee2b26a0a6079e data/lostlegends/loot_table/blocks/ash_block.json
 9a3ccd270dfa22745d962bc8e9ec5888fe8f5683 data/lostlegends/loot_table/blocks/ash_blossom.json

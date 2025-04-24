@@ -14,6 +14,7 @@ public class DeepNether extends LLModuleBase {
 	public static final String ID = "deepnether";
 	public static DNBlocks BLOCKS = new DNBlocks(LostLegends.REGISTRATE, ID);
 	public static DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
+	public static DNEffects EFFECTS = new DNEffects(LostLegends.REGISTRATE, ID);
 	public static DNWorldGenReg WG = new DNWorldGenReg(LostLegends.REG);
 
 	@Override

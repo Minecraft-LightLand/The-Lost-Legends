@@ -106,9 +106,9 @@ public class ClientFogBlockHandler {
 		var e = event.getCamera().getEntity();
 		if (easingCache == null) return;
 		if (altEasingCache != null) {
-			altEasingCache.getFogConfig().lerpPlane(event, (float) (altEasing / MAX_EASING), altEasingCache.isClear(e));
+			altEasingCache.getFogConfig().lerpPlane(event, (float) (altEasing / MAX_EASING), altEasingCache.fogRange(e));
 		}
-		easingCache.getFogConfig().lerpPlane(event, (float) (easing / MAX_EASING), easingCache.isClear(e));
+		easingCache.getFogConfig().lerpPlane(event, (float) (easing / MAX_EASING), easingCache.fogRange(e));
 		event.setCanceled(true);
 	}
 

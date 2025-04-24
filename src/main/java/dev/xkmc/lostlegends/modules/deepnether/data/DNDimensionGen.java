@@ -45,7 +45,7 @@ public class DNDimensionGen {
 			ctx.register(DT_DEEP, new DimensionType(
 					OptionalLong.of(18000L),
 					false, false, false, false,
-					1, false, false,
+					16, false, false,
 					0, 256, 256,
 					BlockTags.INFINIBURN_NETHER,
 					BuiltinDimensionTypes.NETHER_EFFECTS, 0, spawn

@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.block.portal;
 import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNDimensionGen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -41,6 +43,7 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 	public LavaPortalBlock(BlockBehaviour.Properties prop) {
 		super(prop);
 	}
+
 
 	@Override
 	public boolean canPlaceLiquid(@Nullable Player player, BlockGetter level, BlockPos pos, BlockState state, Fluid fluid) {
@@ -164,5 +167,12 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 		}
 	}
 
-
+	@Override
+	protected BlockState updateShape(BlockState state, Direction dir, BlockState pos, LevelAccessor level, BlockPos nPos, BlockPos xPos) {
+		if (dir.getAxis() == Direction.Axis.Y)
+			return state;
+		if (pos.is(this) || pos.isSolid())
+			return state;
+		return Blocks.LAVA.defaultBlockState();
+	}
 }
