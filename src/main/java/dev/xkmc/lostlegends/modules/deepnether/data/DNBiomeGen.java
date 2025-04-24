@@ -24,7 +24,6 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import javax.annotation.Nullable;
 
-import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_DECORATION;
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
 
 public class DNBiomeGen {
@@ -82,7 +81,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_SOUL, biome(1787717,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.firePatch().soulfirePatch()
+							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().magmaBolb()
 							.ores().mushrooms().crimsonRoot()
@@ -93,7 +92,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_SOUL_HEART, biome(1787717,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.firePatch().soulfirePatch()
+							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().magmaBolb()
 							.ores().mushrooms().crimsonRoot()
@@ -183,9 +182,9 @@ public class DNBiomeGen {
 	}
 
 	private static Biome biome(int fogColor,
-			MobSpawnSettings.Builder spawns,
-			BiomeGenerationSettings.PlainBuilder gen,
-			@Nullable Music bgm
+							   MobSpawnSettings.Builder spawns,
+							   BiomeGenerationSettings.PlainBuilder gen,
+							   @Nullable Music bgm
 	) {
 		return biome(false, 2, 0, fogColor, spawns, gen, bgm);
 	}

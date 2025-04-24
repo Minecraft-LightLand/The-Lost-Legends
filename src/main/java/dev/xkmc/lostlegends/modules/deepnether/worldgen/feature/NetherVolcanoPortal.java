@@ -29,7 +29,7 @@ public class NetherVolcanoPortal extends OnGroundFeature<NetherVolcanoPortal.Dat
 		int max = data.maxDepth;
 		int mid = (min + max) / 2;
 		var raw = ctx.origin().atY(minHeight + mid);
-		var pos = findValid(level, raw, max - mid + 2);
+		var pos = findValid(level, data, raw, max - mid + 2);
 		if (pos == null) return false;
 		if (pos.getY() < minHeight + min || pos.getY() > minHeight + max)
 			return false;

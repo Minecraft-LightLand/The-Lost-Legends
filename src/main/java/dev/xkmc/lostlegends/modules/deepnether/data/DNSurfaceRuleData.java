@@ -1,4 +1,3 @@
-
 package dev.xkmc.lostlegends.modules.deepnether.data;
 
 import dev.xkmc.lostlegends.foundation.dimension.ClimateBuilder;

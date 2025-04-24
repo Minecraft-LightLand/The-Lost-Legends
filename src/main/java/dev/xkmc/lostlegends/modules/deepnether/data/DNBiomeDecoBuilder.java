@@ -49,8 +49,9 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
-	public DNBiomeDecoBuilder soulfirePatch() {
+	public DNBiomeDecoBuilder soulland() {
 		ins.simple.soulfirePatch.addTo(builder, UNDERGROUND_DECORATION);
+		ins.simple.soulVine.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 

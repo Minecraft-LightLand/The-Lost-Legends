@@ -3,7 +3,6 @@ package dev.xkmc.lostlegends.foundation.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import org.jetbrains.annotations.Nullable;

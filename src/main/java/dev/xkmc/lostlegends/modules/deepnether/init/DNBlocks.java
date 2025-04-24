@@ -8,12 +8,10 @@ import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
+import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
-import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.AshBlossomBlock;
-import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.BoneVineBody;
-import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.BoneVineHead;
-import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.SoulBlossomBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -44,6 +42,8 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
 	public final BlockEntry<BoneVineHead> SCORCHED_BONE_VINE;
 	public final BlockEntry<BoneVineBody> SCORCHED_BONE_VINE_PLANT;
+	public final BlockEntry<SoulVineHead> SCREAMING_SOUL_VINE;
+	public final BlockEntry<SoulVineBody> SCREAMING_SOUL_VINE_PLANT;
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;
@@ -228,6 +228,25 @@ public class DNBlocks extends LLRegBase {
 			SCORCHED_BONE_VINE_PLANT = block("scorched_bone_vines_plant", BoneVineBody::new)
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
 					.prop(p -> p.lightLevel(state -> state.getValue(SimpleLavaloggedBlock.LAVALOGGED) ? 15 : 10))
+					.fragile()
+					.cross()
+					.tag(BlockTags.CLIMBABLE)
+					.lootChance(0.1f)
+					.register();
+
+			SCREAMING_SOUL_VINE = block("screaming_soul_vines", SoulVineHead::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
+					.prop(p -> p.randomTicks().lightLevel(state -> state.getValue(SimpleSoulLoggedBlock.LOGGED) ? 15 : 7))
+					.fragile()
+					.cross()
+					.tag(BlockTags.CLIMBABLE)
+					.simpleItem()
+					.itemModel(this::flatBlockItem)
+					.register();
+
+			SCREAMING_SOUL_VINE_PLANT = block("screaming_soul_vines_plant", SoulVineBody::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
+					.prop(p -> p.lightLevel(state -> state.getValue(SimpleSoulLoggedBlock.LOGGED) ? 15 : 7))
 					.fragile()
 					.cross()
 					.tag(BlockTags.CLIMBABLE)

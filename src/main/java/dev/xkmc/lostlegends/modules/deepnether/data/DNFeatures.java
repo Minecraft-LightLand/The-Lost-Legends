@@ -136,6 +136,7 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey weepingVine = uni("weeping_vines");
 		public final FeatureKey weepingVineSparse = weepingVine.variant("_sparse");
 		public final FeatureKey boneVine = uni("scorched_bone_vines");
+		public final FeatureKey soulVine = uni("screaming_soul_vines");
 		public final FeatureKey ashBlossom = uni("ash_blossom");
 		public final FeatureKey crimsonRoot = uni("crimson_root");
 
@@ -165,8 +166,10 @@ public class DNFeatures extends LLFeatureReg {
 
 			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.F_WEEPING_VINE.get(), new WeepingVinesFeature.Data(
 					32, 6, 16, 8, 1 / 8f));
-			FeatureUtils.register(ctx, boneVine.cf, DeepNether.WG.F_BONE_VINE.get(), new ScorchedBoneVinesFeature.Data(
-					8, 16, 3, 7));
+			FeatureUtils.register(ctx, boneVine.cf, DeepNether.WG.F_FLUID_VINE.get(), new FluidLoggedVinesFeature.Data(
+					DeepNether.BLOCKS.SCORCHED_BONE_VINE.get(), 8, 16, 3, 7));
+			FeatureUtils.register(ctx, soulVine.cf, DeepNether.WG.F_FLUID_VINE.get(), new FluidLoggedVinesFeature.Data(
+					DeepNether.BLOCKS.SCREAMING_SOUL_VINE.get(), 8, 16, 3, 12));
 			FeatureUtils.register(ctx, ashBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(blossom.get())),
 					List.of(ashStone.get())));
@@ -186,6 +189,7 @@ public class DNFeatures extends LLFeatureReg {
 
 			weepingVine.place(ctx, cf, spread(40, PlacementUtils.RANGE_4_4));
 			boneVine.place(ctx, cf, layer(4));
+			soulVine.place(ctx, cf, spread(4, uniform(24, 33)));
 			weepingVineSparse.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
 			ashBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
 			crimsonRoot.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_10_10));

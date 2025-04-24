@@ -54,6 +54,7 @@
       "lostlegends:deepnether/struct/deep_nether_portal"
     ],
     [
+      "lostlegends:deepnether/simple/screaming_soul_vines",
       "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_nether",
       "lostlegends:deepnether/simple/crimson_root"

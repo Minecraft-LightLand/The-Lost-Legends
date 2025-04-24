@@ -146,9 +146,9 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 		if (rand.nextInt(100) == 0) {
 			level.playLocalSound(
-					(double)pos.getX() + 0.5,
-					(double)pos.getY() + 0.5,
-					(double)pos.getZ() + 0.5,
+					(double) pos.getX() + 0.5,
+					(double) pos.getY() + 0.5,
+					(double) pos.getZ() + 0.5,
 					SoundEvents.PORTAL_AMBIENT,
 					SoundSource.BLOCKS,
 					0.5F,
@@ -157,12 +157,12 @@ public class LavaPortalBlock extends Block implements LiquidBlockContainer, Port
 			);
 		}
 		for (int i = 0; i < 4; i++) {
-			double x = (double)pos.getX() + rand.nextDouble();
-			double y = (double)pos.getY() + rand.nextDouble();
-			double z = (double)pos.getZ() + rand.nextDouble();
-			double vx = ((double)rand.nextFloat() - 0.5) * 0.5;
-			double vy = ((double)rand.nextFloat() - 0.5) * 0.5;
-			double vz = ((double)rand.nextFloat() - 0.5) * 0.5;
+			double x = (double) pos.getX() + rand.nextDouble();
+			double y = (double) pos.getY() + rand.nextDouble();
+			double z = (double) pos.getZ() + rand.nextDouble();
+			double vx = ((double) rand.nextFloat() - 0.5) * 0.5;
+			double vy = ((double) rand.nextFloat() - 0.5) * 0.5;
+			double vz = ((double) rand.nextFloat() - 0.5) * 0.5;
 			level.addParticle(ParticleTypes.PORTAL, x, y, z, vx, vy, vz);
 		}
 	}

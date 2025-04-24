@@ -1,10 +1,10 @@
 {
   "type": "lostlegends:fluid_logged_vines",
   "config": {
-    "max_height": 7,
+    "max_height": 12,
     "min_height": 3,
     "spread": 8,
     "trial": 16,
-    "vine": "lostlegends:scorched_bone_vines"
+    "vine": "lostlegends:screaming_soul_vines"
   }
 }

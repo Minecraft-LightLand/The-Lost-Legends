@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-24T09:32:07.009336	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-04-24T10:41:57.759499	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
@@ -19,12 +19,14 @@ d724e1aa948574b06076aec8543b200c7ff0c49a assets/lostlegends/blockstates/lava_por
 de5d79a9d577761e64c839774c96d370442de50f assets/lostlegends/blockstates/resonating_warped_stone.json
 6158052e97cfb79d7273ab6c8be6e2495820ffb7 assets/lostlegends/blockstates/scorched_bone_vines.json
 625f415f565da2cfc011bbd46c46c7690d2d2bcb assets/lostlegends/blockstates/scorched_bone_vines_plant.json
+dae1ef8e9134f9a36a15efc6c13250d796be521b assets/lostlegends/blockstates/screaming_soul_vines.json
+3b44876563bc35a4faf34da1f01edf581b976276 assets/lostlegends/blockstates/screaming_soul_vines_plant.json
 8f9b29483379f26379581856753de03981cc7efc assets/lostlegends/blockstates/soul_blossom.json
 48d187686477d383dc525dae86aecf3fa7847ec5 assets/lostlegends/blockstates/soul_shell.json
 abedd8af5d967fa5f2ae1a089f9a8e4d2b8c7a7b assets/lostlegends/blockstates/warped_stone.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-a1161dcede0504574fadb7da37d2f4c6d6e4b308 assets/lostlegends/lang/en_ud.json
-bfc98bedefdff52f50cd10dd29ae4a9dc4c5f5e0 assets/lostlegends/lang/en_us.json
+711bd03933a9a49ebb8e50ca6fb916e1716b1acc assets/lostlegends/lang/en_ud.json
+00731d838cc8b5787ecb13fc2065a9a7c7ff5fbb assets/lostlegends/lang/en_us.json
 848a0a793baec21b2c278f0069e0700b3d5bf5ea assets/lostlegends/models/block/amarast_ore.json
 a382827c899e230dc24685307d997ad0cf5a5346 assets/lostlegends/models/block/ash_block.json
 126974e48035293d7e5bca7b54cd6794d0bda1ee assets/lostlegends/models/block/ash_blossom.json
@@ -45,6 +47,8 @@ a6b9d388740e464c8c93c84dfe96900995e23c76 assets/lostlegends/models/block/bone_pi
 4de24252f512592dfd489a2370abab666a27ab4e assets/lostlegends/models/block/resonating_warped_stone.json
 d9f0d8ffd49dda816534287c03381a0ffa849ae5 assets/lostlegends/models/block/scorched_bone_vines.json
 dcb8e6790fdd069aec4745f7b543fcafc60bfb28 assets/lostlegends/models/block/scorched_bone_vines_plant.json
+9bed97a6d4b410b974b38a6d512fc342ef31682a assets/lostlegends/models/block/screaming_soul_vines.json
+ba2425626475b8dd28d0279676e664bc84e75080 assets/lostlegends/models/block/screaming_soul_vines_plant.json
 44c30746dbb8d4ff0df27f48160d24343f394c0a assets/lostlegends/models/block/soul_blossom.json
 0856b47be3a3eaacf61ca27180dcb9510bdfec52 assets/lostlegends/models/block/soul_shell.json
 debfa239016c47413ecdf48ba5522d99ecf81c26 assets/lostlegends/models/block/warped_stone.json
@@ -73,6 +77,7 @@ d13fae617b5c667f8c76206800e0a434e17d4533 assets/lostlegends/models/item/nether_n
 1230088d333e556868e077402e70c66857c6846c assets/lostlegends/models/item/resonating_soulgem.json
 5826838e622d140a04831798a267c8425f37da65 assets/lostlegends/models/item/resonating_warped_stone.json
 58419a5c60e884ffe70fbb67906a365a029d5984 assets/lostlegends/models/item/scorched_bone_vines.json
+34763994a3ce540c767a1e86e66faec560c8d796 assets/lostlegends/models/item/screaming_soul_vines.json
 29a1bfc0763279ffadc9c8f548e36db6192cb297 assets/lostlegends/models/item/soul_blossom.json
 20d447db117347a03e33eeb7177d5e315428e566 assets/lostlegends/models/item/soul_shell.json
 dffe6452d3cd85b2176dbd5be41abb1f591c808b assets/lostlegends/models/item/warped_stone.json
@@ -98,6 +103,8 @@ b93eca5d3cc12f29ff1eb99439d02b1fef40b940 data/lostlegends/loot_table/blocks/neth
 f270eee1f51f4c574698bbc91f4ddacdf1f0d2c9 data/lostlegends/loot_table/blocks/resonating_warped_stone.json
 04920d2062d64a569e35626a64904237be7f925d data/lostlegends/loot_table/blocks/scorched_bone_vines.json
 d3c8298a1f07ab064c6259351a8ef630c975c832 data/lostlegends/loot_table/blocks/scorched_bone_vines_plant.json
+2c3c99016870cb20664f96fd3aabe29bf72e3a1b data/lostlegends/loot_table/blocks/screaming_soul_vines.json
+96e6af12613bf86eb88039cb585fd92c400b704e data/lostlegends/loot_table/blocks/screaming_soul_vines_plant.json
 e6edcfea01f6fbe6686a147e9b7a2afe57b86304 data/lostlegends/loot_table/blocks/soul_blossom.json
 6fb10b0bcc7e4b16414cca9cfcd98593433f2df7 data/lostlegends/loot_table/blocks/soul_shell.json
 d1228803111351c0b694a962500ac35b1579d666 data/lostlegends/loot_table/blocks/warped_stone.json
@@ -110,8 +117,8 @@ ff38c7682ee24f27522603d4e28be9eea286d354 data/lostlegends/worldgen/biome/crimson
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_forest.json
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_heart.json
 94ddc0e9a411f4a71c3ca6c9f9884c0234bc6187 data/lostlegends/worldgen/biome/golden_plains.json
-9024582684f0d162ea91b1b1ded9893a470d3616 data/lostlegends/worldgen/biome/soul.json
-9024582684f0d162ea91b1b1ded9893a470d3616 data/lostlegends/worldgen/biome/soul_heart.json
+ee2cbab09f8d18e410c2fb416feaac53fdd5948c data/lostlegends/worldgen/biome/soul.json
+ee2cbab09f8d18e410c2fb416feaac53fdd5948c data/lostlegends/worldgen/biome/soul_heart.json
 6287c3480e73e1b50dd1088743d78922e01b81e2 data/lostlegends/worldgen/biome/waste.json
 46d22766780964de3737197015a4da8a59bbdd4b data/lostlegends/worldgen/configured_carver/deep_nether_carver.json
 d1ff254d7d7162ac25d20d266298e0ed85f2c3da data/lostlegends/worldgen/configured_feature/deepnether/blob/blackstone.json
@@ -130,7 +137,8 @@ aedf3e583e15cbff25c2d01fd2d4ae3d4805eadd data/lostlegends/worldgen/configured_fe
 5f7b374a92cf043961a0f00df865cc91cbb9ff08 data/lostlegends/worldgen/configured_feature/deepnether/simple/ash_blossom.json
 e64ce8136190b3a2452e7b767af29e5b2ab4c540 data/lostlegends/worldgen/configured_feature/deepnether/simple/crimson_root.json
 3f5ae4f61b35d6bf260b597e8a73e8f72854b823 data/lostlegends/worldgen/configured_feature/deepnether/simple/fire_patch.json
-2bd80b6ea505fa8b35f69c0ba14cafc6b99689dc data/lostlegends/worldgen/configured_feature/deepnether/simple/scorched_bone_vines.json
+cf80fa7742e32e9101961eaafec4f52079543a1b data/lostlegends/worldgen/configured_feature/deepnether/simple/scorched_bone_vines.json
+827c59a1a85e5264c457a8abc0b766b5d3778998 data/lostlegends/worldgen/configured_feature/deepnether/simple/screaming_soul_vines.json
 91a379461a6b7210edfb08e2402106f7847a3eb8 data/lostlegends/worldgen/configured_feature/deepnether/simple/soul_fire_patch.json
 86e4d1dc9efd5835f2e4b1c69d16f94b1300cd94 data/lostlegends/worldgen/configured_feature/deepnether/simple/spring_close.json
 ce363b422464773fd5bdc40cd6ac4c263dd0b8ce data/lostlegends/worldgen/configured_feature/deepnether/simple/spring_open.json
@@ -158,6 +166,7 @@ a59995160ea882c7f445b05bd73eabfe1b4555c9 data/lostlegends/worldgen/placed_featur
 e0d68bf50d06a4eb3c738f44542af1752f7b3f38 data/lostlegends/worldgen/placed_feature/deepnether/simple/crimson_root.json
 2247caee97df7dd52ed80d1d2240dc0994ecbeff data/lostlegends/worldgen/placed_feature/deepnether/simple/fire_patch.json
 fc09117926c611cda8d884e064cf688c51be8a20 data/lostlegends/worldgen/placed_feature/deepnether/simple/scorched_bone_vines.json
+a5a50ebf05c84361d83c048d01095b3e14f928db data/lostlegends/worldgen/placed_feature/deepnether/simple/screaming_soul_vines.json
 d88675e9ca34117e2519ec7ab55a9f46646bfafe data/lostlegends/worldgen/placed_feature/deepnether/simple/soul_fire_patch.json
 985c6f92a283f07cc5b6b1a471ea1b4e42348ec7 data/lostlegends/worldgen/placed_feature/deepnether/simple/spring_close.json
 b231d6ad8f7184ea98a9579843b5533704a55f45 data/lostlegends/worldgen/placed_feature/deepnether/simple/spring_close_double.json
@@ -170,7 +179,7 @@ aa9ff83170320172545679c789723b12a4f2d342 data/lostlegends/worldgen/placed_featur
 cf11dc607e95cf26fdbde8b2be7bed168db40fc7 data/lostlegends/worldgen/placed_feature/deepnether/tree/crimson_fungus.json
 fc871977bf83f81560d688ad7eb12ff7576962ea data/lostlegends/worldgen/placed_feature/deepnether/tree/crimson_fungus_short.json
 47994c1219333acb1641960203f0ace46323e655 data/minecraft/tags/block/base_stone_nether.json
-f15acdcc80defe9f48ccd7f00123f30eea23dfb1 data/minecraft/tags/block/climbable.json
+2e87ec7b35b3680b4151edee50881e11f63bee3d data/minecraft/tags/block/climbable.json
 bf2cb5c724adb1634308a86e3f8ee932da24fa06 data/minecraft/tags/block/flowers.json
 8b58d0f59abe93c93970bed45792a5ae2b8d7ef6 data/minecraft/tags/block/infiniburn_overworld.json
 e14e4a7d6bb4913ac977d2895e9eac2b710c452f data/minecraft/tags/block/mineable/pickaxe.json

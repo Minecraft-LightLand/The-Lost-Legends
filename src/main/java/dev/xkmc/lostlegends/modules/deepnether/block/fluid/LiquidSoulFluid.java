@@ -1,8 +1,6 @@
-
 package dev.xkmc.lostlegends.modules.deepnether.block.fluid;
 
 import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
-import dev.xkmc.lostlegends.foundation.block.LLFluidType;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;

@@ -29,7 +29,7 @@ public class AshBlock extends Block implements IFogBlock {
 			Shapes.box(0, 0, 0, 1, 0.9F, 1);
 	private static final FogConfig FOG = new FogConfig(FogConfig.Type.VIEWPORT,
 			0.1f, 0.1f, 0.1f,
-			0f, 2f, 2f,12f, true);
+			0f, 2f, 2f, 12f, true);
 
 	public MapCodec<AshBlock> codec() {
 		return CODEC;

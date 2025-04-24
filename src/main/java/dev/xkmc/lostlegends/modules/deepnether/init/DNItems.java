@@ -19,7 +19,7 @@ public class DNItems extends LLRegBase {
 		GOLD_DEBRIS = reg.item("gold_debris", Item::new)
 				.model(this::flatItem)
 				.register();
-		DARK_COBBLE = reg.item("dark_cobble",Item::new)
+		DARK_COBBLE = reg.item("dark_cobble", Item::new)
 				.model(this::flatItem)
 				.register();
 		AMARAST = reg.item("amarast", Item::new)

@@ -1,6 +1,5 @@
 package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 
-import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.BlockTags;

@@ -13,21 +13,21 @@ public abstract class OnGroundFeature<T extends FeatureConfiguration> extends Fe
 		super(codec);
 	}
 
-	protected boolean isEmpty(LevelAccessor level, BlockPos pos) {
+	protected boolean isEmpty(LevelAccessor level, BlockPos pos, T data) {
 		return level.isEmptyBlock(pos);
 	}
 
-	protected @Nullable BlockPos findValid(LevelAccessor level, BlockPos origin, int maxStep) {
+	protected @Nullable BlockPos findValid(LevelAccessor level, T data, BlockPos origin, int maxStep) {
 		var pos = new BlockPos.MutableBlockPos();
 		pos.set(origin);
-		while (isEmpty(level, pos)) {
+		while (isEmpty(level, pos, data)) {
 			pos.move(0, -1, 0);
 			maxStep--;
 			if (maxStep < 0) return null;
 			if (level.isOutsideBuildHeight(pos)) return null;
 		}
 		maxStep++;
-		while (!isEmpty(level, pos)) {
+		while (!isEmpty(level, pos, data)) {
 			pos.move(0, 1, 0);
 			maxStep--;
 			if (maxStep < 0) return null;

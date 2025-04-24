@@ -3,8 +3,8 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
-import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
+import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 

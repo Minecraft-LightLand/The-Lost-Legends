@@ -186,7 +186,7 @@ public class HugeFungus extends Feature<HugeFungus.Data> {
 				Codec.INT.fieldOf("max_height").forGetter(Data::max),
 				Codec.FLOAT.fieldOf("thick_chance").forGetter(Data::thickChance),
 				Codec.FLOAT.fieldOf("huge_chance").forGetter(Data::largeChance),
-                Codec.BOOL.fieldOf("weeping").orElse(false).forGetter(Data::weeping),
+				Codec.BOOL.fieldOf("weeping").orElse(false).forGetter(Data::weeping),
 				Codec.BOOL.fieldOf("planted").orElse(false).forGetter(Data::planted)
 		).apply(i, Data::new));
 
