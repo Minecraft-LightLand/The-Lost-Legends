@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
-public class SoulDamageHelper {
+public class SoulEffectsHelper {
 
 	public static void deal(Entity e) {
 		if (e instanceof LivingEntity le) {

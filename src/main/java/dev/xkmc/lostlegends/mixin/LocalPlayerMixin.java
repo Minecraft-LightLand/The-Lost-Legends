@@ -2,7 +2,7 @@ package dev.xkmc.lostlegends.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import dev.xkmc.lostlegends.foundation.util.LavaHandlers;
+import dev.xkmc.lostlegends.modules.deepnether.util.LavaEffectsHelper;
 import net.minecraft.client.player.LocalPlayer;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -14,7 +14,7 @@ public class LocalPlayerMixin {
 
 	@WrapOperation(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;canSwimInFluidType(Lnet/neoforged/neoforge/fluids/FluidType;)Z"))
 	public boolean lostlegends$canSwim$lavaSwim(LocalPlayer instance, FluidType fluidType, Operation<Boolean> original) {
-		return original.call(instance, fluidType) || fluidType == NeoForgeMod.LAVA_TYPE.value() && LavaHandlers.canLavaSwim(instance);
+		return original.call(instance, fluidType) || fluidType == NeoForgeMod.LAVA_TYPE.value() && LavaEffectsHelper.canLavaSwim(instance);
 	}
 
 }

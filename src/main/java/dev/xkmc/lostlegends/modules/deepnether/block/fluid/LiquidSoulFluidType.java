@@ -3,7 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.block.fluid;
 import dev.xkmc.lostlegends.foundation.block.LLFluidType;
 import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
-import dev.xkmc.lostlegends.modules.deepnether.util.SoulDamageHelper;
+import dev.xkmc.lostlegends.modules.deepnether.util.SoulEffectsHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -23,7 +23,7 @@ public class LiquidSoulFluidType extends LLFluidType implements IFogBlock {
 
 	@Override
 	public boolean isClear(LivingEntity le) {
-		return SoulDamageHelper.isClear(le);
+		return SoulEffectsHelper.isClear(le);
 	}
 
 }

@@ -3,9 +3,8 @@ package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
-import dev.xkmc.lostlegends.modules.deepnether.util.SoulDamageHelper;
+import dev.xkmc.lostlegends.modules.deepnether.util.SoulEffectsHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
@@ -36,7 +35,7 @@ public class SoulBlossomBlock extends FlowerBlock implements IFogBlock {
 	@Override
 	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity e) {
 		if (level.isClientSide || level.getDifficulty() == Difficulty.PEACEFUL) return;
-		SoulDamageHelper.deal(e);
+		SoulEffectsHelper.deal(e);
 	}
 
 	@Override
