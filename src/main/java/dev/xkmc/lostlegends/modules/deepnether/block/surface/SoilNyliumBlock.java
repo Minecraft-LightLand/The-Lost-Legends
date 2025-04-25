@@ -21,14 +21,12 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 
 public class SoilNyliumBlock extends Block implements BonemealableBlock {
-	public static final MapCodec<SoilNyliumBlock> CODEC = simpleCodec(SoilNyliumBlock::new);
 
-	public MapCodec<SoilNyliumBlock> codec() {
-		return CODEC;
-	}
+	private final ResourceKey<ConfiguredFeature<?, ?>> feature;
 
-	public SoilNyliumBlock(BlockBehaviour.Properties prop) {
+	public SoilNyliumBlock(BlockBehaviour.Properties prop, ResourceKey<ConfiguredFeature<?, ?>> feature) {
 		super(prop);
+		this.feature = feature;
 	}
 
 	private static boolean canBeNylium(BlockState state, LevelReader level, BlockPos pos) {
@@ -73,7 +71,7 @@ public class SoilNyliumBlock extends Block implements BonemealableBlock {
 		BlockPos up = pos.above();
 		ChunkGenerator cgen = level.getChunkSource().getGenerator();
 		Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
-		place(registry, NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL, level, cgen, rand, up);
+		place(registry, feature, level, cgen, rand, up);
 	}
 
 	private void place(Registry<ConfiguredFeature<?, ?>> reg, ResourceKey<ConfiguredFeature<?, ?>> cf,

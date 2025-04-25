@@ -24,6 +24,10 @@ public class SoulEffectsHelper {
 		}
 	}
 
+	public static boolean canStand(LivingEntity le) {
+		return le.hasEffect(DeepNether.EFFECTS.SOUL_SHELTER);
+	}
+
 	public static boolean isClear(LivingEntity le) {
 		return le.hasEffect(DeepNether.EFFECTS.SOUL_SHELTER);
 	}

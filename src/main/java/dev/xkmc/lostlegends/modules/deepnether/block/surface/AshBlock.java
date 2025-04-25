@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.block.surface;
 import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.foundation.fogblock.FogConfig;
 import dev.xkmc.lostlegends.foundation.fogblock.IFogBlock;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,7 +31,7 @@ public class AshBlock extends Block implements IFogBlock {
 			Shapes.box(0, 0, 0, 1, 0.9F, 1);
 	private static final FogConfig FOG = new FogConfig(FogConfig.Type.VIEWPORT,
 			0.1f, 0.1f, 0.1f,
-			0f, 2f, 2f, 12f, true);
+			0f, 2f, 2f, 24f, true);
 
 	public MapCodec<AshBlock> codec() {
 		return CODEC;
@@ -47,7 +49,13 @@ public class AshBlock extends Block implements IFogBlock {
 		return Shapes.empty();
 	}
 
+	@Override
+	public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {
+		return isClear(entity);
+	}
+
 	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity e) {
+		if (e instanceof LivingEntity le && isClear(le)) return;
 		if (!(e instanceof LivingEntity) || e.getInBlockState().is(this)) {
 			e.makeStuckInBlock(state, new Vec3(0.9, 1.5, 0.9));
 			if (e instanceof LivingEntity le && !level.isClientSide() && isInWall(le))
@@ -68,16 +76,16 @@ public class AshBlock extends Block implements IFogBlock {
 		if (ctx instanceof EntityCollisionContext ecc) {
 			Entity entity = ecc.getEntity();
 			if (entity != null) {
-				if (entity.fallDistance > 2.5F) {
+				if (entity.fallDistance > 2.5F)
 					return FALLING_COLLISION_SHAPE;
-				}
-				boolean flag = entity instanceof FallingBlockEntity;
-				if (flag || canEntityWalkOnAsh(entity) && ctx.isAbove(Shapes.block(), pos, false) && !ctx.isDescending()) {
-					return super.getCollisionShape(state, level, pos, ctx);
-				}
+				if (entity instanceof FallingBlockEntity)
+					return Shapes.block();
+				if (entity instanceof LivingEntity le && isClear(le) && !ctx.isDescending() &&
+						ctx.isAbove(Shapes.block(), pos, true) &&
+						!level.getBlockState(pos.above()).is(this))
+					return Shapes.block();
 			}
 		}
-
 		return Shapes.empty();
 	}
 
@@ -94,11 +102,12 @@ public class AshBlock extends Block implements IFogBlock {
 		return FOG;
 	}
 
-	public static boolean canEntityWalkOnAsh(Entity e) {
-		return false;//TODO
+	@Override
+	public boolean isClear(LivingEntity le) {
+		return le.hasEffect(DeepNether.EFFECTS.ASH_BOUND);
 	}
 
-	public boolean isInWall(LivingEntity le) {
+	private boolean isInWall(LivingEntity le) {
 		if (le.noPhysics) {
 			return false;
 		}

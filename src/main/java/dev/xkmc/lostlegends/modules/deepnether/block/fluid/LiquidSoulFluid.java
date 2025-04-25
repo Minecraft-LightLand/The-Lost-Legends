@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.LevelEvent;
@@ -29,6 +30,11 @@ public abstract class LiquidSoulFluid extends BaseFlowingFluid implements LLFlow
 	@Override
 	public void entityInside(Entity e) {
 		SoulEffectsHelper.deal(e);
+	}
+
+	@Override
+	public boolean canStandOn(LivingEntity le) {
+		return SoulEffectsHelper.canStand(le);
 	}
 
 	@Override

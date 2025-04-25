@@ -13,6 +13,7 @@ import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.*;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
@@ -98,7 +99,8 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.register();
 
-			CRIMSON_MYCELIUM = block("crimson_mycelium", SoilNyliumBlock::new)
+			CRIMSON_MYCELIUM = block("crimson_mycelium", p -> new SoilNyliumBlock(p,
+					NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL))
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->

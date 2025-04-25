@@ -32,7 +32,8 @@ public class LLClientEventHandlers {
 	public static void onFogSetup(ViewportEvent.RenderFog event) {
 		if (event.getType() == FogType.LAVA) {
 			if (event.getCamera().getEntity() instanceof LivingEntity le && LavaEffectsHelper.lavaVision(le)) {
-				event.setFarPlaneDistance(12f);
+				event.setFarPlaneDistance(24f);
+				event.setCanceled(true);
 			}
 		}
 		ClientFogBlockHandler.onFogSetup(event);

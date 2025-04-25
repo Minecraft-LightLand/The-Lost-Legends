@@ -4,6 +4,7 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.PotionBuilder;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
+import dev.xkmc.lostlegends.foundation.module.PotionSet;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
@@ -15,7 +16,7 @@ import net.minecraft.world.item.alchemy.Potions;
 
 public class DNEffects extends LLRegBase {
 
-	public final SimpleEntry<MobEffect> SOUL_DRAIN, SOUL_SHELTER, LAVA_AFFINITY;
+	public final SimpleEntry<MobEffect> SOUL_DRAIN, SOUL_SHELTER, LAVA_AFFINITY, ASH_BOUND, LAVA_WALKER;
 
 
 	public DNEffects(L2Registrate reg, String path) {
@@ -24,28 +25,29 @@ public class DNEffects extends LLRegBase {
 						() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xAD7A64),
 						"Improve vision under lava. Increase motion speed under lava. Provide fire immunity.")
 				.lang(MobEffect::getDescriptionId, "Lava Affinity").register());
+		LAVA_WALKER = new SimpleEntry<>(reg.effect("lava_walker",
+						() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xff7f3f),
+						"Allows walking on lava. Provide fire immunity.")
+				.lang(MobEffect::getDescriptionId, "Lava Walker").register());
 		SOUL_SHELTER = new SimpleEntry<>(reg.effect("soul_shelter",
 						() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x3f7fff),
-						"Clears soul fog. Prevent environmental soul damage. Provide fire immunity.")
+						"Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.")
 				.lang(MobEffect::getDescriptionId, "Soul Shelter").register());
+		ASH_BOUND = new SimpleEntry<>(reg.effect("ash_bound",
+						() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x7f7f7f),
+						"Reduce ash fog. Player would not suffocate in ash, and would be able to walk on and climb in ash")
+				.lang(MobEffect::getDescriptionId, "Ash Bound").register());
 		SOUL_DRAIN = new SimpleEntry<>(reg.effect("soul_drain",
 						() -> new SoulDrainEffect(MobEffectCategory.HARMFUL, 0x003f7f),
 						"Reduce player speed, tool use speed, and range")
 				.lang(MobEffect::getDescriptionId, "Soul Drain").register());
 
 		var builder = new PotionBuilder(LostLegends.REGISTRATE);
-		var lava_affinity = builder.regPotion("lava_affinity", "lava_affinity", LAVA_AFFINITY, Potions.FIRE_RESISTANCE, DeepNether.ITEMS.HEARTH_CRYSTAL, 3600, 0);
-		var lava_affinity_long = builder.regPotion("long_lava_affinity", "lava_affinity", LAVA_AFFINITY, lava_affinity, Items.REDSTONE, 9600, 0);
-		builder.addMix(Potions.LONG_FIRE_RESISTANCE, DeepNether.ITEMS.HEARTH_CRYSTAL, lava_affinity_long);
-
-		var soul_shelter = builder.regPotion("soul_shelter", "soul_shelter", SOUL_SHELTER, Potions.FIRE_RESISTANCE, DeepNether.BLOCKS.SOUL_BLOSSOM, 3600, 0);
-		var soul_shelter_long = builder.regPotion("long_soul_shelter", "soul_shelter", SOUL_SHELTER, soul_shelter, Items.REDSTONE, 9600, 0);
-		builder.addMix(Potions.LONG_FIRE_RESISTANCE, DeepNether.BLOCKS.SOUL_BLOSSOM, soul_shelter_long);
-
-		var soul_drain = builder.regPotion("soul_drain", "soul_drain", SOUL_DRAIN, soul_shelter, Items.FERMENTED_SPIDER_EYE, 3600, 0);
-		var soul_drain_long = builder.regPotion("long_soul_drain", "soul_drain", SOUL_DRAIN, soul_drain, Items.REDSTONE, 9600, 0);
-		builder.addMix(soul_shelter_long, Items.FERMENTED_SPIDER_EYE, soul_drain_long);
-		builder.regPotion("strong_soul_drain", "soul_drain", SOUL_DRAIN, soul_drain, Items.GLOWSTONE_DUST, 1800, 1);
+		var lavaAff = PotionSet.potion2(builder, "lava_affinity", LAVA_AFFINITY, Potions.FIRE_RESISTANCE, DeepNether.ITEMS.HEARTH_CRYSTAL, 3600, 9600, 0);
+		var lavaWalker = PotionSet.potion2(builder, "lava_walker", LAVA_WALKER, lavaAff, Items.FERMENTED_SPIDER_EYE, 3600, 9600, 0);
+		var ashBound = PotionSet.potion2(builder, "ash_bound", ASH_BOUND, Potions.AWKWARD, DeepNether.BLOCKS.ASH_BLOSSOM, 3600, 9600, 0);
+		var soulShelter = PotionSet.potion2(builder, "soul_shelter", SOUL_SHELTER, Potions.FIRE_RESISTANCE, DeepNether.BLOCKS.SOUL_BLOSSOM, 3600, 9600, 0);
+		var soulDrain = PotionSet.potion3(builder, "soul_drain", SOUL_DRAIN, soulShelter, Items.FERMENTED_SPIDER_EYE, 3600, 9600, 1800, 0, 1);
 
 		LostLegends.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> builder.regTab(DeepNether.TAB.key()));
 	}

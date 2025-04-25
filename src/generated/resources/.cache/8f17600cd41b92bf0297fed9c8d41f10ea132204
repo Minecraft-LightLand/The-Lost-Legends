@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-24T20:04:11.782403	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-04-25T08:52:55.264668	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 de44c4e3c557859a37a33bd00b7772cc4f4c6fdc assets/lostlegends/blockstates/ash_block.json
 8dd3a15082b474d6e2a71a90ff065ad78999f285 assets/lostlegends/blockstates/ash_blossom.json
@@ -50,8 +50,8 @@ c747e11d49a497f3d44ac9904d38484ddf4348a5 assets/lostlegends/blockstates/twistone
 b0d1fa152acb965cb7e0cc6a1fd26e9e92e343a7 assets/lostlegends/blockstates/twistone_stairs.json
 f646be5ab920c0f5658be50774c62ace8836a682 assets/lostlegends/blockstates/twistone_wall.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-9f94995c03b1bfb2a9525b9d53a27e6188fb3c1f assets/lostlegends/lang/en_ud.json
-4c43bdca2f540821c352de5e91c584e1f3e50c3a assets/lostlegends/lang/en_us.json
+87e8aad424a4ae7d75256c3f892ba5e8d799e0f4 assets/lostlegends/lang/en_ud.json
+fc0e5141cd02e1504391e1fc0edfc877b2479498 assets/lostlegends/lang/en_us.json
 848a0a793baec21b2c278f0069e0700b3d5bf5ea assets/lostlegends/models/block/amarast_ore.json
 a382827c899e230dc24685307d997ad0cf5a5346 assets/lostlegends/models/block/ash_block.json
 126974e48035293d7e5bca7b54cd6794d0bda1ee assets/lostlegends/models/block/ash_blossom.json
