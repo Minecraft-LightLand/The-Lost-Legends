@@ -44,6 +44,11 @@ public abstract class FeatureGroup {
 		return List.of(count, InSquarePlacement.spread(), range, BiomeFilter.biome());
 	}
 
+
+	public List<PlacementModifier> rarity(int rarity) {
+		return List.of(RarityFilter.onAverageOnceEvery(rarity), BiomeFilter.biome());
+	}
+
 	public List<PlacementModifier> spread(int count, PlacementModifier m) {
 		return spread(CountPlacement.of(count), m);
 	}

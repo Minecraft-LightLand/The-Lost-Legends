@@ -24,7 +24,8 @@
   "features": [
     [],
     [
-      "lostlegends:deepnether/struct/lava_lake"
+      "lostlegends:deepnether/struct/lava_lake",
+      "lostlegends:deepnether/struct/lava_island"
     ],
     [],
     [

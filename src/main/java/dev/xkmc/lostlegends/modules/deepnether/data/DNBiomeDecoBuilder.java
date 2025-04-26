@@ -52,6 +52,7 @@ public class DNBiomeDecoBuilder {
 		ins.simple.soulfirePatch.addTo(builder, UNDERGROUND_DECORATION);
 		ins.simple.soulVine.addTo(builder, VEGETAL_DECORATION);
 		ins.struct.soulLake.addTo(builder, LAKES);
+		ins.struct.soulIsland.addTo(builder, LAKES);
 		return this;
 	}
 
@@ -77,8 +78,9 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
-	public DNBiomeDecoBuilder lavaLake(){
+	public DNBiomeDecoBuilder lavaLake() {
 		ins.struct.lavaLake.addTo(builder, LAKES);
+		ins.struct.lavaIsland.addTo(builder, LAKES);
 		return this;
 	}
 

@@ -3,8 +3,8 @@ package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.xkmc.lostlegends.foundation.feature.ILakeFeature;
+import dev.xkmc.lostlegends.foundation.feature.IslandFeature;
 import dev.xkmc.lostlegends.foundation.feature.LakeMaker;
-import dev.xkmc.lostlegends.foundation.feature.OnGroundFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -13,11 +13,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class LakeFeature extends OnGroundFeature<LakeFeature.Data> implements ILakeFeature {
+public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> implements ILakeFeature {
 
 	private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
 
-	public LakeFeature() {
+	public LakeIslandFeature() {
 		super(Data.CODEC);
 	}
 
@@ -25,15 +25,15 @@ public class LakeFeature extends OnGroundFeature<LakeFeature.Data> implements IL
 	public boolean place(FeaturePlaceContext<Data> ctx) {
 		WorldGenLevel level = ctx.level();
 		Data data = ctx.config();
-		BlockPos pos = findValid(level, data, ctx.origin(), 8);
+		RandomSource rand = ctx.random();
+		BlockPos pos = checkHeightAndRadius(level, ctx.origin(), data, data.maxWidth / 2, 0.8, 8);
 		if (pos == null)
 			return false;
-		RandomSource rand = ctx.random();
 
 		pos = pos.below(data.depth);
 		int size = rand.nextInt(data.minTrial, data.maxTrial);
 
-		var ins = new LakeMaker(this, false, data.maxWidth, data.maxHeight);
+		var ins = new LakeMaker(this, true, data.maxWidth, data.maxHeight);
 		ins.pre(rand, data, size);
 		if (!ins.test(level, pos, data))
 			return false;
@@ -59,8 +59,9 @@ public class LakeFeature extends OnGroundFeature<LakeFeature.Data> implements IL
 
 	public record Data(
 			BlockState fluid, BlockState barrier,
-			int depth, int maxWidth, int maxHeight, int minTrial, int maxTrial, int radius
-	) implements FeatureConfiguration, ILakeFeature.Data {
+			int depth, int maxWidth, int maxHeight, int minTrial, int maxTrial, int radius,
+			int height, int clearance
+	) implements FeatureConfiguration, ILakeFeature.Data, IslandData {
 		public static final Codec<Data> CODEC = RecordCodecBuilder.create(i -> i.group(
 				BlockState.CODEC.fieldOf("fluid").forGetter(Data::fluid),
 				BlockState.CODEC.fieldOf("barrier").forGetter(Data::barrier),
@@ -69,7 +70,9 @@ public class LakeFeature extends OnGroundFeature<LakeFeature.Data> implements IL
 				Codec.INT.fieldOf("max_height").forGetter(Data::maxHeight),
 				Codec.INT.fieldOf("min_component").forGetter(Data::minTrial),
 				Codec.INT.fieldOf("max_component").forGetter(Data::maxTrial),
-				Codec.INT.fieldOf("component_radius").forGetter(Data::radius)
+				Codec.INT.fieldOf("component_radius").forGetter(Data::radius),
+				Codec.INT.fieldOf("island_height").forGetter(Data::height),
+				Codec.INT.fieldOf("island_clearance").forGetter(Data::clearance)
 		).apply(i, Data::new));
 	}
 

@@ -24,7 +24,8 @@
   "features": [
     [],
     [
-      "lostlegends:deepnether/struct/soul_lake"
+      "lostlegends:deepnether/struct/soul_lake",
+      "lostlegends:deepnether/struct/soul_island"
     ],
     [
       "minecraft:basalt_pillar"

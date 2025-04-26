@@ -16,12 +16,12 @@ public class DNWorldGenReg {
 	public final Val<NetherVolcanoPortal> NETHER_PORTAL;
 	public final Val<InGroundFeature> IN_GROUND;
 	public final Val<LakeFeature> LAKE;
+	public final Val<LakeIslandFeature> LAKE_ISLAND;
 	public final Val<HugeFungus> TREE;
 	public final Val<WeepingVinesFeature> WEEPING_VINE;
 	public final Val<FluidLoggedVinesFeature> FLUID_VINE;
 	public final Val<StonePile> STONE_PILE;
 	public final Val<ColumnClusters> COLUMN_CLUSTERS;
-
 
 	public DNWorldGenReg(Reg reg) {
 		var cgreg = CdcReg.of(reg, BuiltInRegistries.CHUNK_GENERATOR);
@@ -33,6 +33,7 @@ public class DNWorldGenReg {
 		var freg = SR.of(reg, BuiltInRegistries.FEATURE);
 		IN_GROUND = freg.reg("in_ground", InGroundFeature::new);
 		LAKE = freg.reg("lake", LakeFeature::new);
+		LAKE_ISLAND = freg.reg("lake_island", LakeIslandFeature::new);
 		TREE = freg.reg("huge_fungus", HugeFungus::new);
 		WEEPING_VINE = freg.reg("weeping_vines", WeepingVinesFeature::new);
 		FLUID_VINE = freg.reg("fluid_logged_vines", FluidLoggedVinesFeature::new);

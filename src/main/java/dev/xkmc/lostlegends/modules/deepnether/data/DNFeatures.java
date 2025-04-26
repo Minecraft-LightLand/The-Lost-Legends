@@ -248,6 +248,8 @@ public class DNFeatures extends LLFeatureReg {
 
 		public final FeatureKey lavaLake = uni("lava_lake");
 		public final FeatureKey soulLake = uni("soul_lake");
+		public final FeatureKey lavaIsland = uni("lava_island");
+		public final FeatureKey soulIsland = uni("soul_island");
 
 		public Structs(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -273,6 +275,16 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					4, 16, 8, 4, 8, 6));
+
+			FeatureUtils.register(ctx, lavaIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
+					Blocks.LAVA.defaultBlockState(), DeepNether.BLOCKS.MAGMA.getDefaultState(),
+					4, 16, 8, 6, 10, 6,
+					16, 6));
+			FeatureUtils.register(ctx, soulIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
+					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
+					4, 16, 8, 6, 10, 6,
+					16, 6));
 		}
 
 		@Override
@@ -282,6 +294,8 @@ public class DNFeatures extends LLFeatureReg {
 			darkPile.place(ctx, cf, spread(1, PlacementUtils.RANGE_10_10));
 			lavaLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
 			soulLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
+			lavaIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
+			soulIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
 		}
 
 	}
