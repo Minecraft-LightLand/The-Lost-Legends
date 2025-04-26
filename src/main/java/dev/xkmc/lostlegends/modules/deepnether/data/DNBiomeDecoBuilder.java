@@ -73,7 +73,17 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder magmaBolb() {
-		builder.addFeature(UNDERGROUND_STRUCTURES, OrePlacements.ORE_MAGMA);//TODO
+		ins.blob.magma.addTo(builder, UNDERGROUND_STRUCTURES);
+		return this;
+	}
+
+	public DNBiomeDecoBuilder amber() {
+		ins.simple.amber.addTo(builder, UNDERGROUND_DECORATION);
+		return this;
+	}
+
+	public DNBiomeDecoBuilder ecto() {
+		ins.simple.ecto.addTo(builder, UNDERGROUND_DECORATION);
 		return this;
 	}
 
@@ -107,14 +117,14 @@ public class DNBiomeDecoBuilder {
 	public DNBiomeDecoBuilder crimsonPlains() {
 		ins.simple.weepingVineSparse.addTo(builder, VEGETAL_DECORATION);
 		ins.tree.crimsonShort.addTo(builder, VEGETAL_DECORATION);
-		builder.addFeature(VEGETAL_DECORATION, NetherPlacements.CRIMSON_FOREST_VEGETATION);
+		ins.simple.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 
 	public DNBiomeDecoBuilder crimsonForest() {
 		ins.simple.weepingVine.addTo(builder, VEGETAL_DECORATION);
 		ins.tree.crimson.addTo(builder, VEGETAL_DECORATION);
-		builder.addFeature(VEGETAL_DECORATION, NetherPlacements.CRIMSON_FOREST_VEGETATION);
+		ins.simple.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 

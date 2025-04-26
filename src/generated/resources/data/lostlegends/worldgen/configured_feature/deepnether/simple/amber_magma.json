@@ -1,0 +1,12 @@
+{
+  "type": "lostlegends:in_ground",
+  "config": {
+    "base": {
+      "Name": "lostlegends:amber_magma"
+    },
+    "test": {
+      "block": "lostlegends:deep_netherrack",
+      "predicate_type": "minecraft:block_match"
+    }
+  }
+}

@@ -29,7 +29,7 @@
       "lostlegends:deepnether/blob/netherrack_small",
       "lostlegends:deepnether/blob/netherrack_large",
       "lostlegends:deepnether/blob/blackstone",
-      "minecraft:ore_magma"
+      "lostlegends:deepnether/blob/magma"
     ],
     [],
     [],
@@ -43,7 +43,8 @@
     ],
     [
       "lostlegends:deepnether/simple/fire_patch",
-      "lostlegends:deepnether/struct/darkstone_pile"
+      "lostlegends:deepnether/struct/darkstone_pile",
+      "lostlegends:deepnether/simple/amber_magma"
     ],
     [
       "lostlegends:deepnether/struct/deep_nether_portal",

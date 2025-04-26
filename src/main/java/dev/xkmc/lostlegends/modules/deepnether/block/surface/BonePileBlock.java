@@ -13,14 +13,23 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BonePileBlock extends Block {
 
-	protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
+	protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
 	public BonePileBlock(Properties prop) {
 		super(prop);
 	}
 
 	@Override
+	public void stepOn(Level level, BlockPos pos, BlockState state, Entity e) {
+		if (e instanceof LivingEntity le) {
+			le.igniteForTicks(4);
+			le.hurt(le.damageSources().hotFloor(), 1);
+		}
+	}
+
+	@Override
 	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity e) {
+
 		if (e instanceof LivingEntity le) {
 			le.inBlockState = state;
 			le.igniteForTicks(4);

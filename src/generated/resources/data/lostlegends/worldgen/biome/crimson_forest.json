@@ -29,7 +29,7 @@
       "lostlegends:deepnether/blob/netherrack_small",
       "lostlegends:deepnether/blob/netherrack_large",
       "lostlegends:deepnether/blob/blackstone",
-      "minecraft:ore_magma"
+      "lostlegends:deepnether/blob/magma"
     ],
     [],
     [],
@@ -54,7 +54,7 @@
       "minecraft:red_mushroom_nether",
       "lostlegends:deepnether/simple/weeping_vines",
       "lostlegends:deepnether/tree/crimson_fungus",
-      "minecraft:crimson_forest_vegetation"
+      "lostlegends:deepnether/simple/crimson_vegetation"
     ]
   ],
   "has_precipitation": false,

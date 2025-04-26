@@ -24,12 +24,11 @@ public class DNSurfaceRuleData {
 		var ashBlock = makeStateRule(DeepNether.BLOCKS.ASH_BLOCK.get());
 		var ashStone = makeStateRule(DeepNether.BLOCKS.ASH_STONE.get());
 		var soil = makeStateRule(DeepNether.BLOCKS.NETHER_SOIL.get());
-		var nylium = makeStateRule(DeepNether.BLOCKS.CRIMSON_MYCELIUM.get());
+		var crimson = makeStateRule(DeepNether.BLOCKS.CRIMSON_MYCELIUM.get());
+		var golden = makeStateRule(DeepNether.BLOCKS.GOLDEN_MYCELIUM.get());
 		var soilSand = makeStateRule(DeepNether.BLOCKS.WEEPING_SAND.get());
 		var soulSoil = makeStateRule(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 		var bone = makeStateRule(DeepNether.BLOCKS.DENSE_BONE.get());
-
-		var gold = makeStateRule(Blocks.GOLD_BLOCK);
 
 		SurfaceRules.ConditionSource above30 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0);
 		SurfaceRules.ConditionSource above31 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(31), 0);
@@ -61,7 +60,7 @@ public class DNSurfaceRuleData {
 
 		var forest = builder.start().vege(e -> e.tip(0.35f));
 		forest.temp(e -> e.tip(-0.35f)).biome(DNBiomeGen.BIOME_GOLDEN_FOREST, 0.1f)
-				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, gold))
+				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, golden))
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, soil));
 		forest.temp(e -> e.tip(0.35f)).biome(DNBiomeGen.BIOME_CRIMSON_FOREST, 0.1f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(above31, SurfaceRules.ifTrue(wartNoise, CRIMSON_WART)))
@@ -70,11 +69,11 @@ public class DNSurfaceRuleData {
 
 		var plains = builder.start().vege(e -> e.get(1));
 		plains.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_GOLDEN_PLAINS, 0.15f)
-				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, gold))
+				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, golden))
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, soil));
 		plains.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_CRIMSON_PLAINS, 0.15f)
 				.addRule(SurfaceRules.UNDER_CEILING, SurfaceRules.ifTrue(above31, SurfaceRules.ifTrue(wartNoise, CRIMSON_WART)))
-				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, SurfaceRules.sequence(SurfaceRules.ifTrue(lowSelNoise, CRIMSON_NYLIUM), nylium)))
+				.addRule(SurfaceRules.ON_FLOOR, SurfaceRules.ifTrue(above31, SurfaceRules.sequence(SurfaceRules.ifTrue(lowSelNoise, CRIMSON_NYLIUM), crimson)))
 				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(above30, SurfaceRules.sequence(SurfaceRules.ifTrue(lowSelNoise, NETHERRACK), soil)));
 
 		var waste = builder.start().vege(e -> e.get(-1));

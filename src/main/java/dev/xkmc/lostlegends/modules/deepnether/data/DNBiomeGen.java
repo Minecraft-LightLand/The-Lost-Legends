@@ -83,7 +83,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulland()
 							.pillar().darkstonePile()
-							.blackstoneBolb().warpedBlob().magmaBolb()
+							.blackstoneBolb().warpedBlob().ecto()
 							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
@@ -94,7 +94,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.firePatch().soulland()
 							.pillar().darkstonePile()
-							.blackstoneBolb().warpedBlob().magmaBolb()
+							.blackstoneBolb().warpedBlob().ecto()
 							.ores().mushrooms().crimsonRoot()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
@@ -116,7 +116,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
 							.darkstonePile()
-							.blackstoneBolb().magmaBolb()
+							.blackstoneBolb().magmaBolb().amber()
 							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
@@ -126,7 +126,8 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.blackstoneBolb().ores().mushrooms()
+							.blackstoneBolb().magmaBolb()
+							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -135,7 +136,8 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.blackstoneBolb().ores().mushrooms()
+							.blackstoneBolb().magmaBolb()
+							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -144,7 +146,8 @@ public class DNBiomeGen {
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch()
-							.blackstoneBolb().ores().mushrooms()
+							.blackstoneBolb().magmaBolb()
+							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));

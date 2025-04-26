@@ -437,7 +437,7 @@
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
-                    "Name": "minecraft:gold_block"
+                    "Name": "lostlegends:golden_mycelium"
                   }
                 }
               }
@@ -598,7 +598,7 @@
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
-                    "Name": "minecraft:gold_block"
+                    "Name": "lostlegends:golden_mycelium"
                   }
                 }
               }

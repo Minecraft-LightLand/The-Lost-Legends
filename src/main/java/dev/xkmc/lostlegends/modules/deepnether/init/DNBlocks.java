@@ -12,8 +12,8 @@ import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.*;
+import dev.xkmc.lostlegends.modules.deepnether.data.DNFeatures;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
@@ -29,13 +29,14 @@ import java.util.Set;
 public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
-			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE;
+			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE, AMBER_MAGMA, ECTOPLASM;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL;
 
-	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM;
+	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM, GOLDEN_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
+	public final BlockEntry<DeepMagmaBlock> MAGMA;
 
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
@@ -69,6 +70,21 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem().itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
 					.register();
 
+			MAGMA = block("deep_magma", DeepMagmaBlock::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
+					.cubeAll().pickaxe()
+					.simpleItem().register();
+
+			AMBER_MAGMA = block("amber_magma", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
+					.cubeAll().pickaxe()
+					.simpleItem().register();
+
+			ECTOPLASM = block("ectoplasm", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
+					.cubeAll().pickaxe()
+					.simpleItem().register();
+
 			HEARTH_ORE = block("hearth_ore", Block::new)
 					.prop(MapColor.NETHER, SoundType.STONE).strength(2f)
 					.cubeAll().pickaxe()
@@ -100,7 +116,22 @@ public class DNBlocks extends LLRegBase {
 					.register();
 
 			CRIMSON_MYCELIUM = block("crimson_mycelium", p -> new SoilNyliumBlock(p,
-					NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL))
+					DNFeatures.INS.simple.crimsonBonemeal.cf))
+					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
+					.prop(BlockBehaviour.Properties::randomTicks)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(ctx.getName(),
+									blockLoc(ctx.getName() + "_side"),
+									blockLoc("nether_soil"),
+									blockLoc(ctx.getName() + "_top"))))
+					.shovel()
+					.tag(BlockTags.NYLIUM, BlockTags.NETHER_CARVER_REPLACEABLES)
+					.silkTouchOr(NETHER_SOIL)
+					.simpleItem()
+					.register();
+
+			GOLDEN_MYCELIUM = block("golden_mycelium", p -> new SoilNyliumBlock(p,
+					DNFeatures.INS.simple.goldenBonemeal.cf))
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
@@ -186,8 +217,7 @@ public class DNBlocks extends LLRegBase {
 					.register();
 
 			DARK_STONE = block("dark_stone", DarkStoneBlock::new)
-					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(1f, 5f)
-					.prop(p -> p.lightLevel(state -> 7))
+					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(1f, 5f).light(7)
 					.cubeAll().pickaxe()
 					.simpleItem()
 					.shardLoot(() -> DeepNether.ITEMS.DARK_COBBLE.get(), 2, 4)
@@ -204,24 +234,21 @@ public class DNBlocks extends LLRegBase {
 		// vegetation
 		{
 			ASH_BLOSSOM = block("ash_blossom", p -> new AshBlossomBlock(MobEffects.WEAKNESS, 6.0F, p))
-					.prop(p -> p.lightLevel(stata -> 8))
-					.foliage()
-					.cross()
+					.light(8).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
 					.register();
 
 			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(MobEffects.WITHER, 6.0F, p))
-					.prop(p -> p.lightLevel(stata -> 12))
-					.foliage()
-					.cross()
+					.light(12).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
 					.register();
 
 			SCORCHED_BONE_VINE = block("scorched_bone_vines", BoneVineHead::new)
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
-					.prop(p -> p.randomTicks().lightLevel(state -> state.getValue(SimpleLavaloggedBlock.LAVALOGGED) ? 15 : 10))
+					.light(SimpleLavaloggedBlock.LAVALOGGED, 15, 10)
+					.prop(BlockBehaviour.Properties::randomTicks)
 					.fragile()
 					.cross()
 					.tag(BlockTags.CLIMBABLE)
@@ -231,7 +258,7 @@ public class DNBlocks extends LLRegBase {
 
 			SCORCHED_BONE_VINE_PLANT = block("scorched_bone_vines_plant", BoneVineBody::new)
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
-					.prop(p -> p.lightLevel(state -> state.getValue(SimpleLavaloggedBlock.LAVALOGGED) ? 15 : 10))
+					.light(SimpleLavaloggedBlock.LAVALOGGED, 15, 10)
 					.fragile()
 					.cross()
 					.tag(BlockTags.CLIMBABLE)
@@ -240,7 +267,8 @@ public class DNBlocks extends LLRegBase {
 
 			SCREAMING_SOUL_VINE = block("screaming_soul_vines", SoulVineHead::new)
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
-					.prop(p -> p.randomTicks().lightLevel(state -> state.getValue(SimpleSoulLoggedBlock.LOGGED) ? 15 : 7))
+					.light(SimpleSoulLoggedBlock.LOGGED, 15, 7)
+					.prop(BlockBehaviour.Properties::randomTicks)
 					.fragile()
 					.cross()
 					.tag(BlockTags.CLIMBABLE)
@@ -250,7 +278,7 @@ public class DNBlocks extends LLRegBase {
 
 			SCREAMING_SOUL_VINE_PLANT = block("screaming_soul_vines_plant", SoulVineBody::new)
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
-					.prop(p -> p.lightLevel(state -> state.getValue(SimpleSoulLoggedBlock.LOGGED) ? 15 : 7))
+					.light(SimpleSoulLoggedBlock.LOGGED, 15, 7)
 					.fragile()
 					.cross()
 					.tag(BlockTags.CLIMBABLE)
@@ -262,10 +290,9 @@ public class DNBlocks extends LLRegBase {
 		// portal
 		{
 			PORTAL = block("lava_portal", LavaPortalBlock::new)
-					.prop(MapColor.FIRE, SoundType.GLASS)
+					.prop(MapColor.FIRE, SoundType.GLASS).light(15)
 					.prop(p -> p.noCollission()
 							.strength(-1.0F)
-							.lightLevel(state -> 15)
 							.pushReaction(PushReaction.BLOCK))
 					.noModel()
 					.register();

@@ -145,13 +145,6 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 				IntProvider.codec(1, 10).fieldOf("height").forGetter(Data::height)
 		).apply(i, Data::new));
 
-		public IntProvider reach() {
-			return this.reach;
-		}
-
-		public IntProvider height() {
-			return this.height;
-		}
 	}
 
 

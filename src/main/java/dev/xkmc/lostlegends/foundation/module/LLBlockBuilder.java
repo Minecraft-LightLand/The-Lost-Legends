@@ -19,6 +19,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.IntRange;
@@ -48,6 +49,16 @@ public class LLBlockBuilder<T extends Block> {
 
 	public LLBlockBuilder<T> prop(NonNullUnaryOperator<BlockBehaviour.Properties> op) {
 		builder.properties(op);
+		return this;
+	}
+
+	public LLBlockBuilder<T> light(int light) {
+		builder.properties(p -> p.lightLevel(state -> light));
+		return this;
+	}
+
+	public LLBlockBuilder<T> light(BooleanProperty prop, int a, int b) {
+		builder.properties(p -> p.lightLevel(state -> state.getValue(prop) ? a : b));
 		return this;
 	}
 
