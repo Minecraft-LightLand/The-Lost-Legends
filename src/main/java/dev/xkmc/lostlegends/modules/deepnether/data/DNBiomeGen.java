@@ -103,7 +103,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_ASH, biome(6840176,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaLake()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().ashBlossom()
@@ -114,7 +114,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_WASTE, biome(3344392,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaLake()
 							.darkstonePile()
 							.blackstoneBolb().magmaBolb().amber()
 							.ores().mushrooms()

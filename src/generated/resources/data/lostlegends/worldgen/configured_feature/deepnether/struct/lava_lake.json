@@ -1,0 +1,20 @@
+{
+  "type": "lostlegends:lake",
+  "config": {
+    "barrier": {
+      "Name": "lostlegends:deep_magma"
+    },
+    "component_radius": 6,
+    "depth": 4,
+    "fluid": {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "max_component": 8,
+    "max_height": 8,
+    "max_width": 16,
+    "min_component": 4
+  }
+}

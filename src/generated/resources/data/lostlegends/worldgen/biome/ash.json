@@ -23,7 +23,9 @@
   },
   "features": [
     [],
-    [],
+    [
+      "lostlegends:deepnether/struct/lava_lake"
+    ],
     [
       "minecraft:basalt_pillar"
     ],

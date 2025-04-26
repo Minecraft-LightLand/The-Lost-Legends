@@ -23,7 +23,7 @@ public class InGroundFeature extends OnGroundFeature<InGroundFeature.Data> {
 		var old = ctx.level().getBlockState(pos);
 		if (!ctx.config().test().test(old, ctx.random()))
 			return false;
-		setBlock(ctx.level(), pos.below(), ctx.config().base());
+		setBlock(ctx.level(), pos, ctx.config().base());
 		return true;
 	}
 

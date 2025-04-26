@@ -143,7 +143,6 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey amber = uni("amber_magma");
 		public final FeatureKey ecto = uni("ectoplasm");
 
-
 		public final FeatureKey weepingVine = uni("weeping_vines");
 		public final FeatureKey weepingVineSparse = weepingVine.variant("_sparse");
 		public final FeatureKey boneVine = uni("scorched_bone_vines");
@@ -247,6 +246,9 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey netherPortal = uni("nether_portal");
 		public final FeatureKey darkPile = uni("darkstone_pile");
 
+		public final FeatureKey lavaLake = uni("lava_lake");
+		public final FeatureKey soulLake = uni("soul_lake");
+
 		public Structs(LLFeatureReg parent, String type) {
 			super(parent, type);
 		}
@@ -263,6 +265,14 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, darkPile.cf, DeepNether.WG.STONE_PILE.get(), new StonePile.Data(
 					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(),
 					DeepNether.BLOCKS.DARK_STONE.getDefaultState()));
+
+			FeatureUtils.register(ctx, lavaLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
+					Blocks.LAVA.defaultBlockState(), DeepNether.BLOCKS.MAGMA.getDefaultState(),
+					4, 16, 8, 4, 8, 6));
+			FeatureUtils.register(ctx, soulLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
+					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
+					4, 16, 8, 4, 8, 6));
 		}
 
 		@Override
@@ -270,6 +280,8 @@ public class DNFeatures extends LLFeatureReg {
 			deepPortal.place(ctx, cf, spreadRare(16));
 			netherPortal.place(ctx, cf, spreadRare(16));
 			darkPile.place(ctx, cf, spread(1, PlacementUtils.RANGE_10_10));
+			lavaLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
+			soulLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
 		}
 
 	}

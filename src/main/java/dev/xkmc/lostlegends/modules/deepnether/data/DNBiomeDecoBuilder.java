@@ -2,7 +2,6 @@ package dev.xkmc.lostlegends.modules.deepnether.data;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
-import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -52,6 +51,7 @@ public class DNBiomeDecoBuilder {
 	public DNBiomeDecoBuilder soulland() {
 		ins.simple.soulfirePatch.addTo(builder, UNDERGROUND_DECORATION);
 		ins.simple.soulVine.addTo(builder, VEGETAL_DECORATION);
+		ins.struct.soulLake.addTo(builder, LAKES);
 		return this;
 	}
 
@@ -74,6 +74,11 @@ public class DNBiomeDecoBuilder {
 
 	public DNBiomeDecoBuilder magmaBolb() {
 		ins.blob.magma.addTo(builder, UNDERGROUND_STRUCTURES);
+		return this;
+	}
+
+	public DNBiomeDecoBuilder lavaLake(){
+		ins.struct.lavaLake.addTo(builder, LAKES);
 		return this;
 	}
 
