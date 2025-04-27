@@ -1,5 +1,5 @@
 {
-  "type": "lostlegends:on_ground",
+  "type": "lostlegends:in_ground",
   "config": {
     "base": {
       "Name": "lostlegends:ectoplasm"

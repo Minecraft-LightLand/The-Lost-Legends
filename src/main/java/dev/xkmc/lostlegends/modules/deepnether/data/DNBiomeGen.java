@@ -125,7 +125,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_GOLDEN_PLAINS, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch().lavaIsland()
+							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
@@ -135,7 +135,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_GOLDEN_FOREST, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch().lavaIsland()
+							.lavaSprings().firePatch().lavaIsland().goldLake()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
@@ -145,7 +145,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_GOLDEN_HEART, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().goldLake()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),

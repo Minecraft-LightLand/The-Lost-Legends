@@ -83,6 +83,11 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
+	public DNBiomeDecoBuilder goldLake() {
+		ins.struct.goldLake.addTo(builder, LAKES);
+		return this;
+	}
+
 	public DNBiomeDecoBuilder lavaIsland() {
 		ins.struct.lavaIsland.addTo(builder, LAKES);
 		return this;

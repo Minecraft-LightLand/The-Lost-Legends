@@ -179,9 +179,9 @@ public class DNFeatures extends LLFeatureReg {
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)),
 					List.of(soulSoil.get(), soilSand.get())));
 
-			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.ON_GROUND.get(), new SimpleOnGroundFeature.Data(
+			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.BLOCKS.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
-			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.ON_GROUND.get(), new SimpleOnGroundFeature.Data(
+			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.BLOCKS.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
 
 			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.WEEPING_VINE.get(), new WeepingVinesFeature.Data(
@@ -248,6 +248,7 @@ public class DNFeatures extends LLFeatureReg {
 
 		public final FeatureKey lavaLake = uni("lava_lake");
 		public final FeatureKey soulLake = uni("soul_lake");
+		public final FeatureKey goldLake = uni("gold_lake");
 		public final FeatureKey lavaIsland = uni("lava_island");
 		public final FeatureKey soulIsland = uni("soul_island");
 
@@ -275,6 +276,10 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					4, 16, 8, 4, 8, 6));
+			FeatureUtils.register(ctx, goldLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
+					DeepNether.BLOCKS.MOLTEN_GOLD.getSource().defaultFluidState().createLegacyBlock(),
+					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(),
+					4, 10, 8, 4, 6, 4));
 
 			FeatureUtils.register(ctx, lavaIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
 					Blocks.LAVA.defaultBlockState(),
@@ -299,6 +304,7 @@ public class DNFeatures extends LLFeatureReg {
 			darkPile.place(ctx, cf, spread(1, PlacementUtils.RANGE_10_10));
 			lavaLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
 			soulLake.place(ctx, cf, spreadRare(2, uniform(60, 200)));
+			goldLake.place(ctx, cf, spreadRare(2, uniform(35, 200)));
 			lavaIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
 			soulIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
 		}

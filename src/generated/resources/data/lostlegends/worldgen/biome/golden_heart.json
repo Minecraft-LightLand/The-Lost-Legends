@@ -23,7 +23,9 @@
   },
   "features": [
     [],
-    [],
+    [
+      "lostlegends:deepnether/struct/gold_lake"
+    ],
     [],
     [
       "lostlegends:deepnether/blob/netherrack_small",

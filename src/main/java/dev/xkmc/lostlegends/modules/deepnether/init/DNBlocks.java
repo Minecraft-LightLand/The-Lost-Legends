@@ -6,9 +6,7 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
+import dev.xkmc.lostlegends.modules.deepnether.block.fluid.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.block.vegetation.*;
@@ -55,6 +53,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;
 	public final FluidEntry<LiquidSoulFluid.Flowing> LIQUID_SOUL;
+	public final FluidEntry<MoltenGoldFluid.Flowing> MOLTEN_GOLD;
 
 	DNBlocks(L2Registrate reg, String path) {
 		super(reg, path);
@@ -343,6 +342,12 @@ public class DNBlocks extends LLRegBase {
 					LiquidSoulFluid.Flowing::new, LiquidSoulFluid.Source::new)
 					.properties(p -> p.lightLevel(15).temperature(1500))
 					.fluidProperties(p -> p.explosionResistance(100).tickRate(10))
+					.register();
+
+			MOLTEN_GOLD = fluid("molten_gold", MoltenGoldFluidType::new,
+					MoltenGoldFluid.Flowing::new, MoltenGoldFluid.Source::new)
+					.properties(p -> p.lightLevel(15).temperature(1500))
+					.fluidProperties(p -> p.explosionResistance(100).tickRate(20))
 					.register();
 		}
 

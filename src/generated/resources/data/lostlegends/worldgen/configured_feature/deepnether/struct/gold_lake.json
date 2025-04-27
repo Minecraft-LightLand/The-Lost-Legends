@@ -1,0 +1,20 @@
+{
+  "type": "lostlegends:lake",
+  "config": {
+    "barrier": {
+      "Name": "lostlegends:buried_gold_debris"
+    },
+    "component_radius": 4,
+    "depth": 4,
+    "fluid": {
+      "Name": "lostlegends:molten_gold",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "max_component": 6,
+    "max_height": 8,
+    "max_width": 10,
+    "min_component": 4
+  }
+}
