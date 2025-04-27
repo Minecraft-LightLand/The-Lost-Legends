@@ -14,11 +14,14 @@
     },
     "island_clearance": 6,
     "island_height": 16,
-    "margin": 2,
+    "margin": 3,
     "max_component": 14,
     "max_height": 10,
-    "max_width": 20,
+    "max_width": 24,
     "min_component": 10,
+    "padding": {
+      "Name": "lostlegends:twistone"
+    },
     "surface": {
       "Name": "lostlegends:twistone"
     }

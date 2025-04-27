@@ -2,7 +2,7 @@
   "type": "lostlegends:lake_island",
   "config": {
     "barrier": {
-      "Name": "lostlegends:deep_netherrack"
+      "Name": "lostlegends:deep_magma"
     },
     "component_radius": 6,
     "depth": 6,
@@ -14,13 +14,16 @@
     },
     "island_clearance": 6,
     "island_height": 16,
-    "margin": 3,
+    "margin": 4,
     "max_component": 14,
     "max_height": 10,
-    "max_width": 20,
+    "max_width": 24,
     "min_component": 10,
+    "padding": {
+      "Name": "lostlegends:deep_netherrack"
+    },
     "surface": {
-      "Name": "lostlegends:crimson_mycelium"
+      "Name": "lostlegends:scorched_deep_netherrack"
     }
   }
 }

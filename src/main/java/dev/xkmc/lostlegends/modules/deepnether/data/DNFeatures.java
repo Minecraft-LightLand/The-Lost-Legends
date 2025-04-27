@@ -278,16 +278,18 @@ public class DNFeatures extends LLFeatureReg {
 
 			FeatureUtils.register(ctx, lavaIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
 					Blocks.LAVA.defaultBlockState(),
+					DeepNether.BLOCKS.MAGMA.getDefaultState(),
 					DeepNether.BLOCKS.DEEP_NETHERRACK.getDefaultState(),
-					DeepNether.BLOCKS.CRIMSON_MYCELIUM.getDefaultState(),
-					6, 20, 10, 10, 14, 6,
-					3, 16, 6));
+					DeepNether.BLOCKS.SCORCHED_NETHERRACK.getDefaultState(),
+					6, 24, 10, 10, 14, 6,
+					4, 16, 6));
 			FeatureUtils.register(ctx, soulIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
 					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
-					6, 20, 10, 10, 14, 6,
-					2, 16, 6));
+					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
+					6, 24, 10, 10, 14, 6,
+					3, 16, 6));
 		}
 
 		@Override

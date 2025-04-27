@@ -30,7 +30,8 @@ public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
 			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE, AMBER_MAGMA, ECTOPLASM;
-	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL;
+	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL,
+			SCORCHED_NETHERRACK;
 
 	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM, GOLDEN_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
@@ -60,6 +61,19 @@ public class DNBlocks extends LLRegBase {
 					.prop(MapColor.NETHER, SoundType.STONE).strength(1f)
 					.cubeAll().pickaxe()
 					.tag(BlockTags.INFINIBURN_OVERWORLD, BlockTags.BASE_STONE_NETHER)
+					.simpleItem()
+					.register();
+
+			SCORCHED_NETHERRACK = block("scorched_deep_netherrack", Block::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(0.5f)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(ctx.getName(),
+									blockLoc(ctx.getName() + "_side"),
+									blockLoc("deep_netherrack"),
+									blockLoc(ctx.getName() + "_top"))))
+					.pickaxe()
+					.tag(BlockTags.INFINIBURN_OVERWORLD, BlockTags.NETHER_CARVER_REPLACEABLES)
+					.silkTouchOr(DEEP_NETHERRACK)
 					.simpleItem()
 					.register();
 

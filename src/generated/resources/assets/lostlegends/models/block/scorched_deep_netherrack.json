@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "lostlegends:block/deepnether/deep_netherrack",
+    "side": "lostlegends:block/deepnether/scorched_deep_netherrack_side",
+    "top": "lostlegends:block/deepnether/scorched_deep_netherrack_top"
+  }
+}
