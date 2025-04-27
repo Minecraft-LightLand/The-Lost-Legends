@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "lostlegends:hearth_crystal"
+    },
+    "X": {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lostlegends:deep_magma"
+  }
+}

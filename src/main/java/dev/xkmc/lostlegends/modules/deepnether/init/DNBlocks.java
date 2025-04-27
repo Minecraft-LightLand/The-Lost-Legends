@@ -19,17 +19,20 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.Set;
 
 public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
-			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE, AMBER_MAGMA, ECTOPLASM;
+			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL,
 			SCORCHED_NETHERRACK;
 
@@ -38,6 +41,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
 	public final BlockEntry<DeepMagmaBlock> MAGMA;
+	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
 
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
@@ -89,14 +93,28 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().pickaxe()
 					.simpleItem().register();
 
-			AMBER_MAGMA = block("amber_magma", Block::new)
+			AMBER_MAGMA = block("amber_magma", HalfTransparentBlock::new)
 					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
-					.cubeAll().pickaxe()
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
 					.simpleItem().register();
 
-			ECTOPLASM = block("ectoplasm", Block::new)
+			ECTOPLASM = block("ectoplasm", HalfTransparentBlock::new)
 					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
-					.cubeAll().pickaxe()
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
 					.simpleItem().register();
 
 			HEARTH_ORE = block("hearth_ore", Block::new)
@@ -198,6 +216,7 @@ public class DNBlocks extends LLRegBase {
 					.fullBlock().cubeAll().shovel()
 					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
 					.register();
 
 			DEMENTING_SOIL = block("dementing_soil", Block::new)
@@ -205,6 +224,7 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().shovel()
 					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
 					.register();
 
 			TWISTONE = block("twistone", Block::new)
@@ -212,7 +232,7 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().pickaxe()
 					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
-					.itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
 					.register();
 
 			RESONANT_TWISTONE = block("resonant_twistone", Block::new)
@@ -228,6 +248,7 @@ public class DNBlocks extends LLRegBase {
 					.cubeAll().pickaxe()
 					.tag(BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
 					.register();
 
 			DARK_STONE = block("dark_stone", DarkStoneBlock::new)
@@ -240,7 +261,9 @@ public class DNBlocks extends LLRegBase {
 			RAGING_OBSIDIAN = block("raging_obsidian", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(50, 1200)
 					.cubeAll().obsidian()
+					.tag(Tags.Blocks.OBSIDIANS)
 					.simpleItem()
+					.itemTag(Tags.Items.OBSIDIANS)
 					.register();
 
 		}

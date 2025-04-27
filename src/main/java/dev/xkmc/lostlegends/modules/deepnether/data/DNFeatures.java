@@ -179,9 +179,9 @@ public class DNFeatures extends LLFeatureReg {
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)),
 					List.of(soulSoil.get(), soilSand.get())));
 
-			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
+			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.ON_GROUND.get(), new SimpleOnGroundFeature.Data(
 					DeepNether.BLOCKS.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
-			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
+			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.ON_GROUND.get(), new SimpleOnGroundFeature.Data(
 					DeepNether.BLOCKS.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
 
 			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.WEEPING_VINE.get(), new WeepingVinesFeature.Data(

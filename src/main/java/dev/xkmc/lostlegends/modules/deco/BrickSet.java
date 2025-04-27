@@ -8,6 +8,7 @@ import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -37,6 +38,7 @@ public class BrickSet {
 				.blockstate((ctx, pvd) ->
 						pvd.stairsBlock(ctx.get(), id, side))
 				.tag(BlockTags.STAIRS).simpleItem()
+				.itemTag(ItemTags.STAIRS)
 				.recipe(this::genStair).register();
 
 		slab = reg.block(id + "_slab", SlabBlock::new)
@@ -46,6 +48,7 @@ public class BrickSet {
 						pvd.models().slabTop(ctx.getName() + "_top", side, side, side),
 						new ModelFile.UncheckedModelFile(block.getId().withPrefix("block/"))))
 				.tag(BlockTags.SLABS).simpleItem()
+				.itemTag(ItemTags.SLABS)
 				.recipe(this::genSlab).register();
 
 		wall = reg.block(id + "_wall", WallBlock::new)
@@ -53,6 +56,7 @@ public class BrickSet {
 				.blockstate((ctx, pvd) -> pvd.wallBlock(ctx.get(), side))
 				.tag(BlockTags.WALLS).simpleItem()
 				.itemModel((ctx, pvd) -> pvd.wallInventory(ctx.getName(), side))
+				.itemTag(ItemTags.WALLS)
 				.recipe(this::genWall).register();
 	}
 

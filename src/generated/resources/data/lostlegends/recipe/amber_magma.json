@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "lostlegends:ectoplasm"
+    },
+    "X": {
+      "item": "lostlegends:deep_magma"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lostlegends:amber_magma"
+  }
+}

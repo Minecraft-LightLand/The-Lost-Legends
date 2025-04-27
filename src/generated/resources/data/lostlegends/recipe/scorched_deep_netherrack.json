@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "lostlegends:hearth_crystal"
+    },
+    "X": {
+      "item": "lostlegends:deep_netherrack"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lostlegends:scorched_deep_netherrack"
+  }
+}

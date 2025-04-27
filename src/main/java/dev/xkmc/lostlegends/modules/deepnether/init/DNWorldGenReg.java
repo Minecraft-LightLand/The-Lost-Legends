@@ -15,6 +15,7 @@ public class DNWorldGenReg {
 	public final Val<DeepNetherPortal> DEEP_PORTAL;
 	public final Val<NetherVolcanoPortal> NETHER_PORTAL;
 	public final Val<InGroundFeature> IN_GROUND;
+	public final Val<SimpleOnGroundFeature> ON_GROUND;
 	public final Val<LakeFeature> LAKE;
 	public final Val<LakeIslandFeature> LAKE_ISLAND;
 	public final Val<HugeFungus> TREE;
@@ -32,6 +33,7 @@ public class DNWorldGenReg {
 
 		var freg = SR.of(reg, BuiltInRegistries.FEATURE);
 		IN_GROUND = freg.reg("in_ground", InGroundFeature::new);
+		ON_GROUND = freg.reg("on_ground", SimpleOnGroundFeature::new);
 		LAKE = freg.reg("lake", LakeFeature::new);
 		LAKE_ISLAND = freg.reg("lake_island", LakeIslandFeature::new);
 		TREE = freg.reg("huge_fungus", HugeFungus::new);

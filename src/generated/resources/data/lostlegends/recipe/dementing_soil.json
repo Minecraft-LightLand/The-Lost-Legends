@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "lostlegends:liquid_soul_bucket"
+    },
+    "X": {
+      "item": "minecraft:soul_soil"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lostlegends:dementing_soil"
+  }
+}

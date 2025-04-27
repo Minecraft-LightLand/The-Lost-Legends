@@ -1,5 +1,5 @@
 {
-  "type": "lostlegends:in_ground",
+  "type": "lostlegends:on_ground",
   "config": {
     "base": {
       "Name": "lostlegends:amber_magma"
