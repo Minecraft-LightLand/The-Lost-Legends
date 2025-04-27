@@ -103,7 +103,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_ASH, biome(6840176,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch().lavaLake()
+							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().ashBlossom()
@@ -114,7 +114,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_WASTE, biome(3344392,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch().lavaLake()
+							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.darkstonePile()
 							.blackstoneBolb().magmaBolb().amber()
 							.ores().mushrooms()
@@ -125,7 +125,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_GOLDEN_PLAINS, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
@@ -135,7 +135,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_GOLDEN_FOREST, biome(1705242,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms()
 							.build(),
@@ -155,7 +155,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_CRIMSON_PLAINS, biome(3343107,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().crimsonPlains()
 							.build(),
@@ -165,7 +165,7 @@ public class DNBiomeGen {
 			ctx.register(BIOME_CRIMSON_FOREST, biome(3343107,
 					new MobSpawnSettings.Builder(),
 					new DNBiomeDecoBuilder(pf, wc)
-							.lavaSprings().firePatch()
+							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
 							.ores().mushrooms().crimsonForest()
 							.build(),

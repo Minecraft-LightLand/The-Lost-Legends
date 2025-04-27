@@ -26,7 +26,7 @@ public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> imp
 		WorldGenLevel level = ctx.level();
 		Data data = ctx.config();
 		RandomSource rand = ctx.random();
-		BlockPos pos = checkHeightAndRadius(level, ctx.origin(), data, data.maxWidth / 2, 0.8, 8);
+		BlockPos pos = checkHeightAndRadius(level, ctx.origin(), data, data.maxWidth / 2 + 3, 0.8, 8);
 		if (pos == null)
 			return false;
 
@@ -58,19 +58,21 @@ public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> imp
 	}
 
 	public record Data(
-			BlockState fluid, BlockState barrier,
+			BlockState fluid, BlockState barrier, BlockState surface,
 			int depth, int maxWidth, int maxHeight, int minTrial, int maxTrial, int radius,
-			int height, int clearance
+			int margin, int height, int clearance
 	) implements FeatureConfiguration, ILakeFeature.Data, IslandData {
 		public static final Codec<Data> CODEC = RecordCodecBuilder.create(i -> i.group(
 				BlockState.CODEC.fieldOf("fluid").forGetter(Data::fluid),
 				BlockState.CODEC.fieldOf("barrier").forGetter(Data::barrier),
+				BlockState.CODEC.fieldOf("surface").forGetter(Data::surface),
 				Codec.INT.fieldOf("depth").forGetter(Data::depth),
 				Codec.INT.fieldOf("max_width").forGetter(Data::maxWidth),
 				Codec.INT.fieldOf("max_height").forGetter(Data::maxHeight),
 				Codec.INT.fieldOf("min_component").forGetter(Data::minTrial),
 				Codec.INT.fieldOf("max_component").forGetter(Data::maxTrial),
 				Codec.INT.fieldOf("component_radius").forGetter(Data::radius),
+				Codec.INT.fieldOf("margin").forGetter(Data::margin),
 				Codec.INT.fieldOf("island_height").forGetter(Data::height),
 				Codec.INT.fieldOf("island_clearance").forGetter(Data::clearance)
 		).apply(i, Data::new));

@@ -18,9 +18,17 @@ public interface ILakeFeature {
 
 		BlockState barrier();
 
+		default BlockState surface() {
+			return barrier();
+		}
+
 		int depth();
 
 		int radius();
+
+		default int margin() {
+			return 1;
+		}
 
 	}
 

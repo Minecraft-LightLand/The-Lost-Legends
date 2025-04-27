@@ -23,7 +23,9 @@
   },
   "features": [
     [],
-    [],
+    [
+      "lostlegends:deepnether/struct/lava_island"
+    ],
     [],
     [
       "lostlegends:deepnether/blob/netherrack_small",

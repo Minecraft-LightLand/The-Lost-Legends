@@ -1,6 +1,7 @@
 package dev.xkmc.lostlegends.foundation.feature;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -12,44 +13,47 @@ public class LakeMaker {
 	private final boolean island;
 	private final int maxHor;
 	private final int maxVer;
-	private final int[][] valid, edge;
+	private int[] valid, edge;
 
 	public LakeMaker(ILakeFeature parent, boolean island, int maxHor, int maxVer) {
 		this.parent = parent;
 		this.island = island;
 		this.maxHor = maxHor;
 		this.maxVer = maxVer;
-		this.valid = new int[maxHor][maxHor];
-		this.edge = new int[maxHor][maxHor];
+		this.valid = new int[maxHor * maxHor];
+		this.edge = new int[maxHor * maxHor];
 	}
 
 	protected boolean isValid(int x, int y, int z) {
-		return (valid[x][z] & (1 << y)) != 0;
+		return (valid[x * maxHor + z] & (1 << y)) != 0;
 	}
 
 	protected void setValid(int x, int y, int z) {
-		valid[x][z] |= 1 << y;
+		valid[x * maxHor + z] |= 1 << y;
 	}
 
-	protected boolean isHole(int x, int y, int z) {
-		return (edge[x][z] & (1 << y)) != 0;
+	protected boolean isEdge(int x, int y, int z) {
+		return (edge[x * maxHor + z] & (1 << y)) != 0;
 	}
 
 	protected void setEdge(int x, int y, int z) {
-		edge[x][z] |= 1 << y;
+		edge[x * maxHor + z] |= 1 << y;
 	}
 
 	public void pre(RandomSource rand, ILakeFeature.Data data, int size) {
+		int offset = data.margin();
+		int bottom = Math.max(2, offset);
+		int maxThick = Math.min(data.depth(), maxVer - bottom - 2);
 		for (int trial = 0; trial < size; trial++) {
 			double rx = (rand.nextDouble() + 0.5) * data.radius();
-			double ry = (rand.nextDouble() + 0.5) * data.depth();
+			double ry = (rand.nextDouble() + 0.5) * maxThick;
 			double rz = (rand.nextDouble() + 0.5) * data.radius();
-			double dx = rand.nextDouble() * (maxHor - rx - 2) + 1 + rx / 2;
-			double dy = rand.nextDouble() * (maxVer - ry - data.depth()) + 2 + ry / 2;
-			double dz = rand.nextDouble() * (maxHor - rz - 2) + 1 + rz / 2;
-			for (int x = 1; x <= maxHor - 2; x++) {
-				for (int z = 1; z <= maxHor - 2; z++) {
-					for (int y = 1; y <= maxVer - 2; y++) {
+			double dx = rand.nextDouble() * (maxHor - rx - 2 * offset) + offset + rx / 2;
+			double dy = rand.nextDouble() * (maxVer - ry - bottom - 2) + bottom + ry / 2;
+			double dz = rand.nextDouble() * (maxHor - rz - 2 * offset) + offset + rz / 2;
+			for (int x = offset; x <= maxHor - offset - 1; x++) {
+				for (int z = offset; z <= maxHor - offset - 1; z++) {
+					for (int y = offset; y <= maxVer - offset - 1; y++) {
 						double x0 = ((double) x - dx) / (rx / 2);
 						double y0 = ((double) y - dy) / (ry / 2);
 						double z0 = ((double) z - dz) / (rz / 2);
@@ -75,6 +79,26 @@ public class LakeMaker {
 				}
 			}
 		}
+		for (int i = 1; i < offset; i++) {
+			int[] copy = edge.clone();
+			for (int dx = 0; dx < maxHor; dx++) {
+				for (int dz = 0; dz < maxHor; dz++) {
+					for (int dy = 0; dy < maxVer; dy++) {
+						if (!isValid(dx, dy, dz) && !isEdge(dx, dy, dz)
+								&& (dx < maxHor - 1 && isEdge(dx + 1, dy, dz)
+								|| dx > 0 && isEdge(dx - 1, dy, dz)
+								|| dz < maxHor - 1 && isEdge(dx, dy, dz + 1)
+								|| dz > 0 && isEdge(dx, dy, dz - 1)
+								|| dy < maxVer - 1 && isEdge(dx, dy + 1, dz)
+								|| dy > 0 && isEdge(dx, dy - 1, dz)
+						)) {
+							copy[dx * maxHor + dz] |= 1 << dy;
+						}
+					}
+				}
+			}
+			edge = copy;
+		}
 	}
 
 	public boolean test(WorldGenLevel level, BlockPos origin, ILakeFeature.Data data) {
@@ -83,7 +107,7 @@ public class LakeMaker {
 		for (int dx = 0; dx < maxHor; dx++) {
 			for (int dz = 0; dz < maxHor; dz++) {
 				for (int dy = 0; dy < maxVer; dy++) {
-					if (isHole(dz, dy, dz)) {
+					if (isEdge(dz, dy, dz)) {
 						pos.setWithOffset(origin, dx - maxHor / 2, dy, dz - maxHor / 2);
 						BlockState block = level.getBlockState(pos);
 						if (island && !block.isAir())
@@ -113,12 +137,18 @@ public class LakeMaker {
 								parent.setAir(level, pos);
 							else parent.setFluid(level, pos, data.fluid());
 						}
-					} else if (isHole(dx, dy, dz)) {
+					} else if (isEdge(dx, dy, dz)) {
 						pos.setWithOffset(origin, dx - maxHor / 2, dy, dz - maxHor / 2);
 						BlockState state = level.getBlockState(pos);
 						if ((dy < data.depth() || state.isSolid() && rand.nextInt(2) != 0) &&
 								!state.is(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE)) {
-							parent.setBarrier(level, pos, data.barrier());
+							boolean surface = dy >= data.depth() - 1;
+							if (surface) {
+								pos.move(Direction.UP);
+								surface = level.getBlockState(pos).isAir();
+								pos.move(Direction.DOWN);
+							}
+							parent.setBarrier(level, pos, surface ? data.surface() : data.barrier());
 						}
 					}
 				}
