@@ -1,9 +1,13 @@
 {
-  "feature": "lostlegends:deepnether/simple/weeping_vines",
+  "feature": "lostlegends:deepnether/vegetation/soul_blossom",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 20
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 6,
+        "min_inclusive": 3
+      }
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +17,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "below_top": 4
+          "below_top": 10
         },
         "min_inclusive": {
-          "above_bottom": 4
+          "above_bottom": 10
         }
       }
     },

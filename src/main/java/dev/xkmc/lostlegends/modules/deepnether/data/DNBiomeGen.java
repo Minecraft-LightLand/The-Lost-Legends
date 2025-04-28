@@ -84,7 +84,7 @@ public class DNBiomeGen {
 							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().ecto()
-							.ores().mushrooms().crimsonRoot()
+							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
@@ -95,7 +95,7 @@ public class DNBiomeGen {
 							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().ecto()
-							.ores().mushrooms().crimsonRoot()
+							.ores().mushrooms()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));

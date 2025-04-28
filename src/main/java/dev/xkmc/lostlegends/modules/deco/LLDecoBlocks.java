@@ -15,6 +15,8 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HalfTransparentBlock;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 public class LLDecoBlocks extends LLModuleBase {
@@ -28,6 +30,7 @@ public class LLDecoBlocks extends LLModuleBase {
 	public static final BrickSet DEEP_NETHERRACK, DEEP_BLACKSTONE, ASH_STONE, TWISTONE,
 			TWISTONE_BRICKS, CHISELED_TWISTONE, CHISELED_RESONANT_TWISTONE;
 	public static final BlockEntry<Block> RESONANT_TWISTONE;
+	public static final BlockEntry<HalfTransparentBlock> AMBER_MAGMA_BRICKS, ECTOPLASM_BRICKS;
 
 	static {
 		DEEP_NETHERRACK = BrickSet.from(reg, DeepNether.BLOCKS, DeepNether.BLOCKS.DEEP_NETHERRACK);
@@ -40,6 +43,28 @@ public class LLDecoBlocks extends LLModuleBase {
 		RESONANT_TWISTONE = reg.block("resonant_twistone_bricks", Block::new)
 				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE).cubeAll().pickaxe().simpleItem().register();
 		CHISELED_RESONANT_TWISTONE = BrickSet.of(reg, "chiseled_resonant_twistone", DeepNether.BLOCKS.RESONANT_TWISTONE);
+
+		{
+			AMBER_MAGMA_BRICKS = reg.block("amber_magma_bricks", HalfTransparentBlock::new)
+					.copyProp(DeepNether.BLOCKS.AMBER_MAGMA)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", DeepNether.BLOCKS.blockLoc("amber_magma_overlay"))
+									.texture("base", reg.blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe().simpleItem().register();
+
+			ECTOPLASM_BRICKS = reg.block("ectoplasm_bricks", HalfTransparentBlock::new)
+					.copyProp(DeepNether.BLOCKS.ECTOPLASM)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", DeepNether.BLOCKS.blockLoc("ectoplasm_overlay"))
+									.texture("base", reg.blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe().simpleItem().register();
+		}
 	}
 
 	public LLDecoBlocks() {
@@ -57,11 +82,15 @@ public class LLDecoBlocks extends LLModuleBase {
 			square(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
 			square(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			square(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
+			square(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
+			square(pvd, DeepNether.BLOCKS.ECTOPLASM, ECTOPLASM_BRICKS);
 
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, CHISELED_TWISTONE.block);
 			cut(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			cut(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
+			cut(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
+			cut(pvd, DeepNether.BLOCKS.ECTOPLASM, ECTOPLASM_BRICKS);
 
 			shaped(pvd, RESONANT_TWISTONE.get(), 8, DeepNether.ITEMS.RESONANT_SOULGEM)
 					.pattern("XXX").pattern("XAX").pattern("XXX")
@@ -77,11 +106,11 @@ public class LLDecoBlocks extends LLModuleBase {
 
 		}
 
-		public static void cut(RegistrateRecipeProvider pvd, BlockEntry<Block> in, BlockEntry<Block> out) {
-			pvd.stonecutting(DataIngredient.items(in.asItem()), RecipeCategory.BUILDING_BLOCKS, out);
+		public static void cut(RegistrateRecipeProvider pvd, ItemLike in, ItemLike out) {
+			pvd.stonecutting(DataIngredient.items(in.asItem()), RecipeCategory.BUILDING_BLOCKS, out::asItem);
 		}
 
-		public static void square(RegistrateRecipeProvider pvd, BlockEntry<Block> in, BlockEntry<Block> out) {
+		public static void square(RegistrateRecipeProvider pvd, ItemLike in, ItemLike out) {
 			shaped(pvd, out, 4, in).pattern("XX").pattern("XX").define('X', in).save(pvd);
 		}
 

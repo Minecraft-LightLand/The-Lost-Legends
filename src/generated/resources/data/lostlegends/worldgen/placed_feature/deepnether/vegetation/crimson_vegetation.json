@@ -1,5 +1,5 @@
 {
-  "feature": "lostlegends:deepnether/simple/crimson_vegetation",
+  "feature": "lostlegends:deepnether/vegetation/crimson_vegetation",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",

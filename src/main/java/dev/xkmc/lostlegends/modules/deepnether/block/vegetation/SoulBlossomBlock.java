@@ -7,6 +7,7 @@ import dev.xkmc.lostlegends.modules.deepnether.util.SoulEffectsHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -18,18 +19,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SoulBlossomBlock extends FlowerBlock implements IFogBlock {
+public class SoulBlossomBlock extends BonemealableFlowerBlock implements IFogBlock {
 
 	protected static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 13, 13);
 	private static final FogConfig FOG = new FogConfig(FogConfig.Type.SURROUND, 0, 0.25f, 0.5f,
 			0f, 8f, 2f, 24f, false);
 
-	public SoulBlossomBlock(Holder<MobEffect> eff, float dur, Properties prop) {
-		super(eff, dur, prop);
+	public SoulBlossomBlock(Holder<MobEffect> eff, float time, Properties prop, ResourceKey<ConfiguredFeature<?, ?>> feature) {
+		super(eff, time, prop, feature);
 	}
 
 	@Override

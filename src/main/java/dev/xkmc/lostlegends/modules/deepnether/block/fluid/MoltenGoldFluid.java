@@ -1,6 +1,7 @@
 package dev.xkmc.lostlegends.modules.deepnether.block.fluid;
 
 import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
+import dev.xkmc.lostlegends.modules.deepnether.util.LavaEffectsHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -32,7 +33,7 @@ public abstract class MoltenGoldFluid extends BaseFlowingFluid implements LLFlow
 
 	@Override
 	public boolean canStandOn(LivingEntity le) {
-		return false;
+		return LavaEffectsHelper.lavaWalk(le);
 	}
 
 	@Override

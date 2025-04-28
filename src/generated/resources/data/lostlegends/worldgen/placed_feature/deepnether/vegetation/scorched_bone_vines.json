@@ -1,9 +1,9 @@
 {
-  "feature": "lostlegends:deepnether/simple/golden_vegetation",
+  "feature": "lostlegends:deepnether/vegetation/scorched_bone_vines",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",
-      "count": 6
+      "count": 4
     },
     {
       "type": "minecraft:biome"

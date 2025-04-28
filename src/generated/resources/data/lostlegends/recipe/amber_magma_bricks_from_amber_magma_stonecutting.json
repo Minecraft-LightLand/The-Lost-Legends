@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:amber_magma"
+  },
+  "result": {
+    "count": 1,
+    "id": "lostlegends:amber_magma_bricks"
+  }
+}

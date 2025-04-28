@@ -2,20 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "O": {
+    "A": {
+      "item": "lostlegends:hearth_crystal"
+    },
+    "B": {
       "item": "lostlegends:deep_magma"
     },
-    "X": {
+    "C": {
       "item": "minecraft:blaze_powder"
     }
   },
   "pattern": [
-    "XXX",
-    "XOX",
-    "XXX"
+    "CBC",
+    "BAB",
+    "CBC"
   ],
   "result": {
-    "count": 2,
+    "count": 4,
     "id": "lostlegends:amber_magma"
   }
 }

@@ -1,13 +1,9 @@
 {
-  "feature": "lostlegends:deepnether/simple/crimson_root",
+  "feature": "lostlegends:deepnether/vegetation/weeping_vines",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 5,
-        "min_inclusive": 2
-      }
+      "count": 40
     },
     {
       "type": "minecraft:in_square"
@@ -17,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "below_top": 10
+          "below_top": 4
         },
         "min_inclusive": {
-          "above_bottom": 10
+          "above_bottom": 4
         }
       }
     },

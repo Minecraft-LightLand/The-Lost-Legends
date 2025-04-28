@@ -1,0 +1,8 @@
+{
+  "parent": "lostlegends:custom/slime_like",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "base": "lostlegends:block/deco/ectoplasm_bricks",
+    "overlay": "lostlegends:block/deepnether/ectoplasm_overlay"
+  }
+}

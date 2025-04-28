@@ -39,7 +39,7 @@ public class DNBiomeDecoBuilder {
 		ins.delta.columnSmall.addTo(builder, LOCAL_MODIFICATIONS);
 		ins.delta.columnLarge.addTo(builder, LOCAL_MODIFICATIONS);
 		ins.simple.springClose2.addTo(builder, FLUID_SPRINGS);
-		ins.simple.boneVine.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.boneVine.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 
@@ -50,9 +50,11 @@ public class DNBiomeDecoBuilder {
 
 	public DNBiomeDecoBuilder soulland() {
 		ins.simple.soulfirePatch.addTo(builder, UNDERGROUND_DECORATION);
-		ins.simple.soulVine.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.soulVine.addTo(builder, VEGETAL_DECORATION);
 		ins.struct.soulLake.addTo(builder, LAKES);
 		ins.struct.soulIsland.addTo(builder, LAKES);
+		ins.vege.crimsonRoot.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.soulBlossom.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 
@@ -113,15 +115,9 @@ public class DNBiomeDecoBuilder {
 	}
 
 	public DNBiomeDecoBuilder ashBlossom() {
-		ins.simple.ashBlossom.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.ashBlossom.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
-
-	public DNBiomeDecoBuilder crimsonRoot() {
-		ins.simple.crimsonRoot.addTo(builder, VEGETAL_DECORATION);
-		return this;
-	}
-
 
 	public DNBiomeDecoBuilder mushrooms() {
 		builder.addFeature(VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
@@ -131,16 +127,18 @@ public class DNBiomeDecoBuilder {
 
 
 	public DNBiomeDecoBuilder crimsonPlains() {
-		ins.simple.weepingVineSparse.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.weepingVineSparse.addTo(builder, VEGETAL_DECORATION);
 		ins.tree.crimsonShort.addTo(builder, VEGETAL_DECORATION);
-		ins.simple.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.scarletBlossom.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 
 	public DNBiomeDecoBuilder crimsonForest() {
-		ins.simple.weepingVine.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.weepingVine.addTo(builder, VEGETAL_DECORATION);
 		ins.tree.crimson.addTo(builder, VEGETAL_DECORATION);
-		ins.simple.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.scarletBlossom.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.crimsonVegetation.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 

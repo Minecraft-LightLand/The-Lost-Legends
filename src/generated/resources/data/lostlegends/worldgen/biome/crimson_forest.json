@@ -54,9 +54,10 @@
     [
       "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_nether",
-      "lostlegends:deepnether/simple/weeping_vines",
+      "lostlegends:deepnether/vegetation/weeping_vines",
       "lostlegends:deepnether/tree/crimson_fungus",
-      "lostlegends:deepnether/simple/crimson_vegetation"
+      "lostlegends:deepnether/vegetation/scarlet_blossom",
+      "lostlegends:deepnether/vegetation/crimson_vegetation"
     ]
   ],
   "has_precipitation": false,

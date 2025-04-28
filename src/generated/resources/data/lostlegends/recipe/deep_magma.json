@@ -2,17 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "O": {
+    "A": {
       "item": "lostlegends:hearth_crystal"
     },
-    "X": {
+    "B": {
       "item": "minecraft:magma_block"
+    },
+    "C": {
+      "item": "lostlegends:deep_netherrack"
     }
   },
   "pattern": [
-    "XXX",
-    "XOX",
-    "XXX"
+    "CBC",
+    "BAB",
+    "CBC"
   ],
   "result": {
     "count": 8,

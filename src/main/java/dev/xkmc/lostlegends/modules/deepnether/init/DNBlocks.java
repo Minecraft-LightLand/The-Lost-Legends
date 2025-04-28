@@ -44,6 +44,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<AshBlossomBlock> ASH_BLOSSOM;
+	public final BlockEntry<ScarletBlossomBlock> SCARLET_BLOSSOM;
 	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
 	public final BlockEntry<BoneVineHead> SCORCHED_BONE_VINE;
 	public final BlockEntry<BoneVineBody> SCORCHED_BONE_VINE_PLANT;
@@ -147,7 +148,7 @@ public class DNBlocks extends LLRegBase {
 					.register();
 
 			CRIMSON_MYCELIUM = block("crimson_mycelium", p -> new SoilNyliumBlock(p,
-					DNFeatures.INS.simple.crimsonBonemeal.cf))
+					DNFeatures.INS.vege.crimsonBonemeal.cf))
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
@@ -162,7 +163,7 @@ public class DNBlocks extends LLRegBase {
 					.register();
 
 			GOLDEN_MYCELIUM = block("golden_mycelium", p -> new SoilNyliumBlock(p,
-					DNFeatures.INS.simple.goldenBonemeal.cf))
+					DNFeatures.INS.vege.goldenBonemeal.cf))
 					.prop(MapColor.NETHER, SoundType.GRASS).strength(0.5f)
 					.prop(BlockBehaviour.Properties::randomTicks)
 					.blockstate((ctx, pvd) ->
@@ -269,13 +270,22 @@ public class DNBlocks extends LLRegBase {
 
 		// vegetation
 		{
-			ASH_BLOSSOM = block("ash_blossom", p -> new AshBlossomBlock(MobEffects.WEAKNESS, 6.0F, p))
+			ASH_BLOSSOM = block("ash_blossom", p -> new AshBlossomBlock(
+					DeepNether.EFFECTS.ASH_BOUND, 10, p, DNFeatures.INS.vege.ashBlossom.cf))
 					.light(8).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
 					.register();
 
-			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(MobEffects.WITHER, 6.0F, p))
+			SCARLET_BLOSSOM = block("scarlet_blossom", p -> new ScarletBlossomBlock(
+					DeepNether.EFFECTS.LAVA_AFFINITY, 30, p, DNFeatures.INS.vege.scarletBlossom.cf))
+					.foliage().cross()
+					.tag(BlockTags.FLOWERS)
+					.simpleItem()
+					.register();
+
+			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(
+					DeepNether.EFFECTS.SOUL_SHELTER, 10, p, DNFeatures.INS.vege.soulBlossom.cf))
 					.light(12).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
@@ -285,8 +295,7 @@ public class DNBlocks extends LLRegBase {
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
 					.light(SimpleLavaloggedBlock.LAVALOGGED, 15, 10)
 					.prop(BlockBehaviour.Properties::randomTicks)
-					.fragile()
-					.cross()
+					.fragile().cross()
 					.tag(BlockTags.CLIMBABLE)
 					.simpleItem()
 					.itemModel(this::flatBlockItem)
@@ -295,8 +304,7 @@ public class DNBlocks extends LLRegBase {
 			SCORCHED_BONE_VINE_PLANT = block("scorched_bone_vines_plant", BoneVineBody::new)
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
 					.light(SimpleLavaloggedBlock.LAVALOGGED, 15, 10)
-					.fragile()
-					.cross()
+					.fragile().cross()
 					.tag(BlockTags.CLIMBABLE)
 					.lootChance(0.1f)
 					.register();
@@ -305,8 +313,7 @@ public class DNBlocks extends LLRegBase {
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
 					.light(SimpleSoulLoggedBlock.LOGGED, 15, 7)
 					.prop(BlockBehaviour.Properties::randomTicks)
-					.fragile()
-					.cross()
+					.fragile().cross()
 					.tag(BlockTags.CLIMBABLE)
 					.simpleItem()
 					.itemModel(this::flatBlockItem)
@@ -315,8 +322,7 @@ public class DNBlocks extends LLRegBase {
 			SCREAMING_SOUL_VINE_PLANT = block("screaming_soul_vines_plant", SoulVineBody::new)
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
 					.light(SimpleSoulLoggedBlock.LOGGED, 15, 7)
-					.fragile()
-					.cross()
+					.fragile().cross()
 					.tag(BlockTags.CLIMBABLE)
 					.lootChance(0.1f)
 					.register();

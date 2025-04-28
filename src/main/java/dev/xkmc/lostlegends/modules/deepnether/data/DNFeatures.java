@@ -38,6 +38,7 @@ public class DNFeatures extends LLFeatureReg {
 	public final Ores ore = new Ores(this, "ore");
 	public final Blobs blob = new Blobs(this, "blob");
 	public final Simple simple = new Simple(this, "simple");
+	public final Vegetation vege = new Vegetation(this, "vegetation");
 	public final Structs struct = new Structs(this, "struct");
 	public final Tree tree = new Tree(this, "tree");
 	public final Delta delta = new Delta(this, "delta");
@@ -143,18 +144,6 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey amber = uni("amber_magma");
 		public final FeatureKey ecto = uni("ectoplasm");
 
-		public final FeatureKey weepingVine = uni("weeping_vines");
-		public final FeatureKey weepingVineSparse = weepingVine.variant("_sparse");
-		public final FeatureKey boneVine = uni("scorched_bone_vines");
-		public final FeatureKey soulVine = uni("screaming_soul_vines");
-		public final FeatureKey ashBlossom = uni("ash_blossom");
-		public final FeatureKey crimsonRoot = uni("crimson_root");
-
-		public final FeatureKey crimsonVegetation = uni("crimson_vegetation");
-		public final FeatureKey crimsonBonemeal = uni("crimson_bonemeal");
-		public final FeatureKey goldenVegetation = uni("golden_vegetation");
-		public final FeatureKey goldenBonemeal = uni("golden_bonemeal");
-
 		public Simple(LLFeatureReg parent, String type) {
 			super(parent, type);
 		}
@@ -163,9 +152,8 @@ public class DNFeatures extends LLFeatureReg {
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			var deepRack = DeepNether.BLOCKS.DEEP_NETHERRACK;
 			var ashStone = DeepNether.BLOCKS.ASH_STONE;
-			var blossom = DeepNether.BLOCKS.ASH_BLOSSOM;
 			var soulSoil = DeepNether.BLOCKS.DEMENTING_SOIL;
-			var soilSand = DeepNether.BLOCKS.WEEPING_SAND;
+			var soulSand = DeepNether.BLOCKS.WEEPING_SAND;
 
 			FeatureUtils.register(ctx, springOpen.cf, Feature.SPRING, new SpringConfiguration(
 					Fluids.LAVA.defaultFluidState(), false, 4, 1, HolderSet.direct(deepRack)));
@@ -177,12 +165,55 @@ public class DNFeatures extends LLFeatureReg {
 					List.of(Blocks.NETHERRACK, deepRack.get())));
 			FeatureUtils.register(ctx, soulfirePatch.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SOUL_FIRE)),
-					List.of(soulSoil.get(), soilSand.get())));
+					List.of(soulSoil.get(), soulSand.get())));
 
 			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.BLOCKS.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
 			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.BLOCKS.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
+}
+
+		@Override
+		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
+			springOpen.place(ctx, cf, spread(8, PlacementUtils.RANGE_4_4));
+			springClose.place(ctx, cf, spread(16, PlacementUtils.RANGE_10_10));
+			springClose2.place(ctx, cf, spread(32, PlacementUtils.RANGE_10_10));
+
+			firePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
+			soulfirePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
+			amber.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
+			ecto.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
+
+		}
+
+	}
+
+	public static class Vegetation extends FeatureGroup {
+
+		public final FeatureKey weepingVine = uni("weeping_vines");
+		public final FeatureKey weepingVineSparse = weepingVine.variant("_sparse");
+		public final FeatureKey boneVine = uni("scorched_bone_vines");
+		public final FeatureKey soulVine = uni("screaming_soul_vines");
+		public final FeatureKey ashBlossom = uni("ash_blossom");
+		public final FeatureKey scarletBlossom = uni("scarlet_blossom");
+		public final FeatureKey soulBlossom = uni("soul_blossom");
+		public final FeatureKey crimsonRoot = uni("crimson_root");
+
+		public final FeatureKey crimsonVegetation = uni("crimson_vegetation");
+		public final FeatureKey crimsonBonemeal = uni("crimson_bonemeal");
+		public final FeatureKey goldenVegetation = uni("golden_vegetation");
+		public final FeatureKey goldenBonemeal = uni("golden_bonemeal");
+
+		public Vegetation(LLFeatureReg parent, String type) {
+			super(parent, type);
+		}
+
+		@Override
+		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
+			var deepRack = DeepNether.BLOCKS.DEEP_NETHERRACK;
+			var ashStone = DeepNether.BLOCKS.ASH_STONE;
+			var soulSoil = DeepNether.BLOCKS.DEMENTING_SOIL;
+			var soulSand = DeepNether.BLOCKS.WEEPING_SAND;
 
 			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.WEEPING_VINE.get(), new WeepingVinesFeature.Data(
 					32, 6, 16, 8, 1 / 8f));
@@ -191,11 +222,17 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, soulVine.cf, DeepNether.WG.FLUID_VINE.get(), new FluidLoggedVinesFeature.Data(
 					DeepNether.BLOCKS.SCREAMING_SOUL_VINE.get(), 8, 16, 3, 12));
 			FeatureUtils.register(ctx, ashBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(blossom.get())),
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.ASH_BLOSSOM.get())),
 					List.of(ashStone.get())));
+			FeatureUtils.register(ctx, scarletBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SCARLET_BLOSSOM.get())),
+					List.of(DeepNether.BLOCKS.CRIMSON_MYCELIUM.get(), Blocks.CRIMSON_NYLIUM, Blocks.NETHER_WART_BLOCK)));
+			FeatureUtils.register(ctx, soulBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SOUL_BLOSSOM.get())),
+					List.of(soulSoil.get(), soulSand.get())));
 			FeatureUtils.register(ctx, crimsonRoot.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.CRIMSON_ROOTS)),
-					List.of(soulSoil.get(), soilSand.get())));
+					List.of(soulSoil.get(), soulSand.get())));
 
 
 			WeightedStateProvider crimson = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
@@ -217,20 +254,13 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
-			springOpen.place(ctx, cf, spread(8, PlacementUtils.RANGE_4_4));
-			springClose.place(ctx, cf, spread(16, PlacementUtils.RANGE_10_10));
-			springClose2.place(ctx, cf, spread(32, PlacementUtils.RANGE_10_10));
-
-			firePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
-			soulfirePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
-			amber.place(ctx, cf, layer(3));
-			ecto.place(ctx, cf, layer(3));
-
 			weepingVine.place(ctx, cf, spread(40, PlacementUtils.RANGE_4_4));
+			weepingVineSparse.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
 			boneVine.place(ctx, cf, layer(4));
 			soulVine.place(ctx, cf, spread(4, uniform(24, 33)));
-			weepingVineSparse.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
 			ashBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
+			scarletBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
+			soulBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
 			crimsonRoot.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_10_10));
 
 			crimsonVegetation.place(ctx, cf, layer(6));

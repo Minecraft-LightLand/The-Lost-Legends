@@ -7,24 +7,24 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class AshBlossomBlock extends BonemealableFlowerBlock {
+public class ScarletBlossomBlock extends BonemealableFlowerBlock {
 
 	protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 10, 14);
 
-	public AshBlossomBlock(Holder<MobEffect> eff, float time, Properties prop, ResourceKey<ConfiguredFeature<?, ?>> feature) {
+	public ScarletBlossomBlock(Holder<MobEffect> eff, float time, Properties prop, ResourceKey<ConfiguredFeature<?, ?>> feature) {
 		super(eff, time, prop, feature);
 	}
 
 	@Override
 	protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-		return state.is(BlockTags.BASE_STONE_NETHER) || super.mayPlaceOn(state, level, pos);
+		return state.is(BlockTags.NYLIUM) || state.is(Blocks.NETHER_WART_BLOCK) || super.mayPlaceOn(state, level, pos);
 	}
 
 	@Override

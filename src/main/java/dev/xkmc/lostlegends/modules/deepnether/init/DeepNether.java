@@ -76,11 +76,11 @@ public class DeepNether extends LLModuleBase {
 	public static class RecipeGen extends LLRecipeGen {
 
 		public static void genRecipe(RegistrateRecipeProvider pvd) {
-			circle(pvd, Blocks.MAGMA_BLOCK, ITEMS.HEARTH_CRYSTAL, BLOCKS.MAGMA, 8);
+			classic(pvd, ITEMS.HEARTH_CRYSTAL, Blocks.MAGMA_BLOCK, BLOCKS.DEEP_NETHERRACK, BLOCKS.MAGMA, 8);
 			circle(pvd, BLOCKS.DEEP_NETHERRACK, ITEMS.HEARTH_CRYSTAL, BLOCKS.SCORCHED_NETHERRACK, 8);
 			circle(pvd, Blocks.SOUL_SAND, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.WEEPING_SAND, 8);
 			circle(pvd, Blocks.SOUL_SOIL, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.DEMENTING_SOIL, 8);
-			circle(pvd, Items.BLAZE_POWDER, BLOCKS.MAGMA, BLOCKS.AMBER_MAGMA, 2);
+			classic(pvd, ITEMS.HEARTH_CRYSTAL, BLOCKS.MAGMA, Items.BLAZE_POWDER, BLOCKS.AMBER_MAGMA, 4);
 			circle(pvd, Items.GLOWSTONE_DUST, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.ECTOPLASM, 2);
 			square(pvd, BLOCKS.ASH_BLOCK, BLOCKS.ASH_STONE);
 
@@ -116,6 +116,14 @@ public class DeepNether extends LLModuleBase {
 		public static void circle(RegistrateRecipeProvider pvd, ItemLike in, ItemLike center, ItemLike out, int count) {
 			shaped(pvd, out, count, center).pattern("XXX").pattern("XOX").pattern("XXX")
 					.define('X', in).define('O', center).save(pvd);
+		}
+
+		public static void classic(RegistrateRecipeProvider pvd, ItemLike center, ItemLike side, ItemLike corner, ItemLike out, int count) {
+			shaped(pvd, out, count, center).pattern("CBC").pattern("BAB").pattern("CBC")
+					.define('A', center)
+					.define('B', side)
+					.define('C', corner)
+					.save(pvd);
 		}
 
 		public static void square(RegistrateRecipeProvider pvd, ItemLike in, ItemLike out) {
