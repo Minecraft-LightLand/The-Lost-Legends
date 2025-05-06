@@ -73,7 +73,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.delta().pillar()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
@@ -84,7 +84,7 @@ public class DNBiomeGen {
 							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().ecto()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
@@ -95,7 +95,7 @@ public class DNBiomeGen {
 							.firePatch().soulland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().warpedBlob().ecto()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)
 			));
@@ -106,7 +106,7 @@ public class DNBiomeGen {
 							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.pillar().darkstonePile()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms().ashBlossom()
+							.ores().ashBlossom()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BASALT_DELTAS)
 			));
@@ -117,7 +117,7 @@ public class DNBiomeGen {
 							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.darkstonePile()
 							.blackstoneBolb().magmaBolb().amber()
-							.ores().mushrooms()
+							.ores().hearthroom()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)
 			));
@@ -127,7 +127,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -137,7 +137,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaIsland().goldLake()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -147,7 +147,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().goldLake()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms()
+							.ores()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_WARPED_FOREST)
 			));
@@ -157,7 +157,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms().crimsonPlains()
+							.ores().crimsonPlains()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));
@@ -167,7 +167,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaIsland()
 							.blackstoneBolb().magmaBolb()
-							.ores().mushrooms().crimsonForest()
+							.ores().crimsonForest()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_CRIMSON_FOREST)
 			));

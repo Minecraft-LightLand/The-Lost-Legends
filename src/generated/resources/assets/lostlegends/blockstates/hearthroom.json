@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "grown=false": {
+      "model": "lostlegends:block/hearthroom_small"
+    },
+    "grown=true": {
+      "model": "lostlegends:block/hearthroom"
+    }
+  }
+}

@@ -28,6 +28,7 @@ public class DeepNether extends LLModuleBase {
 			"The Lost Legends - Deep Nether", b -> b.icon(DeepNether.BLOCKS.BURIED_GOLD_DEBRIS::asStack));
 
 	public static DNBlocks BLOCKS = new DNBlocks(LostLegends.REGISTRATE, ID);
+	public static DNShrooms SHROOM = new DNShrooms(LostLegends.REGISTRATE, ID + "/shroom");
 	public static DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
 	public static DNEffects EFFECTS = new DNEffects(LostLegends.REGISTRATE, ID);
 	public static DNWorldGenReg WG = new DNWorldGenReg(LostLegends.REG);

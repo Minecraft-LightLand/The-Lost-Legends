@@ -6,12 +6,16 @@ import dev.xkmc.lostlegends.foundation.feature.ILakeFeature;
 import dev.xkmc.lostlegends.foundation.feature.IslandFeature;
 import dev.xkmc.lostlegends.foundation.feature.LakeMaker;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+
+import java.util.List;
 
 public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> implements ILakeFeature {
 
@@ -39,6 +43,14 @@ public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> imp
 		if (!ins.test(level, pos, data))
 			return false;
 		ins.gen(level, pos, rand, data);
+		for (var e : data.deco) {
+			int offset = data.maxWidth / 2 - data.margin - 2;
+			for (int i = 0; i < offset; i++) {
+				var a = Mth.PI * 2 * i / offset;
+				var ipos = pos.offset(Math.round(offset * Mth.sin(a)), data.depth, Math.round(offset * Mth.cos(a)));
+				e.place(level, ctx.chunkGenerator(), ctx.random(), ipos);
+			}
+		}
 		return true;
 	}
 
@@ -61,7 +73,7 @@ public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> imp
 	public record Data(
 			BlockState fluid, BlockState barrier, BlockState padding, BlockState surface,
 			int depth, int maxWidth, int maxHeight, int minTrial, int maxTrial, int radius,
-			int margin, int height, int clearance
+			int margin, int height, int clearance, List<ConfiguredFeature<?, ?>> deco
 	) implements FeatureConfiguration, ILakeFeature.Data, IslandData {
 		public static final Codec<Data> CODEC = RecordCodecBuilder.create(i -> i.group(
 				BlockState.CODEC.fieldOf("fluid").forGetter(Data::fluid),
@@ -76,7 +88,8 @@ public class LakeIslandFeature extends IslandFeature<LakeIslandFeature.Data> imp
 				Codec.INT.fieldOf("component_radius").forGetter(Data::radius),
 				Codec.INT.fieldOf("margin").forGetter(Data::margin),
 				Codec.INT.fieldOf("island_height").forGetter(Data::height),
-				Codec.INT.fieldOf("island_clearance").forGetter(Data::clearance)
+				Codec.INT.fieldOf("island_clearance").forGetter(Data::clearance),
+				ConfiguredFeature.DIRECT_CODEC.listOf().fieldOf("decorations").forGetter(Data::deco)
 		).apply(i, Data::new));
 	}
 

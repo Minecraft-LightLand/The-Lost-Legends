@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "grown=false": {
+      "model": "lostlegends:block/scorchroom_small"
+    },
+    "grown=true": {
+      "model": "lostlegends:block/scorchroom"
+    }
+  }
+}

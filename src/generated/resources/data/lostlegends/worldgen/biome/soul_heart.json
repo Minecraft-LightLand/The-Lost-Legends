@@ -58,10 +58,9 @@
     ],
     [
       "lostlegends:deepnether/vegetation/screaming_soul_vines",
-      "lostlegends:deepnether/vegetation/crimson_root",
+      "lostlegends:deepnether/vegetation/scarlet_root",
       "lostlegends:deepnether/vegetation/soul_blossom",
-      "minecraft:brown_mushroom_nether",
-      "minecraft:red_mushroom_nether"
+      "lostlegends:deepnether/vegetation/ghoshroom"
     ]
   ],
   "has_precipitation": false,

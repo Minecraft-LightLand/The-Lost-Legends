@@ -1,0 +1,22 @@
+{
+  "values": {
+    "lostlegends:biscorchroom": {
+      "chance": 0.65
+    },
+    "lostlegends:eyed_ghoshroom": {
+      "chance": 0.65
+    },
+    "lostlegends:ghoshroom": {
+      "chance": 0.65
+    },
+    "lostlegends:hearthroom": {
+      "chance": 0.65
+    },
+    "lostlegends:large_hearthroom": {
+      "chance": 0.65
+    },
+    "lostlegends:scorchroom": {
+      "chance": 0.65
+    }
+  }
+}

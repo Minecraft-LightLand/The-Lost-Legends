@@ -14,10 +14,10 @@ import dev.xkmc.lostlegends.modules.deepnether.data.DNFeatures;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HalfTransparentBlock;
+import net.minecraft.world.level.block.RootsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -45,6 +45,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 	public final BlockEntry<AshBlossomBlock> ASH_BLOSSOM;
 	public final BlockEntry<ScarletBlossomBlock> SCARLET_BLOSSOM;
+	public final BlockEntry<RootsBlock> SCARLET_ROOTS;
 	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
 	public final BlockEntry<BoneVineHead> SCORCHED_BONE_VINE;
 	public final BlockEntry<BoneVineBody> SCORCHED_BONE_VINE_PLANT;
@@ -77,7 +78,7 @@ public class DNBlocks extends LLRegBase {
 									blockLoc(ctx.getName() + "_top"))))
 					.pickaxe()
 					.tag(BlockTags.INFINIBURN_OVERWORLD, BlockTags.NETHER_CARVER_REPLACEABLES)
-					.silkTouchOr(DEEP_NETHERRACK)
+					.silkTouchOrElse(DEEP_NETHERRACK)
 					.simpleItem()
 					.register();
 
@@ -158,7 +159,7 @@ public class DNBlocks extends LLRegBase {
 									blockLoc(ctx.getName() + "_top"))))
 					.shovel()
 					.tag(BlockTags.NYLIUM, BlockTags.NETHER_CARVER_REPLACEABLES)
-					.silkTouchOr(NETHER_SOIL)
+					.silkTouchOrElse(NETHER_SOIL)
 					.simpleItem()
 					.register();
 
@@ -173,7 +174,7 @@ public class DNBlocks extends LLRegBase {
 									blockLoc(ctx.getName() + "_top"))))
 					.shovel()
 					.tag(BlockTags.NYLIUM, BlockTags.NETHER_CARVER_REPLACEABLES)
-					.silkTouchOr(NETHER_SOIL)
+					.silkTouchOrElse(NETHER_SOIL)
 					.simpleItem()
 					.register();
 
@@ -289,6 +290,13 @@ public class DNBlocks extends LLRegBase {
 					.light(12).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
+					.register();
+
+			SCARLET_ROOTS = block("scarlet_roots", RootsBlock::new)
+					.foliage().cross()
+					.tag(BlockTags.COMBINATION_STEP_SOUND_BLOCKS, BlockTags.SWORD_EFFICIENT, BlockTags.REPLACEABLE_BY_TREES)
+					.simpleItem()
+					.silkTouchOrShear()
 					.register();
 
 			SCORCHED_BONE_VINE = block("scorched_bone_vines", BoneVineHead::new)

@@ -10,6 +10,8 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.serial.loot.LootHelper;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -23,12 +25,18 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.LimitCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.common.Tags;
+
+import java.util.function.Consumer;
 
 public class LLBlockBuilder<T extends Block> {
 
@@ -192,7 +200,20 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
-	public LLBlockBuilder<T> silkTouchOr(ItemLike other) {
+	public LLBlockBuilder<T> silkTouch() {
+		builder.loot((pvd, block) -> pvd.add(block, pvd.createSingleItemTable(block)));
+		return this;
+	}
+
+
+	public LLBlockBuilder<T> silkTouchOrShear() {
+		builder.loot((pvd, block) ->
+				pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(block)
+						.when(new LootHelper(pvd).silk().or(MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.TOOLS_SHEAR))))))));
+		return this;
+	}
+
+	public LLBlockBuilder<T> silkTouchOrElse(ItemLike other) {
 		builder.loot((pvd, block) -> pvd.add(block, pvd.createSingleItemTableWithSilkTouch(block, other)));
 		return this;
 	}
@@ -236,6 +257,11 @@ public class LLBlockBuilder<T extends Block> {
 
 	public LLBlockBuilder<T> desc(String str) {
 		builder.getOwner().addRawLang("block." + builder.getOwner().getModid() + "." + builder.getName() + ".desc", str);
+		return this;
+	}
+
+	public LLBlockBuilder<T> transformItem(Consumer<ItemBuilder<BlockItem, ?>> cons) {
+		cons.accept(item);
 		return this;
 	}
 

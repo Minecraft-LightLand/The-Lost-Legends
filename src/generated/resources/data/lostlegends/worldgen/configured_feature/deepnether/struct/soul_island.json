@@ -5,6 +5,99 @@
       "Name": "lostlegends:twistone"
     },
     "component_radius": 6,
+    "decorations": [
+      {
+        "type": "minecraft:random_patch",
+        "config": {
+          "feature": {
+            "feature": {
+              "type": "minecraft:simple_block",
+              "config": {
+                "to_place": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "lostlegends:ghoshroom",
+                    "Properties": {
+                      "grown": "true"
+                    }
+                  }
+                }
+              }
+            },
+            "placement": [
+              {
+                "type": "minecraft:block_predicate_filter",
+                "predicate": {
+                  "type": "minecraft:all_of",
+                  "predicates": [
+                    {
+                      "type": "minecraft:matching_blocks",
+                      "blocks": "minecraft:air"
+                    },
+                    {
+                      "type": "minecraft:matching_blocks",
+                      "blocks": "lostlegends:twistone",
+                      "offset": [
+                        0,
+                        -1,
+                        0
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "tries": 16,
+          "xz_spread": 6,
+          "y_spread": 0
+        }
+      },
+      {
+        "type": "minecraft:random_patch",
+        "config": {
+          "feature": {
+            "feature": {
+              "type": "minecraft:simple_block",
+              "config": {
+                "to_place": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "lostlegends:eyed_ghoshroom"
+                  }
+                }
+              }
+            },
+            "placement": [
+              {
+                "type": "minecraft:block_predicate_filter",
+                "predicate": {
+                  "type": "minecraft:all_of",
+                  "predicates": [
+                    {
+                      "type": "minecraft:matching_blocks",
+                      "blocks": "minecraft:air"
+                    },
+                    {
+                      "type": "minecraft:matching_blocks",
+                      "blocks": "lostlegends:twistone",
+                      "offset": [
+                        0,
+                        -1,
+                        0
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "tries": 2,
+          "xz_spread": 6,
+          "y_spread": 0
+        }
+      }
+    ],
     "depth": 6,
     "fluid": {
       "Name": "lostlegends:liquid_soul",

@@ -51,10 +51,6 @@
       "lostlegends:deepnether/struct/deep_nether_portal",
       "lostlegends:deepnether/simple/spring_open",
       "lostlegends:deepnether/simple/spring_close"
-    ],
-    [
-      "minecraft:brown_mushroom_nether",
-      "minecraft:red_mushroom_nether"
     ]
   ],
   "has_precipitation": false,

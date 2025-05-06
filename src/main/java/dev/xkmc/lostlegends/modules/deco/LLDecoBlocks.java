@@ -29,7 +29,7 @@ public class LLDecoBlocks extends LLModuleBase {
 
 	public static final BrickSet DEEP_NETHERRACK, DEEP_BLACKSTONE, ASH_STONE, TWISTONE,
 			TWISTONE_BRICKS, CHISELED_TWISTONE, CHISELED_RESONANT_TWISTONE;
-	public static final BlockEntry<Block> RESONANT_TWISTONE;
+	public static final BlockEntry<Block> RESONANT_TWISTONE, DARK_STONE;
 	public static final BlockEntry<HalfTransparentBlock> AMBER_MAGMA_BRICKS, ECTOPLASM_BRICKS;
 
 	static {
@@ -42,6 +42,8 @@ public class LLDecoBlocks extends LLModuleBase {
 		CHISELED_TWISTONE = BrickSet.of(reg, "chiseled_twistone", DeepNether.BLOCKS.TWISTONE);
 		RESONANT_TWISTONE = reg.block("resonant_twistone_bricks", Block::new)
 				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE).cubeAll().pickaxe().simpleItem().register();
+		DARK_STONE = reg.block("dark_stone_bricks", Block::new)
+				.copyProp(DeepNether.BLOCKS.DARK_STONE).cubeAll().pickaxe().simpleItem().register();
 		CHISELED_RESONANT_TWISTONE = BrickSet.of(reg, "chiseled_resonant_twistone", DeepNether.BLOCKS.RESONANT_TWISTONE);
 
 		{
@@ -80,6 +82,7 @@ public class LLDecoBlocks extends LLModuleBase {
 
 		public static void genRecipe(RegistrateRecipeProvider pvd) {
 			square(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
+			square(pvd, DeepNether.BLOCKS.DARK_STONE, DARK_STONE);
 			square(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			square(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
 			square(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
@@ -87,6 +90,7 @@ public class LLDecoBlocks extends LLModuleBase {
 
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, CHISELED_TWISTONE.block);
+			cut(pvd, DeepNether.BLOCKS.DARK_STONE, DARK_STONE);
 			cut(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			cut(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
 			cut(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);

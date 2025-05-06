@@ -5,6 +5,7 @@ import dev.xkmc.lostlegends.foundation.module.FeatureKey;
 import dev.xkmc.lostlegends.foundation.module.LLFeatureReg;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.*;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -14,14 +15,13 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -171,7 +171,7 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
 			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.BLOCKS.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
-}
+		}
 
 		@Override
 		public void regPlacements(BootstrapContext<PlacedFeature> ctx, HolderGetter<ConfiguredFeature<?, ?>> cf) {
@@ -197,7 +197,9 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey ashBlossom = uni("ash_blossom");
 		public final FeatureKey scarletBlossom = uni("scarlet_blossom");
 		public final FeatureKey soulBlossom = uni("soul_blossom");
-		public final FeatureKey crimsonRoot = uni("crimson_root");
+		public final FeatureKey scarletRoot = uni("scarlet_root");
+		public final FeatureKey hearthroom = uni("hearthroom");
+		public final FeatureKey ghoshroom = uni("ghoshroom");
 
 		public final FeatureKey crimsonVegetation = uni("crimson_vegetation");
 		public final FeatureKey crimsonBonemeal = uni("crimson_bonemeal");
@@ -230,23 +232,27 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, soulBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SOUL_BLOSSOM.get())),
 					List.of(soulSoil.get(), soulSand.get())));
-			FeatureUtils.register(ctx, crimsonRoot.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.CRIMSON_ROOTS)),
+			FeatureUtils.register(ctx, scarletRoot.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SCARLET_ROOTS.get())),
+					List.of(soulSoil.get(), soulSand.get())));
+			FeatureUtils.register(ctx, hearthroom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.SHROOM.HEARTHROOM.get())),
+					List.of(deepRack.get())));
+			FeatureUtils.register(ctx, ghoshroom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.SHROOM.GHOSHROOM.get())),
 					List.of(soulSoil.get(), soulSand.get())));
 
 
 			WeightedStateProvider crimson = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-					.add(Blocks.CRIMSON_ROOTS.defaultBlockState(), 87)
-					.add(Blocks.CRIMSON_FUNGUS.defaultBlockState(), 11)
-					.add(Blocks.WARPED_FUNGUS.defaultBlockState(), 1)//TODO
+					.add(DeepNether.BLOCKS.SCARLET_ROOTS.getDefaultState(), 87)
+					.add(DeepNether.SHROOM.HEARTHROOM.getDefaultState(), 11)
 			);
 			FeatureUtils.register(ctx, crimsonVegetation.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(crimson, 8, 4));
 			FeatureUtils.register(ctx, crimsonBonemeal.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(crimson, 3, 1));
 
 			WeightedStateProvider golden = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-					.add(Blocks.CRIMSON_ROOTS.defaultBlockState(), 87)
-					.add(Blocks.CRIMSON_FUNGUS.defaultBlockState(), 11)
-					.add(Blocks.WARPED_FUNGUS.defaultBlockState(), 1)//TODO
+					.add(DeepNether.BLOCKS.SCARLET_ROOTS.getDefaultState(), 87)
+					.add(DeepNether.SHROOM.HEARTHROOM.getDefaultState(), 11)//TODO
 			);
 			FeatureUtils.register(ctx, goldenVegetation.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(golden, 8, 4));
 			FeatureUtils.register(ctx, goldenBonemeal.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(golden, 3, 1));
@@ -261,7 +267,9 @@ public class DNFeatures extends LLFeatureReg {
 			ashBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
 			scarletBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
 			soulBlossom.place(ctx, cf, spread(3, 6, PlacementUtils.RANGE_10_10));
-			crimsonRoot.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_10_10));
+			scarletRoot.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_10_10));
+			hearthroom.place(ctx, cf, spread(5, PlacementUtils.RANGE_10_10));
+			ghoshroom.place(ctx, cf, spread(5, PlacementUtils.RANGE_10_10));
 
 			crimsonVegetation.place(ctx, cf, layer(6));
 			goldenVegetation.place(ctx, cf, layer(6));
@@ -317,14 +325,21 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.DEEP_NETHERRACK.getDefaultState(),
 					DeepNether.BLOCKS.SCORCHED_NETHERRACK.getDefaultState(),
 					6, 24, 10, 10, 14, 6,
-					4, 16, 6));
+					4, 16, 6, List.of(
+					patch(16, 6, 0, DeepNether.SHROOM.SCORCHROOM.get(), DeepNether.BLOCKS.SCORCHED_NETHERRACK.get()),
+					patch(2, 6, 0, DeepNether.SHROOM.BISCORCHROOM.get(), DeepNether.BLOCKS.SCORCHED_NETHERRACK.get())
+			)));
+
 			FeatureUtils.register(ctx, soulIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
 					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					6, 24, 10, 10, 14, 6,
-					3, 16, 6));
+					3, 16, 6, List.of(
+					patch(16, 6, 0, DeepNether.SHROOM.GHOSHROOM.get(), DeepNether.BLOCKS.TWISTONE.get()),
+					patch(2, 6, 0, DeepNether.SHROOM.EYED_GHOSHROOM.get(), DeepNether.BLOCKS.TWISTONE.get())
+			)));
 		}
 
 		@Override
@@ -337,6 +352,13 @@ public class DNFeatures extends LLFeatureReg {
 			goldLake.place(ctx, cf, spreadRare(2, uniform(35, 200)));
 			lavaIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
 			soulIsland.place(ctx, cf, spreadRare(16, uniform(90, 200)));
+		}
+
+		private static ConfiguredFeature<?, ?> patch(int tries, int xz, int y, Block block, Block... base) {
+			return new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(tries, xz, y,
+					PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)),
+							BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+									List.of(base))))));
 		}
 
 	}

@@ -53,8 +53,9 @@ public class DNBiomeDecoBuilder {
 		ins.vege.soulVine.addTo(builder, VEGETAL_DECORATION);
 		ins.struct.soulLake.addTo(builder, LAKES);
 		ins.struct.soulIsland.addTo(builder, LAKES);
-		ins.vege.crimsonRoot.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.scarletRoot.addTo(builder, VEGETAL_DECORATION);
 		ins.vege.soulBlossom.addTo(builder, VEGETAL_DECORATION);
+		ins.vege.ghoshroom.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
 
@@ -119,12 +120,10 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
-	public DNBiomeDecoBuilder mushrooms() {
-		builder.addFeature(VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_NETHER);
-		builder.addFeature(VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_NETHER);
+	public DNBiomeDecoBuilder hearthroom() {
+		ins.vege.hearthroom.addTo(builder, VEGETAL_DECORATION);
 		return this;
 	}
-
 
 	public DNBiomeDecoBuilder crimsonPlains() {
 		ins.vege.weepingVineSparse.addTo(builder, VEGETAL_DECORATION);

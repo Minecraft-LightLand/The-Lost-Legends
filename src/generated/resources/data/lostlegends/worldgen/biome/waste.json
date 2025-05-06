@@ -55,8 +55,7 @@
       "lostlegends:deepnether/simple/spring_close"
     ],
     [
-      "minecraft:brown_mushroom_nether",
-      "minecraft:red_mushroom_nether"
+      "lostlegends:deepnether/vegetation/hearthroom"
     ]
   ],
   "has_precipitation": false,

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lostlegends:dark_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "lostlegends:dark_stone_bricks"
+  }
+}
