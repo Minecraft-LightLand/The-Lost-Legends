@@ -1,10 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.worldgen.feature;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelAccessor;
@@ -19,10 +21,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import javax.annotation.Nullable;
 
 public class ColumnClusters extends Feature<ColumnClusters.Data> {
-
-	private static final ImmutableList<Block> CANNOT_PLACE_ON = ImmutableList.of(
-			Blocks.LAVA, Blocks.BEDROCK
-	);
 
 	private static final int CLUSTERED_REACH = 5;
 	private static final int CLUSTERED_SIZE = 50;
@@ -40,7 +38,7 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 		WorldGenLevel level = ctx.level();
 		RandomSource random = ctx.random();
 		Data data = ctx.config();
-		if (!canPlaceAt(level, sea, pos.mutable()))
+		if (!canPlaceAt(data, level, sea, pos.mutable()))
 			return false;
 		int height = data.height().sample(random);
 		boolean cluster = random.nextFloat() < 0.9F;
@@ -70,8 +68,8 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 		)) {
 			int dist = ipos.distManhattan(pos);
 			BlockPos p0 = isAirOrLavaOcean(level, sea, ipos)
-					? findSurface(level, sea, ipos.mutable(), dist)
-					: findAir(level, ipos.mutable(), dist);
+					? findSurface(data, level, sea, ipos.mutable(), dist)
+					: findAir(data, level, ipos.mutable(), dist);
 			if (p0 == null) continue;
 			int y = h - dist / 2;
 			for (BlockPos.MutableBlockPos p1 = p0.mutable(); y >= 0; y--) {
@@ -93,10 +91,10 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 	}
 
 	@Nullable
-	private static BlockPos findSurface(LevelAccessor level, int sea, BlockPos.MutableBlockPos pos, int h) {
+	private static BlockPos findSurface(Data data, LevelAccessor level, int sea, BlockPos.MutableBlockPos pos, int h) {
 		while (pos.getY() > level.getMinBuildHeight() + 1 && h > 0) {
 			h--;
-			if (canPlaceAt(level, sea, pos)) {
+			if (canPlaceAt(data, level, sea, pos)) {
 				return pos;
 			}
 			pos.move(Direction.DOWN);
@@ -104,20 +102,20 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 		return null;
 	}
 
-	private static boolean canPlaceAt(LevelAccessor level, int sea, BlockPos.MutableBlockPos pos) {
+	private static boolean canPlaceAt(Data data, LevelAccessor level, int sea, BlockPos.MutableBlockPos pos) {
 		if (!isAirOrLavaOcean(level, sea, pos))
 			return false;
 		BlockState state = level.getBlockState(pos.move(Direction.DOWN));
 		pos.move(Direction.UP);
-		return !state.isAir() && !CANNOT_PLACE_ON.contains(state.getBlock());
+		return data.canPlaceOn.contains(state.getBlock().builtInRegistryHolder());
 	}
 
 	@Nullable
-	private static BlockPos findAir(LevelAccessor level, BlockPos.MutableBlockPos pos, int y) {
+	private static BlockPos findAir(Data data, LevelAccessor level, BlockPos.MutableBlockPos pos, int y) {
 		while (pos.getY() < level.getMaxBuildHeight() && y > 0) {
 			y--;
 			BlockState state = level.getBlockState(pos);
-			if (CANNOT_PLACE_ON.contains(state.getBlock())) {
+			if (!data.canPlaceOn.contains(state.getBlock().builtInRegistryHolder())) {
 				return null;
 			}
 			if (state.isAir()) {
@@ -136,13 +134,15 @@ public class ColumnClusters extends Feature<ColumnClusters.Data> {
 
 
 	public record Data(
-			BlockState base, BlockState block, IntProvider reach, IntProvider height
+			BlockState base, BlockState block, IntProvider reach, IntProvider height,
+			HolderSet<Block> canPlaceOn
 	) implements FeatureConfiguration {
 		public static final Codec<Data> CODEC = RecordCodecBuilder.create(i -> i.group(
 				BlockState.CODEC.fieldOf("base").forGetter(Data::base),
 				BlockState.CODEC.fieldOf("block").forGetter(Data::block),
 				IntProvider.codec(0, 3).fieldOf("reach").forGetter(Data::reach),
-				IntProvider.codec(1, 10).fieldOf("height").forGetter(Data::height)
+				IntProvider.codec(1, 10).fieldOf("height").forGetter(Data::height),
+				RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_place_on").forGetter(Data::canPlaceOn)
 		).apply(i, Data::new));
 
 	}

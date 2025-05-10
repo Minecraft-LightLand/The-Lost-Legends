@@ -1,0 +1,9 @@
+{
+  "parent": "lostlegends:custom/cube_highlight",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "lostlegends:block/deepnether/dementing_soil",
+    "highlight": "lostlegends:block/deepnether/dementing_lazurite",
+    "particle": "lostlegends:block/deepnether/dementing_soil"
+  }
+}

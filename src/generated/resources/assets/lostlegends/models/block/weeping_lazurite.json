@@ -1,0 +1,9 @@
+{
+  "parent": "lostlegends:custom/cube_highlight",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "lostlegends:block/deepnether/weeping_sand",
+    "highlight": "lostlegends:block/deepnether/weeping_lazurite",
+    "particle": "lostlegends:block/deepnether/weeping_sand"
+  }
+}

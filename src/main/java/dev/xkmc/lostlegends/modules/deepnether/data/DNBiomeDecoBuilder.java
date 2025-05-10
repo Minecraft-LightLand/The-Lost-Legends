@@ -2,7 +2,6 @@ package dev.xkmc.lostlegends.modules.deepnether.data;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
@@ -56,6 +55,8 @@ public class DNBiomeDecoBuilder {
 		ins.vege.scarletRoot.addTo(builder, VEGETAL_DECORATION);
 		ins.vege.soulBlossom.addTo(builder, VEGETAL_DECORATION);
 		ins.vege.ghoshroom.addTo(builder, VEGETAL_DECORATION);
+		ins.ore.dementingLazurite.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.weepingLazurite.addTo(builder, UNDERGROUND_ORES);
 		return this;
 	}
 

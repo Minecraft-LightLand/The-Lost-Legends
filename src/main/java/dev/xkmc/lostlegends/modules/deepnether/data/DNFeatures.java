@@ -56,6 +56,8 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey resonant = uni("resonating_twistone");
 		public final FeatureKey debrisSmall = uni("debris_small");
 		public final FeatureKey debrisLarge = uni("debris_large");
+		public final FeatureKey dementingLazurite = uni("dementing_lazurite");
+		public final FeatureKey weepingLazurite = uni("weeping_lazurite");
 
 		public Ores(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -68,19 +70,25 @@ public class DNFeatures extends LLFeatureReg {
 			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10));
+					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(), 10));
 			FeatureUtils.register(ctx, goldClose.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.get().defaultBlockState(), 10, 0.8f));
+					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(), 10, 0.8f));
 			FeatureUtils.register(ctx, hearth.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.HEARTH_ORE.get().defaultBlockState(), 6));
+					DeepNether.BLOCKS.HEARTH_ORE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, amarast.cf, Feature.ORE, new OreConfiguration(black,
-					DeepNether.BLOCKS.AMARAST_ORE.get().defaultBlockState(), 4));
+					DeepNether.BLOCKS.AMARAST_ORE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, resonant.cf, Feature.ORE, new OreConfiguration(warped,
-					DeepNether.BLOCKS.RESONANT_TWISTONE.get().defaultBlockState(), 4));
+					DeepNether.BLOCKS.RESONANT_TWISTONE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
+			FeatureUtils.register(ctx, dementingLazurite.cf, Feature.ORE, new OreConfiguration(
+					new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get()),
+					DeepNether.BLOCKS.DEMENTING_LAZURITE.getDefaultState(), 6));
+			FeatureUtils.register(ctx, weepingLazurite.cf, Feature.ORE, new OreConfiguration(
+					new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get()),
+					DeepNether.BLOCKS.WEEPING_LAZURITE.getDefaultState(), 6));
 		}
 
 		@Override
@@ -92,6 +100,8 @@ public class DNFeatures extends LLFeatureReg {
 			resonant.place(ctx, cf, spread(40, uniform(10, 250)));
 			debrisSmall.place(ctx, cf, spread(15, uniform(10, 250)));
 			debrisLarge.place(ctx, cf, spread(4, uniform(8, 70)));
+			dementingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
+			weepingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
 		}
 	}
 
@@ -300,11 +310,11 @@ public class DNFeatures extends LLFeatureReg {
 					new DeepNetherPortal.Data(2, 6, 10, 30));
 			FeatureUtils.register(ctx, netherPortal.cf, DeepNether.WG.NETHER_PORTAL.get(),
 					new NetherVolcanoPortal.Data(2, 6, 32, 52, 4, 6, 1.5f,
-							0.3f, DeepNether.BLOCKS.DEEP_NETHERRACK.get().defaultBlockState(),
+							0.3f, DeepNether.BLOCKS.DEEP_NETHERRACK.getDefaultState(),
 							0.5f, Blocks.MAGMA_BLOCK.defaultBlockState()
 					));
 			FeatureUtils.register(ctx, darkPile.cf, DeepNether.WG.STONE_PILE.get(), new StonePile.Data(
-					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.get().defaultBlockState(),
+					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.getDefaultState(),
 					DeepNether.BLOCKS.DARK_STONE.getDefaultState()));
 
 			FeatureUtils.register(ctx, lavaLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
@@ -411,11 +421,19 @@ public class DNFeatures extends LLFeatureReg {
 
 		@Override
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
-			var dense = DeepNether.BLOCKS.DENSE_BONE.get().defaultBlockState();
-			var bone = DeepNether.BLOCKS.BONE_PILE.get().defaultBlockState();
-			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.COLUMN_CLUSTERS.get(), new ColumnClusters.Data(dense, bone, ConstantInt.of(1), UniformInt.of(1, 4)));
-			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.COLUMN_CLUSTERS.get(), new ColumnClusters.Data(dense, bone, UniformInt.of(2, 3), UniformInt.of(5, 10))
+			var dense = DeepNether.BLOCKS.DENSE_BONE.getDefaultState();
+			var bone = DeepNether.BLOCKS.BONE_PILE.getDefaultState();
+			var canPlaceOn = HolderSet.direct(
+					Blocks.BASALT.builtInRegistryHolder(),
+					DeepNether.BLOCKS.DEEP_NETHERRACK,
+					DeepNether.BLOCKS.DEEP_BLACKSTONE,
+					DeepNether.BLOCKS.DENSE_BONE,
+					DeepNether.BLOCKS.BONE_PILE
 			);
+			FeatureUtils.register(ctx, columnSmall.cf, DeepNether.WG.COLUMN_CLUSTERS.get(),
+					new ColumnClusters.Data(dense, bone, ConstantInt.of(1), UniformInt.of(1, 4), canPlaceOn));
+			FeatureUtils.register(ctx, columnLarge.cf, DeepNether.WG.COLUMN_CLUSTERS.get(),
+					new ColumnClusters.Data(dense, bone, UniformInt.of(2, 3), UniformInt.of(5, 10), canPlaceOn));
 		}
 
 		@Override

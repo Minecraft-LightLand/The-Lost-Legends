@@ -32,11 +32,11 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, HEARTH_ORE,
 			BURIED_GOLD_DEBRIS, AMARAST_ORE, TWISTONE, RESONANT_TWISTONE;
 	public final BlockEntry<Block> NETHER_SOIL, ASH_STONE, DEMENTING_SOIL, DENSE_BONE, SOUL_SHELL,
-			SCORCHED_NETHERRACK;
+			SCORCHED_NETHERRACK, DEMENTING_LAZURITE;
 
 	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM, GOLDEN_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
-	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
+	public final BlockEntry<WeepingSandBlock> WEEPING_SAND, WEEPING_LAZURITE;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
 	public final BlockEntry<DeepMagmaBlock> MAGMA;
 	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
@@ -220,12 +220,31 @@ public class DNBlocks extends LLRegBase {
 					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
 					.register();
 
+			WEEPING_LAZURITE = block("weeping_lazurite", WeepingSandBlock::new)
+					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SAND).strength(0.5f)
+					.prop(p -> p.speedFactor(0.4F))
+					.fullBlock().highlightCube(blockLoc(WEEPING_SAND.getId().getPath())).shovel()
+					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
+					.simpleItem()
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+					.multiOreLoot(() -> DeepNether.ITEMS.SOUL_LAZURITE.get(), 1, 2)
+					.register();
+
 			DEMENTING_SOIL = block("dementing_soil", Block::new)
 					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SOIL).strength(0.5f)
 					.cubeAll().shovel()
 					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
 					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+					.register();
+
+			DEMENTING_LAZURITE = block("dementing_lazurite", Block::new)
+					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SOIL).strength(0.5f)
+					.highlightCube(blockLoc(DEMENTING_SOIL.getId().getPath())).shovel()
+					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
+					.simpleItem()
+					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+					.multiOreLoot(() -> DeepNether.ITEMS.SOUL_LAZURITE.get(), 1, 2)
 					.register();
 
 			TWISTONE = block("twistone", Block::new)

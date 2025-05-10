@@ -7,6 +7,13 @@
     "block": {
       "Name": "lostlegends:bone_pile"
     },
+    "can_place_on": [
+      "minecraft:basalt",
+      "lostlegends:deep_netherrack",
+      "lostlegends:deep_blackstone",
+      "lostlegends:dense_bone",
+      "lostlegends:bone_pile"
+    ],
     "height": {
       "type": "minecraft:uniform",
       "max_inclusive": 4,

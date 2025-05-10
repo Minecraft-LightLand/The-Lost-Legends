@@ -12,6 +12,7 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.serial.loot.LootHelper;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -34,6 +35,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -147,6 +149,18 @@ public class LLBlockBuilder<T extends Block> {
 				pvd.simpleBlock(ctx.get(), pvd.models().cross(ctx.getName(),
 								pvd.modLoc("block/" + path + "/" + ctx.getName()))
 						.renderType("cutout")));
+		return this;
+	}
+
+	public LLBlockBuilder<T> highlightCube(ResourceLocation base) {
+		builder.blockstate((ctx, pvd) ->
+				pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cube_highlight")))
+						.texture("base", base)
+						.texture("highlight", pvd.modLoc("block/" + path + "/" + ctx.getName()))
+						.texture("particle", base)
+						.renderType("cutout")
+				));
 		return this;
 	}
 
