@@ -30,6 +30,7 @@ public class DeepNether extends LLModuleBase {
 	public static DNBlocks BLOCKS = new DNBlocks(LostLegends.REGISTRATE, ID);
 	public static DNShrooms SHROOM = new DNShrooms(LostLegends.REGISTRATE, ID + "/shroom");
 	public static DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
+	public static DNEntities ENTITY = new DNEntities(LostLegends.REGISTRATE, ID);
 	public static DNEffects EFFECTS = new DNEffects(LostLegends.REGISTRATE, ID);
 	public static DNWorldGenReg WG = new DNWorldGenReg(LostLegends.REG);
 

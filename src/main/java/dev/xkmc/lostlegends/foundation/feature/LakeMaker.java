@@ -13,7 +13,9 @@ public class LakeMaker {
 	private final boolean island;
 	private final int maxHor;
 	private final int maxVer;
-	private int[] valid, wet, edge;
+	private final int[] valid;
+	private int[] wet;
+	private int[] edge;
 
 	public LakeMaker(ILakeFeature parent, boolean island, int maxHor, int maxVer) {
 		this.parent = parent;

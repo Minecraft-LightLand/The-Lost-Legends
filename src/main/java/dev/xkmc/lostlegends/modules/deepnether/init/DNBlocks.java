@@ -223,7 +223,7 @@ public class DNBlocks extends LLRegBase {
 			WEEPING_LAZURITE = block("weeping_lazurite", WeepingSandBlock::new)
 					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SAND).strength(0.5f)
 					.prop(p -> p.speedFactor(0.4F))
-					.fullBlock().highlightCube(blockLoc(WEEPING_SAND.getId().getPath())).shovel()
+					.fullBlock().highlightCube().shovel()
 					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
 					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
@@ -240,7 +240,7 @@ public class DNBlocks extends LLRegBase {
 
 			DEMENTING_LAZURITE = block("dementing_lazurite", Block::new)
 					.prop(MapColor.COLOR_BROWN, SoundType.SOUL_SOIL).strength(0.5f)
-					.highlightCube(blockLoc(DEMENTING_SOIL.getId().getPath())).shovel()
+					.highlightCube().shovel()
 					.tag(BlockTags.SOUL_SPEED_BLOCKS, BlockTags.SOUL_FIRE_BASE_BLOCKS, BlockTags.NETHER_CARVER_REPLACEABLES, BlockTags.SCULK_REPLACEABLE)
 					.simpleItem()
 					.itemTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)

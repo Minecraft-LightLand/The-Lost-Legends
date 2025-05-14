@@ -65,7 +65,14 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "lostlegends:nether_slime",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

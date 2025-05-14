@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-10T17:42:20.085755	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-05-14T09:49:44.749321	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -69,8 +69,8 @@ b0d1fa152acb965cb7e0cc6a1fd26e9e92e343a7 assets/lostlegends/blockstates/twistone
 f646be5ab920c0f5658be50774c62ace8836a682 assets/lostlegends/blockstates/twistone_wall.json
 3c876342c1d0b03ff78d29f0d23a41aee89ceaef assets/lostlegends/blockstates/weeping_lazurite.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-a48c2117e3ea9129059bd234c648e7365c7b0b1c assets/lostlegends/lang/en_ud.json
-b448e43694e14b9b2f325eaca78fd7833ff8ce12 assets/lostlegends/lang/en_us.json
+dd34af7d140102099ed2d1bd29e8d913dc3f367f assets/lostlegends/lang/en_ud.json
+6054bc2d7e024d06f003333ff5e9b6044199eacf assets/lostlegends/lang/en_us.json
 848a0a793baec21b2c278f0069e0700b3d5bf5ea assets/lostlegends/models/block/amarast_ore.json
 323fb145d83f04743909ecbacf2257ce8915817f assets/lostlegends/models/block/amber_magma.json
 b5aa87669d287539baee4a16c85d16be405c0e92 assets/lostlegends/models/block/amber_magma_bricks.json
@@ -128,7 +128,7 @@ eaae0931fe3593e3e32c4509441e85d91e191b65 assets/lostlegends/models/block/deep_ne
 0546d3454fea2bbf20e3ae43bef4db1fef0e3576 assets/lostlegends/models/block/deep_netherrack_wall_post.json
 56f88e4416bfe4bd502f8bdb202007370af15416 assets/lostlegends/models/block/deep_netherrack_wall_side.json
 b0b0399683aefbd90f1f3096721b80b3bdb5dbb6 assets/lostlegends/models/block/deep_netherrack_wall_side_tall.json
-e9f8840608066c65e85fd0093523c14b1c7ab9b3 assets/lostlegends/models/block/dementing_lazurite.json
+66735a4623cef1a3990477e93914fdb67efc338b assets/lostlegends/models/block/dementing_lazurite.json
 807446248ab6ba0842f5af436ae5ac63b710f1eb assets/lostlegends/models/block/dementing_soil.json
 5c8f1cd46e75971d93c2ce22c6d3c8002bc33521 assets/lostlegends/models/block/dense_bone.json
 2ec3fa61e10156d9b89e751158033afed88b4275 assets/lostlegends/models/block/ectoplasm.json
@@ -177,7 +177,7 @@ cb9fdc7cfc30d89ff99adb0a232cf3bf28ca5124 assets/lostlegends/models/block/twiston
 5f1d890f51226bf1ba45dd0af885a27032800050 assets/lostlegends/models/block/twistone_wall_post.json
 83d41bcefdebdfa1b917b394f83eb28ada870e2c assets/lostlegends/models/block/twistone_wall_side.json
 0802f5537316dd0e2026a4885ce27287c564a76f assets/lostlegends/models/block/twistone_wall_side_tall.json
-d1347cfa0f7ffda3400fa6c584df518f20de0f16 assets/lostlegends/models/block/weeping_lazurite.json
+648ad4038eb9d1d9db77904d6be3c26dd67d2880 assets/lostlegends/models/block/weeping_lazurite.json
 69da56a401e4ccb08b1252b8f640963b79716871 assets/lostlegends/models/block/weeping_sand.json
 c9afa290069b90829a5aac202ed2501b7fd095ff assets/lostlegends/models/item/amarast.json
 0ce008c1072a531d0303e911c723da80e6914820 assets/lostlegends/models/item/amarast_ore.json
@@ -396,6 +396,7 @@ b77c204394e2729cc4a569266e6764d4155d87e6 data/lostlegends/loot_table/blocks/twis
 2b6598d14a4beb149908fb5344b084ea9e917fc9 data/lostlegends/loot_table/blocks/twistone_wall.json
 884287787fa38b80e794fc01b0657abbcb096b47 data/lostlegends/loot_table/blocks/weeping_lazurite.json
 9629a2c45b7db1a7fcc1642d8d542b1fc893b661 data/lostlegends/loot_table/blocks/weeping_sand.json
+b2e67e0232335af78ef4c42da1b85782856a0414 data/lostlegends/loot_table/entities/nether_slime.json
 56f1d71acd0f9fc5abf6c2188304d54c3d5b89e5 data/lostlegends/neoforge/biome_modifier/deepnether/struct/nether_portal.json
 7fc54803641b4bff24f1fe87bf24b0845d1507e6 data/lostlegends/recipe/amber_magma.json
 480128c16b010a1bee89fcbede13a501f32ba164 data/lostlegends/recipe/amber_magma_bricks.json
@@ -476,7 +477,7 @@ b6cc0936d5ac6fd498e69f34e4dcb4aa6ffebf90 data/lostlegends/worldgen/biome/golden_
 dd3b475c641e513848fbf626a1f26ea9a402b803 data/lostlegends/worldgen/biome/golden_plains.json
 98762bdcfa732af98ef26978cb57baf2e42d1524 data/lostlegends/worldgen/biome/soul.json
 98762bdcfa732af98ef26978cb57baf2e42d1524 data/lostlegends/worldgen/biome/soul_heart.json
-127d9d6afc7d85418aa7f13f54b5196523187bf4 data/lostlegends/worldgen/biome/waste.json
+28bcacfee43067f5ad92590a1db271bc23f8a82d data/lostlegends/worldgen/biome/waste.json
 46d22766780964de3737197015a4da8a59bbdd4b data/lostlegends/worldgen/configured_carver/deep_nether_carver.json
 d1ff254d7d7162ac25d20d266298e0ed85f2c3da data/lostlegends/worldgen/configured_feature/deepnether/blob/blackstone.json
 ba45dd18160c543e47de614dc1569a1fec3b3695 data/lostlegends/worldgen/configured_feature/deepnether/blob/magma.json
@@ -588,6 +589,7 @@ bbeca900a0dab89937e3299c71cbed2f8cec646b data/minecraft/tags/block/soul_speed_bl
 487ed003eb7ae8530b84315d83cc3a8da9272a8d data/minecraft/tags/block/stairs.json
 abeed6db98bac2399a83ab60059117a6d31a6947 data/minecraft/tags/block/sword_efficient.json
 63f5ccb50370f92ec8253f74cf3a04377ebdd63c data/minecraft/tags/block/walls.json
+b9a677bd7586b2e58bd3b28cc8ee673a1bf587a8 data/minecraft/tags/entity_type/fall_damage_immune.json
 daba1a510bd44bf03869b9e4271b0c831e6f9918 data/minecraft/tags/item/slabs.json
 05116da80e03f8689f38f591f8771d56b8ab2522 data/minecraft/tags/item/soul_fire_base_blocks.json
 487ed003eb7ae8530b84315d83cc3a8da9272a8d data/minecraft/tags/item/stairs.json

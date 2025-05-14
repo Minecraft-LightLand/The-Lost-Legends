@@ -84,6 +84,7 @@
   "effect.lostlegends.soul_shelter": "Soul Shelter",
   "effect.lostlegends.soul_shelter.desc": "Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.",
   "effect.lostlegends.soul_shelter.description": "Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.",
+  "entity.lostlegends.nether_slime": "Nether Slime",
   "fluid.lostlegends.liquid_soul": "Liquid Soul",
   "fluid.lostlegends.molten_gold": "Molten Gold",
   "item.lostlegends.amarast": "Amarast",

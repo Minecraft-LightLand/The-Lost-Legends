@@ -12,7 +12,6 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.serial.loot.LootHelper;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
@@ -152,13 +151,13 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
-	public LLBlockBuilder<T> highlightCube(ResourceLocation base) {
+	public LLBlockBuilder<T> highlightCube() {
 		builder.blockstate((ctx, pvd) ->
 				pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
 						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cube_highlight")))
-						.texture("base", base)
-						.texture("highlight", pvd.modLoc("block/" + path + "/" + ctx.getName()))
-						.texture("particle", base)
+						.texture("base", pvd.modLoc("block/" + path + "/" + ctx.getName()))
+						.texture("highlight", pvd.modLoc("block/" + path + "/" + ctx.getName() + "_highlight"))
+						.texture("particle", pvd.modLoc("block/" + path + "/" + ctx.getName()))
 						.renderType("cutout")
 				));
 		return this;

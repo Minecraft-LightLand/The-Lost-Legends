@@ -1,8 +1,8 @@
 {
 	"parent": "block/block",
 	"elements": [
-		{   "from": [ 0.01, 0.01, 0.01 ],
-			"to": [ 15.99, 15.99, 15.99 ],
+		{   "from": [ 0, 0, 0 ],
+			"to": [ 16, 16, 16 ],
 			"faces": {
 				"down":  { "texture": "#base", "cullface": "down" },
 				"up":    { "texture": "#base", "cullface": "up" },

@@ -14,6 +14,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.valueproviders.ConstantFloat;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -112,7 +113,9 @@ public class DNBiomeGen {
 			));
 
 			ctx.register(BIOME_WASTE, biome(3344392,
-					new MobSpawnSettings.Builder(),
+					new MobSpawnSettings.Builder()
+							.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(
+									DeepNether.ENTITY.NETHER_SLIME.get(), 100, 1, 1)),
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.darkstonePile()

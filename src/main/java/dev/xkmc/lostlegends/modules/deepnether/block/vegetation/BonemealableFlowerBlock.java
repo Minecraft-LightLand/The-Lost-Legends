@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class BonemealableFlowerBlock extends FlowerBlock implements BonemealableBlock {
 
-	private final ResourceKey<ConfiguredFeature<?,?>> feature;
+	private final ResourceKey<ConfiguredFeature<?, ?>> feature;
 
 	public BonemealableFlowerBlock(Holder<MobEffect> eff, float time, Properties prop, ResourceKey<ConfiguredFeature<?, ?>> feature) {
 		super(eff, time, prop);
