@@ -30,6 +30,7 @@ public class DNEntities extends LLRegBase {
 						RegisterSpawnPlacementsEvent.Operation.AND)
 				.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x322020, 0xBC8536).build()
 				.register();
 	}
 

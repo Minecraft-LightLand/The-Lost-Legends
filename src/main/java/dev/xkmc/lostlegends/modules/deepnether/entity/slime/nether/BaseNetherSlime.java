@@ -33,6 +33,11 @@ public class BaseNetherSlime extends Slime {
 	}
 
 	@Override
+	public boolean isSensitiveToWater() {
+		return true;
+	}
+
+	@Override
 	protected void registerGoals() {
 		super.registerGoals();
 		targetSelector.removeAllGoals(e -> true);
