@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;

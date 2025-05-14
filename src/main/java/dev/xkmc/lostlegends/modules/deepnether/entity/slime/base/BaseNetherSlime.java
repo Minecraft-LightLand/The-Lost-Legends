@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -7,11 +7,13 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Slime;
@@ -35,6 +37,30 @@ public class BaseNetherSlime extends Slime {
 	@Override
 	public boolean isSensitiveToWater() {
 		return true;
+	}
+
+	protected int healthOfSize(int size) {
+		return size * Math.max(size, 4);
+	}
+
+	protected int damageOfSize(int size) {
+		return size * 2 + 1;
+	}
+
+	@Override
+	public void setSize(int size, boolean heal) {
+		super.setSize(size, heal);
+		int i = Mth.clamp(size, 1, 127);
+		this.reapplyPosition();
+		this.refreshDimensions();
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(healthOfSize(i));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * (float) i);
+		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(damageOfSize(i));
+		this.getAttribute(Attributes.ARMOR).setBaseValue(size * 3);
+		if (heal) {
+			this.setHealth(this.getMaxHealth());
+		}
+		this.xpReward = i * 4;
 	}
 
 	@Override
