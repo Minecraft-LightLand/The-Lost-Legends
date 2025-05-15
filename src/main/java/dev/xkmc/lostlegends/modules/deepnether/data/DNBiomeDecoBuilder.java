@@ -57,6 +57,8 @@ public class DNBiomeDecoBuilder {
 		ins.vege.ghoshroom.addTo(builder, VEGETAL_DECORATION);
 		ins.ore.dementingLazurite.addTo(builder, UNDERGROUND_ORES);
 		ins.ore.weepingLazurite.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.dementingRust.addTo(builder, UNDERGROUND_ORES);
+		ins.ore.weepingRust.addTo(builder, UNDERGROUND_ORES);
 		return this;
 	}
 

@@ -58,6 +58,8 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey debrisLarge = uni("debris_large");
 		public final FeatureKey dementingLazurite = uni("dementing_lazurite");
 		public final FeatureKey weepingLazurite = uni("weeping_lazurite");
+		public final FeatureKey dementingRust = uni("dementing_rust");
+		public final FeatureKey weepingRust = uni("weeping_rust");
 
 		public Ores(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -83,12 +85,17 @@ public class DNFeatures extends LLFeatureReg {
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
-			FeatureUtils.register(ctx, dementingLazurite.cf, Feature.ORE, new OreConfiguration(
-					new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get()),
+
+			var soil = new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get());
+			var sand = new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get());
+			FeatureUtils.register(ctx, dementingLazurite.cf, Feature.ORE, new OreConfiguration(soil,
 					DeepNether.BLOCKS.DEMENTING_LAZURITE.getDefaultState(), 6));
-			FeatureUtils.register(ctx, weepingLazurite.cf, Feature.ORE, new OreConfiguration(
-					new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get()),
+			FeatureUtils.register(ctx, weepingLazurite.cf, Feature.ORE, new OreConfiguration(sand,
 					DeepNether.BLOCKS.WEEPING_LAZURITE.getDefaultState(), 6));
+			FeatureUtils.register(ctx, dementingRust.cf, Feature.ORE, new OreConfiguration(soil,
+					DeepNether.BLOCKS.DEMENTING_RUST.getDefaultState(), 6, 0.7f));
+			FeatureUtils.register(ctx, weepingRust.cf, Feature.ORE, new OreConfiguration(sand,
+					DeepNether.BLOCKS.WEEPING_RUST.getDefaultState(), 6, 0.7f));
 		}
 
 		@Override
@@ -102,6 +109,8 @@ public class DNFeatures extends LLFeatureReg {
 			debrisLarge.place(ctx, cf, spread(4, uniform(8, 70)));
 			dementingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
 			weepingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
+			dementingRust.place(ctx, cf, spread(40, uniform(10, 250)));
+			weepingRust.place(ctx, cf, spread(40, uniform(10, 250)));
 		}
 	}
 

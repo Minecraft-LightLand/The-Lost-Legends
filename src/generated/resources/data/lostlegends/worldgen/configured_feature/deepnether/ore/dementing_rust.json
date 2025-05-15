@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.7,
+    "size": 6,
+    "targets": [
+      {
+        "state": {
+          "Name": "lostlegends:dementing_rust"
+        },
+        "target": {
+          "block": "lostlegends:dementing_soil",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  }
+}

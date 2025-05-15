@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#minecraft:bypasses_effects",
+    "#minecraft:bypasses_invulnerability",
+    "#minecraft:bypasses_resistance",
+    "#minecraft:is_drowning",
+    "#minecraft:is_explosion",
+    "#minecraft:is_freezing",
+    "#minecraft:is_lightning",
+    "#neoforge:is_magic",
+    "#neoforge:is_technical"
+  ]
+}

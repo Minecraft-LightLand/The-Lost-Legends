@@ -1,8 +1,10 @@
 {
   "values": [
     "lostlegends:weeping_sand",
-    "lostlegends:weeping_lazurite",
     "lostlegends:dementing_soil",
-    "lostlegends:dementing_lazurite"
+    "lostlegends:weeping_lazurite",
+    "lostlegends:dementing_lazurite",
+    "lostlegends:weeping_rust",
+    "lostlegends:dementing_rust"
   ]
 }

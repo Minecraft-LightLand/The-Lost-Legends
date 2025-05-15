@@ -77,6 +77,7 @@ public class LostLegends {
 	public static void gatherData(GatherDataEvent event) {
 		for (var e : MODULES)
 			e.gatherData(event);
+		new LLDamageTypes(REGISTRATE).generate();
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOW)

@@ -6,8 +6,10 @@
     "lostlegends:golden_mycelium",
     "lostlegends:ash_block",
     "lostlegends:weeping_sand",
-    "lostlegends:weeping_lazurite",
     "lostlegends:dementing_soil",
-    "lostlegends:dementing_lazurite"
+    "lostlegends:weeping_lazurite",
+    "lostlegends:dementing_lazurite",
+    "lostlegends:weeping_rust",
+    "lostlegends:dementing_rust"
   ]
 }

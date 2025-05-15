@@ -41,6 +41,8 @@
     [
       "lostlegends:deepnether/ore/dementing_lazurite",
       "lostlegends:deepnether/ore/weeping_lazurite",
+      "lostlegends:deepnether/ore/dementing_rust",
+      "lostlegends:deepnether/ore/weeping_rust",
       "lostlegends:deepnether/ore/amarast",
       "lostlegends:deepnether/ore/resonating_twistone",
       "lostlegends:deepnether/ore/debris_large",
