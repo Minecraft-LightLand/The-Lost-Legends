@@ -1,11 +1,9 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
 
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseAbsorbingSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseNetherSlime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
@@ -53,7 +50,9 @@ public class NetherSlime extends BaseAbsorbingSlime {
 
 	@Override
 	public boolean causeFallDamage(float dist, float factor, DamageSource source) {
-		setFire();
+		var target = getTarget();
+		if (target != null && !(target instanceof Slime) && !target.fireImmune())
+			setFire();
 		return super.causeFallDamage(dist, factor, source);
 	}
 
@@ -64,6 +63,8 @@ public class NetherSlime extends BaseAbsorbingSlime {
 		for (int x = -ir; x <= ir; x++) {
 			for (int z = -ir; z <= ir; z++) {
 				if (x * x + z * z < r * r) {
+					int dist = Math.abs(x) + Math.abs(z);
+					if (dist > 0 && getRandom().nextInt(dist) > 0) continue;
 					var pos = blockPosition().offset(x, 0, z);
 					var below = pos.below();
 					if (level().isEmptyBlock(pos) && level().getBlockState(below).isFaceSturdy(level(), below, Direction.UP)) {
