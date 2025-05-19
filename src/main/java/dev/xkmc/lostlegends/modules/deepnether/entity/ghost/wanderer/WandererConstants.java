@@ -23,12 +23,12 @@ public class WandererConstants {
 		return 0.5f;
 	}
 
-	public static double jumpStrength() {
-		return 0.7;
+	public static double jumpStrength(double distSqr) {
+		return Math.sqrt(distSqr) * 0.2;
 	}
 
 	public static double jumpStartDistSqr() {
-		return 25;
+		return 50;
 	}
 
 	public static float modifyDamage(DamageSource source, float amount) {

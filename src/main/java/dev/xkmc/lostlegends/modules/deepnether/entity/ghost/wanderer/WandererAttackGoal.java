@@ -34,7 +34,9 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 				stuckTime = 0;
 				mob.state.triggerJump(mob);
 				var vec = e.position().add(0, e.getBbHeight() / 2, 0).subtract(mob.position()).normalize();
-				mob.setDeltaMovement(mob.getDeltaMovement().add(vec.scale(WandererConstants.jumpStrength())));
+				var vel = WandererConstants.jumpStrength(distSqr);
+				var h = vel * 0.5;
+				mob.setDeltaMovement(vec.scale(vel).add(0, h, 0));
 				return;
 			}
 		}

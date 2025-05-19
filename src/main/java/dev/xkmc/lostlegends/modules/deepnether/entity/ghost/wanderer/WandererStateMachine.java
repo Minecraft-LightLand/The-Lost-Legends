@@ -20,7 +20,7 @@ public class WandererStateMachine {
 		if (tick > 0) {
 			tick--;
 			if (action == Action.JUMP) {
-				if (e.onGround()) {
+				if (e.onGround() && e.getDeltaMovement().y() < 0.01) {
 					tick = 0;
 					attack = AttackType.CLEAR;
 				}
