@@ -15,17 +15,20 @@ public class WandererStateMachine {
 	private int tick;
 
 	public void tick(WandererEntity e) {
+		if (attack == AttackType.HUG_READY && action != Action.JUMP)
+			attack = AttackType.CLEAR;
 		if (tick > 0) {
 			tick--;
 			if (action == Action.JUMP) {
 				if (e.onGround()) {
 					tick = 0;
+					attack = AttackType.CLEAR;
 				}
 			}
 			if (action == Action.ATTACK) {
-				if (tick == 10) {
+				if (tick == WandererConstants.attackFrame()) {
 					var target = e.getTarget();
-					if (target != null && e.isWithinMeleeAttackRange(target)) {
+					if (target != null && e.isWithinMeleeAttackRange(target, WandererConstants.attackBuffer())) {
 						e.doHurtTarget(target);
 					}
 				}
@@ -86,8 +89,13 @@ public class WandererStateMachine {
 		return action == Action.IDLE || action == Action.JUMP || tick == 0;
 	}
 
+	public void resetAttackMode() {
+		if (attack != AttackType.HUG_READY)
+			attack = AttackType.CLEAR;
+	}
+
 	public enum Action {
-		IDLE(0), ATTACK(20), JUMP(40), HUG(20);
+		IDLE(0), ATTACK(20), JUMP(60), HUG(20);
 
 		private final int duration;
 

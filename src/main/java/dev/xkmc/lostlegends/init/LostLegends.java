@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.init;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.modules.deco.LLDecoBlocks;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
@@ -41,6 +42,7 @@ public class LostLegends {
 	public LostLegends(IEventBus bus) {
 		MODULES.add(new DeepNether());
 		MODULES.add(new LLDecoBlocks());
+		AttackEventHandler.register(2583, new LLAttackListener());
 	}
 
 	private static void initHandlers() {

@@ -7,9 +7,17 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 
 	public final WandererEntity mob;
 
+	private int stuckTime = 0;
+
 	public WandererAttackGoal(WandererEntity mob, double speed, boolean seeThrough) {
 		super(mob, speed, seeThrough);
 		this.mob = mob;
+	}
+
+	@Override
+	public void start() {
+		super.start();
+		stuckTime = 0;
 	}
 
 	@Override
@@ -17,24 +25,34 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 		if (!isTimeToAttack()) return;
 		if (!mob.state.isReady()) return;
 		if (!mob.hasLineOfSight(e)) return;
+		stuckTime++;
 		var attack = mob.state.getAttackType(mob, e);
 		var mayMelee = mob.isWithinMeleeAttackRange(e);
 		if (attack == WandererStateMachine.AttackType.JUMP_READY) {
 			var distSqr = mob.distanceToSqr(e);
-			if (distSqr < 25 && !mayMelee) {
+			if (distSqr < WandererConstants.jumpStartDistSqr() && !mayMelee) {
+				stuckTime = 0;
 				mob.state.triggerJump(mob);
-				var vec = e.getEyePosition().subtract(mob.position()).normalize();
-				mob.setDeltaMovement(mob.getDeltaMovement().add(vec.scale(1.5)));
+				var vec = e.position().add(0, e.getBbHeight() / 2, 0).subtract(mob.position()).normalize();
+				mob.setDeltaMovement(mob.getDeltaMovement().add(vec.scale(WandererConstants.jumpStrength())));
 				return;
 			}
 		}
-		if (!mayMelee) return;
+		if (!mayMelee) {
+			if (stuckTime >= WandererConstants.attackModeResetTime()) {
+				stuckTime = 0;
+				mob.state.resetAttackMode();
+			}
+			return;
+		}
 		this.resetAttackCooldown();
 		if (attack == WandererStateMachine.AttackType.HUG_READY) {
 			mob.state.triggerHug(mob);
 			this.mob.doHurtTarget(e);
+			stuckTime = 0;
 		} else {
 			mob.state.triggerRegular(mob);
+			stuckTime = 0;
 		}
 	}
 

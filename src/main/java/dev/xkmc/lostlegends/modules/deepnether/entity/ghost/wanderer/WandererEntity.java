@@ -1,6 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer;
 
+import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
+import dev.xkmc.l2damagetracker.contents.damage.DamageTypeWrapper;
+import dev.xkmc.l2damagetracker.contents.damage.DefaultDamageState;
+import dev.xkmc.lostlegends.foundation.entity.DamageModifierEntity;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,9 +20,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
-public class WandererEntity extends Monster {
+public class WandererEntity extends Monster implements DamageModifierEntity {
 
 	public final AnimationState idle = new AnimationState();
 	public final AnimationState breath = new AnimationState();
@@ -48,13 +55,48 @@ public class WandererEntity extends Monster {
 	}
 
 	public float jumpAttackChance(LivingEntity target) {
-		return 1 - getHealth() / getMaxHealth();
+		return (1 - getHealth() / getMaxHealth()) * WandererConstants.jumpMaxChance();
 	}
 
 	@Override
 	protected void customServerAiStep() {
 		state.tick(this);
 		super.customServerAiStep();
+	}
+
+	@Override
+	public boolean isInvulnerableTo(DamageSource source) {
+		return super.isInvulnerableTo(source) || source.is(DamageTypeTags.IS_FALL);
+	}
+
+	@Override
+	protected float getDamageAfterMagicAbsorb(DamageSource source, float amount) {
+		amount = WandererConstants.modifyDamage(source, amount);
+		damageContainers.peek().setNewDamage(amount);
+		return super.getDamageAfterMagicAbsorb(source, amount);
+	}
+
+	@Override
+	protected void actuallyHurt(DamageSource source, float amount) {
+		super.actuallyHurt(source, amount);
+		state.resetAttackMode();
+	}
+
+	@Override
+	public void modify(CreateSourceEvent event, DamageTypeWrapper res) {
+		if (res.validState(DefaultDamageState.BYPASS_ARMOR)) {
+			event.enable(DefaultDamageState.BYPASS_ARMOR);
+		}
+	}
+
+	protected AABB getAttackBoundingBox() {
+		var ans = super.getAttackBoundingBox();
+		if (onGround()) return ans;
+		return ans.inflate(0, 0.8f, 0);
+	}
+
+	public boolean isWithinMeleeAttackRange(LivingEntity e, float buffer) {
+		return this.getAttackBoundingBox().intersects(e.getHitbox().inflate(buffer));
 	}
 
 	@Override
@@ -95,11 +137,10 @@ public class WandererEntity extends Monster {
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 25)
 				.add(Attributes.FOLLOW_RANGE, 35)
-				.add(Attributes.MOVEMENT_SPEED, 0.23F)
+				.add(Attributes.MOVEMENT_SPEED, 0.26F)
 				.add(Attributes.ATTACK_DAMAGE, 6)
 				.add(Attributes.ARMOR, 4)
 				.add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
 	}
-
 
 }
