@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "lostlegends:item/deepnether/liquid_soul_bucket"
+    "layer0": "lostlegends:item/deepnether/block/liquid_soul_bucket"
   }
 }

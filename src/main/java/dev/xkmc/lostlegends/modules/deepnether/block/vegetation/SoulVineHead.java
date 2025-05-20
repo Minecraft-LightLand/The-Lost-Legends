@@ -6,6 +6,7 @@ import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +17,7 @@ public class SoulVineHead extends FluidVineHead implements SimpleSoulLoggedBlock
 	public static final MapCodec<SoulVineHead> CODEC = simpleCodec(SoulVineHead::new);
 
 	public SoulVineHead(Properties prop) {
-		super(prop);
+		super(prop, Direction.UP);
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class SoulVineHead extends FluidVineHead implements SimpleSoulLoggedBlock
 
 	@Override
 	public Block getBodyBlock() {
-		return DeepNether.BLOCKS.SCREAMING_SOUL_VINE_PLANT.get();
+		return DeepNether.VEGE.SCREAMING_SOUL_VINE_PLANT.get();
 	}
 
 	@Override

@@ -3,6 +3,6 @@
   "render_type": "minecraft:translucent",
   "textures": {
     "base": "lostlegends:block/deco/ectoplasm_bricks",
-    "overlay": "lostlegends:block/deepnether/ectoplasm_overlay"
+    "overlay": "lostlegends:block/deepnether/block/ectoplasm_overlay"
   }
 }

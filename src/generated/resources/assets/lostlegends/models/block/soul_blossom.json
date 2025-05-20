@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "lostlegends:block/deepnether/soul_blossom"
+    "cross": "lostlegends:block/deepnether/vegetation/soul_blossom"
   }
 }

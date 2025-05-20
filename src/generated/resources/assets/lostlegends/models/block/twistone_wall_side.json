@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_side",
   "textures": {
-    "wall": "lostlegends:block/deepnether/twistone"
+    "wall": "lostlegends:block/deepnether/block/twistone"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/buried_gold_debris"
+    "all": "lostlegends:block/deepnether/ore/buried_gold_debris"
   }
 }

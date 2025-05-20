@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_post",
   "textures": {
-    "wall": "lostlegends:block/deepnether/deep_blackstone"
+    "wall": "lostlegends:block/deepnether/block/deep_blackstone"
   }
 }

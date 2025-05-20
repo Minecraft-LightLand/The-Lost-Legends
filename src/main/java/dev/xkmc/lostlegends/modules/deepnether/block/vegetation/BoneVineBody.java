@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import dev.xkmc.lostlegends.foundation.block.FluidVineBody;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -17,12 +18,12 @@ public class BoneVineBody extends FluidVineBody implements SimpleLavaloggedBlock
 	}
 
 	public BoneVineBody(BlockBehaviour.Properties prop) {
-		super(prop);
+		super(prop, Direction.UP);
 	}
 
 	@Override
 	protected GrowingPlantHeadBlock getHeadBlock() {
-		return DeepNether.BLOCKS.SCORCHED_BONE_VINE.get();
+		return DeepNether.VEGE.SCORCHED_BONE_VINE.get();
 	}
 
 }

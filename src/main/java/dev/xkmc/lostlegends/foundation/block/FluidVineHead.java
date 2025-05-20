@@ -20,8 +20,8 @@ public abstract class FluidVineHead extends GrowingPlantHeadBlock implements Sim
 	protected static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 9, 16);
 	private static final double growPerTickProbability = 0.14;
 
-	public FluidVineHead(Properties prop) {
-		super(prop, Direction.UP, SHAPE, true, growPerTickProbability);
+	public FluidVineHead(Properties prop, Direction dir) {
+		super(prop, dir, SHAPE, true, growPerTickProbability);
 	}
 
 	@Override

@@ -2,7 +2,7 @@
   "parent": "lostlegends:custom/slime_like",
   "render_type": "minecraft:translucent",
   "textures": {
-    "base": "lostlegends:block/deepnether/amber_magma",
-    "overlay": "lostlegends:block/deepnether/amber_magma_overlay"
+    "base": "lostlegends:block/deepnether/block/amber_magma",
+    "overlay": "lostlegends:block/deepnether/block/amber_magma_overlay"
   }
 }

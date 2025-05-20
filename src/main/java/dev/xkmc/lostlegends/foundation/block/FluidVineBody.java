@@ -10,8 +10,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 
 public abstract class FluidVineBody extends GrowingPlantBodyBlock implements SimpleFluidloggedBlock {
 
-	public FluidVineBody(Properties prop) {
-		super(prop, Direction.UP, Shapes.block(), true);
+	public FluidVineBody(Properties prop, Direction dir) {
+		super(prop, dir, Shapes.block(), true);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "lostlegends:block/deepnether/bone_pile_top",
-    "side": "lostlegends:block/deepnether/bone_pile_side"
+    "end": "lostlegends:block/deepnether/block/bone_pile_top",
+    "side": "lostlegends:block/deepnether/block/bone_pile_side"
   }
 }

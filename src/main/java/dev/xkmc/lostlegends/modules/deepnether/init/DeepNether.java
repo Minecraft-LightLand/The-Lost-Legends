@@ -24,15 +24,18 @@ public class DeepNether extends LLModuleBase {
 
 	public static final String ID = "deepnether";
 
-	public static SimpleEntry<CreativeModeTab> TAB = LostLegends.REGISTRATE.buildModCreativeTab(ID,
-			"The Lost Legends - Deep Nether", b -> b.icon(DeepNether.BLOCKS.BURIED_GOLD_DEBRIS::asStack));
+	public static final SimpleEntry<CreativeModeTab> TAB = LostLegends.REGISTRATE.buildModCreativeTab(ID,
+			"The Lost Legends - Deep Nether", b -> b.icon(DeepNether.BLOCKS.SCORCHED_NETHERRACK::asStack));
 
-	public static DNBlocks BLOCKS = new DNBlocks(LostLegends.REGISTRATE, ID);
-	public static DNShrooms SHROOM = new DNShrooms(LostLegends.REGISTRATE, ID + "/shroom");
-	public static DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
-	public static DNEntities ENTITY = new DNEntities(LostLegends.REGISTRATE, ID);
-	public static DNEffects EFFECTS = new DNEffects(LostLegends.REGISTRATE, ID);
-	public static DNWorldGenReg WG = new DNWorldGenReg(LostLegends.REG);
+	public static final DNBlocks BLOCKS = new DNBlocks(LostLegends.REGISTRATE, ID + "/block");
+	public static final DNOres ORES = new DNOres(LostLegends.REGISTRATE, ID + "/ore");
+	public static final DNVegatation VEGE = new DNVegatation(LostLegends.REGISTRATE, ID + "/vegetation");
+	public static final DNShrooms SHROOM = new DNShrooms(LostLegends.REGISTRATE, ID + "/shroom");
+
+	public static final DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
+	public static final DNEntities ENTITY = new DNEntities(LostLegends.REGISTRATE, ID);
+	public static final DNEffects EFFECTS = new DNEffects(LostLegends.REGISTRATE, ID);
+	public static final DNWorldGenReg WG = new DNWorldGenReg(LostLegends.REG);
 
 	@Override
 	public void commonInit() {
@@ -86,9 +89,9 @@ public class DeepNether extends LLModuleBase {
 			circle(pvd, Items.GLOWSTONE_DUST, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.ECTOPLASM, 2);
 			square(pvd, BLOCKS.ASH_BLOCK, BLOCKS.ASH_STONE);
 
-			pvd.singleItemUnfinished(DataIngredient.items(BLOCKS.SCORCHED_BONE_VINE.asItem()),
+			pvd.singleItemUnfinished(DataIngredient.items(VEGE.SCORCHED_BONE_VINE.asItem()),
 							RecipeCategory.MISC, () -> Items.BONE_MEAL, 1, 1)
-					.save(pvd, BLOCKS.SCORCHED_BONE_VINE.getId().withSuffix("_to_bonemeal"));
+					.save(pvd, VEGE.SCORCHED_BONE_VINE.getId().withSuffix("_to_bonemeal"));
 
 			pvd.singleItemUnfinished(DataIngredient.items(BLOCKS.BONE_PILE.asItem()),
 							RecipeCategory.MISC, () -> Items.BONE_MEAL, 1, 8)
@@ -98,7 +101,7 @@ public class DeepNether extends LLModuleBase {
 							RecipeCategory.MISC, () -> Items.BONE_MEAL, 1, 32)
 					.save(pvd, BLOCKS.DENSE_BONE.getId().withSuffix("_to_bonemeal"));
 
-			full(pvd, BLOCKS.SCORCHED_BONE_VINE, BLOCKS.BONE_PILE);
+			full(pvd, VEGE.SCORCHED_BONE_VINE, BLOCKS.BONE_PILE);
 			square(pvd, BLOCKS.BONE_PILE, BLOCKS.DENSE_BONE);
 
 			shaped(pvd, ITEMS.PORTAL_DISSONATOR, 1, ITEMS.RESONANT_SOULGEM)

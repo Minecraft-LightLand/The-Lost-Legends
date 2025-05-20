@@ -72,15 +72,15 @@ public class DNFeatures extends LLFeatureReg {
 			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(), 10));
+					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(), 10));
 			FeatureUtils.register(ctx, goldClose.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(), 10, 0.8f));
+					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(), 10, 0.8f));
 			FeatureUtils.register(ctx, hearth.cf, Feature.ORE, new OreConfiguration(rack,
-					DeepNether.BLOCKS.HEARTH_ORE.getDefaultState(), 6));
+					DeepNether.ORES.HEARTH_ORE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, amarast.cf, Feature.ORE, new OreConfiguration(black,
-					DeepNether.BLOCKS.AMARAST_ORE.getDefaultState(), 4));
+					DeepNether.ORES.AMARAST_ORE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, resonant.cf, Feature.ORE, new OreConfiguration(warped,
-					DeepNether.BLOCKS.RESONANT_TWISTONE.getDefaultState(), 4));
+					DeepNether.ORES.RESONANT_TWISTONE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
@@ -89,13 +89,13 @@ public class DNFeatures extends LLFeatureReg {
 			var soil = new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 			var sand = new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get());
 			FeatureUtils.register(ctx, dementingLazurite.cf, Feature.ORE, new OreConfiguration(soil,
-					DeepNether.BLOCKS.DEMENTING_LAZURITE.getDefaultState(), 6));
+					DeepNether.ORES.DEMENTING_LAZURITE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, weepingLazurite.cf, Feature.ORE, new OreConfiguration(sand,
-					DeepNether.BLOCKS.WEEPING_LAZURITE.getDefaultState(), 6));
+					DeepNether.ORES.WEEPING_LAZURITE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, dementingRust.cf, Feature.ORE, new OreConfiguration(soil,
-					DeepNether.BLOCKS.DEMENTING_RUST.getDefaultState(), 6, 0.7f));
+					DeepNether.ORES.DEMENTING_RUST.getDefaultState(), 6, 0.7f));
 			FeatureUtils.register(ctx, weepingRust.cf, Feature.ORE, new OreConfiguration(sand,
-					DeepNether.BLOCKS.WEEPING_RUST.getDefaultState(), 6, 0.7f));
+					DeepNether.ORES.WEEPING_RUST.getDefaultState(), 6, 0.7f));
 		}
 
 		@Override
@@ -239,20 +239,20 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, weepingVine.cf, DeepNether.WG.WEEPING_VINE.get(), new WeepingVinesFeature.Data(
 					32, 6, 16, 8, 1 / 8f));
 			FeatureUtils.register(ctx, boneVine.cf, DeepNether.WG.FLUID_VINE.get(), new FluidLoggedVinesFeature.Data(
-					DeepNether.BLOCKS.SCORCHED_BONE_VINE.get(), 8, 16, 3, 7));
+					DeepNether.VEGE.SCORCHED_BONE_VINE.get(), 8, 16, 3, 7));
 			FeatureUtils.register(ctx, soulVine.cf, DeepNether.WG.FLUID_VINE.get(), new FluidLoggedVinesFeature.Data(
-					DeepNether.BLOCKS.SCREAMING_SOUL_VINE.get(), 8, 16, 3, 12));
+					DeepNether.VEGE.SCREAMING_SOUL_VINE.get(), 8, 16, 3, 12));
 			FeatureUtils.register(ctx, ashBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.ASH_BLOSSOM.get())),
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.VEGE.ASH_BLOSSOM.get())),
 					List.of(ashStone.get())));
 			FeatureUtils.register(ctx, scarletBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SCARLET_BLOSSOM.get())),
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.VEGE.SCARLET_BLOSSOM.get())),
 					List.of(DeepNether.BLOCKS.CRIMSON_MYCELIUM.get(), Blocks.CRIMSON_NYLIUM, Blocks.NETHER_WART_BLOCK)));
 			FeatureUtils.register(ctx, soulBlossom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SOUL_BLOSSOM.get())),
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.VEGE.SOUL_BLOSSOM.get())),
 					List.of(soulSoil.get(), soulSand.get())));
 			FeatureUtils.register(ctx, scarletRoot.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
-					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.BLOCKS.SCARLET_ROOTS.get())),
+					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.VEGE.SCARLET_ROOTS.get())),
 					List.of(soulSoil.get(), soulSand.get())));
 			FeatureUtils.register(ctx, hearthroom.cf, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
 					Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DeepNether.SHROOM.HEARTHROOM.get())),
@@ -263,14 +263,14 @@ public class DNFeatures extends LLFeatureReg {
 
 
 			WeightedStateProvider crimson = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-					.add(DeepNether.BLOCKS.SCARLET_ROOTS.getDefaultState(), 87)
+					.add(DeepNether.VEGE.SCARLET_ROOTS.getDefaultState(), 87)
 					.add(DeepNether.SHROOM.HEARTHROOM.getDefaultState(), 11)
 			);
 			FeatureUtils.register(ctx, crimsonVegetation.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(crimson, 8, 4));
 			FeatureUtils.register(ctx, crimsonBonemeal.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(crimson, 3, 1));
 
 			WeightedStateProvider golden = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-					.add(DeepNether.BLOCKS.SCARLET_ROOTS.getDefaultState(), 87)
+					.add(DeepNether.VEGE.SCARLET_ROOTS.getDefaultState(), 87)
 					.add(DeepNether.SHROOM.HEARTHROOM.getDefaultState(), 11)//TODO
 			);
 			FeatureUtils.register(ctx, goldenVegetation.cf, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(golden, 8, 4));
@@ -320,7 +320,7 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, netherPortal.cf, DeepNether.WG.NETHER_PORTAL.get(),
 					new NetherVolcanoPortal.Data(2, 6, 32, 52, 4, 6, 1.5f,
 							0.3f, DeepNether.BLOCKS.DEEP_NETHERRACK.getDefaultState(),
-							0.5f, Blocks.MAGMA_BLOCK.defaultBlockState()
+							0.5f, DeepNether.BLOCKS.MAGMA.getDefaultState()
 					));
 			FeatureUtils.register(ctx, darkPile.cf, DeepNether.WG.STONE_PILE.get(), new StonePile.Data(
 					3, 1.5f, 0.5f, DeepNether.BLOCKS.DEEP_BLACKSTONE.getDefaultState(),
@@ -335,7 +335,7 @@ public class DNFeatures extends LLFeatureReg {
 					4, 16, 8, 4, 8, 6));
 			FeatureUtils.register(ctx, goldLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
 					DeepNether.BLOCKS.MOLTEN_GOLD.getSource().defaultFluidState().createLegacyBlock(),
-					DeepNether.BLOCKS.BURIED_GOLD_DEBRIS.getDefaultState(),
+					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(),//TODO
 					4, 10, 8, 4, 6, 4));
 
 			FeatureUtils.register(ctx, lavaIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(

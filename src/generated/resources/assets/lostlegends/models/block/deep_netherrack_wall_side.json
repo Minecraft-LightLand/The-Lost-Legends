@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_side",
   "textures": {
-    "wall": "lostlegends:block/deepnether/deep_netherrack"
+    "wall": "lostlegends:block/deepnether/block/deep_netherrack"
   }
 }

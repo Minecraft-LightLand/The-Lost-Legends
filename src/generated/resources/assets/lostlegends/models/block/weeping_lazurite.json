@@ -2,8 +2,8 @@
   "parent": "lostlegends:custom/cube_highlight",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "lostlegends:block/deepnether/weeping_lazurite",
-    "highlight": "lostlegends:block/deepnether/weeping_lazurite_highlight",
-    "particle": "lostlegends:block/deepnether/weeping_lazurite"
+    "base": "lostlegends:block/deepnether/ore/weeping_lazurite",
+    "highlight": "lostlegends:block/deepnether/ore/weeping_lazurite_highlight",
+    "particle": "lostlegends:block/deepnether/ore/weeping_lazurite"
   }
 }

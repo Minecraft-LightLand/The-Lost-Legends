@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/hearth_ore"
+    "all": "lostlegends:block/deepnether/ore/hearth_ore"
   }
 }

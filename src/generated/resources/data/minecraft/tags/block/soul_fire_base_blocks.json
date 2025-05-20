@@ -2,12 +2,12 @@
   "values": [
     "lostlegends:weeping_sand",
     "lostlegends:dementing_soil",
+    "lostlegends:twistone",
+    "lostlegends:soul_shell",
+    "lostlegends:resonant_twistone",
     "lostlegends:weeping_lazurite",
     "lostlegends:dementing_lazurite",
     "lostlegends:weeping_rust",
-    "lostlegends:dementing_rust",
-    "lostlegends:twistone",
-    "lostlegends:resonant_twistone",
-    "lostlegends:soul_shell"
+    "lostlegends:dementing_rust"
   ]
 }

@@ -3,6 +3,6 @@
   "render_type": "minecraft:translucent",
   "textures": {
     "base": "lostlegends:block/deco/amber_magma_bricks",
-    "overlay": "lostlegends:block/deepnether/amber_magma_overlay"
+    "overlay": "lostlegends:block/deepnether/block/amber_magma_overlay"
   }
 }

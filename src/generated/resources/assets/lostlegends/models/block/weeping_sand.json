@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/weeping_sand"
+    "all": "lostlegends:block/deepnether/block/weeping_sand"
   }
 }

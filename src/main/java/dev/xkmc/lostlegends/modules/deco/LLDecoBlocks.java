@@ -41,10 +41,10 @@ public class LLDecoBlocks extends LLModuleBase {
 		TWISTONE_BRICKS = BrickSet.of(reg, "twistone", DeepNether.BLOCKS.TWISTONE);
 		CHISELED_TWISTONE = BrickSet.of(reg, "chiseled_twistone", DeepNether.BLOCKS.TWISTONE);
 		RESONANT_TWISTONE = reg.block("resonant_twistone_bricks", Block::new)
-				.copyProp(DeepNether.BLOCKS.RESONANT_TWISTONE).cubeAll().pickaxe().simpleItem().register();
+				.copyProp(DeepNether.ORES.RESONANT_TWISTONE).cubeAll().pickaxe().simpleItem().register();
 		DARK_STONE = reg.block("dark_stone_bricks", Block::new)
 				.copyProp(DeepNether.BLOCKS.DARK_STONE).cubeAll().pickaxe().simpleItem().register();
-		CHISELED_RESONANT_TWISTONE = BrickSet.of(reg, "chiseled_resonant_twistone", DeepNether.BLOCKS.RESONANT_TWISTONE);
+		CHISELED_RESONANT_TWISTONE = BrickSet.of(reg, "chiseled_resonant_twistone", DeepNether.ORES.RESONANT_TWISTONE);
 
 		{
 			AMBER_MAGMA_BRICKS = reg.block("amber_magma_bricks", HalfTransparentBlock::new)

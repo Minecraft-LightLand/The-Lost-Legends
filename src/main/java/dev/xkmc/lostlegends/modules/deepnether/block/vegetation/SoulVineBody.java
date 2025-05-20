@@ -6,6 +6,7 @@ import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
@@ -21,12 +22,12 @@ public class SoulVineBody extends FluidVineBody implements SimpleSoulLoggedBlock
 	}
 
 	public SoulVineBody(Properties prop) {
-		super(prop);
+		super(prop, Direction.UP);
 	}
 
 	@Override
 	protected GrowingPlantHeadBlock getHeadBlock() {
-		return DeepNether.BLOCKS.SCREAMING_SOUL_VINE.get();
+		return DeepNether.VEGE.SCREAMING_SOUL_VINE.get();
 	}
 
 	@Override

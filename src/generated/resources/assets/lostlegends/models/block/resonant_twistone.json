@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/resonant_twistone"
+    "all": "lostlegends:block/deepnether/ore/resonant_twistone"
   }
 }

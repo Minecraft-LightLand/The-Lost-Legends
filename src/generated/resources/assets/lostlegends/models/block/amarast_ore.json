@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/amarast_ore"
+    "all": "lostlegends:block/deepnether/ore/amarast_ore"
   }
 }

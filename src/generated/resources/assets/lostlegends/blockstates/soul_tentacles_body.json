@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "attached=false": {
+      "model": "lostlegends:block/soul_tentacles_body"
+    },
+    "attached=true": {
+      "model": "lostlegends:block/soul_tentacles_body_attached"
+    }
+  }
+}

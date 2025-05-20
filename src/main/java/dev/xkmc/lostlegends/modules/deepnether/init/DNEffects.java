@@ -8,6 +8,7 @@ import dev.xkmc.lostlegends.foundation.module.PotionSet;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
+import dev.xkmc.lostlegends.modules.item.LLEquipments;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -45,11 +46,11 @@ public class DNEffects extends LLRegBase {
 		var builder = new PotionBuilder(LostLegends.REGISTRATE);
 		var lavaAff = PotionSet.potion2(builder, "lava_affinity", LAVA_AFFINITY, Potions.FIRE_RESISTANCE, DeepNether.ITEMS.HEARTH_CRYSTAL, 3600, 9600, 0);
 		var lavaWalker = PotionSet.potion2(builder, "lava_walker", LAVA_WALKER, lavaAff, Items.FERMENTED_SPIDER_EYE, 3600, 9600, 0);
-		var ashBound = PotionSet.potion2(builder, "ash_bound", ASH_BOUND, Potions.AWKWARD, DeepNether.BLOCKS.ASH_BLOSSOM, 3600, 9600, 0);
-		var soulShelter = PotionSet.potion2(builder, "soul_shelter", SOUL_SHELTER, Potions.FIRE_RESISTANCE, DeepNether.BLOCKS.SOUL_BLOSSOM, 3600, 9600, 0);
+		var ashBound = PotionSet.potion2(builder, "ash_bound", ASH_BOUND, Potions.AWKWARD, DeepNether.VEGE.ASH_BLOSSOM, 3600, 9600, 0);
+		var soulShelter = PotionSet.potion2(builder, "soul_shelter", SOUL_SHELTER, Potions.FIRE_RESISTANCE, DeepNether.VEGE.SOUL_BLOSSOM, 3600, 9600, 0);
 		var soulDrain = PotionSet.potion3(builder, "soul_drain", SOUL_DRAIN, soulShelter, Items.FERMENTED_SPIDER_EYE, 3600, 9600, 1800, 0, 1);
 
-		LostLegends.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> builder.regTab(DeepNether.TAB.key()));
+		LostLegends.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> builder.regTab(LLEquipments.TAB.key()));
 	}
 
 }

@@ -6,7 +6,7 @@
     },
     "bottom": 6,
     "decoration": {
-      "Name": "minecraft:magma_block"
+      "Name": "lostlegends:deep_magma"
     },
     "decoration_chance": 0.5,
     "erosion_chance": 0.3,
