@@ -90,4 +90,8 @@ public class WandererConstants {
 		mob.setDeltaMovement(dir.normalize().scale(v));
 	}
 
+	public static boolean mayJumpAttack(WandererEntity mob, LivingEntity e) {
+		return mob.onGround() && !e.isInFluidType();
+	}
+
 }

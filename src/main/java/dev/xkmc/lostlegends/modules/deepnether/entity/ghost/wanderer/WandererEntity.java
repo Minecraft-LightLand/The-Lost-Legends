@@ -4,7 +4,7 @@ import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.contents.damage.DamageTypeWrapper;
 import dev.xkmc.l2damagetracker.contents.damage.DefaultDamageState;
 import dev.xkmc.lostlegends.foundation.entity.DamageModifierEntity;
-import net.minecraft.tags.DamageTypeTags;
+import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.base.BaseGhostEntity;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
-public class WandererEntity extends Monster implements DamageModifierEntity {
+public class WandererEntity extends BaseGhostEntity implements DamageModifierEntity {
 
 	public final AnimationState idle = new AnimationState();
 	public final AnimationState breath = new AnimationState();
@@ -39,19 +39,9 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 		breath.start(tickCount);
 	}
 
-	@Override
-	protected void registerGoals() {
-		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.addBehaviourGoals();
-	}
-
 	protected void addBehaviourGoals() {
+		super.addBehaviourGoals();
 		this.goalSelector.addGoal(2, new WandererAttackGoal(this, 1.0, true));
-		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-		this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers(WandererEntity.class));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
 	public float jumpAttackChance(LivingEntity target) {
@@ -70,11 +60,6 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 		if (level().isClientSide()) {
 			state.clientTick(this);
 		}
-	}
-
-	@Override
-	public boolean isInvulnerableTo(DamageSource source) {
-		return super.isInvulnerableTo(source) || source.is(DamageTypeTags.IS_FALL);
 	}
 
 	@Override
@@ -122,7 +107,7 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes()
-				.add(Attributes.MAX_HEALTH, 25)
+				.add(Attributes.MAX_HEALTH, 26)
 				.add(Attributes.FOLLOW_RANGE, 35)
 				.add(Attributes.MOVEMENT_SPEED, 0.26F)
 				.add(Attributes.ATTACK_DAMAGE, 6)

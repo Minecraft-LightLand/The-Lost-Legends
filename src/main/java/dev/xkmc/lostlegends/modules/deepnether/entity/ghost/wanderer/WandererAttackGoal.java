@@ -42,7 +42,7 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 		stuckTime++;
 		var attack = mob.state.getAttackType(mob, e);
 		var mayMelee = mob.isWithinMeleeAttackRange(e);
-		if (attack == WandererStateMachine.AttackType.JUMP_READY) {
+		if (attack == WandererStateMachine.AttackType.JUMP_READY && WandererConstants.mayJumpAttack(mob, e)) {
 			var distSqr = mob.distanceToSqr(e);
 			if (distSqr < WandererConstants.jumpStartDistSqr() && !mayMelee) {
 				stuckTime = 0;

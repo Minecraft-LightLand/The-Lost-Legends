@@ -5,6 +5,7 @@ import dev.xkmc.lostlegends.foundation.dimension.ClimateBuilder;
 import dev.xkmc.lostlegends.foundation.dimension.ParamDiv;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import dev.xkmc.lostlegends.modules.deepnether.util.SoulEffectsHelper;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNAquifer;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNChunkGenerator;
 import net.minecraft.core.registries.Registries;
@@ -76,7 +77,7 @@ public class DNDimensionGen {
 					new DNChunkGenerator(MultiNoiseBiomeSource.createFromList(biomeSet.climate(biome)),
 							noise.getOrThrow(NGS_DEEP), List.of(
 							new DNAquifer.Entry(-1, -0.1, -1, -0.4, 0.05, 0.01,
-									DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+									SoulEffectsHelper.getFluidBlock(),
 									Blocks.CRYING_OBSIDIAN.defaultBlockState(),
 									DeepNether.BLOCKS.RAGING_OBSIDIAN.getDefaultState())
 					))));

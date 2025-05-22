@@ -1,5 +1,6 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 
+import dev.xkmc.lostlegends.foundation.entity.LavaSwimEntity;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -21,6 +22,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.NeoForgeMod;
@@ -28,10 +31,30 @@ import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.BooleanSupplier;
 
-public class BaseNetherSlime extends Slime {
+public class BaseNetherSlime extends Slime implements LavaSwimEntity {
 
 	public BaseNetherSlime(EntityType<? extends BaseNetherSlime> type, Level level) {
 		super(type, level);
+		setPathfindingMalus(PathType.LAVA, 0);
+		setPathfindingMalus(PathType.DANGER_FIRE, 0.0F);
+		setPathfindingMalus(PathType.DAMAGE_FIRE, 0.0F);
+	}
+
+	@Override
+	public boolean canStandOnFluid(FluidState state) {
+		var type = state.getFluidType();
+		return type == NeoForgeMod.LAVA_TYPE.value();
+	}
+
+	@Override
+	public boolean canSwimInFluidType(FluidType type) {
+		return type == NeoForgeMod.LAVA_TYPE.value() ||
+				super.canSwimInFluidType(type);
+	}
+
+	@Override
+	public float getLavaSwimFactor() {
+		return 3;
 	}
 
 	@Override
@@ -152,6 +175,11 @@ public class BaseNetherSlime extends Slime {
 		this.jumpInLiquidInternal(() -> tag == FluidTags.LAVA, () -> super.jumpInLiquid(tag));
 	}
 
+	@Override
+	public void jumpInFluid(FluidType type) {
+		this.jumpInLiquidInternal(() -> type == NeoForgeMod.LAVA_TYPE.value(), () -> super.jumpInFluid(type));
+	}
+
 	private void jumpInLiquidInternal(BooleanSupplier isLava, Runnable onSuper) {
 		if (isLava.getAsBoolean()) {
 			Vec3 vec3 = this.getDeltaMovement();
@@ -160,11 +188,6 @@ public class BaseNetherSlime extends Slime {
 		} else {
 			onSuper.run();
 		}
-	}
-
-	@Override
-	public void jumpInFluid(FluidType type) {
-		this.jumpInLiquidInternal(() -> type == NeoForgeMod.LAVA_TYPE.value(), () -> super.jumpInFluid(type));
 	}
 
 	@Override

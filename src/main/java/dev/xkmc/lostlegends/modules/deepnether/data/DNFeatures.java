@@ -4,6 +4,7 @@ import dev.xkmc.lostlegends.foundation.module.FeatureGroup;
 import dev.xkmc.lostlegends.foundation.module.FeatureKey;
 import dev.xkmc.lostlegends.foundation.module.LLFeatureReg;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
+import dev.xkmc.lostlegends.modules.deepnether.util.SoulEffectsHelper;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
@@ -330,7 +331,7 @@ public class DNFeatures extends LLFeatureReg {
 					Blocks.LAVA.defaultBlockState(), DeepNether.BLOCKS.MAGMA.getDefaultState(),
 					4, 16, 8, 4, 8, 6));
 			FeatureUtils.register(ctx, soulLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
-					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+					SoulEffectsHelper.getFluidBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					4, 16, 8, 4, 8, 6));
 			FeatureUtils.register(ctx, goldLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
@@ -350,7 +351,7 @@ public class DNFeatures extends LLFeatureReg {
 			)));
 
 			FeatureUtils.register(ctx, soulIsland.cf, DeepNether.WG.LAKE_ISLAND.get(), new LakeIslandFeature.Data(
-					DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock(),
+					SoulEffectsHelper.getFluidBlock(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),

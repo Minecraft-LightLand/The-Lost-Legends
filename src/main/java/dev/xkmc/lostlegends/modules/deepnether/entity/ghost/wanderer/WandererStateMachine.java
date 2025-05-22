@@ -82,7 +82,7 @@ public class WandererStateMachine {
 		action = Action.ATTACK;
 		tick = action.duration;
 		if (e.level().isClientSide()) {
-			e.attack.startIfStopped(e.tickCount);
+			e.attack.start(e.tickCount);
 		} else {
 			attack = AttackType.CLEAR;
 			e.level().broadcastEntityEvent(e, WandererIds.ATTACK);
@@ -93,7 +93,7 @@ public class WandererStateMachine {
 		action = Action.JUMP;
 		tick = action.duration;
 		if (e.level().isClientSide()) {
-			e.jump.startIfStopped(e.tickCount);
+			e.jump.start(e.tickCount);
 		} else {
 			attack = AttackType.HUG_READY;
 			e.level().broadcastEntityEvent(e, WandererIds.JUMP);
@@ -104,7 +104,7 @@ public class WandererStateMachine {
 		action = Action.HUG;
 		tick = action.duration;
 		if (e.level().isClientSide()) {
-			e.hug.startIfStopped(e.tickCount);
+			e.hug.start(e.tickCount);
 			WandererParticles.huggingParticles(e);
 		} else {
 			attack = AttackType.CLEAR;

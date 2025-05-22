@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.Tags;
 
@@ -261,13 +262,13 @@ public class DNBlocks extends LLRegBase {
 		{
 			LIQUID_SOUL = fluid("liquid_soul", LiquidSoulFluidType::new,
 					LiquidSoulFluid.Flowing::new, LiquidSoulFluid.Source::new)
-					.properties(p -> p.lightLevel(15).temperature(1500))
+					.properties(p -> p.lightLevel(15).temperature(1500).pathType(PathType.LAVA))
 					.fluidProperties(p -> p.explosionResistance(100).tickRate(10))
 					.register();
 
 			MOLTEN_GOLD = fluid("molten_gold", MoltenGoldFluidType::new,
 					MoltenGoldFluid.Flowing::new, MoltenGoldFluid.Source::new)
-					.properties(p -> p.lightLevel(15).temperature(1500))
+					.properties(p -> p.lightLevel(15).temperature(1500).pathType(PathType.LAVA))
 					.fluidProperties(p -> p.explosionResistance(100).tickRate(20))
 					.register();
 		}

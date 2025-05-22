@@ -1,10 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.util;
 
+import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class SoulEffectsHelper {
 
@@ -29,7 +31,11 @@ public class SoulEffectsHelper {
 	}
 
 	public static boolean isClear(LivingEntity le) {
+		if (le instanceof WandererEntity) return true;//TODO tagify
 		return le.hasEffect(DeepNether.EFFECTS.SOUL_SHELTER);
 	}
 
+	public static BlockState getFluidBlock() {
+		return DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock();
+	}
 }
