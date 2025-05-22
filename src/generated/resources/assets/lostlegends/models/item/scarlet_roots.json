@@ -1,3 +1,6 @@
 {
-  "parent": "lostlegends:block/scarlet_roots"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostlegends:block/deepnether/vegetation/scarlet_roots"
+  }
 }

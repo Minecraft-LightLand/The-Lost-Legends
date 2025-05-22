@@ -8,8 +8,8 @@ public class VariantShroomBlock extends BaseShroomBlock {
 
 	protected final Supplier<GrowableShroomBlock> base;
 
-	public VariantShroomBlock(Properties prop, Supplier<GrowableShroomBlock> base) {
-		super(prop);
+	public VariantShroomBlock(Properties prop, int w, int h, Supplier<GrowableShroomBlock> base) {
+		super(prop, w, h);
 		this.base = base;
 	}
 

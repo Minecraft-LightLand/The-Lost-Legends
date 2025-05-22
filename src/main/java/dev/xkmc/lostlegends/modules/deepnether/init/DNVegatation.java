@@ -20,7 +20,6 @@ public class DNVegatation extends LLRegBase {
 	public final BlockEntry<ScarletBlossomBlock> SCARLET_BLOSSOM;
 	public final BlockEntry<RootsBlock> SCARLET_ROOTS;
 	public final BlockEntry<SoulBlossomBlock> SOUL_BLOSSOM;
-	public final BlockEntry<SoulBlossomBlock> PHANTOM_FLOWER;
 	public final BlockEntry<BoneVineHead> SCORCHED_BONE_VINE;
 	public final BlockEntry<BoneVineBody> SCORCHED_BONE_VINE_PLANT;
 	public final BlockEntry<SoulVineHead> SCREAMING_SOUL_VINE;
@@ -38,6 +37,7 @@ public class DNVegatation extends LLRegBase {
 					.light(8).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
+					.itemModel(this::flatBlockItem)
 					.register();
 
 			SCARLET_BLOSSOM = block("scarlet_blossom", p -> new ScarletBlossomBlock(
@@ -45,6 +45,7 @@ public class DNVegatation extends LLRegBase {
 					.foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
+					.itemModel(this::flatBlockItem)
 					.register();
 
 			SOUL_BLOSSOM = block("soul_blossom", p -> new SoulBlossomBlock(
@@ -52,20 +53,14 @@ public class DNVegatation extends LLRegBase {
 					.light(12).foliage().cross()
 					.tag(BlockTags.FLOWERS)
 					.simpleItem()
-					.register();
-
-			//TODO block class, feature gen
-			PHANTOM_FLOWER = block("phantom_flower", p -> new SoulBlossomBlock(
-					DeepNether.EFFECTS.SOUL_SHELTER, 10, p, DNFeatures.INS.vege.soulBlossom.cf))
-					.light(12).foliage().cross()
-					.tag(BlockTags.FLOWERS)
-					.simpleItem()
+					.itemModel(this::flatBlockItem)
 					.register();
 
 			SCARLET_ROOTS = block("scarlet_roots", RootsBlock::new)
 					.foliage().cross()
 					.tag(BlockTags.COMBINATION_STEP_SOUND_BLOCKS, BlockTags.SWORD_EFFICIENT, BlockTags.REPLACEABLE_BY_TREES)
 					.simpleItem()
+					.itemModel(this::flatBlockItem)
 					.silkTouchOrShear()
 					.register();
 		}
@@ -108,6 +103,7 @@ public class DNVegatation extends LLRegBase {
 					.lootChance(0.1f)
 					.register();
 
+			//TODO feature gen
 			SOUL_TENTACLE_DOWN = block("soul_tentacles",
 					p -> new SoulTentacleHead(p, Direction.DOWN))
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)

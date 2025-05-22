@@ -1,0 +1,8 @@
+{
+  "parent": "lostlegends:custom/soul_blob",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "lostlegends:block/deepnether/block/soul_blob",
+    "particle": "lostlegends:block/deepnether/block/soul_blob_particle"
+  }
+}

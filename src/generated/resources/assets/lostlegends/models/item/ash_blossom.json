@@ -1,3 +1,6 @@
 {
-  "parent": "lostlegends:block/ash_blossom"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostlegends:block/deepnether/vegetation/ash_blossom"
+  }
 }

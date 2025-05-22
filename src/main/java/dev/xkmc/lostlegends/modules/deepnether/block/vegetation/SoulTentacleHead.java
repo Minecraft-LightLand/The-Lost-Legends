@@ -21,7 +21,7 @@ public class SoulTentacleHead extends FluidVineHead implements SimpleSoulLoggedB
 	}
 
 	public SoulTentacleHead(Properties prop, Direction dir) {
-		super(prop, dir);
+		super(prop, 3,4, dir);
 	}
 
 	@Override

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "lostlegends:eyed_ghoshroom"
+          "name": "lostlegends:deep_ocean_phantom"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lostlegends:blocks/eyed_ghoshroom"
+  "random_sequence": "lostlegends:blocks/deep_ocean_phantom"
 }

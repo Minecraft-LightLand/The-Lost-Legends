@@ -18,8 +18,8 @@ public class GrowableShroomBlock extends BaseShroomBlock {
 
 	protected final List<Holder<Block>> variants;
 
-	public GrowableShroomBlock(Properties prop, List<Holder<Block>> variants) {
-		super(prop);
+	public GrowableShroomBlock(Properties prop, int w, int h, List<Holder<Block>> variants) {
+		super(prop, w, h);
 		this.variants = variants;
 		registerDefaultState(defaultBlockState().setValue(GROWN, true));
 	}

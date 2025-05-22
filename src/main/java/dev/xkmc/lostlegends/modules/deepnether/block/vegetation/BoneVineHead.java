@@ -13,7 +13,7 @@ public class BoneVineHead extends FluidVineHead implements SimpleLavaloggedBlock
 	public static final MapCodec<BoneVineHead> CODEC = simpleCodec(BoneVineHead::new);
 
 	public BoneVineHead(BlockBehaviour.Properties prop) {
-		super(prop, Direction.UP);
+		super(prop, 3, 3, Direction.UP);
 	}
 
 	@Override

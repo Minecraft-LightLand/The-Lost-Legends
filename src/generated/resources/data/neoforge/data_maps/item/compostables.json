@@ -3,7 +3,10 @@
     "lostlegends:biscorchroom": {
       "chance": 0.65
     },
-    "lostlegends:eyed_ghoshroom": {
+    "lostlegends:blazing_ocean_phantom": {
+      "chance": 0.65
+    },
+    "lostlegends:deep_ocean_phantom": {
       "chance": 0.65
     },
     "lostlegends:ghoshroom": {
@@ -12,7 +15,13 @@
     "lostlegends:hearthroom": {
       "chance": 0.65
     },
+    "lostlegends:horned_ghoshroom": {
+      "chance": 0.65
+    },
     "lostlegends:large_hearthroom": {
+      "chance": 0.65
+    },
+    "lostlegends:ocean_phantom": {
       "chance": 0.65
     },
     "lostlegends:scorchroom": {

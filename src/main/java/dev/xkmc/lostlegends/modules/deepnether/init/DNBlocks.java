@@ -4,11 +4,13 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.MoltenGoldFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.MoltenGoldFluidType;
+import dev.xkmc.lostlegends.modules.deepnether.block.misc.SoulBlobBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
 import dev.xkmc.lostlegends.modules.deepnether.data.DNFeatures;
@@ -37,7 +39,9 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<WeepingSandBlock> WEEPING_SAND;
 	public final BlockEntry<BonePileBlock> BONE_PILE;
 	public final BlockEntry<DeepMagmaBlock> MAGMA;
+
 	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
+	public final BlockEntry<SoulBlobBlock> SOUL_BLOB;
 
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
@@ -83,30 +87,6 @@ public class DNBlocks extends LLRegBase {
 			MAGMA = block("deep_magma", DeepMagmaBlock::new)
 					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
 					.cubeAll().pickaxe()
-					.simpleItem().register();
-
-			AMBER_MAGMA = block("amber_magma", HalfTransparentBlock::new)
-					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
-					.prop(BlockBehaviour.Properties::noOcclusion)
-					.blockstate((ctx, pvd) ->
-							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
-									.texture("base", blockLoc(ctx.getName()))
-									.renderType("translucent")))
-					.pickaxe()
-					.simpleItem().register();
-
-			ECTOPLASM = block("ectoplasm", HalfTransparentBlock::new)
-					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
-					.prop(BlockBehaviour.Properties::noOcclusion)
-					.blockstate((ctx, pvd) ->
-							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
-									.texture("base", blockLoc(ctx.getName()))
-									.renderType("translucent")))
-					.pickaxe()
 					.simpleItem().register();
 
 			NETHER_SOIL = block("nether_soil", Block::new)
@@ -226,6 +206,41 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.itemTag(Tags.Items.OBSIDIANS)
 					.register();
+
+		}
+
+		// deco
+		{
+
+			AMBER_MAGMA = block("amber_magma", HalfTransparentBlock::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
+					.simpleItem().register();
+
+			ECTOPLASM = block("ectoplasm", HalfTransparentBlock::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.STONE).strength(1f).light(15)
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
+					.simpleItem().register();
+
+			SOUL_BLOB = block("soul_blob", SoulBlobBlock::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.WET_GRASS).strength(0).light(13)
+					.fragile()
+					.blockstate(SoulBlobBlock::buildBlockState)
+					.simpleItem().register();
 
 		}
 

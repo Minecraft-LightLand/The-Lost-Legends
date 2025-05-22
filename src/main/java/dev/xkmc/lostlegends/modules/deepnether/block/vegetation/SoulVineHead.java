@@ -17,7 +17,7 @@ public class SoulVineHead extends FluidVineHead implements SimpleSoulLoggedBlock
 	public static final MapCodec<SoulVineHead> CODEC = simpleCodec(SoulVineHead::new);
 
 	public SoulVineHead(Properties prop) {
-		super(prop, Direction.UP);
+		super(prop, 3, 3, Direction.UP);
 	}
 
 	@Override

@@ -24,13 +24,13 @@ import java.util.List;
 
 public class DNShrooms extends LLRegBase {
 
-	public final BlockEntry<GrowableShroomBlock> SCORCHROOM, HEARTHROOM, GHOSHROOM;
-	public final BlockEntry<VariantShroomBlock> BISCORCHROOM, LARGE_HEARTHROOM, EYED_GHOSHROOM;
+	public final BlockEntry<GrowableShroomBlock> SCORCHROOM, HEARTHROOM, GHOSHROOM, OCEAN_PHANTOM;
+	public final BlockEntry<VariantShroomBlock> BISCORCHROOM, LARGE_HEARTHROOM, HORNED_GHOSHROOM, DEEP_OCEAN_PHANTOM, BLAZING_OCEAN_PHANTOM;
 
 	public DNShrooms(L2Registrate reg, String path) {
 		super(reg, path);
 
-		SCORCHROOM = block("scorchroom", p -> new GrowableShroomBlock(p, scorch()))
+		SCORCHROOM = block("scorchroom", p -> new GrowableShroomBlock(p, 3, 15, scorch()))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(9)
@@ -39,7 +39,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		BISCORCHROOM = block("biscorchroom", p -> new VariantShroomBlock(p, SCORCHROOM))
+		BISCORCHROOM = block("biscorchroom", p -> new VariantShroomBlock(p, 3, 15, SCORCHROOM))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(11)
@@ -48,7 +48,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		HEARTHROOM = block("hearthroom", p -> new GrowableShroomBlock(p, hearth()))
+		HEARTHROOM = block("hearthroom", p -> new GrowableShroomBlock(p, 2, 12, hearth()))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.foliage().blockstate(this::growable)
@@ -56,7 +56,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		LARGE_HEARTHROOM = block("large_hearthroom", p -> new VariantShroomBlock(p, HEARTHROOM))
+		LARGE_HEARTHROOM = block("large_hearthroom", p -> new VariantShroomBlock(p, 1, 15, HEARTHROOM))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.foliage().cross()
@@ -64,7 +64,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		GHOSHROOM = block("ghoshroom", p -> new GrowableShroomBlock(p, ghost()))
+		GHOSHROOM = block("ghoshroom", p -> new GrowableShroomBlock(p, 3, 13, ghost()))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(7)
@@ -73,7 +73,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		EYED_GHOSHROOM = block("eyed_ghoshroom", p -> new VariantShroomBlock(p, GHOSHROOM))
+		HORNED_GHOSHROOM = block("horned_ghoshroom", p -> new VariantShroomBlock(p, 1, 13, GHOSHROOM))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(9)
@@ -81,6 +81,34 @@ public class DNShrooms extends LLRegBase {
 				.simpleItem()
 				.transformItem(this::makeItem)
 				.register();
+
+		OCEAN_PHANTOM = block("ocean_phantom", p -> new GrowableShroomBlock(p, 2, 12, phantom()))
+				.prop(MapColor.NETHER, SoundType.GRASS)
+				.prop(BlockBehaviour.Properties::randomTicks)
+				.light(11)
+				.foliage().blockstate(this::growable)
+				.simpleItem()
+				.transformItem(this::makeItem)
+				.register();
+
+		DEEP_OCEAN_PHANTOM = block("deep_ocean_phantom", p -> new VariantShroomBlock(p, 1, 12, OCEAN_PHANTOM))
+				.prop(MapColor.NETHER, SoundType.GRASS)
+				.prop(BlockBehaviour.Properties::randomTicks)
+				.light(11)
+				.foliage().cross()
+				.simpleItem()
+				.transformItem(this::makeItem)
+				.register();
+
+		BLAZING_OCEAN_PHANTOM = block("blazing_ocean_phantom", p -> new VariantShroomBlock(p, 2, 15, OCEAN_PHANTOM))
+				.prop(MapColor.NETHER, SoundType.GRASS)
+				.prop(BlockBehaviour.Properties::randomTicks)
+				.light(14)
+				.foliage().cross()
+				.simpleItem()
+				.transformItem(this::makeItem)
+				.register();
+
 	}
 
 	private List<Holder<Block>> scorch() {
@@ -92,7 +120,11 @@ public class DNShrooms extends LLRegBase {
 	}
 
 	private List<Holder<Block>> ghost() {
-		return List.of(EYED_GHOSHROOM);
+		return List.of(HORNED_GHOSHROOM);
+	}
+
+	private List<Holder<Block>> phantom() {
+		return List.of(DEEP_OCEAN_PHANTOM, BLAZING_OCEAN_PHANTOM);
 	}
 
 	private void makeItem(ItemBuilder<BlockItem, ?> builder) {

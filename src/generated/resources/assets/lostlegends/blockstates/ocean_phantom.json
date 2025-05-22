@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "grown=false": {
+      "model": "lostlegends:block/ocean_phantom_small"
+    },
+    "grown=true": {
+      "model": "lostlegends:block/ocean_phantom"
+    }
+  }
+}

@@ -22,7 +22,7 @@ public class SoulVineBody extends FluidVineBody implements SimpleSoulLoggedBlock
 	}
 
 	public SoulVineBody(Properties prop) {
-		super(prop, Direction.UP);
+		super(prop, 1, Direction.UP);
 	}
 
 	@Override

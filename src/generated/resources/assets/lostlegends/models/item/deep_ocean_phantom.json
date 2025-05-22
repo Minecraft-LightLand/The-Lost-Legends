@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "lostlegends:item/deepnether/shroom/deep_ocean_phantom"
+  }
+}

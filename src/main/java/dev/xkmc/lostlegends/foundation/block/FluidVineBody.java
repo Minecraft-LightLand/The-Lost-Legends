@@ -6,12 +6,11 @@ import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.shapes.Shapes;
 
 public abstract class FluidVineBody extends GrowingPlantBodyBlock implements SimpleFluidloggedBlock {
 
-	public FluidVineBody(Properties prop, Direction dir) {
-		super(prop, dir, Shapes.block(), true);
+	public FluidVineBody(Properties prop, int w, Direction dir) {
+		super(prop, dir, Block.box(w, 0, w, 16 - w, 16, 16 - w), true);
 	}
 
 	@Override

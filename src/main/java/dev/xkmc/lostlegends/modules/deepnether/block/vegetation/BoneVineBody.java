@@ -18,7 +18,7 @@ public class BoneVineBody extends FluidVineBody implements SimpleLavaloggedBlock
 	}
 
 	public BoneVineBody(BlockBehaviour.Properties prop) {
-		super(prop, Direction.UP);
+		super(prop, 1, Direction.UP);
 	}
 
 	@Override

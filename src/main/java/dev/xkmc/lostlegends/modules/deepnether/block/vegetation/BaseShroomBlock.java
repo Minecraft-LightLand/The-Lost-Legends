@@ -21,10 +21,16 @@ import net.neoforged.neoforge.common.util.TriState;
 public class BaseShroomBlock extends BushBlock implements BonemealableBlock {
 
 	public static final MapCodec<BaseShroomBlock> CODEC = simpleCodec(BaseShroomBlock::new);
-	protected static final VoxelShape SHAPE = Block.box(5, 0, 5, 11, 6, 11);
 
-	protected BaseShroomBlock(Properties prop) {
+	protected final VoxelShape SHAPE;
+
+	private BaseShroomBlock(Properties prop) {
+		this(prop, 5, 6);
+	}
+
+	protected BaseShroomBlock(Properties prop, int w, int h) {
 		super(prop);
+		SHAPE = Block.box(w, 0, w, 16 - w, h, 16 - w);
 	}
 
 	protected boolean isSame(BlockState state) {

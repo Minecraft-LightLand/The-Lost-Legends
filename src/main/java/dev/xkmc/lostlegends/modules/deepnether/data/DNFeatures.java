@@ -356,8 +356,8 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					6, 24, 10, 10, 14, 6,
 					3, 16, 6, List.of(
-					patch(16, 6, 0, DeepNether.SHROOM.GHOSHROOM.get(), DeepNether.BLOCKS.TWISTONE.get()),
-					patch(2, 6, 0, DeepNether.SHROOM.EYED_GHOSHROOM.get(), DeepNether.BLOCKS.TWISTONE.get())
+					patch(16, 6, 0, DeepNether.SHROOM.OCEAN_PHANTOM.get(), DeepNether.BLOCKS.TWISTONE.get())
+					//TODO variant
 			)));
 		}
 

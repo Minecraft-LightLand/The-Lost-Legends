@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "lostlegends:block/deepnether/shroom/eyed_ghoshroom"
+    "cross": "lostlegends:block/deepnether/shroom/ocean_phantom"
   }
 }

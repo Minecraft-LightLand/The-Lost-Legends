@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "lostlegends:phantom_flower"
+          "name": "lostlegends:horned_ghoshroom"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lostlegends:blocks/phantom_flower"
+  "random_sequence": "lostlegends:blocks/horned_ghoshroom"
 }

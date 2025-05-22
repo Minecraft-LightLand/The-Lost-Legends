@@ -17,11 +17,15 @@ import javax.annotation.Nullable;
 
 public abstract class FluidVineHead extends GrowingPlantHeadBlock implements SimpleFluidloggedBlock {
 
-	protected static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 9, 16);
+	private static VoxelShape buildShape(Direction dir, int w, int h) {
+		boolean up = dir == Direction.UP;
+		return Block.box(w, up ? 0 : h, w, 16 - w, up ? 16 - h : 16, 16 - w);
+	}
+
 	private static final double growPerTickProbability = 0.14;
 
-	public FluidVineHead(Properties prop, Direction dir) {
-		super(prop, dir, SHAPE, true, growPerTickProbability);
+	public FluidVineHead(Properties prop, int w, int h, Direction dir) {
+		super(prop, dir, buildShape(dir, w, h), true, growPerTickProbability);
 	}
 
 	@Override
