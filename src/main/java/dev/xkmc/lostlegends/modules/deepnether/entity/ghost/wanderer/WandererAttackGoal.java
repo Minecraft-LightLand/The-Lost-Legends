@@ -21,9 +21,23 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 	}
 
 	@Override
+	public void tick() {
+		var target = mob.getTarget();
+		if (target != null) {
+			if (mob.state.isReadyToJump()) {
+				WandererConstants.launch(mob, target);
+			}
+			if (mob.state.isHolding()) {
+				return;
+			}
+		}
+		super.tick();
+	}
+
+	@Override
 	protected void checkAndPerformAttack(LivingEntity e) {
 		if (!isTimeToAttack()) return;
-		if (!mob.state.isReady()) return;
+		if (!mob.state.isReadyToAttack()) return;
 		if (!mob.hasLineOfSight(e)) return;
 		stuckTime++;
 		var attack = mob.state.getAttackType(mob, e);
@@ -33,10 +47,7 @@ public class WandererAttackGoal extends MeleeAttackGoal {
 			if (distSqr < WandererConstants.jumpStartDistSqr() && !mayMelee) {
 				stuckTime = 0;
 				mob.state.triggerJump(mob);
-				var vec = e.position().add(0, e.getBbHeight() / 2, 0).subtract(mob.position()).normalize();
-				var vel = WandererConstants.jumpStrength(distSqr);
-				var h = vel * 0.5;
-				mob.setDeltaMovement(vec.scale(vel).add(0, h, 0));
+				mob.getNavigation().stop();
 				return;
 			}
 		}

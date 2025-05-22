@@ -14,20 +14,35 @@ public class WandererStateMachine {
 	@SerialField
 	private int tick;
 
-	public void tick(WandererEntity e) {
+	public void clientTick(WandererEntity e) {
+		if (tick > 0) tick--;
+		if (isHolding()) {
+			WandererParticles.chargingParticles(e);
+		} else if (action == Action.JUMP && tick > 0 && !e.onGround()) {
+			WandererParticles.flyingParticles(e);
+		}
+	}
+
+	public void serverTick(WandererEntity e) {
 		if (attack == AttackType.HUG_READY && action != Action.JUMP)
 			attack = AttackType.CLEAR;
+		var target = e.getTarget();
 		if (tick > 0) {
 			tick--;
 			if (action == Action.JUMP) {
-				if (e.onGround() && e.getDeltaMovement().y() < 0.01) {
+				boolean clear = false;
+				if (isHolding()) {
+					clear = target == null;
+				} else if (e.onGround()) {
+					clear = e.getDeltaMovement().y() < 0.01;
+				}
+				if (clear) {
 					tick = 0;
 					attack = AttackType.CLEAR;
 				}
 			}
 			if (action == Action.ATTACK) {
 				if (tick == WandererConstants.attackFrame()) {
-					var target = e.getTarget();
 					if (target != null && e.isWithinMeleeAttackRange(target, WandererConstants.attackBuffer())) {
 						e.doHurtTarget(target);
 					}
@@ -39,7 +54,6 @@ public class WandererStateMachine {
 			e.level().broadcastEntityEvent(e, WandererIds.IDLE);
 		}
 		action = Action.IDLE;
-		var target = e.getTarget();
 		if (target == null) {
 			attack = AttackType.CLEAR;
 			return;
@@ -67,26 +81,47 @@ public class WandererStateMachine {
 	public void triggerRegular(WandererEntity e) {
 		action = Action.ATTACK;
 		tick = action.duration;
-		attack = AttackType.CLEAR;
-		e.level().broadcastEntityEvent(e, WandererIds.ATTACK);
+		if (e.level().isClientSide()) {
+			e.attack.startIfStopped(e.tickCount);
+		} else {
+			attack = AttackType.CLEAR;
+			e.level().broadcastEntityEvent(e, WandererIds.ATTACK);
+		}
 	}
 
 	public void triggerJump(WandererEntity e) {
 		action = Action.JUMP;
 		tick = action.duration;
-		attack = AttackType.HUG_READY;
-		e.level().broadcastEntityEvent(e, WandererIds.JUMP);
+		if (e.level().isClientSide()) {
+			e.jump.startIfStopped(e.tickCount);
+		} else {
+			attack = AttackType.HUG_READY;
+			e.level().broadcastEntityEvent(e, WandererIds.JUMP);
+		}
 	}
 
 	public void triggerHug(WandererEntity e) {
 		action = Action.HUG;
 		tick = action.duration;
-		attack = AttackType.CLEAR;
-		e.level().broadcastEntityEvent(e, WandererIds.HUG);
+		if (e.level().isClientSide()) {
+			e.hug.startIfStopped(e.tickCount);
+			WandererParticles.huggingParticles(e);
+		} else {
+			attack = AttackType.CLEAR;
+			e.level().broadcastEntityEvent(e, WandererIds.HUG);
+		}
 	}
 
-	public boolean isReady() {
-		return action == Action.IDLE || action == Action.JUMP || tick == 0;
+	public boolean isHolding() {
+		return action == Action.JUMP && tick >= action.duration - WandererConstants.jumpDelay();
+	}
+
+	public boolean isReadyToJump() {
+		return action == Action.JUMP && tick == action.duration - WandererConstants.jumpDelay();
+	}
+
+	public boolean isReadyToAttack() {
+		return action == Action.IDLE || tick == 0 || !isHolding();
 	}
 
 	public void resetAttackMode() {
@@ -94,8 +129,19 @@ public class WandererStateMachine {
 			attack = AttackType.CLEAR;
 	}
 
+	public void onEntityEvent(WandererEntity e, byte id) {
+		if (id == WandererIds.ATTACK) triggerRegular(e);
+		else e.attack.stop();
+
+		if (id == WandererIds.JUMP) triggerJump(e);
+		else e.jump.stop();
+
+		if (id == WandererIds.HUG) triggerHug(e);
+		else e.hug.stop();
+	}
+
 	public enum Action {
-		IDLE(0), ATTACK(20), JUMP(60), HUG(20);
+		IDLE(0), ATTACK(20), JUMP(30), HUG(15);
 
 		private final int duration;
 

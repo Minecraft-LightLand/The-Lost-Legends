@@ -5,12 +5,19 @@ import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 
 public class WandererConstants {
 
 	public static int attackFrame() {
+		return 10;
+	}
+
+	public static int jumpDelay() {
 		return 10;
 	}
 
@@ -24,10 +31,6 @@ public class WandererConstants {
 
 	public static float jumpMaxChance() {
 		return 0.5f;
-	}
-
-	public static double jumpStrength(double distSqr) {
-		return Math.sqrt(distSqr) * 0.2;
 	}
 
 	public static double jumpStartDistSqr() {
@@ -52,6 +55,39 @@ public class WandererConstants {
 			amount *= 0.25f;
 		}
 		return amount;
+	}
+
+	public static void launch(WandererEntity mob, LivingEntity target) {
+		var dist = mob.distanceTo(target);
+		var center = target.position().add(0, target.getBbHeight() / 2 + 0.5, 0);
+		var diff = center.subtract(mob.position());
+		double dx = diff.x;
+		double dy = diff.y;
+		double dz = diff.z;
+		double g = mob.getGravity();
+		double v = Math.min(1.5, dist * 0.2);
+
+		if (target instanceof Player || target instanceof Monster) {
+			diff.add(target.getDeltaMovement().multiply(1, 0, 1).scale(dist / v));
+		}
+
+		Vec3 dir = diff;
+		double c = dx * dx + dz * dz + dy * dy;
+		if (g > 0 && c > v * v * 4) {
+			double a = g * g / 4;
+			double b = dy * g - v * v;
+			double delta = b * b - 4 * a * c;
+			if (delta > 0) {
+				double t21 = (-b + Math.sqrt(delta)) / (2 * a);
+				double t22 = (-b - Math.sqrt(delta)) / (2 * a);
+				if (t21 > 0 || t22 > 0) {
+					double t2 = t21 > 0 ? (t22 > 0 ? Math.min(t21, t22) : t21) : t22;
+					dir = new Vec3(dx, dy + g * t2 / 2, dz);
+				}
+			}
+		}
+
+		mob.setDeltaMovement(dir.normalize().scale(v));
 	}
 
 }

@@ -47,7 +47,7 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 	}
 
 	protected void addBehaviourGoals() {
-		this.goalSelector.addGoal(2, new WandererAttackGoal(this, 1.0, false));
+		this.goalSelector.addGoal(2, new WandererAttackGoal(this, 1.0, true));
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers(WandererEntity.class));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
@@ -60,8 +60,16 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 
 	@Override
 	protected void customServerAiStep() {
-		state.tick(this);
+		state.serverTick(this);
 		super.customServerAiStep();
+	}
+
+	@Override
+	public void aiStep() {
+		super.aiStep();
+		if (level().isClientSide()) {
+			state.clientTick(this);
+		}
 	}
 
 	@Override
@@ -101,28 +109,7 @@ public class WandererEntity extends Monster implements DamageModifierEntity {
 
 	@Override
 	public void handleEntityEvent(byte id) {
-		switch (id) {
-			case WandererIds.IDLE:
-				jump.stop();
-				hug.stop();
-				attack.stop();
-				return;
-			case WandererIds.ATTACK:
-				jump.stop();
-				hug.stop();
-				attack.startIfStopped(tickCount);
-				return;
-			case WandererIds.JUMP:
-				attack.stop();
-				hug.stop();
-				jump.startIfStopped(tickCount);
-				return;
-			case WandererIds.HUG:
-				attack.stop();
-				jump.stop();
-				hug.startIfStopped(tickCount);
-				return;
-		}
+		state.onEntityEvent(this, id);
 		super.handleEntityEvent(id);
 	}
 

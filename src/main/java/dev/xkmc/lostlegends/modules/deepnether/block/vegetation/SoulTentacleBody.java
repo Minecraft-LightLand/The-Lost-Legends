@@ -36,11 +36,11 @@ public class SoulTentacleBody extends FluidVineBody implements SimpleSoulLoggedB
 
 	public SoulTentacleBody(Properties prop) {
 		this(prop, Direction.DOWN);
-		registerDefaultState(defaultBlockState().setValue(ATTACHED, false));
 	}
 
 	public SoulTentacleBody(Properties prop, Direction dir) {
 		super(prop, 1, dir);
+		registerDefaultState(defaultBlockState().setValue(ATTACHED, false));
 	}
 
 	@Override
