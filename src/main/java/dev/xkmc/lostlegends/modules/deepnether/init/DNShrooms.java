@@ -25,7 +25,7 @@ import java.util.List;
 public class DNShrooms extends LLRegBase {
 
 	public final BlockEntry<GrowableShroomBlock> SCORCHROOM, HEARTHROOM, GHOSHROOM, OCEAN_PHANTOM;
-	public final BlockEntry<VariantShroomBlock> BISCORCHROOM, LARGE_HEARTHROOM, HORNED_GHOSHROOM, DEEP_OCEAN_PHANTOM, BLAZING_OCEAN_PHANTOM;
+	public final BlockEntry<VariantShroomBlock> BISCORCHROOM, LARGE_HEARTHROOM, HORNED_GHOSHROOM, CHASM_PHANTOM, SPIRAL_PHANTOM;
 
 	public DNShrooms(L2Registrate reg, String path) {
 		super(reg, path);
@@ -91,7 +91,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		DEEP_OCEAN_PHANTOM = block("deep_ocean_phantom", p -> new VariantShroomBlock(p, 1, 12, OCEAN_PHANTOM))
+		CHASM_PHANTOM = block("chasm_phantom", p -> new VariantShroomBlock(p, 1, 12, OCEAN_PHANTOM))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(11)
@@ -100,7 +100,7 @@ public class DNShrooms extends LLRegBase {
 				.transformItem(this::makeItem)
 				.register();
 
-		BLAZING_OCEAN_PHANTOM = block("blazing_ocean_phantom", p -> new VariantShroomBlock(p, 2, 15, OCEAN_PHANTOM))
+		SPIRAL_PHANTOM = block("spiral_phantom", p -> new VariantShroomBlock(p, 2, 15, OCEAN_PHANTOM))
 				.prop(MapColor.NETHER, SoundType.GRASS)
 				.prop(BlockBehaviour.Properties::randomTicks)
 				.light(14)
@@ -124,7 +124,7 @@ public class DNShrooms extends LLRegBase {
 	}
 
 	private List<Holder<Block>> phantom() {
-		return List.of(DEEP_OCEAN_PHANTOM, BLAZING_OCEAN_PHANTOM);
+		return List.of(CHASM_PHANTOM, SPIRAL_PHANTOM);
 	}
 
 	private void makeItem(ItemBuilder<BlockItem, ?> builder) {

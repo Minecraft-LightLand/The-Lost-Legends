@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "lostlegends:blazing_ocean_phantom"
+          "name": "lostlegends:spiral_phantom"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lostlegends:blocks/blazing_ocean_phantom"
+  "random_sequence": "lostlegends:blocks/spiral_phantom"
 }

@@ -5,6 +5,7 @@ import dev.xkmc.l2damagetracker.contents.damage.DamageTypeWrapper;
 import dev.xkmc.l2damagetracker.contents.damage.DefaultDamageState;
 import dev.xkmc.lostlegends.foundation.entity.DamageModifierEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.base.BaseGhostEntity;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -50,6 +51,11 @@ public class WandererEntity extends BaseGhostEntity implements DamageModifierEnt
 
 	@Override
 	protected void customServerAiStep() {
+		if (tickCount % 20 == 0) {
+			if (isInFluidType(DeepNether.BLOCKS.LIQUID_SOUL.getType())) {
+				heal(getMaxHealth() / 13);
+			}
+		}
 		state.serverTick(this);
 		super.customServerAiStep();
 	}
