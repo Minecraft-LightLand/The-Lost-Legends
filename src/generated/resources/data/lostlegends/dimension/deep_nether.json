@@ -170,6 +170,19 @@
       ]
     },
     "settings": "lostlegends:deep_nether",
+    "special_blocks": [
+      {
+        "block": {
+          "Name": "lostlegends:twistone"
+        },
+        "humidity_max": -0.4,
+        "humidity_min": -1.0,
+        "offset": 0.05,
+        "temperature_max": -0.1,
+        "temperature_min": -1.0,
+        "transition_thickness": 0.01
+      }
+    ],
     "special_fluids": [
       {
         "barrier_thickness": 0.01,

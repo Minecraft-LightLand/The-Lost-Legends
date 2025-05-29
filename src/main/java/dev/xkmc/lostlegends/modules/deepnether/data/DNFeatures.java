@@ -94,9 +94,9 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, weepingLazurite.cf, Feature.ORE, new OreConfiguration(sand,
 					DeepNether.ORES.WEEPING_LAZURITE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, dementingRust.cf, Feature.ORE, new OreConfiguration(soil,
-					DeepNether.ORES.DEMENTING_RUST.getDefaultState(), 6, 0.7f));
+					DeepNether.ORES.DEMENTING_RUST.getDefaultState(), 6, 1));
 			FeatureUtils.register(ctx, weepingRust.cf, Feature.ORE, new OreConfiguration(sand,
-					DeepNether.ORES.WEEPING_RUST.getDefaultState(), 6, 0.7f));
+					DeepNether.ORES.WEEPING_RUST.getDefaultState(), 6, 1));
 		}
 
 		@Override

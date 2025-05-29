@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-25T18:56:48.012428	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-05-29T11:04:11.016233	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -357,7 +357,7 @@ eb2458f4e0d31d6d3195f1d3144f155c64dadc9e data/lostlegends/advancement/recipes/mi
 2ef7eba9d4f2ceff208906d40424dd8df4929652 data/lostlegends/advancement/recipes/misc/scorched_bone_vines_to_bonemeal.json
 252dd97c02c6fc4e7b3c904ecd11f27e82b9378c data/lostlegends/advancement/recipes/misc/scorched_deep_netherrack.json
 26637b7ff44554149f2e0729f31ca4c729054867 data/lostlegends/advancement/recipes/misc/weeping_sand.json
-6dea73ec8835a04f844138d005a6cdb212d9810d data/lostlegends/dimension/deep_nether.json
+3c665098d47eb002fc191676da4557dfd418a0c8 data/lostlegends/dimension/deep_nether.json
 a73c56eec604af3a6b665cca5ce54aef90160694 data/lostlegends/dimension_type/deep_nether.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 ab1bc1d399b6709b678d3b3d3582bcb7965a4987 data/lostlegends/loot_table/blocks/amber_magma.json
@@ -531,13 +531,13 @@ ba6863730d9c5dfe4ac9dea4100be9ee085ab61b data/lostlegends/worldgen/configured_fe
 8e42624b3073d3f017e619134f2c8f819fa3c880 data/lostlegends/worldgen/configured_feature/deepnether/ore/debris_large.json
 aedf3e583e15cbff25c2d01fd2d4ae3d4805eadd data/lostlegends/worldgen/configured_feature/deepnether/ore/debris_small.json
 674c24591fafdb1aad31090be53498473a331325 data/lostlegends/worldgen/configured_feature/deepnether/ore/dementing_lazurite.json
-cf9051f0ad9f7c4a63f958ee1c99307655f9a639 data/lostlegends/worldgen/configured_feature/deepnether/ore/dementing_rust.json
+41d2761703a2871d1596c7b1ec14ffee64a96ef5 data/lostlegends/worldgen/configured_feature/deepnether/ore/dementing_rust.json
 073eb129e2baf1b71cca86f22f49f2d5e73733e6 data/lostlegends/worldgen/configured_feature/deepnether/ore/gold_debris.json
 11182355fc2ef536b6b94b319349e15c80e64e1d data/lostlegends/worldgen/configured_feature/deepnether/ore/gold_debris_close.json
 2a09887208a8ed8bf94f83b11668ea1156fdcce5 data/lostlegends/worldgen/configured_feature/deepnether/ore/hearth_crystal.json
 2e86d23e80f8524dea3a2c4f4d4b385abd058a3a data/lostlegends/worldgen/configured_feature/deepnether/ore/resonating_twistone.json
 0369301483ff7434602ad7093a5d8a51ef49fd2b data/lostlegends/worldgen/configured_feature/deepnether/ore/weeping_lazurite.json
-7993a40d2c62f3ec29fd5294aedb57fc8f37cadd data/lostlegends/worldgen/configured_feature/deepnether/ore/weeping_rust.json
+73493c56b2aa204f3376be9282503daec26856e6 data/lostlegends/worldgen/configured_feature/deepnether/ore/weeping_rust.json
 3f9771a205dc85f911f48f4eb15b846b6c94f0d1 data/lostlegends/worldgen/configured_feature/deepnether/simple/amber_magma.json
 5cac90fd439cad61026eec5bbfe0717cf820830f data/lostlegends/worldgen/configured_feature/deepnether/simple/ectoplasm.json
 3f5ae4f61b35d6bf260b597e8a73e8f72854b823 data/lostlegends/worldgen/configured_feature/deepnether/simple/fire_patch.json
