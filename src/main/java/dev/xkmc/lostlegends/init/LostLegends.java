@@ -8,6 +8,7 @@ import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.modules.deco.LLDecoBlocks;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.item.LLEquipments;
+import dev.xkmc.lostlegends.modules.maze.init.MazeModule;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -44,6 +45,7 @@ public class LostLegends {
 		MODULES.add(new DeepNether());
 		MODULES.add(new LLEquipments());
 		MODULES.add(new LLDecoBlocks());
+		MODULES.add(new MazeModule());
 		AttackEventHandler.register(2583, new LLAttackListener());
 	}
 

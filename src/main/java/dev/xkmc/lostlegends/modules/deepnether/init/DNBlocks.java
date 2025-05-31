@@ -4,7 +4,6 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
-import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
@@ -46,7 +45,6 @@ public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> RAGING_OBSIDIAN;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
-
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;

@@ -1,0 +1,18 @@
+{
+  "type": "lostlegends:maze",
+  "biomes": "#c:is_ocean",
+  "cell_height": 11,
+  "cell_width": 15,
+  "maze_height": 3,
+  "maze_width": 7,
+  "path": "lostlegends:maze",
+  "rooms": [
+    "hallway",
+    "library",
+    "laboratory",
+    "prison"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_box"
+}

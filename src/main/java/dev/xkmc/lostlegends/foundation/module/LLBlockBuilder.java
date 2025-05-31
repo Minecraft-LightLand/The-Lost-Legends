@@ -8,6 +8,7 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.serial.loot.LootHelper;
@@ -71,7 +72,7 @@ public class LLBlockBuilder<T extends Block> {
 		return this;
 	}
 
-	public LLBlockBuilder<T> copyProp(BlockEntry<?> base) {
+	public LLBlockBuilder<T> copyProp(NonNullSupplier<? extends Block> base) {
 		builder.initialProperties(base);
 		return this;
 	}

@@ -1,0 +1,7 @@
+{
+  "parent": "lostlegends:custom/face",
+  "textures": {
+    "particle": "lostlegends:block/maze/in",
+    "texture": "lostlegends:block/maze/in"
+  }
+}
