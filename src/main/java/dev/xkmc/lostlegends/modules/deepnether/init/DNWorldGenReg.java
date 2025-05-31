@@ -4,8 +4,12 @@ import dev.xkmc.l2core.init.reg.simple.*;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNCarver;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.aquifer.DNChunkGenerator;
 import dev.xkmc.lostlegends.modules.deepnether.worldgen.feature.*;
+import dev.xkmc.lostlegends.modules.deepnether.worldgen.structure.maze.MazePiece;
+import dev.xkmc.lostlegends.modules.deepnether.worldgen.structure.maze.MazeStructure;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
+import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 
 public class DNWorldGenReg {
 
@@ -23,6 +27,9 @@ public class DNWorldGenReg {
 	public final Val<FluidLoggedVinesFeature> FLUID_VINE;
 	public final Val<StonePile> STONE_PILE;
 	public final Val<ColumnClusters> COLUMN_CLUSTERS;
+
+	public final Val<StructureType<MazeStructure>> MAZE;
+	public final Val<StructurePieceType> MAZE_PIECE;
 
 	public DNWorldGenReg(Reg reg) {
 		var cgreg = CdcReg.of(reg, BuiltInRegistries.CHUNK_GENERATOR);
@@ -43,6 +50,12 @@ public class DNWorldGenReg {
 		COLUMN_CLUSTERS = freg.reg("column", ColumnClusters::new);
 		DEEP_PORTAL = freg.reg("deep_nether_portal", DeepNetherPortal::new);
 		NETHER_PORTAL = freg.reg("nether_volcano_portal", NetherVolcanoPortal::new);
+
+		var sreg = SR.of(reg, BuiltInRegistries.STRUCTURE_TYPE);
+		MAZE = sreg.reg("maze", () -> () -> MazeStructure.CODEC);
+
+		var preg = SR.of(reg, BuiltInRegistries.STRUCTURE_PIECE);
+		MAZE_PIECE = preg.reg("maze", () -> MazePiece::new);
 
 	}
 
