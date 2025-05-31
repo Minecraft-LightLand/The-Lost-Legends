@@ -156,7 +156,7 @@ public class MazeGenerator {
 			for (int c = 0; c < sets.length; c++) {
 				sets[c] = r.nextInt(rooms.length - 1) + 1;
 			}
-			if (i == 1) {
+			if (i == 0) {
 				sets[itr.value[0][mazes[i].r].getColor()] = 0;
 				sets[itr.value[mazes[i].w - 1][mazes[i].r].getColor()] = 0;
 				sets[itr.value[mazes[i].r][0].getColor()] = 0;
@@ -173,22 +173,22 @@ public class MazeGenerator {
 					CellInstance ins = parseCell(mazes[i], sets, itr.value, x, z);
 					children.add(new MazePiece(parent, manager, ins, pos.offset(
 							(x - mazes[i].r) * cellWidth,
-							(i - 1) * cellHeight,
+							i * cellHeight,
 							(z - mazes[i].r) * cellWidth
 					), MazePiece.ShiftType.FLAT, true));
 				}
 		}
 
-		// boos room
+		// boss room
 		children.add(new MazePiece(parent, manager, new CellInstance(BOSS_ROOM, Rotation.NONE, Mirror.NONE), pos.offset(
-				-cellWidth, -cellHeight, -cellWidth), MazePiece.ShiftType.FLAT, true));
+				-cellWidth, 0, -cellWidth), MazePiece.ShiftType.FLAT, true));
 
 		// roof
 		for (int x = 0; x < mazes[2].w; x++) {
 			for (int z = 0; z < mazes[2].w; z++) {
 				children.add(new MazePiece(parent, manager, new CellInstance(TOP_FLAT, Rotation.NONE, Mirror.NONE), pos.offset(
 						(x - mazes[2].r) * cellWidth,
-						2 * cellHeight,
+						3 * cellHeight,
 						(z - mazes[2].r) * cellWidth
 				), MazePiece.ShiftType.FLAT, false));
 			}
@@ -213,6 +213,8 @@ public class MazeGenerator {
 
 	private void addEdges(StructureTemplateManager manager, List<StructurePiece> children, BlockPos pos, int x, int z, Rotation rot, boolean door) {
 		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_TOP_WALL, rot, Mirror.NONE),
+				pos.offset(x, 3 * cellHeight, z), MazePiece.ShiftType.EDGE, false));
+		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_HIGH_WALL, rot, Mirror.NONE),
 				pos.offset(x, 2 * cellHeight, z), MazePiece.ShiftType.EDGE, false));
 		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_HIGH_WALL, rot, Mirror.NONE),
 				pos.offset(x, cellHeight, z), MazePiece.ShiftType.EDGE, false));
@@ -222,6 +224,8 @@ public class MazeGenerator {
 
 	private void addCorners(StructureTemplateManager manager, List<StructurePiece> children, BlockPos pos, int x, int z, Rotation rot) {
 		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_TOP_CORNER, rot, Mirror.NONE),
+				pos.offset(x, 3 * cellHeight, z), MazePiece.ShiftType.NONE, false));
+		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_HIGH_CORNER, rot, Mirror.NONE),
 				pos.offset(x, 2 * cellHeight, z), MazePiece.ShiftType.NONE, false));
 		children.add(new MazePiece(parent, manager, new CellInstance(EDGE_HIGH_CORNER, rot, Mirror.NONE),
 				pos.offset(x, cellHeight, z), MazePiece.ShiftType.NONE, false));

@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.maze.init.MazeModule;
 import dev.xkmc.lostlegends.modules.maze.logic.generator.MazeConfig;
 import net.minecraft.core.BlockPos;
@@ -47,6 +46,7 @@ public class MazeStructure extends Structure {
 		this.cellHeight = cellHeight;
 		this.mazeWidth = mazeWidth;
 		this.mazeHeight = mazeHeight;
+		scale = cellWidth / 2;
 	}
 
 	@Override

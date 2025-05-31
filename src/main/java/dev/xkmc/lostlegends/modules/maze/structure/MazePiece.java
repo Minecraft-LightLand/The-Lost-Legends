@@ -31,6 +31,7 @@ public class MazePiece extends TemplateStructurePiece {
 	private static StructurePlaceSettings makeSettings(boolean inner, Rotation rotation, Mirror mirror, ShiftType shift) {
 		BlockIgnoreProcessor processor = inner ? BlockIgnoreProcessor.STRUCTURE_BLOCK : BlockIgnoreProcessor.STRUCTURE_AND_AIR;
 		return (new StructurePlaceSettings()).setIgnoreEntities(true)
+				.setKnownShape(true)
 				.addProcessor(processor).setLiquidSettings(inner ? LiquidSettings.IGNORE_WATERLOGGING : LiquidSettings.APPLY_WATERLOGGING)
 				.setRotation(rotation).setMirror(mirror);
 	}
