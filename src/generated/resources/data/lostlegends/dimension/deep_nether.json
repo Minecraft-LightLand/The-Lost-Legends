@@ -199,7 +199,7 @@
         },
         "offset": 0.05,
         "outer_barrier": {
-          "Name": "lostlegends:raging_obsidian"
+          "Name": "lostlegends:raging_netherjade"
         },
         "temperature_max": -0.1,
         "temperature_min": -1.0

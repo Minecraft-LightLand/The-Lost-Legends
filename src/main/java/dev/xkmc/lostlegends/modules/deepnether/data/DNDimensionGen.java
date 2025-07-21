@@ -82,7 +82,7 @@ public class DNDimensionGen {
 							new DNAquifer.FluidEntry(-1, -0.1, -1, -0.4, 0.05, 0.01,
 									SoulEffectsHelper.getFluidBlock(),
 									Blocks.CRYING_OBSIDIAN.defaultBlockState(),
-									DeepNether.BLOCKS.RAGING_OBSIDIAN.getDefaultState())
+									DeepNether.BLOCKS.RAGING_NETHERJADE.getDefaultState())
 					))));
 		});
 

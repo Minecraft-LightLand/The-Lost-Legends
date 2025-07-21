@@ -88,7 +88,7 @@ public class LLBlockBuilder<T extends Block> {
 	}
 
 	public LLBlockBuilder<T> fakeSolid() {
-		builder.properties(p -> p.noOcclusion()
+		builder.properties(p -> p
 				.isValidSpawn((a, b, c, d) -> true)
 				.isRedstoneConductor((a, b, c) -> true)
 				.isViewBlocking((a, b, c) -> false)

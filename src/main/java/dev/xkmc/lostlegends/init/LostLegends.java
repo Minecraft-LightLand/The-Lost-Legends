@@ -7,7 +7,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.modules.deco.LLDecoBlocks;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
-import dev.xkmc.lostlegends.modules.item.LLEquipments;
+import dev.xkmc.lostlegends.modules.item.init.LLEquipments;
 import dev.xkmc.lostlegends.modules.maze.init.MazeModule;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;

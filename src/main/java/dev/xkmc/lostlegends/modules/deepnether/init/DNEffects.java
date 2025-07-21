@@ -8,7 +8,7 @@ import dev.xkmc.lostlegends.foundation.module.PotionSet;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
-import dev.xkmc.lostlegends.modules.item.LLEquipments;
+import dev.xkmc.lostlegends.modules.item.init.LLEquipments;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

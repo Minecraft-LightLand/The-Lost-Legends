@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.MapColor;
 
 public class DNOres extends LLRegBase {
 
-	public final BlockEntry<Block> HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE, RESONANT_TWISTONE;
+	public final BlockEntry<Block> HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE, RESONANT_TWISTONE, CRYSTALIZED_BONE;
 	public final BlockEntry<Block> DEMENTING_LAZURITE, DEMENTING_RUST;
 	public final BlockEntry<WeepingSandBlock> WEEPING_LAZURITE, WEEPING_RUST;
 
@@ -41,6 +41,13 @@ public class DNOres extends LLRegBase {
 					.cubeAll().pickaxe()
 					.simpleItem()
 					.multiOreLoot(() -> DeepNether.ITEMS.AMARAST.get(), 1, 2)
+					.register();
+
+			CRYSTALIZED_BONE = block("crystalized_bone", Block::new)
+					.prop(MapColor.TERRACOTTA_WHITE, SoundType.STONE).strength(3f)
+					.cubeAll().pickaxe()
+					.simpleItem()
+					.multiOreLoot(() -> DeepNether.ITEMS.BONE_CRYSTAL.get(), 1, 2)
 					.register();
 
 			RESONANT_TWISTONE = block("resonant_twistone", Block::new)

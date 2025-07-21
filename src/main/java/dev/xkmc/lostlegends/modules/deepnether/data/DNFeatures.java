@@ -54,6 +54,7 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey goldClose = uni("gold_debris_close");
 		public final FeatureKey hearth = uni("hearth_crystal");
 		public final FeatureKey amarast = uni("amarast");
+		public final FeatureKey boneCrystal = uni("bone_crystal");
 		public final FeatureKey resonant = uni("resonating_twistone");
 		public final FeatureKey debrisSmall = uni("debris_small");
 		public final FeatureKey debrisLarge = uni("debris_large");
@@ -70,6 +71,7 @@ public class DNFeatures extends LLFeatureReg {
 		public void regFeatures(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 			var rack = new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get());
 			var black = new BlockMatchTest(DeepNether.BLOCKS.DEEP_BLACKSTONE.get());
+			var bone = new BlockMatchTest(DeepNether.BLOCKS.DENSE_BONE.get());
 			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
@@ -80,6 +82,8 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.ORES.HEARTH_ORE.getDefaultState(), 6));
 			FeatureUtils.register(ctx, amarast.cf, Feature.ORE, new OreConfiguration(black,
 					DeepNether.ORES.AMARAST_ORE.getDefaultState(), 4));
+			FeatureUtils.register(ctx, boneCrystal.cf, Feature.ORE, new OreConfiguration(bone,
+					DeepNether.ORES.CRYSTALIZED_BONE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, resonant.cf, Feature.ORE, new OreConfiguration(warped,
 					DeepNether.ORES.RESONANT_TWISTONE.getDefaultState(), 4));
 			FeatureUtils.register(ctx, debrisSmall.cf, Feature.ORE, new OreConfiguration(all,
@@ -105,6 +109,7 @@ public class DNFeatures extends LLFeatureReg {
 			goldClose.place(ctx, cf, spread(10, uniform(10, 120)));
 			hearth.place(ctx, cf, spread(8, uniform(5, 30)));
 			amarast.place(ctx, cf, spread(40, uniform(10, 250)));
+			boneCrystal.place(ctx, cf, spread(40, uniform(10, 250)));
 			resonant.place(ctx, cf, spread(40, uniform(10, 250)));
 			debrisSmall.place(ctx, cf, spread(15, uniform(10, 250)));
 			debrisLarge.place(ctx, cf, spread(4, uniform(8, 70)));

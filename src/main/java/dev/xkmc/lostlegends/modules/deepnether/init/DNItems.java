@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 
 public class DNItems extends LLRegBase {
 
-	public final ItemEntry<Item> HEARTH_CRYSTAL, GOLD_DEBRIS, DARK_COBBLE, AMARAST, RESONANT_SOULGEM, SOUL_LAZURITE, SOUL_RUST;
+	public final ItemEntry<Item> HEARTH_CRYSTAL, GOLD_DEBRIS, DARK_COBBLE, AMARAST,BONE_CRYSTAL, RESONANT_SOULGEM, SOUL_LAZURITE, SOUL_RUST;
 	public final ItemEntry<PortalDissonator> PORTAL_DISSONATOR;
 
 	public DNItems(L2Registrate reg, String path) {
@@ -25,6 +25,9 @@ public class DNItems extends LLRegBase {
 				.model(this::flatItem)
 				.register();
 		AMARAST = reg.item("amarast", Item::new)
+				.model(this::flatItem)
+				.register();
+		BONE_CRYSTAL = reg.item("bone_crystal", Item::new)
 				.model(this::flatItem)
 				.register();
 		RESONANT_SOULGEM = reg.item("resonant_soulgem", Item::new)

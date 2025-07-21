@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.item;
+package dev.xkmc.lostlegends.modules.item.weapon;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

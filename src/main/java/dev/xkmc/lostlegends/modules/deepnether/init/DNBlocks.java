@@ -25,7 +25,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.Tags;
 
 import java.util.Set;
 
@@ -43,7 +42,7 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
 	public final BlockEntry<SoulBlobBlock> SOUL_BLOB;
 
-	public final BlockEntry<Block> RAGING_OBSIDIAN;
+	public final BlockEntry<Block> NETHERJADE, ARCANE_NETHERJADE, WEEPING_NETHERJADE, RAGING_NETHERJADE;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
@@ -197,13 +196,31 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.shardLoot(() -> DeepNether.ITEMS.DARK_COBBLE.get(), 2, 4)
 					.register();
+		}
 
-			RAGING_OBSIDIAN = block("raging_obsidian", Block::new)
+		{
+			NETHERJADE = block("netherjade", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(50, 1200)
 					.cubeAll().obsidian()
-					.tag(Tags.Blocks.OBSIDIANS)
 					.simpleItem()
-					.itemTag(Tags.Items.OBSIDIANS)
+					.register();
+
+			ARCANE_NETHERJADE = block("arcane_netherjade", Block::new)
+					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(100, 3600)
+					.cubeAll().obsidian()
+					.simpleItem()
+					.register();
+
+			WEEPING_NETHERJADE = block("weeping_netherjade", Block::new)
+					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(50, 1200)
+					.cubeAll().obsidian()
+					.simpleItem()
+					.register();
+
+			RAGING_NETHERJADE = block("raging_netherjade", Block::new)
+					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(50, 1200)
+					.cubeAll().obsidian()
+					.simpleItem()
 					.register();
 
 		}

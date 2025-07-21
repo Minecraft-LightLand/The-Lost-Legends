@@ -42,15 +42,15 @@ public class DeepNether extends LLModuleBase {
 		registerFluidInteraction(
 				BLOCKS.LIQUID_SOUL.get().getFluidType(),
 				NeoForgeMod.LAVA_TYPE.value(),
-				Blocks.CRYING_OBSIDIAN.defaultBlockState(),
+				BLOCKS.WEEPING_NETHERJADE.getDefaultState(),
 				BLOCKS.SOUL_SHELL.getDefaultState(),
-				BLOCKS.RAGING_OBSIDIAN.getDefaultState()
+				BLOCKS.RAGING_NETHERJADE.getDefaultState()
 		);
 
 		registerFluidInteraction(
 				BLOCKS.LIQUID_SOUL.get().getFluidType(),
 				NeoForgeMod.WATER_TYPE.value(),
-				Blocks.CRYING_OBSIDIAN.defaultBlockState(),
+				BLOCKS.WEEPING_NETHERJADE.getDefaultState(),
 				BLOCKS.DEMENTING_SOIL.getDefaultState(),
 				BLOCKS.TWISTONE.getDefaultState()
 		);

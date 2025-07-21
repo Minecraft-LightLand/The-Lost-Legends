@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.item;
+package dev.xkmc.lostlegends.modules.item.init;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
