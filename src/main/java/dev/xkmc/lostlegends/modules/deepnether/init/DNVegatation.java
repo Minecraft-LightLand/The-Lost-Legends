@@ -2,6 +2,7 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.lostlegends.foundation.block.AttachingFluidVineBody;
 import dev.xkmc.lostlegends.foundation.block.SimpleLavaloggedBlock;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
@@ -80,7 +81,7 @@ public class DNVegatation extends LLRegBase {
 			SCORCHED_BONE_VINE_PLANT = block("scorched_bone_vines_plant", BoneVineBody::new)
 					.prop(MapColor.TERRACOTTA_WHITE, SoundType.BONE_BLOCK)
 					.light(SimpleLavaloggedBlock.LAVALOGGED, 15, 10)
-					.fragile().cross()
+					.fragile().blockstate(AttachingFluidVineBody::buildBlockStates)
 					.tag(BlockTags.CLIMBABLE)
 					.lootChance(0.1f)
 					.register();
@@ -119,7 +120,7 @@ public class DNVegatation extends LLRegBase {
 					p -> new SoulTentacleBody(p, Direction.DOWN))
 					.prop(MapColor.COLOR_CYAN, SoundType.WEEPING_VINES)
 					.light(SimpleSoulLoggedBlock.LOGGED, 15, 7)
-					.fragile().blockstate(SoulTentacleBody::buildBlockStates)
+					.fragile().blockstate(AttachingFluidVineBody::buildBlockStates)
 					.tag(BlockTags.CLIMBABLE)
 					.lootChance(0.1f)
 					.register();

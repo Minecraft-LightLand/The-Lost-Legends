@@ -1,5 +1,6 @@
 package dev.xkmc.lostlegends.init;
 
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererModel;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlimeModel;
 import net.neoforged.api.distmarker.Dist;
@@ -34,6 +35,7 @@ public class LLClient {
 		event.registerLayerDefinition(NetherSlimeModel.SLIME, NetherSlimeModel::createInnerBodyLayer);
 		event.registerLayerDefinition(NetherSlimeModel.SLIME_OUTER, NetherSlimeModel::createOuterBodyLayer);
 		event.registerLayerDefinition(WandererModel.LAYER_LOCATION, WandererModel::createBodyLayer);
+		event.registerLayerDefinition(BeholderModelData.LAYER_LOCATION, BeholderModelData::createBodyLayer);
 	}
 
 	@SubscribeEvent

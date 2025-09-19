@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "attached=false": {
       "model": "lostlegends:block/scorched_bone_vines_plant"
+    },
+    "attached=true": {
+      "model": "lostlegends:block/scorched_bone_vines_plant_attached"
     }
   }
 }

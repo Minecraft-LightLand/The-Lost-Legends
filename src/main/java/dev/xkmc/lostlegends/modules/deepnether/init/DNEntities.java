@@ -3,6 +3,8 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
@@ -19,6 +21,7 @@ public class DNEntities extends LLRegBase {
 
 	public final EntityEntry<NetherSlime> NETHER_SLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
+	public final EntityEntry<BeholderEntity> BEHOLDER;
 
 	public DNEntities(L2Registrate reg, String path) {
 		super(reg, path);
@@ -51,6 +54,21 @@ public class DNEntities extends LLRegBase {
 				.tag(EntityTypeTags.UNDEAD)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x47463D, 0x0AD3D6).build()
+				.register();
+
+		//TODO spawn, drop
+		BEHOLDER = reg.entity("beholder", BeholderEntity::new, MobCategory.MONSTER)
+				.renderer(() -> BeholderRenderer::new)
+				.attributes(BeholderEntity::createAttributes)
+				.properties(p -> p.sized(0.6F, 1.8F).eyeHeight(1.6f)
+						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
+						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+						BeholderEntity::checkSpawnRules,
+						RegisterSpawnPlacementsEvent.Operation.AND)
+				.tag(EntityTypeTags.UNDEAD)
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x413737, 0xCDADAD).build()
 				.register();
 	}
 

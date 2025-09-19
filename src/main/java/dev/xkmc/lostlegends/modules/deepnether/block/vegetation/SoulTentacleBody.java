@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.block.vegetation;
 import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import dev.xkmc.lostlegends.foundation.block.AttachingFluidVineBody;
 import dev.xkmc.lostlegends.foundation.block.FluidVineBody;
 import dev.xkmc.lostlegends.foundation.block.LLFlowingFluid;
 import dev.xkmc.lostlegends.modules.deepnether.block.fluid.SimpleSoulLoggedBlock;
@@ -24,10 +25,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
-public class SoulTentacleBody extends FluidVineBody implements SimpleSoulLoggedBlock {
+public class SoulTentacleBody extends AttachingFluidVineBody implements SimpleSoulLoggedBlock {
 
 	public static final MapCodec<SoulTentacleBody> CODEC = simpleCodec(SoulTentacleBody::new);
-	public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
 
 	@Override
 	public MapCodec<SoulTentacleBody> codec() {
@@ -40,7 +40,6 @@ public class SoulTentacleBody extends FluidVineBody implements SimpleSoulLoggedB
 
 	public SoulTentacleBody(Properties prop, Direction dir) {
 		super(prop, 1, dir);
-		registerDefaultState(defaultBlockState().setValue(ATTACHED, false));
 	}
 
 	@Override
@@ -55,42 +54,8 @@ public class SoulTentacleBody extends FluidVineBody implements SimpleSoulLoggedB
 		}
 	}
 
-	@Override
-	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return state.getValue(ATTACHED) ? Shapes.block() : super.getShape(state, level, pos, ctx);
-	}
-
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(property(), ATTACHED);
-	}
-
-	@Override
-	protected BlockState updateShape(
-			BlockState state, Direction dir, BlockState nstate, LevelAccessor level, BlockPos pos, BlockPos npos
-	) {
-		var prev = super.updateShape(state, dir, nstate, level, pos, npos);
-		if (prev.is(this)) {
-			var from = level.getBlockState(pos.relative(growthDirection.getOpposite()));
-			var to = level.getBlockState(pos.relative(growthDirection));
-			prev = prev.setValue(ATTACHED, !from.is(this) && to.is(this));
-		}
-		return prev;
-	}
-
 	public Direction getDirection() {
 		return growthDirection;
 	}
 
-	public static void buildBlockStates(DataGenContext<Block, SoulTentacleBody> ctx, RegistrateBlockstateProvider pvd) {
-		pvd.getVariantBuilder(ctx.get()).forAllStatesExcept(
-				state -> {
-					var root = state.getValue(ATTACHED);
-					var id = ctx.getName();
-					if (root) id += "_attached";
-					var ans = pvd.models().cross("block/" + id, DeepNether.VEGE.blockLoc(id))
-							.renderType("cutout");
-					return ConfiguredModel.builder().modelFile(ans).build();
-				}, ctx.get().property());
-	}
 }
