@@ -10,6 +10,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -46,10 +47,13 @@ public class BeholderEntity extends BaseFloatingEntity {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
+		this.goalSelector.addGoal(3, new BeholderAttackGoal(this, 1, 20, 16));
 		this.targetSelector.addGoal(1, new FlyerHurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(
 				this, Player.class, 10, true, false,
 				e -> Math.abs(e.getY() - this.getY()) <= 4.0));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(
+				this, IronGolem.class, true));
 	}
 
 }

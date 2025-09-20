@@ -60,7 +60,7 @@ public class DNEntities extends LLRegBase {
 		BEHOLDER = reg.entity("beholder", BeholderEntity::new, MobCategory.MONSTER)
 				.renderer(() -> BeholderRenderer::new)
 				.attributes(BeholderEntity::createAttributes)
-				.properties(p -> p.sized(0.6F, 1.8F).eyeHeight(1.6f)
+				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)
 						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
 				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
 						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,

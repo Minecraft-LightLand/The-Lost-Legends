@@ -1,6 +1,7 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating;
 
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -17,25 +18,32 @@ public class FloaterMoveControl extends MoveControl {
 
 	@Override
 	public void tick() {
-		if (operation != MoveControl.Operation.MOVE_TO) return;
+		if (operation == MoveControl.Operation.MOVE_TO) {
+			double dx = wantedX - mob.getX();
+			double dz = wantedZ - mob.getZ();
+			double dy = wantedY - mob.getY();
+			Vec3 dir = new Vec3(dx, dy, dz);
+			double d0 = dir.length();
+			dir = dir.normalize();
 
-		double dx = wantedX - mob.getX();
-		double dz = wantedZ - mob.getZ();
-		double dy = wantedY - mob.getY();
-		Vec3 dir = new Vec3(dx, dy, dz);
-		double d0 = dir.length();
-		dir = dir.normalize();
+			float yrot = (float) (Mth.atan2(dz, dx) * 180 / Math.PI) - 90;
+			mob.setYRot(rotlerp(mob.getYRot(), yrot, 30));
+			mob.yBodyRot = mob.getYRot();
 
-		float yrot = (float) (Mth.atan2(dz, dx) * 180 / Math.PI) - 90;
-		mob.setYRot(rotlerp(mob.getYRot(), yrot, 30));
-		mob.yBodyRot = mob.getYRot();
-
-		if (floatDuration-- > 0) return;
-		floatDuration = floatDuration + entity.getRandom().nextInt(5) + 2;
-		if (canReach(dir, Mth.ceil(d0))) {
-			entity.setDeltaMovement(entity.getDeltaMovement().add(dir.scale(0.1)));
-		} else {
-			operation = MoveControl.Operation.WAIT;
+			if (floatDuration-- > 0) return;
+			floatDuration = floatDuration + entity.getRandom().nextInt(5) + 2;
+			if (canReach(dir, Mth.ceil(d0))) {
+				entity.setDeltaMovement(entity.getDeltaMovement().add(dir.scale(0.1)));
+			} else {
+				operation = MoveControl.Operation.WAIT;
+			}
+		} else if (operation == Operation.STRAFE) {
+			float f = (float) this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED);
+			float f1 = (float) this.speedModifier * f;
+			this.mob.setSpeed(f1);
+			this.mob.setZza(this.strafeForwards);
+			this.mob.setXxa(this.strafeRight);
+			this.operation = MoveControl.Operation.WAIT;
 		}
 	}
 

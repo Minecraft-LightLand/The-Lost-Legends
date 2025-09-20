@@ -4,11 +4,17 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
+import dev.xkmc.l2magic.content.engine.core.ProcessorType;
+import dev.xkmc.l2magic.content.engine.spell.SpellAction;
+import dev.xkmc.l2magic.init.registrate.EngineRegistry;
+import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
+import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.lostlegends.foundation.module.LLModuleBase;
 import dev.xkmc.lostlegends.modules.deco.LLDecoBlocks;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.item.init.LLEquipments;
 import dev.xkmc.lostlegends.modules.maze.init.MazeModule;
+import dev.xkmc.lostlegends.modules.spell.init.LLSpells;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -42,10 +48,13 @@ public class LostLegends {
 	private static final List<LLModuleBase> MODULES = new ArrayList<>();
 
 	public LostLegends(IEventBus bus) {
+		Handlers.registerReg(SpellAction.class, EngineRegistry.SPELL);
+		Handlers.enableVanilla(Wrappers.cast(ProcessorType.class), EngineRegistry.PROCESSOR.registry().get());
 		MODULES.add(new DeepNether());
 		MODULES.add(new LLEquipments());
 		MODULES.add(new LLDecoBlocks());
 		MODULES.add(new MazeModule());
+		MODULES.add(new LLSpells());
 		AttackEventHandler.register(2583, new LLAttackListener());
 	}
 
