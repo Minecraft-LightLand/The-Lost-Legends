@@ -9,6 +9,14 @@
       "positioned": true
     },
     {
+      "type": "l2magic:effect",
+      "ambient": false,
+      "amplifier": "0",
+      "duration": "60",
+      "effect": "minecraft:blindness",
+      "visible": true
+    },
+    {
       "type": "l2magic:cast_at",
       "child": {
         "type": "l2magic:list",
@@ -61,7 +69,7 @@
             },
             "delay": "1",
             "index": "t",
-            "step": "12"
+            "step": "10"
           }
         ]
       },
@@ -120,7 +128,7 @@
         },
         "delay": "1",
         "index": "t",
-        "step": "12"
+        "step": "10"
       }
     ]
   },

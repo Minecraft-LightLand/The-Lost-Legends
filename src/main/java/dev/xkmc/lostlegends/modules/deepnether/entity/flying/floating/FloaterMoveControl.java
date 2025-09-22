@@ -11,6 +11,8 @@ public class FloaterMoveControl extends MoveControl {
 	private final BaseFloatingEntity entity;
 	private int floatDuration;
 
+	protected float strafeUp;
+
 	public FloaterMoveControl(BaseFloatingEntity e) {
 		super(e);
 		entity = e;
@@ -18,6 +20,8 @@ public class FloaterMoveControl extends MoveControl {
 
 	@Override
 	public void tick() {
+		float attr = (float) this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED);
+		float speed = (float) this.speedModifier * attr;
 		if (operation == MoveControl.Operation.MOVE_TO) {
 			double dx = wantedX - mob.getX();
 			double dz = wantedZ - mob.getZ();
@@ -33,18 +37,22 @@ public class FloaterMoveControl extends MoveControl {
 			if (floatDuration-- > 0) return;
 			floatDuration = floatDuration + entity.getRandom().nextInt(5) + 2;
 			if (canReach(dir, Mth.ceil(d0))) {
-				entity.setDeltaMovement(entity.getDeltaMovement().add(dir.scale(0.1)));
+				entity.setDeltaMovement(entity.getDeltaMovement().add(dir.scale(speed)));
 			} else {
 				operation = MoveControl.Operation.WAIT;
 			}
 		} else if (operation == Operation.STRAFE) {
-			float f = (float) this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED);
-			float f1 = (float) this.speedModifier * f;
-			this.mob.setSpeed(f1);
+			this.mob.setSpeed(speed);
 			this.mob.setZza(this.strafeForwards);
 			this.mob.setXxa(this.strafeRight);
+			this.mob.setYya(this.strafeUp);
 			this.operation = MoveControl.Operation.WAIT;
 		}
+	}
+
+	public void strafe(float x, float z, float y) {
+		strafe(x, z);
+		strafeUp = y;
 	}
 
 	private boolean canReach(Vec3 offset, int step) {

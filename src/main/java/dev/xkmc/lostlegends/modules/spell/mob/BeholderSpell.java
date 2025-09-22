@@ -15,7 +15,7 @@ import dev.xkmc.l2magic.content.engine.particle.DustParticleInstance;
 import dev.xkmc.l2magic.content.engine.particle.SimpleParticleInstance;
 import dev.xkmc.l2magic.content.engine.processor.CastAtProcessor;
 import dev.xkmc.l2magic.content.engine.processor.DamageProcessor;
-import dev.xkmc.l2magic.content.engine.processor.PushProcessor;
+import dev.xkmc.l2magic.content.engine.processor.EffectProcessor;
 import dev.xkmc.l2magic.content.engine.selector.BoxSelector;
 import dev.xkmc.l2magic.content.engine.selector.SelectionType;
 import dev.xkmc.l2magic.content.engine.sound.SoundInstance;
@@ -38,6 +38,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 
 import java.util.List;
@@ -75,6 +76,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 				.tick(new SimpleParticleInstance(ParticleTypes.END_ROD, DoubleVariable.ZERO))
 				.land(land(ctx))
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.MOB_PROJECTILE), DoubleVariable.of("6"), true, true))
+				.hit(new EffectProcessor(MobEffects.BLINDNESS, IntVariable.of("60"), IntVariable.of("0"), false, true))
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
 				.build();
 	}
@@ -97,7 +99,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 						DoubleVariable.of("2"),
 						DoubleVariable.of("1+rand(-0.1,0.1)+rand(-0.1,0.1)")
 				),
-				new DelayedIterator(IntVariable.of("12"), IntVariable.of("1"),
+				new DelayedIterator(IntVariable.of("10"), IntVariable.of("1"),
 						new ProcessorEngine(SelectionType.ENEMY_NO_FAMILY,
 								new BoxSelector(
 										DoubleVariable.of("(t+2)*0.2"),
@@ -108,7 +110,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 										ctx.damage(DamageTypes.EXPLOSION),
 										DoubleVariable.of("6-t*0.5"),
 										true, true)
-						)),"t"
+						)), "t"
 				)
 		));
 	}

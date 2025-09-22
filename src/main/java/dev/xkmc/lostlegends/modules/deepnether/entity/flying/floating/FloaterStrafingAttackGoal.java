@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 
@@ -18,6 +19,7 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 	private boolean strafingClockwise;
 	private boolean strafingBackwards;
 	private int strafingTime = -1;
+	private float strafeUp = 0;
 
 	public FloaterStrafingAttackGoal(Mob e, double speed, int interval, float rad) {
 		mob = e;
@@ -62,8 +64,16 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 	public void tick() {
 		LivingEntity target = mob.getTarget();
 		if (target == null) return;
-		double d0 = mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
+		var diff = target.position().subtract(mob.position());
+		double dist = diff.length();
 		boolean see = mob.getSensing().hasLineOfSight(target);
+		doStrafe(target, diff, dist, see);
+		tickAttack(target, see, dist < attackRadius);
+	}
+
+	private void doStrafe(LivingEntity target, Vec3 diff, double dist, boolean see) {
+
+		double horDistSqr = diff.horizontalDistanceSqr();
 		boolean seen = seeTime > 0;
 		if (see != seen) {
 			seeTime = 0;
@@ -74,15 +84,22 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 			seeTime--;
 		}
 
-		if (d0 < attackRadiusSqr && seeTime >= 20) {
+		if (dist < attackRadius && seeTime >= 20) {
 			strafingTime++;
 		} else {
-			double dist = Math.min(1, Math.sqrt(d0) - attackRadius);
-			if (dist > 0.1) {
-				var pos = target.position().subtract(mob.position()).normalize().scale(dist).add(mob.position());
+			double move = Math.min(0.5, dist - attackRadius);
+			if (move > 0.1) {
+				var pos = target.position().subtract(mob.position()).normalize().scale(move).add(mob.position());
 				mob.getMoveControl().setWantedPosition(pos.x, pos.y, pos.z, speedModifier);
 				strafingTime = -1;
 			}
+		}
+
+		double dy = diff.y;
+		if (dy < 3) {
+			strafeUp = 0.5f;
+		} else if (dy > 5) {
+			strafeUp = 0;
 		}
 
 		if (strafingTime >= 20) {
@@ -96,12 +113,12 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 		}
 
 		if (strafingTime > -1) {
-			if (d0 > attackRadiusSqr * 0.75F) {
+			if (horDistSqr > attackRadiusSqr * 0.75F) {
 				strafingBackwards = false;
-			} else if (d0 < attackRadiusSqr * 0.25F) {
+			} else if (horDistSqr < attackRadiusSqr * 0.25F) {
 				strafingBackwards = true;
 			}
-			mob.getMoveControl().strafe(strafingBackwards ? -1 : 0.5f, strafingClockwise ? 0.5F : -0.5F);
+			strafe(strafingBackwards ? -1 : 0.5f, strafingClockwise ? 0.5F : -0.5F, strafeUp);
 			if (mob.getControlledVehicle() instanceof Mob veh) {
 				veh.lookAt(target, 30, 30);
 			}
@@ -109,13 +126,19 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 		} else {
 			mob.getLookControl().setLookAt(target, 30, 30);
 		}
+	}
 
-		tickAttack(target, see);
+	private void strafe(float x, float z, float y) {
+		if (mob.getMoveControl() instanceof FloaterMoveControl ctrl) {
+			ctrl.strafe(x, z, y);
+		} else {
+			mob.getMoveControl().strafe(x, z);
+		}
 	}
 
 	private boolean inAttack = false;
 
-	protected void tickAttack(LivingEntity target, boolean see) {
+	protected void tickAttack(LivingEntity target, boolean see, boolean reach) {
 		if (inAttack) {
 			if (!see && seeTime < -60) {
 				stopAttack();
@@ -126,7 +149,7 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 					inAttack = false;
 				}
 			}
-		} else if (--attackTime <= 0 && seeTime >= -60) {
+		} else if (--attackTime <= 0 && seeTime >= -60 && reach) {
 			startAttack(target);
 			inAttack = true;
 		}

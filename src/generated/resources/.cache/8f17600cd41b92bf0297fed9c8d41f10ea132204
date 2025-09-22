@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-20T20:26:39.785639	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2025-09-20T22:03:51.995277	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -377,7 +377,7 @@ eb2458f4e0d31d6d3195f1d3144f155c64dadc9e data/lostlegends/advancement/recipes/mi
 26637b7ff44554149f2e0729f31ca4c729054867 data/lostlegends/advancement/recipes/misc/weeping_sand.json
 688f85844be918f315d86c16903d304e2e2433b2 data/lostlegends/dimension/deep_nether.json
 a73c56eec604af3a6b665cca5ce54aef90160694 data/lostlegends/dimension_type/deep_nether.json
-6b3951f5eeb231474c8703e1fa5a4adc3a407584 data/lostlegends/l2magic/projectile/beholder_projectile.json
+03a44e6c2680d13997692ec1dc3ab50f20913690 data/lostlegends/l2magic/projectile/beholder_projectile.json
 7a4641d62b22b66580ecda94678783439a479755 data/lostlegends/l2magic/spell_action/beholder_magic.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 ab1bc1d399b6709b678d3b3d3582bcb7965a4987 data/lostlegends/loot_table/blocks/amber_magma.json

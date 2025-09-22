@@ -1,5 +1,6 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerAttackGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerHurtByTargetGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.BaseFloatingEntity;
 import net.minecraft.core.BlockPos;
@@ -9,7 +10,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +22,7 @@ public class BeholderEntity extends BaseFloatingEntity {
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 20)
 				.add(Attributes.FOLLOW_RANGE, 35)
-				.add(Attributes.MOVEMENT_SPEED, 0.26F)
+				.add(Attributes.MOVEMENT_SPEED, 0.10F)
 				.add(Attributes.ATTACK_DAMAGE, 6);
 	}
 
@@ -49,10 +49,10 @@ public class BeholderEntity extends BaseFloatingEntity {
 		super.registerGoals();
 		this.goalSelector.addGoal(3, new BeholderAttackGoal(this, 1, 20, 16));
 		this.targetSelector.addGoal(1, new FlyerHurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(
+		this.targetSelector.addGoal(2, new FlyerAttackGoal<>(
 				this, Player.class, 10, true, false,
 				e -> Math.abs(e.getY() - this.getY()) <= 4.0));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(
+		this.targetSelector.addGoal(3, new FlyerAttackGoal<>(
 				this, IronGolem.class, true));
 	}
 
