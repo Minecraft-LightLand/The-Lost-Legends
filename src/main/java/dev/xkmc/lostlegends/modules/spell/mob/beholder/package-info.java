@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.spell.mob;
+package dev.xkmc.lostlegends.modules.spell.mob.beholder;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

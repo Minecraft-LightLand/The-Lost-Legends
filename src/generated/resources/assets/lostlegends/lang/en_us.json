@@ -99,6 +99,7 @@
   "effect.lostlegends.soul_shelter.description": "Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.",
   "entity.lostlegends.beholder": "Beholder",
   "entity.lostlegends.nether_slime": "Nether Slime",
+  "entity.lostlegends.poison_beholder": "Poison Beholder",
   "entity.lostlegends.wanderer": "Wanderer",
   "fluid.lostlegends.liquid_soul": "Liquid Soul",
   "fluid.lostlegends.molten_gold": "Molten Gold",
@@ -112,6 +113,7 @@
   "item.lostlegends.liquid_soul_bucket": "Liquid Soul Bucket",
   "item.lostlegends.molten_gold_bucket": "Molten Gold Bucket",
   "item.lostlegends.nether_slime_spawn_egg": "Nether Slime Spawn Egg",
+  "item.lostlegends.poison_beholder_spawn_egg": "Poison Beholder Spawn Egg",
   "item.lostlegends.portal_dissonator": "Portal Dissonator",
   "item.lostlegends.portal_dissonator.desc": "Right click nether / deep nether portal blocks to destroy them.",
   "item.lostlegends.resonant_soulgem": "Resonant Soulgem",
@@ -168,5 +170,6 @@
   "itemGroup.lostlegends.deepnether": "The Lost Legends - Deep Nether",
   "itemGroup.lostlegends.equipment": "The Lost Legends - Equipments",
   "lostlegends.title": "The Lost Legends",
-  "spell_action.lostlegends.beholder_magic": "Beholder Magic"
+  "spell_action.lostlegends.beholder_magic": "Beholder Magic",
+  "spell_action.lostlegends.poison_beholder_magic": "Poison Beholder Magic"
 }

@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.spell.mob;
+package dev.xkmc.lostlegends.modules.spell.mob.beholder;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.l2magic.content.engine.context.DataGenContext;
@@ -75,7 +75,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 				.motion(SimpleMotion.ZERO)
 				.tick(new SimpleParticleInstance(ParticleTypes.END_ROD, DoubleVariable.ZERO))
 				.land(land(ctx))
-				.hit(new DamageProcessor(ctx.damage(DamageTypes.MOB_PROJECTILE), DoubleVariable.of("6"), true, true))
+				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
 				.hit(new EffectProcessor(MobEffects.BLINDNESS, IntVariable.of("60"), IntVariable.of("0"), false, true))
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
 				.build();

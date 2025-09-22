@@ -1,9 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
+import dev.xkmc.l2magic.content.engine.spell.SpellAction;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerAttackGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerHurtByTargetGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.BaseFloatingEntity;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -27,7 +30,7 @@ public class BeholderEntity extends BaseFloatingEntity {
 	}
 
 	public static boolean checkSpawnRules(
-			EntityType<BeholderEntity> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource r
+			EntityType<? extends BeholderEntity> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource r
 	) {
 		return level.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(type, level, spawnType, pos, r);
 	}
@@ -54,6 +57,10 @@ public class BeholderEntity extends BaseFloatingEntity {
 				e -> Math.abs(e.getY() - this.getY()) <= 4.0));
 		this.targetSelector.addGoal(3, new FlyerAttackGoal<>(
 				this, IronGolem.class, true));
+	}
+
+	public ResourceKey<SpellAction> getSpell() {
+		return BeholderSpell.SPELL;
 	}
 
 }

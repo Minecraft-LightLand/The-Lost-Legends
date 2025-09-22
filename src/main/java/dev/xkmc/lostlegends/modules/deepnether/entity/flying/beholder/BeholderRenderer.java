@@ -7,7 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BeholderRenderer extends MobRenderer<BeholderEntity, BeholderModel<BeholderEntity>> {
 
-	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder.png");
+	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder/beholder.png");
+	public static final ResourceLocation POISON = LostLegends.loc("textures/entity/deepnether/beholder/poison_beholder.png");
 
 	public BeholderRenderer(EntityRendererProvider.Context ctx) {
 		super(ctx, new BeholderModel<>(ctx.bakeLayer(BeholderModelData.LAYER_LOCATION)), 0.5f);
@@ -15,7 +16,10 @@ public class BeholderRenderer extends MobRenderer<BeholderEntity, BeholderModel<
 
 	@Override
 	public ResourceLocation getTextureLocation(BeholderEntity e) {
-		return TEX;
+		return switch (e) {
+			case PoisonBeholderEntity ignored -> POISON;
+			default -> TEX;
+		};
 	}
 
 }

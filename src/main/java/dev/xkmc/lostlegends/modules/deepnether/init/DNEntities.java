@@ -5,10 +5,12 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderRenderer;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlimeRenderer;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -22,6 +24,7 @@ public class DNEntities extends LLRegBase {
 	public final EntityEntry<NetherSlime> NETHER_SLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
+	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
 
 	public DNEntities(L2Registrate reg, String path) {
 		super(reg, path);
@@ -69,6 +72,21 @@ public class DNEntities extends LLRegBase {
 				.tag(EntityTypeTags.UNDEAD)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x413737, 0xCDADAD).build()
+				.register();
+
+		//TODO spawn, drop
+		POISON_BEHOLDER = reg.entity("poison_beholder", PoisonBeholderEntity::new, MobCategory.MONSTER)
+				.renderer(() -> BeholderRenderer::new)
+				.attributes(BeholderEntity::createAttributes)
+				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)
+						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
+						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+						BeholderEntity::checkSpawnRules,
+						RegisterSpawnPlacementsEvent.Operation.AND)
+				.tag(EntityTypeTags.UNDEAD)
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x323935, 0x9A9985).build()
 				.register();
 	}
 

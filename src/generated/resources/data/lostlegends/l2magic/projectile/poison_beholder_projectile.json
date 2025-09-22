@@ -4,17 +4,9 @@
     {
       "type": "l2magic:damage",
       "damage": "6",
-      "damage_type": "minecraft:indirect_magic",
+      "damage_type": "minecraft:magic",
       "indirect": true,
       "positioned": true
-    },
-    {
-      "type": "l2magic:effect",
-      "ambient": false,
-      "amplifier": "0",
-      "duration": "60",
-      "effect": "minecraft:blindness",
-      "visible": true
     },
     {
       "type": "l2magic:cast_at",
@@ -27,10 +19,10 @@
               "type": "l2magic:move",
               "child": {
                 "type": "l2magic:dust_particle",
-                "color": "-1",
+                "color": "-f937b3",
                 "life": "20",
                 "scale": "0.5",
-                "speed": "0.2"
+                "speed": "0.3"
               },
               "modifiers": [
                 {
@@ -52,18 +44,19 @@
               "type": "l2magic:processor",
               "processors": [
                 {
-                  "type": "l2magic:damage",
-                  "damage": "6-t*0.5",
-                  "damage_type": "minecraft:explosion",
-                  "indirect": true,
-                  "positioned": true
+                  "type": "l2magic:effect",
+                  "ambient": false,
+                  "amplifier": "0",
+                  "duration": "(10-t)*25",
+                  "effect": "minecraft:poison",
+                  "visible": true
                 }
               ],
               "selector": {
                 "type": "l2magic:box",
                 "center": true,
-                "size": "(t+2)*0.2",
-                "y": "(t+2)*0.2"
+                "size": "(t+2)*0.3",
+                "y": "(t+2)*0.3"
               },
               "target": "ENEMY_NO_FAMILY"
             },
@@ -86,10 +79,10 @@
           "type": "l2magic:move",
           "child": {
             "type": "l2magic:dust_particle",
-            "color": "-1",
+            "color": "-f937b3",
             "life": "20",
             "scale": "0.5",
-            "speed": "0.2"
+            "speed": "0.3"
           },
           "modifiers": [
             {
@@ -111,18 +104,19 @@
           "type": "l2magic:processor",
           "processors": [
             {
-              "type": "l2magic:damage",
-              "damage": "6-t*0.5",
-              "damage_type": "minecraft:explosion",
-              "indirect": true,
-              "positioned": true
+              "type": "l2magic:effect",
+              "ambient": false,
+              "amplifier": "0",
+              "duration": "(10-t)*25",
+              "effect": "minecraft:poison",
+              "visible": true
             }
           ],
           "selector": {
             "type": "l2magic:box",
             "center": true,
-            "size": "(t+2)*0.2",
-            "y": "(t+2)*0.2"
+            "size": "(t+2)*0.3",
+            "y": "(t+2)*0.3"
           },
           "target": "ENEMY_NO_FAMILY"
         },
@@ -140,7 +134,7 @@
   "params": [],
   "tick": {
     "type": "l2magic:particle",
-    "particle": "minecraft:end_rod",
+    "particle": "minecraft:composter",
     "speed": "0"
   }
 }

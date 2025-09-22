@@ -86,7 +86,7 @@ public class BeholderModelData {
 		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 38).addBox(-5.0F, -9.0F, -5.0F, 10.0F, 10.0F, 10.0F, new CubeDeformation(0.0F))
 				.texOffs(0, 23).addBox(-6.0F, -1.0F, -6.0F, 12.0F, 3.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 0.0F));
 
-		PartDefinition head_r1 = head.addOrReplaceChild("head_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -9.0F, -13.0F, 12.0F, 10.0F, 13.0F, new CubeDeformation(0.01F)), PartPose.offsetAndRotation(0.0F, 1.0F, 1.0F, -1.0908F, 0.0F, 0.0F));
+		PartDefinition head_r1 = head.addOrReplaceChild("head_r1", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -9.0F, -13.0F, 12.0F, 10.0F, 13.0F, new CubeDeformation(0.01F)), PartPose.offsetAndRotation(0.0F, 1.25F, 1.0F, -1.0908F, 0.0F, 0.0F));
 
 		PartDefinition effect = partdefinition.addOrReplaceChild("effect", CubeListBuilder.create().texOffs(104, 120).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 0.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 30.0F, 0.0F));
 

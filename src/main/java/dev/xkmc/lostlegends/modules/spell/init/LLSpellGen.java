@@ -4,7 +4,8 @@ import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.l2magic.init.data.SpellDataGenEntry;
 import dev.xkmc.l2magic.init.registrate.EngineRegistry;
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.spell.mob.BeholderSpell;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 public class LLSpellGen {
 
 	public static final List<SpellDataGenEntry> LIST = List.of(
-			new BeholderSpell()
+			new BeholderSpell(),
+			new PoisonBeholderSpell()
 	);
 
 	public static void gatherData(GatherDataEvent event) {
