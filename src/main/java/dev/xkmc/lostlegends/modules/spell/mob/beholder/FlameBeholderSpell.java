@@ -4,17 +4,24 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.l2magic.content.engine.context.DataGenContext;
 import dev.xkmc.l2magic.content.engine.core.ConfiguredEngine;
+import dev.xkmc.l2magic.content.engine.iterator.DelayedIterator;
+import dev.xkmc.l2magic.content.engine.iterator.LoopIterator;
 import dev.xkmc.l2magic.content.engine.logic.ListLogic;
+import dev.xkmc.l2magic.content.engine.logic.ProcessorEngine;
 import dev.xkmc.l2magic.content.engine.modifier.ForwardOffsetModifier;
+import dev.xkmc.l2magic.content.engine.modifier.RandomDirModifier;
+import dev.xkmc.l2magic.content.engine.particle.DustParticleInstance;
 import dev.xkmc.l2magic.content.engine.particle.SimpleParticleInstance;
 import dev.xkmc.l2magic.content.engine.processor.CastAtProcessor;
 import dev.xkmc.l2magic.content.engine.processor.DamageProcessor;
 import dev.xkmc.l2magic.content.engine.processor.EffectProcessor;
+import dev.xkmc.l2magic.content.engine.selector.BoxSelector;
 import dev.xkmc.l2magic.content.engine.selector.SelectionType;
 import dev.xkmc.l2magic.content.engine.sound.SoundInstance;
 import dev.xkmc.l2magic.content.engine.spell.SpellAction;
 import dev.xkmc.l2magic.content.engine.spell.SpellCastType;
 import dev.xkmc.l2magic.content.engine.spell.SpellTriggerType;
+import dev.xkmc.l2magic.content.engine.variable.ColorVariable;
 import dev.xkmc.l2magic.content.engine.variable.DoubleVariable;
 import dev.xkmc.l2magic.content.engine.variable.IntVariable;
 import dev.xkmc.l2magic.content.entity.core.ProjectileConfig;
@@ -37,15 +44,15 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import java.util.List;
 
-public class BeholderSpell extends LLSpellGenEntry {
+public class FlameBeholderSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("beholder_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("beholder_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/beholder_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("flame_beholder_magic");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("flame_beholder_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/flame_beholder_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {
-		pvd.add(SpellAction.lang(SPELL.location()), "Beholder Magic");
+		pvd.add(SpellAction.lang(SPELL.location()), "Flame Beholder Magic");
 	}
 
 	@Override
@@ -60,7 +67,8 @@ public class BeholderSpell extends LLSpellGenEntry {
 
 	@Override
 	public void registerProjectile(BootstrapContext<ProjectileConfig> ctx) {
-		proj(new DataGenContext(ctx)).verifyOnBuild(ctx, PROJ);
+		proj(new DataGenContext(ctx))
+				.verifyOnBuild(ctx, PROJ);
 	}
 
 	private ProjectileConfig proj(DataGenContext ctx) {
@@ -90,17 +98,34 @@ public class BeholderSpell extends LLSpellGenEntry {
 
 	private ConfiguredEngine<?> land(DataGenContext ctx) {
 		return new ListLogic(List.of(
-				BeholderUtils.explode(-1, 200, "0.2"),
+				new LoopIterator(
+						IntVariable.of("200"),
+						new DustParticleInstance(
+								ColorVariable.Static.of(-1),
+								DoubleVariable.of("0.5"),
+								DoubleVariable.of("0.2"),
+								IntVariable.of("20")
+						).move(
+								new RandomDirModifier()
+						), null
+				),
 				new SoundInstance(
 						SoundEvents.DRAGON_FIREBALL_EXPLODE,
 						DoubleVariable.of("2"),
 						DoubleVariable.of("1+rand(-0.1,0.1)+rand(-0.1,0.1)")
 				),
-				BeholderUtils.affect("0.2",
-						new DamageProcessor(
-								ctx.damage(DamageTypes.EXPLOSION),
-								DoubleVariable.of("6-t*0.5"),
-								true, true)
+				new DelayedIterator(IntVariable.of("10"), IntVariable.of("1"),
+						new ProcessorEngine(SelectionType.ENEMY_NO_FAMILY,
+								new BoxSelector(
+										DoubleVariable.of("(t+2)*0.2"),
+										DoubleVariable.of("(t+2)*0.2"),
+										true
+								), List.of(
+								new DamageProcessor(
+										ctx.damage(DamageTypes.EXPLOSION),
+										DoubleVariable.of("6-t*0.5"),
+										true, true)
+						)), "t"
 				)
 		));
 	}

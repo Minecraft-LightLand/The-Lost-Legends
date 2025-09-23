@@ -30,10 +30,6 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 		setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
 	}
 
-	public void setMinAttackInterval(int interval) {
-		attackIntervalMin = interval;
-	}
-
 	@Override
 	public boolean canUse() {
 		return mob.getTarget() != null;
@@ -145,7 +141,7 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 				inAttack = false;
 			} else if (see) {
 				if (checkPerformAttack(target)) {
-					attackTime = attackIntervalMin;
+					attackTime = getWaitTime();
 					inAttack = false;
 				}
 			}
@@ -153,6 +149,10 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 			startAttack(target);
 			inAttack = true;
 		}
+	}
+
+	protected int getWaitTime(){
+		return attackIntervalMin;
 	}
 
 	protected abstract boolean checkPerformAttack(LivingEntity target);

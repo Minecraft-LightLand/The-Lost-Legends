@@ -7,10 +7,20 @@
         "alongDir": "0.5",
         "alongOffset": "0",
         "child": {
-          "type": "l2magic:dust_particle",
-          "color": "-f937b3",
-          "life": "24",
-          "scale": "0.5",
+          "type": "l2magic:custom_particle",
+          "collide": false,
+          "life": "20",
+          "motion": {
+            "type": "l2magic:simple",
+            "friction": "0",
+            "gravity": "0"
+          },
+          "renderer": {
+            "type": "l2magic:color",
+            "color": "-f937b3",
+            "renderType": "LIT"
+          },
+          "scale": "0.1",
           "speed": "0"
         },
         "offset": [
@@ -19,7 +29,7 @@
           0.0
         ],
         "startFromOrigin": false,
-        "step": "40"
+        "step": "48"
       },
       {
         "type": "l2magic:iterate_delayed",
@@ -30,13 +40,12 @@
             "collide": false,
             "life": "10",
             "motion": {
-              "type": "l2magic:simple",
-              "friction": "0",
-              "gravity": "0"
+              "type": "lostlegends:stop",
+              "cond": "TickCount>=10"
             },
             "renderer": {
               "type": "l2magic:simple",
-              "particle": "minecraft:soul_fire_flame",
+              "particle": "minecraft:composter",
               "renderType": "LIT"
             },
             "scale": "0.05",
@@ -50,6 +59,10 @@
               "type": "l2magic:rotate",
               "degree": "rand(0,360)",
               "vertical": "0"
+            },
+            {
+              "type": "l2magic:forward",
+              "distance": "1"
             }
           ]
         },
@@ -57,24 +70,28 @@
         "step": "10"
       },
       {
-        "type": "l2magic:list",
-        "children": [
-          {
-            "type": "l2magic:sound",
-            "pitch": "1+rand(-0.1,0.1)+rand(-0.1,0.1)",
-            "sound": "minecraft:item.firecharge.use",
-            "volume": "2"
-          },
-          {
-            "type": "l2magic:custom_projectile",
-            "bypassEntity": false,
-            "bypassWall": false,
-            "config": "lostlegends:poison_beholder_projectile",
-            "life": "16",
-            "params": {},
-            "speed": "1.5"
-          }
-        ]
+        "type": "l2magic:delay",
+        "child": {
+          "type": "l2magic:list",
+          "children": [
+            {
+              "type": "l2magic:sound",
+              "pitch": "1+rand(-0.1,0.1)+rand(-0.1,0.1)",
+              "sound": "minecraft:item.firecharge.use",
+              "volume": "2"
+            },
+            {
+              "type": "l2magic:custom_projectile",
+              "bypassEntity": false,
+              "bypassWall": false,
+              "config": "lostlegends:poison_beholder_projectile",
+              "life": "16",
+              "params": {},
+              "speed": "1.5"
+            }
+          ]
+        },
+        "tick": "20"
       }
     ]
   },
