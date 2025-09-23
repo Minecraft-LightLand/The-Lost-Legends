@@ -64,17 +64,6 @@ public class PoisonBeholderSpell extends LLSpellGenEntry {
 				.verifyOnBuild(ctx, PROJ);
 	}
 
-	private ProjectileConfig proj(DataGenContext ctx) {
-		return ProjectileConfig.builder(SelectionType.ENEMY_NO_FAMILY)
-				.motion(SimpleMotion.ZERO)
-				.tick(new SimpleParticleInstance(ParticleTypes.COMPOSTER, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
-				.land(land(ctx))
-				.hit(new DamageProcessor(ctx.damage(DamageTypes.MAGIC), DoubleVariable.of("6"), true, true))
-				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
-				.build();
-	}
-
 	@Override
 	public List<ResourceLocation> additionalModels() {
 		return List.of(MODEL);
@@ -86,6 +75,22 @@ public class PoisonBeholderSpell extends LLSpellGenEntry {
 				.parent(new ModelFile.UncheckedModelFile(LostLegends.loc("custom/beholder_projectile")))
 				.texture("all", tex("beholder/poison_projectile"))
 				.renderType("cutout");
+	}
+
+	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
+		return BeholderUtils.spell(ctx, 24, 0xFF06C84D, 16, PROJ,
+				new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.COMPOSTER));
+	}
+
+	private ProjectileConfig proj(DataGenContext ctx) {
+		return ProjectileConfig.builder(SelectionType.ENEMY_NO_FAMILY)
+				.motion(SimpleMotion.ZERO)
+				.tick(new SimpleParticleInstance(ParticleTypes.COMPOSTER, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
+				.land(land(ctx))
+				.hit(new DamageProcessor(ctx.damage(DamageTypes.MAGIC), DoubleVariable.of("6"), true, true))
+				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
+				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.build();
 	}
 
 	private ConfiguredEngine<?> land(DataGenContext ctx) {
@@ -102,11 +107,6 @@ public class PoisonBeholderSpell extends LLSpellGenEntry {
 								IntVariable.of("0"), false, true)
 				)
 		));
-	}
-
-	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
-		return BeholderUtils.spell(ctx, 24, 0xFF06C84D, 16, PROJ,
-				new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.COMPOSTER));
 	}
 
 }

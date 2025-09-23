@@ -20,7 +20,7 @@
               "child": {
                 "type": "l2magic:dust_particle",
                 "color": "-f937b3",
-                "life": "20",
+                "life": "rand(18,26)",
                 "scale": "0.5",
                 "speed": "0.3"
               },
@@ -80,7 +80,7 @@
           "child": {
             "type": "l2magic:dust_particle",
             "color": "-f937b3",
-            "life": "20",
+            "life": "rand(18,26)",
             "scale": "0.5",
             "speed": "0.3"
           },

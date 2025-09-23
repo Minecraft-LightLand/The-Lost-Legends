@@ -20,7 +20,7 @@
             "color": "-f937b3",
             "renderType": "LIT"
           },
-          "scale": "0.1",
+          "scale": "0.07",
           "speed": "0"
         },
         "offset": [
@@ -38,10 +38,10 @@
           "child": {
             "type": "l2magic:custom_particle",
             "collide": false,
-            "life": "10",
+            "life": "20-i",
             "motion": {
               "type": "lostlegends:stop",
-              "cond": "TickCount>=10"
+              "cond": "TickCount>=9"
             },
             "renderer": {
               "type": "l2magic:simple",
@@ -67,6 +67,7 @@
           ]
         },
         "delay": "1",
+        "index": "i",
         "step": "10"
       },
       {

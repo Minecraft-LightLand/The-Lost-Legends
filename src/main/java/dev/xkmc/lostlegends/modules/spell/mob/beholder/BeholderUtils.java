@@ -54,8 +54,8 @@ public class BeholderUtils {
 		);
 	}
 
-	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge) {
-		return new DelayedIterator(IntVariable.of("10"), IntVariable.of("1"),
+	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur) {
+		return new DelayedIterator(IntVariable.of("" + dur), IntVariable.of("1"),
 				new CustomParticleInstance(
 						DoubleVariable.of("-0.1"),
 						DoubleVariable.of("0.05"),
@@ -76,7 +76,7 @@ public class BeholderUtils {
 			Holder<ProjectileConfig> proj, ParticleRenderData<?> charge) {
 		return new ListLogic(List.of(
 				warn(ctx, dist, col),
-				charge(ctx, charge),
+				charge(ctx, charge, 10),
 				new ListLogic(List.of(
 						new SoundInstance(
 								SoundEvents.FIRECHARGE_USE,

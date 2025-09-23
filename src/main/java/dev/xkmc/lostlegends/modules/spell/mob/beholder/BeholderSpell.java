@@ -52,7 +52,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 	public void register(BootstrapContext<SpellAction> ctx) {
 		new SpellAction(
 				spell(new DataGenContext(ctx)),
-				Items.FIRE_CHARGE, 400,
+				Items.GUNPOWDER, 400,
 				SpellCastType.INSTANT,
 				SpellTriggerType.FACING_FRONT
 		).verifyOnBuild(ctx, SPELL);
@@ -61,6 +61,23 @@ public class BeholderSpell extends LLSpellGenEntry {
 	@Override
 	public void registerProjectile(BootstrapContext<ProjectileConfig> ctx) {
 		proj(new DataGenContext(ctx)).verifyOnBuild(ctx, PROJ);
+	}
+	@Override
+	public List<ResourceLocation> additionalModels() {
+		return List.of(MODEL);
+	}
+
+	@Override
+	public void genModel(RegistrateItemModelProvider pvd) {
+		pvd.getBuilder(MODEL.getPath())
+				.parent(new ModelFile.UncheckedModelFile(LostLegends.loc("custom/beholder_projectile")))
+				.texture("all", tex("beholder/projectile"))
+				.renderType("cutout");
+	}
+
+	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
+		return BeholderUtils.spell(ctx, 20, -1, 20, PROJ,
+				new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.SOUL_FIRE_FLAME));
 	}
 
 	private ProjectileConfig proj(DataGenContext ctx) {
@@ -73,19 +90,6 @@ public class BeholderSpell extends LLSpellGenEntry {
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
 				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
 				.build();
-	}
-
-	@Override
-	public List<ResourceLocation> additionalModels() {
-		return List.of(MODEL);
-	}
-
-	@Override
-	public void genModel(RegistrateItemModelProvider pvd) {
-		pvd.getBuilder(MODEL.getPath())
-				.parent(new ModelFile.UncheckedModelFile(LostLegends.loc("custom/beholder_projectile")))
-				.texture("all", tex("beholder/projectile"))
-				.renderType("cutout");
 	}
 
 	private ConfiguredEngine<?> land(DataGenContext ctx) {
@@ -103,11 +107,6 @@ public class BeholderSpell extends LLSpellGenEntry {
 								true, true)
 				)
 		));
-	}
-
-	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
-		return BeholderUtils.spell(ctx, 20, -1, 20, PROJ,
-				new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.SOUL_FIRE_FLAME));
 	}
 
 }
