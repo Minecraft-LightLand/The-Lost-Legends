@@ -98,6 +98,7 @@
   "effect.lostlegends.soul_shelter.desc": "Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.",
   "effect.lostlegends.soul_shelter.description": "Reduce soul fog. Allows walking on liquid soul. Prevent liquid soul and soul flower damage. Provide fire immunity.",
   "entity.lostlegends.beholder": "Beholder",
+  "entity.lostlegends.flaming_beholder": "Flaming Beholder",
   "entity.lostlegends.nether_slime": "Nether Slime",
   "entity.lostlegends.poison_beholder": "Poison Beholder",
   "entity.lostlegends.wanderer": "Wanderer",
@@ -107,6 +108,7 @@
   "item.lostlegends.beholder_spawn_egg": "Beholder Spawn Egg",
   "item.lostlegends.bone_crystal": "Bone Crystal",
   "item.lostlegends.dark_cobble": "Dark Cobble",
+  "item.lostlegends.flaming_beholder_spawn_egg": "Flaming Beholder Spawn Egg",
   "item.lostlegends.glorious_ingot": "Glorious Ingot",
   "item.lostlegends.gold_debris": "Gold Debris",
   "item.lostlegends.hearth_crystal": "Hearth Crystal",
@@ -171,6 +173,6 @@
   "itemGroup.lostlegends.equipment": "The Lost Legends - Equipments",
   "lostlegends.title": "The Lost Legends",
   "spell_action.lostlegends.beholder_magic": "Beholder Magic",
-  "spell_action.lostlegends.flame_beholder_magic": "Flame Beholder Magic",
+  "spell_action.lostlegends.flaming_beholder_magic": "Flame Beholder Magic",
   "spell_action.lostlegends.poison_beholder_magic": "Poison Beholder Magic"
 }

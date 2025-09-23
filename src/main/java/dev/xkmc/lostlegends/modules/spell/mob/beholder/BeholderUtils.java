@@ -59,7 +59,7 @@ public class BeholderUtils {
 				new CustomParticleInstance(
 						DoubleVariable.of("-0.1"),
 						DoubleVariable.of("0.05"),
-						IntVariable.of("20-i"),
+						IntVariable.of((10 + dur) + "-i"),
 						false,
 						new StopMotion(BooleanVariable.of("TickCount>=9")),
 						charge

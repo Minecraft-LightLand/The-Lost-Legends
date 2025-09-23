@@ -38,10 +38,11 @@
           "child": {
             "type": "l2magic:custom_particle",
             "collide": false,
-            "life": "20-i",
+            "life": "10",
             "motion": {
-              "type": "lostlegends:stop",
-              "cond": "TickCount>=9"
+              "type": "l2magic:simple",
+              "friction": "0",
+              "gravity": "0"
             },
             "renderer": {
               "type": "l2magic:simple",
@@ -89,7 +90,7 @@
                   "type": "l2magic:custom_projectile",
                   "bypassEntity": false,
                   "bypassWall": false,
-                  "config": "lostlegends:flame_beholder_projectile",
+                  "config": "lostlegends:flaming_beholder_projectile",
                   "life": "60",
                   "params": {},
                   "speed": "0.5"

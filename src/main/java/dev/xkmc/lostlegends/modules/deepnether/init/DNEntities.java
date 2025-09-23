@@ -5,6 +5,7 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderRenderer;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.FlamingBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
@@ -25,6 +26,7 @@ public class DNEntities extends LLRegBase {
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
 	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
+	public final EntityEntry<FlamingBeholderEntity> FLAMING_BEHOLDER;
 
 	public DNEntities(L2Registrate reg, String path) {
 		super(reg, path);
@@ -69,7 +71,6 @@ public class DNEntities extends LLRegBase {
 						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 						BeholderEntity::checkSpawnRules,
 						RegisterSpawnPlacementsEvent.Operation.AND)
-				.tag(EntityTypeTags.UNDEAD)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x413737, 0xCDADAD).build()
 				.register();
@@ -84,9 +85,23 @@ public class DNEntities extends LLRegBase {
 						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 						BeholderEntity::checkSpawnRules,
 						RegisterSpawnPlacementsEvent.Operation.AND)
-				.tag(EntityTypeTags.UNDEAD)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x323935, 0x9A9985).build()
+				.register();
+
+		//TODO spawn, drop
+		FLAMING_BEHOLDER = reg.entity("flaming_beholder", FlamingBeholderEntity::new, MobCategory.MONSTER)
+				.renderer(() -> BeholderRenderer::new)
+				.attributes(BeholderEntity::createAttributes)
+				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)
+						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
+						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+						BeholderEntity::checkSpawnRules,
+						RegisterSpawnPlacementsEvent.Operation.AND)
+				.tag(EntityTypeTags.UNDEAD)
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x3B1F1F, 0x232222).build()
 				.register();
 	}
 

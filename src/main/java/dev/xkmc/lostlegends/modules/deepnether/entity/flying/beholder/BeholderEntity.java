@@ -1,12 +1,14 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
 import dev.xkmc.l2magic.content.engine.spell.SpellAction;
+import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerAttackGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerHurtByTargetGoal;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.BaseFloatingEntity;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -63,4 +65,9 @@ public class BeholderEntity extends BaseFloatingEntity {
 		return BeholderSpell.SPELL;
 	}
 
+	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder/beholder.png");
+
+	public ResourceLocation getTexture() {
+		return TEX;
+	}
 }

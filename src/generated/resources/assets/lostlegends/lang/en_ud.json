@@ -98,6 +98,7 @@
   "effect.lostlegends.soul_shelter.desc": "˙ʎʇıunɯɯı ǝɹıɟ ǝpıʌoɹԀ ˙ǝbɐɯɐp ɹǝʍoןɟ ןnos puɐ ןnos pınbıן ʇuǝʌǝɹԀ ˙ןnos pınbıן uo buıʞןɐʍ sʍoןןⱯ ˙boɟ ןnos ǝɔnpǝᴚ",
   "effect.lostlegends.soul_shelter.description": "˙ʎʇıunɯɯı ǝɹıɟ ǝpıʌoɹԀ ˙ǝbɐɯɐp ɹǝʍoןɟ ןnos puɐ ןnos pınbıן ʇuǝʌǝɹԀ ˙ןnos pınbıן uo buıʞןɐʍ sʍoןןⱯ ˙boɟ ןnos ǝɔnpǝᴚ",
   "entity.lostlegends.beholder": "ɹǝpןoɥǝᗺ",
+  "entity.lostlegends.flaming_beholder": "ɹǝpןoɥǝᗺ buıɯɐןℲ",
   "entity.lostlegends.nether_slime": "ǝɯıןS ɹǝɥʇǝN",
   "entity.lostlegends.poison_beholder": "ɹǝpןoɥǝᗺ uosıoԀ",
   "entity.lostlegends.wanderer": "ɹǝɹǝpuɐM",
@@ -107,6 +108,7 @@
   "item.lostlegends.beholder_spawn_egg": "bbƎ uʍɐdS ɹǝpןoɥǝᗺ",
   "item.lostlegends.bone_crystal": "ןɐʇsʎɹƆ ǝuoᗺ",
   "item.lostlegends.dark_cobble": "ǝןqqoƆ ʞɹɐᗡ",
+  "item.lostlegends.flaming_beholder_spawn_egg": "bbƎ uʍɐdS ɹǝpןoɥǝᗺ buıɯɐןℲ",
   "item.lostlegends.glorious_ingot": "ʇobuI snoıɹoן⅁",
   "item.lostlegends.gold_debris": "sıɹqǝᗡ pןo⅁",
   "item.lostlegends.hearth_crystal": "ןɐʇsʎɹƆ ɥʇɹɐǝH",
@@ -171,6 +173,6 @@
   "itemGroup.lostlegends.equipment": "sʇuǝɯdınbƎ - spuǝbǝꞀ ʇsoꞀ ǝɥ⟘",
   "lostlegends.title": "spuǝbǝꞀ ʇsoꞀ ǝɥ⟘",
   "spell_action.lostlegends.beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ",
-  "spell_action.lostlegends.flame_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ ǝɯɐןℲ",
+  "spell_action.lostlegends.flaming_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ ǝɯɐןℲ",
   "spell_action.lostlegends.poison_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ uosıoԀ"
 }

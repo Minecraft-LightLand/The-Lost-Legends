@@ -6,6 +6,7 @@ import dev.xkmc.l2magic.content.engine.context.DataGenContext;
 import dev.xkmc.l2magic.content.engine.core.ConfiguredEngine;
 import dev.xkmc.l2magic.content.engine.iterator.DelayedIterator;
 import dev.xkmc.l2magic.content.engine.logic.ListLogic;
+import dev.xkmc.l2magic.content.engine.modifier.Dir2NormalModifier;
 import dev.xkmc.l2magic.content.engine.modifier.ForwardOffsetModifier;
 import dev.xkmc.l2magic.content.engine.modifier.RotationModifier;
 import dev.xkmc.l2magic.content.engine.particle.SimpleParticleInstance;
@@ -21,6 +22,8 @@ import dev.xkmc.l2magic.content.engine.variable.IntVariable;
 import dev.xkmc.l2magic.content.entity.core.ProjectileConfig;
 import dev.xkmc.l2magic.content.entity.engine.CustomProjectileShoot;
 import dev.xkmc.l2magic.content.entity.motion.SimpleMotion;
+import dev.xkmc.l2magic.content.particle.engine.CustomParticleInstance;
+import dev.xkmc.l2magic.content.particle.engine.ParticleRenderData;
 import dev.xkmc.l2magic.content.particle.engine.RenderTypePreset;
 import dev.xkmc.l2magic.content.particle.engine.SimpleParticleData;
 import dev.xkmc.l2magic.init.data.DataGenCachedHolder;
@@ -42,9 +45,9 @@ import java.util.Map;
 
 public class FlameBeholderSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("flame_beholder_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("flame_beholder_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/flame_beholder_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("flaming_beholder_magic");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("flaming_beholder_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/flaming_beholder_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {
@@ -75,14 +78,38 @@ public class FlameBeholderSpell extends LLSpellGenEntry {
 	public void genModel(RegistrateItemModelProvider pvd) {
 		pvd.getBuilder(MODEL.getPath())
 				.parent(new ModelFile.UncheckedModelFile(LostLegends.loc("custom/beholder_projectile")))
-				.texture("all", tex("beholder/projectile"))
+				.texture("all", tex("beholder/flaming_projectile"))
 				.renderType("cutout");
+	}
+
+	private ProjectileConfig proj(DataGenContext ctx) {
+		return ProjectileConfig.builder(SelectionType.ENEMY_NO_FAMILY)
+				.motion(SimpleMotion.ZERO)
+				.tick(new SimpleParticleInstance(ParticleTypes.SMALL_FLAME, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
+				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
+				.hit(PropertyProcessor.Type.IGNITE.of("100"))
+				.land(new IgniteBlock())
+				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.build();
 	}
 
 	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
 		return new ListLogic(List.of(
 				BeholderUtils.warn(ctx, 30, 0xFFFF0000),
-				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 20),
+				new DelayedIterator(IntVariable.of("20"), IntVariable.of("1"),
+						new CustomParticleInstance(
+								DoubleVariable.of("-0.1"),
+								DoubleVariable.of("0.05"),
+								IntVariable.of("10"),
+								false,
+								SimpleMotion.ZERO,
+								new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME)
+						).move(
+								new Dir2NormalModifier(),
+								RotationModifier.of("rand(0,360)"),
+								ForwardOffsetModifier.of("1")
+						), "i"
+				),
 				new DelayedIterator(IntVariable.of("10"), IntVariable.of("2"),
 						new ListLogic(List.of(
 								new SoundInstance(
@@ -98,17 +125,6 @@ public class FlameBeholderSpell extends LLSpellGenEntry {
 								).move(RotationModifier.of("rand(-6,6)", "rand(-6,6)"))
 						)).delay(IntVariable.of("10"))
 				)));
-	}
-
-	private ProjectileConfig proj(DataGenContext ctx) {
-		return ProjectileConfig.builder(SelectionType.ENEMY_NO_FAMILY)
-				.motion(SimpleMotion.ZERO)
-				.tick(new SimpleParticleInstance(ParticleTypes.SMALL_FLAME, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
-				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
-				.hit(PropertyProcessor.Type.IGNITE.of("100"))
-				.land(new IgniteBlock())
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
-				.build();
 	}
 
 }
