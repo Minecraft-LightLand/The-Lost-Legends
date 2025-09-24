@@ -13,7 +13,7 @@ import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 
-public class BaseMagmaSlime extends BaseNetherSlime {
+public abstract class BaseMagmaSlime extends BaseNetherSlime {
 
 	public BaseMagmaSlime(EntityType<? extends BaseMagmaSlime> type, Level level) {
 		super(type, level);

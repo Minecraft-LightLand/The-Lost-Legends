@@ -20,6 +20,10 @@ public class FlamingBeholderEntity extends BeholderEntity {
 		return FlameBeholderSpell.SPELL;
 	}
 
+	public int spellDuration() {
+		return 30;
+	}
+
 	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder/flaming_beholder.png");
 
 	@Override

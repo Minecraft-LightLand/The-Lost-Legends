@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 import dev.xkmc.lostlegends.foundation.entity.LavaSwimEntity;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -31,7 +32,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.BooleanSupplier;
 
-public class BaseNetherSlime extends Slime implements LavaSwimEntity {
+public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 
 	public BaseNetherSlime(EntityType<? extends BaseNetherSlime> type, Level level) {
 		super(type, level);
@@ -215,4 +216,5 @@ public class BaseNetherSlime extends Slime implements LavaSwimEntity {
 		return SoundEvents.MAGMA_CUBE_JUMP;
 	}
 
+	public abstract ResourceLocation getTexture();
 }

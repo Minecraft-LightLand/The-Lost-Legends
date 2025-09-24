@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 
 import dev.xkmc.lostlegends.init.LostLegends;
 import net.minecraft.client.model.HierarchicalModel;

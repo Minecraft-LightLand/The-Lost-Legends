@@ -2,11 +2,11 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
 import dev.xkmc.l2magic.content.engine.context.SpellContext;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.FloaterStrafingAttackGoal;
-import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.MotionBlockGoals;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.phys.Vec3;
 
-public class BeholderAttackGoal extends FloaterStrafingAttackGoal {
+public class BeholderAttackGoal extends FloaterStrafingAttackGoal implements MotionBlockGoals {
 
 	private final BeholderEntity beholder;
 	private int attackTick = 0;
@@ -18,7 +18,8 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal {
 
 	@Override
 	protected boolean checkPerformAttack(LivingEntity target) {
-		return ++attackTick >= 20;
+		mob.setDeltaMovement(Vec3.ZERO);
+		return ++attackTick >= beholder.spellDuration();
 	}
 
 	@Override
@@ -33,6 +34,11 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal {
 		if (ctx != null && !mob.level().isClientSide()) {
 			spell.value().execute(spell, ctx);
 		}
+	}
+
+	@Override
+	public boolean isImmobile() {
+		return inAttack;
 	}
 
 }

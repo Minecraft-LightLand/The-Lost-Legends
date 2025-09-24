@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BaseAbsorbingSlime extends BaseNetherSlime {
+public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 
 	private int maxSize = 6;
 

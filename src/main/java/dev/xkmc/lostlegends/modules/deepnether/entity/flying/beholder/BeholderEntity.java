@@ -52,7 +52,9 @@ public class BeholderEntity extends BaseFloatingEntity {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(3, new BeholderAttackGoal(this, 1, 20, 16));
+		var atk = new BeholderAttackGoal(this, 1, 20, 16);
+		motionGoals.add(atk);
+		this.goalSelector.addGoal(3, atk);
 		this.targetSelector.addGoal(1, new FlyerHurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new FlyerAttackGoal<>(
 				this, Player.class, 10, true, false,
@@ -70,4 +72,9 @@ public class BeholderEntity extends BaseFloatingEntity {
 	public ResourceLocation getTexture() {
 		return TEX;
 	}
+
+	public int spellDuration() {
+		return 20;
+	}
+
 }

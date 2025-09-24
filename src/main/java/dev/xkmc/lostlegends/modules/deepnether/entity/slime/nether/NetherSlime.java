@@ -1,8 +1,10 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
 
+import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseAbsorbingSlime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -93,6 +95,13 @@ public class NetherSlime extends BaseAbsorbingSlime {
 			EntityType<? extends Slime> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource rand
 	) {
 		return level.getDifficulty() != Difficulty.PEACEFUL;
+	}
+
+	private static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/nether_slime.png");
+
+	@Override
+	public ResourceLocation getTexture() {
+		return TEX;
 	}
 
 }

@@ -10,8 +10,7 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeho
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlimeRenderer;
-import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeRenderer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;

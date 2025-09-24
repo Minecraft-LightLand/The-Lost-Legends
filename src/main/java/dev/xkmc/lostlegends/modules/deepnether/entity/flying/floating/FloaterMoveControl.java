@@ -67,4 +67,8 @@ public class FloaterMoveControl extends MoveControl {
 		return true;
 	}
 
+	public void stop() {
+		operation = Operation.WAIT;
+	}
+
 }

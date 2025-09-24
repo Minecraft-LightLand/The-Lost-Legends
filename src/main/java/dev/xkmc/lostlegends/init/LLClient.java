@@ -2,7 +2,7 @@ package dev.xkmc.lostlegends.init;
 
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererModel;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlimeModel;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeModel;
 import dev.xkmc.lostlegends.modules.spell.init.LLSpellClient;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

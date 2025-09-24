@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
