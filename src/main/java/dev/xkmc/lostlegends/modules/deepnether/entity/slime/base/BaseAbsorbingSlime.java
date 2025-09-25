@@ -51,11 +51,15 @@ public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 
 	protected void absorbSlime(Slime e) {
 		float health = e.getHealth();
+		float self = getHealth();
+		float p = self / (health + self);
+		var pos = position().lerp(e.position(), p);
 		e.discard();
 		if (getMaxHealth() - getHealth() < health && getSize() < maxSize) {
 			setSize(getSize() + 1, false);
 		}
 		heal(health);
+		moveTo(pos);
 	}
 
 	@Override

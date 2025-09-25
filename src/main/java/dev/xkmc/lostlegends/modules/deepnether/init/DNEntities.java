@@ -11,6 +11,7 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEnt
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeRenderer;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -22,6 +23,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 public class DNEntities extends LLRegBase {
 
 	public final EntityEntry<NetherSlime> NETHER_SLIME;
+	public final EntityEntry<PutridSlime> PUTRID_SLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
 	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
@@ -43,6 +45,21 @@ public class DNEntities extends LLRegBase {
 				.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x322020, 0xBC8536).build()
+				.register();
+
+		// TODO drop tweaks
+		PUTRID_SLIME = reg.entity("putrid_slime", PutridSlime::new, MobCategory.MONSTER)
+				.renderer(() -> NetherSlimeRenderer::new)
+				.attributes(PutridSlime::createAttributes)
+				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
+						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
+						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+						PutridSlime::checkMagmaCubeSpawnRules,
+						RegisterSpawnPlacementsEvent.Operation.AND)
+				.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE)
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x231F1F, 0x53718F).build()
 				.register();
 
 		//TODO spawn, drop

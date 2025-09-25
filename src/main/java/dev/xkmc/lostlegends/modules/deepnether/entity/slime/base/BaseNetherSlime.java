@@ -30,6 +30,7 @@ import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidType;
 
+import java.util.List;
 import java.util.function.BooleanSupplier;
 
 public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
@@ -75,16 +76,19 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 	public void setSize(int size, boolean heal) {
 		super.setSize(size, heal);
 		int i = Mth.clamp(size, 1, 127);
-		this.reapplyPosition();
-		this.refreshDimensions();
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(healthOfSize(i));
-		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * (float) i);
-		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(damageOfSize(i));
-		this.getAttribute(Attributes.ARMOR).setBaseValue(size * 3);
+		reapplyPosition();
+		refreshDimensions();
+		setAttributes(i);
 		if (heal) {
-			this.setHealth(this.getMaxHealth());
+			setHealth(getMaxHealth());
 		}
-		this.xpReward = i * 4;
+		xpReward = i * 4;
+	}
+
+	protected void setAttributes(int size) {
+		getAttribute(Attributes.MAX_HEALTH).setBaseValue(healthOfSize(size));
+		getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(damageOfSize(size));
+		getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * size);
 	}
 
 	@Override
@@ -117,10 +121,10 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 
 	protected void dealDamage(LivingEntity le) {
 		if (!isAlive() || !isWithinMeleeAttackRange(le) || !hasLineOfSight(le)) return;
-		DamageSource source = this.damageSources().mobAttack(this);
-		if (le.hurt(source, this.getAttackDamage())) {
-			this.playSound(SoundEvents.SLIME_ATTACK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-			if (this.level() instanceof ServerLevel serverlevel) {
+		DamageSource source = damageSources().mobAttack(this);
+		if (le.hurt(source, getAttackDamage())) {
+			playSound(SoundEvents.SLIME_ATTACK, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+			if (level() instanceof ServerLevel serverlevel) {
 				EnchantmentHelper.doPostAttackEffects(serverlevel, le, source);
 			}
 			postHurt(le);
@@ -132,7 +136,7 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 	}
 
 	protected boolean mayAttackPrimary(LivingEntity e) {
-		return getSize() > 1 && Math.abs(e.getY() - this.getY()) <= getSize() + 4 && isValidTarget(e);
+		return getSize() > 1 && Math.abs(e.getY() - getY()) <= getSize() + 4 && isValidTarget(e);
 	}
 
 	protected boolean mayAttackSecondary(LivingEntity e) {
@@ -163,29 +167,29 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 
 	@Override
 	public void jumpFromGround() {
-		Vec3 vec3 = this.getDeltaMovement();
-		float f = (float) this.getSize() * 0.1F;
-		this.setDeltaMovement(vec3.x, this.getJumpPower() + f, vec3.z);
-		this.hasImpulse = true;
+		Vec3 vec3 = getDeltaMovement();
+		float f = (float) getSize() * 0.1F;
+		setDeltaMovement(vec3.x, getJumpPower() + f, vec3.z);
+		hasImpulse = true;
 		CommonHooks.onLivingJump(this);
 	}
 
 	@Override
 	@Deprecated
 	protected void jumpInLiquid(TagKey<Fluid> tag) {
-		this.jumpInLiquidInternal(() -> tag == FluidTags.LAVA, () -> super.jumpInLiquid(tag));
+		jumpInLiquidInternal(() -> tag == FluidTags.LAVA, () -> super.jumpInLiquid(tag));
 	}
 
 	@Override
 	public void jumpInFluid(FluidType type) {
-		this.jumpInLiquidInternal(() -> type == NeoForgeMod.LAVA_TYPE.value(), () -> super.jumpInFluid(type));
+		jumpInLiquidInternal(() -> type == NeoForgeMod.LAVA_TYPE.value(), () -> super.jumpInFluid(type));
 	}
 
 	private void jumpInLiquidInternal(BooleanSupplier isLava, Runnable onSuper) {
 		if (isLava.getAsBoolean()) {
-			Vec3 vec3 = this.getDeltaMovement();
-			this.setDeltaMovement(vec3.x, 0.22F + (float) this.getSize() * 0.05F, vec3.z);
-			this.hasImpulse = true;
+			Vec3 vec3 = getDeltaMovement();
+			setDeltaMovement(vec3.x, 0.22F + (float) getSize() * 0.05F, vec3.z);
+			hasImpulse = true;
 		} else {
 			onSuper.run();
 		}
@@ -193,22 +197,22 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 
 	@Override
 	protected boolean isDealsDamage() {
-		return this.isEffectiveAi();
+		return isEffectiveAi();
 	}
 
 	@Override
 	protected SoundEvent getHurtSound(DamageSource p_32992_) {
-		return this.isTiny() ? SoundEvents.MAGMA_CUBE_HURT_SMALL : SoundEvents.MAGMA_CUBE_HURT;
+		return isTiny() ? SoundEvents.MAGMA_CUBE_HURT_SMALL : SoundEvents.MAGMA_CUBE_HURT;
 	}
 
 	@Override
 	protected SoundEvent getDeathSound() {
-		return this.isTiny() ? SoundEvents.MAGMA_CUBE_DEATH_SMALL : SoundEvents.MAGMA_CUBE_DEATH;
+		return isTiny() ? SoundEvents.MAGMA_CUBE_DEATH_SMALL : SoundEvents.MAGMA_CUBE_DEATH;
 	}
 
 	@Override
 	protected SoundEvent getSquishSound() {
-		return this.isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : SoundEvents.MAGMA_CUBE_SQUISH;
+		return isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : SoundEvents.MAGMA_CUBE_SQUISH;
 	}
 
 	@Override
@@ -217,4 +221,8 @@ public abstract class BaseNetherSlime extends Slime implements LavaSwimEntity {
 	}
 
 	public abstract ResourceLocation getTexture();
+
+	public void onDeathSplit(List<Mob> children) {
+	}
+
 }

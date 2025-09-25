@@ -33,6 +33,12 @@ public class NetherSlime extends BaseAbsorbingSlime {
 		return e instanceof IronGolem || e instanceof Player;
 	}
 
+	@Override
+	protected void setAttributes(int size) {
+		super.setAttributes(size);
+		getAttribute(Attributes.ARMOR).setBaseValue(size * 3);
+	}
+
 	protected void postHurt(LivingEntity le) {
 		int size = getSize();
 		double flameRate = size * 0.25f;
