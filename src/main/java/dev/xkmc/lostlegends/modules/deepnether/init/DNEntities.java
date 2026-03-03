@@ -9,9 +9,11 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.FlamingBeh
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeRenderer;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlime;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlimeModel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -24,6 +26,7 @@ public class DNEntities extends LLRegBase {
 
 	public final EntityEntry<NetherSlime> NETHER_SLIME;
 	public final EntityEntry<PutridSlime> PUTRID_SLIME;
+	public final EntityEntry<PigSlime> PIGSLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
 	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
@@ -60,6 +63,15 @@ public class DNEntities extends LLRegBase {
 				.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE)
 				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
 				.spawnEgg(0x231F1F, 0x53718F).build()
+				.register();
+
+		PIGSLIME = reg.entity("pigslime", PigSlime::new, MobCategory.MONSTER)
+				.renderer(() -> PigSlimeModel::createRenderer)
+				.attributes(PigSlime::createAttributes)
+				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
+						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0xFFBABD, 0xFC9191).build()
 				.register();
 
 		//TODO spawn, drop

@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
@@ -19,8 +20,12 @@ public class NetherSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T
 	private final EntityModel<T> model;
 
 	public NetherSlimeOuterLayer(RenderLayerParent<T, NetherSlimeModel<T>> parent, EntityModelSet set) {
+		this(parent, set, NetherSlimeModel.OUTER);
+	}
+
+	public NetherSlimeOuterLayer(RenderLayerParent<T, NetherSlimeModel<T>> parent, EntityModelSet set, ModelLayerLocation loc) {
 		super(parent);
-		this.model = new NetherSlimeModel<>(set.bakeLayer(NetherSlimeModel.SLIME_OUTER));
+		this.model = new NetherSlimeModel<>(set.bakeLayer(loc));
 	}
 
 	public void render(

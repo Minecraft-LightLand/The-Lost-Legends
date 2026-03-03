@@ -16,8 +16,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class NetherSlimeModel<T extends Entity> extends HierarchicalModel<T> {
 
-	public static final ModelLayerLocation SLIME = new ModelLayerLocation(LostLegends.loc("nether_slime"), "main");
-	public static final ModelLayerLocation SLIME_OUTER = new ModelLayerLocation(LostLegends.loc("nether_slime"), "outer");
+	public static final ModelLayerLocation INNER = new ModelLayerLocation(LostLegends.loc("nether_slime"), "main");
+	public static final ModelLayerLocation OUTER = new ModelLayerLocation(LostLegends.loc("nether_slime"), "outer");
 
 	private final ModelPart root;
 
@@ -25,7 +25,7 @@ public class NetherSlimeModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root = root;
 	}
 
-	public static LayerDefinition createOuterBodyLayer() {
+	public static LayerDefinition createOuter() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition part = mesh.getRoot();
 		part.addOrReplaceChild("cube",
@@ -35,7 +35,7 @@ public class NetherSlimeModel<T extends Entity> extends HierarchicalModel<T> {
 		return LayerDefinition.create(mesh, 64, 64);
 	}
 
-	public static LayerDefinition createInnerBodyLayer() {
+	public static LayerDefinition createInner() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition part = mesh.getRoot();
 		part.addOrReplaceChild("cube",
