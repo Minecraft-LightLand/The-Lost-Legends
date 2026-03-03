@@ -32,7 +32,7 @@ public abstract class BaseSlime extends Slime {
 	}
 
 	protected int damageOfSize(int size) {
-		return (int) (size * 1.5);
+		return size;
 	}
 
 	@Override

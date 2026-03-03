@@ -45,7 +45,7 @@ public class PigSlime extends BaseSlime {
 
 	@Override
 	protected int damageOfSize(int size) {
-		return size;
+		return (int) (size * 1.5);
 	}
 
 	@Override
