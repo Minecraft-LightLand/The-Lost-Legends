@@ -1,5 +1,6 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;
 
+import dev.xkmc.l2core.init.reg.ench.EnchHelper;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseSlime;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -22,6 +23,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -34,6 +36,16 @@ public class PigSlime extends BaseSlime {
 
 	public PigSlime(EntityType<? extends BaseSlime> type, Level level) {
 		super(type, level);
+	}
+
+	@Override
+	protected int healthOfSize(int size) {
+		return size * size * size;
+	}
+
+	@Override
+	protected int damageOfSize(int size) {
+		return size;
 	}
 
 	@Override
@@ -52,7 +64,7 @@ public class PigSlime extends BaseSlime {
 		if (stack.is(ItemTags.PIG_FOOD)) {
 			if (getHealth() < getMaxHealth()) {
 				heal(1);
-			} else if (getSize() < 6) {
+			} else if (getSize() < 8) {
 				setSize(getSize() + 1, false);
 				return InteractionResult.SUCCESS;
 			} else return super.mobInteract(player, hand);
@@ -63,7 +75,7 @@ public class PigSlime extends BaseSlime {
 				float n = w * 2;
 				for (int i = 0; i < n * 8; i++) {
 					float a = this.random.nextFloat() * (float) (Math.PI * 2);
-					float r = this.random.nextFloat() * 0.5F + 0.5F;
+					float r = this.random.nextFloat() * 0.25F + 0.5F;
 					double x = getX() + Mth.sin(a) * w * r;
 					double y = getY() + this.random.nextFloat() * h;
 					double z = getZ() + Mth.cos(a) * w * r;
@@ -95,18 +107,36 @@ public class PigSlime extends BaseSlime {
 
 	@Override
 	public void onDeathSplit(List<Mob> children) {
+		int factor = 0;
 		if (children.size() > 1) {
-			var e = children.removeFirst();
-			var box = getBoundingBox();
-			double vol = box.getXsize() * box.getYsize() * box.getZsize() * 0.05;
-			int count = (int) vol;
-			if (random.nextFloat() < vol - count) {
-				count++;
-			}
-			if (count <= 0) return;
-			ItemStack drop = new ItemStack(isOnFire() ? Items.COOKED_PORKCHOP : Items.PORKCHOP, count);
-			spawnAtLocation(drop);
+			children.remove(random.nextInt(children.size()));
+			factor++;
 		}
+		if (children.size() > 2) {
+			children.remove(random.nextInt(children.size()));
+			factor++;
+		}
+		if (factor == 0) return;
+		var box = getBoundingBox();
+		int ench = 0;
+		if (getLastDamageSource() != null) {
+			var killer = getLastDamageSource().getDirectEntity();
+			if (killer instanceof LivingEntity le) {
+				ItemStack weapon = le.getMainHandItem();
+				if (!weapon.isEmpty()) {
+					ench = EnchHelper.getLv(le.getMainHandItem(), Enchantments.LOOTING);
+				}
+			}
+		}
+		double rate = 0.05 + 0.02 * random.nextFloat() * ench;
+		double vol = box.getXsize() * box.getYsize() * box.getZsize() * rate * factor;
+		int count = (int) vol;
+		if (random.nextFloat() < vol - count) {
+			count++;
+		}
+		if (count <= 0) return;
+		ItemStack drop = new ItemStack(isOnFire() ? Items.COOKED_PORKCHOP : Items.PORKCHOP, count);
+		spawnAtLocation(drop);
 	}
 
 }

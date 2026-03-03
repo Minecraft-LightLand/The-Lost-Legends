@@ -32,7 +32,7 @@ public abstract class BaseSlime extends Slime {
 	}
 
 	protected int damageOfSize(int size) {
-		return size;
+		return (int) (size * 1.5);
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public abstract class BaseSlime extends Slime {
 
 	@Override
 	protected boolean isDealsDamage() {
-		return isEffectiveAi() && damageOfSize(getSize()) > 0;
+		return isEffectiveAi() && damageOfSize(getSize()) > 1;
 	}
 
 	public abstract ResourceLocation getTexture();
