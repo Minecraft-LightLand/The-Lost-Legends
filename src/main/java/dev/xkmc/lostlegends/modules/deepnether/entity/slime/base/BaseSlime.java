@@ -70,14 +70,14 @@ public abstract class BaseSlime extends Slime {
 	@Override
 	public void push(Entity e) {
 		super.push(e);
-		if (isDealsDamage() && !(e instanceof Player) && wouldAttack(e)) {
+		if (isDealsDamage() && !(e instanceof Player) && wouldAttackOnTouch(e)) {
 			dealDamage((LivingEntity) e);
 		}
 	}
 
 	@Override
 	public void playerTouch(Player player) {
-		if (isDealsDamage() && wouldAttack(player)) {
+		if (isDealsDamage() && wouldAttackOnTouch(player)) {
 			dealDamage(player);
 		}
 	}
@@ -106,7 +106,7 @@ public abstract class BaseSlime extends Slime {
 		return getSize() > 1 && isValidTarget(e);
 	}
 
-	protected boolean wouldAttack(Entity e) {
+	protected boolean wouldAttackOnTouch(Entity e) {
 		return e == getTarget() || e instanceof LivingEntity le && isValidTarget(le);
 	}
 

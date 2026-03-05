@@ -6,10 +6,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Slime;
@@ -44,8 +41,13 @@ public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 		return maxSize > 0 && getHealth() < getMaxHealth() || getSize() < maxSize;
 	}
 
+	protected boolean wouldAttackOnTouch(Entity e) {
+		return super.wouldAttackOnTouch(e) || e instanceof Slime s && wantToAbsorb() && mayAbsorbSlime(s);
+	}
+
 	protected boolean mayAbsorbSlime(Slime n) {
-		return getSize() * 0.6 > n.getSize() && getHealth() * 0.6 > n.getHealth() ||
+		return n.getType() == getType() && getSize() <= 1 && getSize() >= n.getSize() && getHealth() >= n.getHealth() ||
+				getSize() * 0.6 > n.getSize() && getHealth() * 0.6 > n.getHealth() ||
 				getSize() > n.getSize() && getAttackDamage() > n.getHealth();
 	}
 

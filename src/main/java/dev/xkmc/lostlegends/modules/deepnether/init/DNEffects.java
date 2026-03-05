@@ -7,6 +7,7 @@ import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.foundation.module.PotionSet;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
+import dev.xkmc.lostlegends.modules.deepnether.effect.ReaperCurseEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
 import dev.xkmc.lostlegends.modules.item.init.LLEquipments;
 import net.minecraft.core.registries.Registries;
@@ -17,7 +18,8 @@ import net.minecraft.world.item.alchemy.Potions;
 
 public class DNEffects extends LLRegBase {
 
-	public final SimpleEntry<MobEffect> SOUL_DRAIN, SOUL_SHELTER, LAVA_AFFINITY, ASH_BOUND, LAVA_WALKER;
+	public final SimpleEntry<MobEffect> SOUL_DRAIN, SOUL_SHELTER, LAVA_AFFINITY, ASH_BOUND, LAVA_WALKER,
+			REAPER_CURSE;
 
 
 	public DNEffects(L2Registrate reg, String path) {
@@ -51,6 +53,12 @@ public class DNEffects extends LLRegBase {
 		var soulDrain = PotionSet.potion3(builder, "soul_drain", SOUL_DRAIN, soulShelter, Items.FERMENTED_SPIDER_EYE, 3600, 9600, 1800, 0, 1);
 
 		LostLegends.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> builder.regTab(LLEquipments.TAB.key()));
+
+		REAPER_CURSE = new SimpleEntry<>(reg.effect("reaper_curse",
+						() -> new ReaperCurseEffect(MobEffectCategory.HARMFUL, 0xFF0000),
+						"Spawns nether slime on hurt")
+				.lang(MobEffect::getDescriptionId, "Reaper Curse").register());
+
 	}
 
 }

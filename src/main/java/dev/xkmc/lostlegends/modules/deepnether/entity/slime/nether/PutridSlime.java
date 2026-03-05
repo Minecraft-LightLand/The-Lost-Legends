@@ -48,7 +48,7 @@ public class PutridSlime extends BaseAbsorbingSlime {
 
 	@Override
 	protected float getDamageAfterMagicAbsorb(DamageSource source, float amount) {
-		if (!source.is(LLDamageTypes.NO_SLIME_SPLIT)) {
+		if (!source.is(LLDamageTypes.NO_SLIME_SPLIT) && getSize() > 1) {
 			amount = Math.min(amount, getMaxHealth() / 2);
 			damageContainers.peek().setNewDamage(amount);
 		}
