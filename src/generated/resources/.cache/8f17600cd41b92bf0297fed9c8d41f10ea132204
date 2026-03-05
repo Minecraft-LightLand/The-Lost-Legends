@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-24T15:09:47.86488	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2026-03-05T14:41:07.862699	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -82,8 +82,8 @@ f646be5ab920c0f5658be50774c62ace8836a682 assets/lostlegends/blockstates/twistone
 9ddef886a8613c84ecce676c2bccc55221dfd15d assets/lostlegends/blockstates/weeping_netherjade.json
 571bf6efbc26a764ee51a4e5300e5cedcbe96709 assets/lostlegends/blockstates/weeping_rust.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-37a915fed51a9d5119f81e88459d95b35f02ae9a assets/lostlegends/lang/en_ud.json
-f40836a4c15568f1eb08ac62a97abcece2b38f66 assets/lostlegends/lang/en_us.json
+4e564099f1c81a155cc92837ef97587c883db026 assets/lostlegends/lang/en_ud.json
+673f38ee98b369a4aa3b24eaf54d322d460b092a assets/lostlegends/lang/en_us.json
 528e08fb8accc8773ea426f20982080ffdda3ec1 assets/lostlegends/models/block/amarast_ore.json
 5f6c90342712b0a459f6596b485c306b1d13982c assets/lostlegends/models/block/amber_magma.json
 3c6777a6dcd5ff39a26dcd694d4572c57508b42e assets/lostlegends/models/block/amber_magma_bricks.json
@@ -272,6 +272,7 @@ dabb74f825cbb11294649befda2585be807d1e7b assets/lostlegends/models/item/maze_wal
 6c9fb38a3805486ccb693f069de56456ef4ae583 assets/lostlegends/models/item/nether_soil.json
 4b2f8a1f33014979f273ac45ead2cadc06c6aec0 assets/lostlegends/models/item/netherjade.json
 8f646a1d6d3fa2ea1993a90711ddfbade311d189 assets/lostlegends/models/item/ocean_phantom.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/lostlegends/models/item/pigslime_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/lostlegends/models/item/poison_beholder_spawn_egg.json
 723a7b12d5e5593d98ce738f5583f279749b93c4 assets/lostlegends/models/item/portal_dissonator.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/lostlegends/models/item/putrid_slime_spawn_egg.json
@@ -310,6 +311,8 @@ bd2c64cff98397fd6249e45dc2d5e97be382d939 assets/lostlegends/models/item/twistone
 15a632e2b0afd019f857c2bf064ac482c5c6e65d assets/lostlegends/models/spell/beholder_projectile.json
 713b5b600178ce55949ca5886c0ba241f2aaf0de assets/lostlegends/models/spell/flaming_beholder_projectile.json
 eaa355b9bed3488ada949997a120434d2083a8c2 assets/lostlegends/models/spell/poison_beholder_projectile.json
+15a632e2b0afd019f857c2bf064ac482c5c6e65d assets/lostlegends/models/spell/reaper_bomb_projectile.json
+713b5b600178ce55949ca5886c0ba241f2aaf0de assets/lostlegends/models/spell/reaper_burst_projectile.json
 2e6e6fc52cb632ea6c8970250408515244118bfc data/c/tags/item/mushrooms.json
 9392df18c59ed916a8775fca68766ce8cb828ee5 data/lostlegends/advancement/recipes/building_blocks/amber_magma_bricks.json
 a3e325d1f4d9b10c49b2069416740b9e62ffe774 data/lostlegends/advancement/recipes/building_blocks/amber_magma_bricks_from_amber_magma_stonecutting.json
@@ -386,9 +389,13 @@ a73c56eec604af3a6b665cca5ce54aef90160694 data/lostlegends/dimension_type/deep_ne
 82459d75455be853a1af7b8b58b793af7c0637fd data/lostlegends/l2magic/projectile/beholder_projectile.json
 6f9d985baf651d4dbd599110129e2a38d8c10df5 data/lostlegends/l2magic/projectile/flaming_beholder_projectile.json
 ca6e14ee9adc30ba97d0d1b0e59af04584b55ccd data/lostlegends/l2magic/projectile/poison_beholder_projectile.json
-e20dd072b54253631c3365972777a938830d68ab data/lostlegends/l2magic/spell_action/beholder_magic.json
-06fa4dbf532712828e9b66ddc60e541813ab021b data/lostlegends/l2magic/spell_action/flaming_beholder_magic.json
-8cddc30cb40678fd07d947288bf9cafee2c27627 data/lostlegends/l2magic/spell_action/poison_beholder_magic.json
+5ce2389aa4d40bfd96511ab4d3e8260763e773a0 data/lostlegends/l2magic/projectile/reaper_bomb_projectile.json
+545df6551ee9f419ab7ce03eb1a27dbcabad1215 data/lostlegends/l2magic/projectile/reaper_burst_projectile.json
+016def89da731e1fa49d4aebbf40a747493ee7bc data/lostlegends/l2magic/spell_action/beholder_magic.json
+a18424721d22283f2f1e3c15692cfa58de31c829 data/lostlegends/l2magic/spell_action/flaming_beholder_magic.json
+f8800ea6d5cbfd7faa839395d212f19eda57061f data/lostlegends/l2magic/spell_action/poison_beholder_magic.json
+b140a2531ab3d53db5487df12db1ae798e868ff6 data/lostlegends/l2magic/spell_action/reaper_bomb_magic.json
+016f3cc2b6e1a19a356248e877e9aeb14f7fc0bf data/lostlegends/l2magic/spell_action/reaper_burst_magic.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 ab1bc1d399b6709b678d3b3d3582bcb7965a4987 data/lostlegends/loot_table/blocks/amber_magma.json
 06d37d03116a83fd4953d08ecc9c5a0018b823f6 data/lostlegends/loot_table/blocks/amber_magma_bricks.json
@@ -472,6 +479,7 @@ ae8891a8ae5f0dc973577ea606f2613ee810c6e0 data/lostlegends/loot_table/blocks/weep
 35ea8fc0494da9db88c50f2f7d88dd13167a2664 data/lostlegends/loot_table/entities/beholder.json
 91ead25e54a43226c3dbef7b05dc46a1bec93ff1 data/lostlegends/loot_table/entities/flaming_beholder.json
 b2e67e0232335af78ef4c42da1b85782856a0414 data/lostlegends/loot_table/entities/nether_slime.json
+354388ade52b2fa38e1adfc704be1042533c0dfc data/lostlegends/loot_table/entities/pigslime.json
 700cf42f8f5f7706e707f9d093204da1b4c62836 data/lostlegends/loot_table/entities/poison_beholder.json
 a55e34fb76c9a5836942a2716b16689ae973df32 data/lostlegends/loot_table/entities/putrid_slime.json
 be5ea7d30eecb9d600e74f8ce0615285e70a3a7c data/lostlegends/loot_table/entities/wanderer.json

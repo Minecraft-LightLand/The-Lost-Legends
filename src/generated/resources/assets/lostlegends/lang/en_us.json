@@ -85,6 +85,12 @@
   "effect.lostlegends.ash_bound": "Ash Bound",
   "effect.lostlegends.ash_bound.desc": "Reduce ash fog. Player would not suffocate in ash, and would be able to walk on and climb in ash",
   "effect.lostlegends.ash_bound.description": "Reduce ash fog. Player would not suffocate in ash, and would be able to walk on and climb in ash",
+  "effect.lostlegends.death_curse": "Reaper Curse",
+  "effect.lostlegends.death_curse.desc": "Spawns putrid slime on hurt",
+  "effect.lostlegends.death_curse.description": "Spawns putrid slime on hurt",
+  "effect.lostlegends.flame_curse": "Reaper Curse",
+  "effect.lostlegends.flame_curse.desc": "Spawns nether slime on hurt",
+  "effect.lostlegends.flame_curse.description": "Spawns nether slime on hurt",
   "effect.lostlegends.lava_affinity": "Lava Affinity",
   "effect.lostlegends.lava_affinity.desc": "Improve vision under lava. Increase motion speed under lava. Provide fire immunity.",
   "effect.lostlegends.lava_affinity.description": "Improve vision under lava. Increase motion speed under lava. Provide fire immunity.",
@@ -100,6 +106,7 @@
   "entity.lostlegends.beholder": "Beholder",
   "entity.lostlegends.flaming_beholder": "Flaming Beholder",
   "entity.lostlegends.nether_slime": "Nether Slime",
+  "entity.lostlegends.pigslime": "Pigslime",
   "entity.lostlegends.poison_beholder": "Poison Beholder",
   "entity.lostlegends.putrid_slime": "Putrid Slime",
   "entity.lostlegends.wanderer": "Wanderer",
@@ -116,6 +123,7 @@
   "item.lostlegends.liquid_soul_bucket": "Liquid Soul Bucket",
   "item.lostlegends.molten_gold_bucket": "Molten Gold Bucket",
   "item.lostlegends.nether_slime_spawn_egg": "Nether Slime Spawn Egg",
+  "item.lostlegends.pigslime_spawn_egg": "Pigslime Spawn Egg",
   "item.lostlegends.poison_beholder_spawn_egg": "Poison Beholder Spawn Egg",
   "item.lostlegends.portal_dissonator": "Portal Dissonator",
   "item.lostlegends.portal_dissonator.desc": "Right click nether / deep nether portal blocks to destroy them.",
@@ -176,5 +184,7 @@
   "lostlegends.title": "The Lost Legends",
   "spell_action.lostlegends.beholder_magic": "Beholder Magic",
   "spell_action.lostlegends.flaming_beholder_magic": "Flame Beholder Magic",
-  "spell_action.lostlegends.poison_beholder_magic": "Poison Beholder Magic"
+  "spell_action.lostlegends.poison_beholder_magic": "Poison Beholder Magic",
+  "spell_action.lostlegends.reaper_bomb_magic": "Reaper Bomb Magic",
+  "spell_action.lostlegends.reaper_burst_magic": "Reaper Burst Magic"
 }

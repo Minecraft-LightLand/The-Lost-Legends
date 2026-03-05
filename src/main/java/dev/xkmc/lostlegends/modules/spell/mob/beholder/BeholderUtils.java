@@ -36,14 +36,14 @@ import java.util.Map;
 
 public class BeholderUtils {
 
-	public static ConfiguredEngine<?> warn(DataGenContext ctx, int dist, int col) {
+	public static ConfiguredEngine<?> warn(DataGenContext ctx, int dist, int col, int time) {
 		return new LinearIterator(
 				DoubleVariable.of("0.5"),
 				IntVariable.of("" + dist * 2), false,
 				new CustomParticleInstance(
 						DoubleVariable.of("0"),
 						DoubleVariable.of("0.07"),
-						IntVariable.of("20"),
+						IntVariable.of(time + "+rand(-4,4)"),
 						false,
 						SimpleMotion.ZERO,
 						new DustParticleData(
@@ -55,41 +55,49 @@ public class BeholderUtils {
 	}
 
 	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur) {
+		return charge(ctx, charge, dur, 1, 10);
+	}
+
+	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur, double radius, int moveTime) {
 		return new DelayedIterator(IntVariable.of("" + dur), IntVariable.of("1"),
 				new CustomParticleInstance(
-						DoubleVariable.of("-0.1"),
+						DoubleVariable.of("-" + (radius / moveTime)),
 						DoubleVariable.of("0.05"),
-						IntVariable.of((10 + dur) + "-i"),
+						IntVariable.of(moveTime + "+min(10," + dur + "-i)"),
 						false,
-						new StopMotion(BooleanVariable.of("TickCount>=9")),
+						new StopMotion(BooleanVariable.of("TickCount>=" + (moveTime - 1))),
 						charge
 				).move(
 						new Dir2NormalModifier(),
 						RotationModifier.of("rand(0,360)"),
-						ForwardOffsetModifier.of("1")
+						ForwardOffsetModifier.of("" + radius)
 				), "i"
 		);
 	}
 
+	public static ConfiguredEngine<?> shoot(DataGenContext ctx, int dist, int moveTime, Holder<ProjectileConfig> proj) {
+		return new ListLogic(List.of(
+				new SoundInstance(
+						SoundEvents.FIRECHARGE_USE,
+						DoubleVariable.of("2"),
+						DoubleVariable.of("1+rand(-0.1,0.1)+rand(-0.1,0.1)")
+				),
+				new CustomProjectileShoot(
+						DoubleVariable.of("" + (1d * dist / moveTime)), proj,
+						IntVariable.of("" + moveTime),
+						false, false,
+						Map.of()
+				)
+		));
+	}
+
 	public static ConfiguredEngine<?> spell(
-			DataGenContext ctx, int dist, int col, int time,
+			DataGenContext ctx, int dist, int col, int moveTime,
 			Holder<ProjectileConfig> proj, ParticleRenderData<?> charge) {
 		return new ListLogic(List.of(
-				warn(ctx, dist, col),
+				warn(ctx, dist, col, 20),
 				charge(ctx, charge, 10),
-				new ListLogic(List.of(
-						new SoundInstance(
-								SoundEvents.FIRECHARGE_USE,
-								DoubleVariable.of("2"),
-								DoubleVariable.of("1+rand(-0.1,0.1)+rand(-0.1,0.1)")
-						),
-						new CustomProjectileShoot(
-								DoubleVariable.of("" + (1d * dist / time)), proj,
-								IntVariable.of("" + time),
-								false, false,
-								Map.of()
-						)
-				)).delay(IntVariable.of("20"))
+				shoot(ctx, dist, moveTime, proj).delay(IntVariable.of("20"))
 		));
 	}
 

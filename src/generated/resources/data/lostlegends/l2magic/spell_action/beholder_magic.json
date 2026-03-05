@@ -9,7 +9,7 @@
         "child": {
           "type": "l2magic:custom_particle",
           "collide": false,
-          "life": "20",
+          "life": "20+rand(-4,4)",
           "motion": {
             "type": "l2magic:simple",
             "friction": "0",
@@ -38,7 +38,7 @@
           "child": {
             "type": "l2magic:custom_particle",
             "collide": false,
-            "life": "20-i",
+            "life": "10+min(10,10-i)",
             "motion": {
               "type": "lostlegends:stop",
               "cond": "TickCount>=9"
@@ -62,7 +62,7 @@
             },
             {
               "type": "l2magic:forward",
-              "distance": "1"
+              "distance": "1.0"
             }
           ]
         },

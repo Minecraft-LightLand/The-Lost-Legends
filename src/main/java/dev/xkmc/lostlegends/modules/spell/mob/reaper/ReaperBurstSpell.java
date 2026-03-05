@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.spell.mob.beholder;
+package dev.xkmc.lostlegends.modules.spell.mob.reaper;
 
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
@@ -28,6 +28,7 @@ import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.spell.engine.IgniteBlock;
 import dev.xkmc.lostlegends.modules.spell.engine.ModelRenderData;
 import dev.xkmc.lostlegends.modules.spell.init.LLSpellGenEntry;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderUtils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -40,15 +41,15 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import java.util.List;
 import java.util.Map;
 
-public class FlameBeholderSpell extends LLSpellGenEntry {
+public class ReaperBurstSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("flaming_beholder_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("flaming_beholder_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/flaming_beholder_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("reaper_burst_magic");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("reaper_burst_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/reaper_burst_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {
-		pvd.add(SpellAction.lang(SPELL.location()), "Flame Beholder Magic");
+		pvd.add(SpellAction.lang(SPELL.location()), "Reaper Burst Magic");
 	}
 
 	@Override
@@ -92,9 +93,9 @@ public class FlameBeholderSpell extends LLSpellGenEntry {
 
 	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
 		return new ListLogic(List.of(
-				BeholderUtils.warn(ctx, 30, 0xFFFF0000, 20),
-				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 20),
-				new DelayedIterator(IntVariable.of("10"), IntVariable.of("2"),
+				BeholderUtils.warn(ctx, 30, 0xFFFF0000, 30),
+				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 40),
+				new DelayedIterator(IntVariable.of("20"), IntVariable.of("2"),
 						new ListLogic(List.of(
 								new SoundInstance(
 										SoundEvents.FIRECHARGE_USE,
@@ -107,7 +108,7 @@ public class FlameBeholderSpell extends LLSpellGenEntry {
 										false, false,
 										Map.of()
 								).move(RotationModifier.of("rand(-6,6)", "rand(-6,6)"))
-						)).delay(IntVariable.of("10"))
+						)).delay(IntVariable.of("20"))
 				)));
 	}
 

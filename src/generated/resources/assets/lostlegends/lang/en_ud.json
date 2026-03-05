@@ -85,6 +85,12 @@
   "effect.lostlegends.ash_bound": "punoᗺ ɥsⱯ",
   "effect.lostlegends.ash_bound.desc": "ɥsɐ uı qɯıןɔ puɐ uo ʞןɐʍ oʇ ǝןqɐ ǝq pןnoʍ puɐ 'ɥsɐ uı ǝʇɐɔoɟɟns ʇou pןnoʍ ɹǝʎɐןԀ ˙boɟ ɥsɐ ǝɔnpǝᴚ",
   "effect.lostlegends.ash_bound.description": "ɥsɐ uı qɯıןɔ puɐ uo ʞןɐʍ oʇ ǝןqɐ ǝq pןnoʍ puɐ 'ɥsɐ uı ǝʇɐɔoɟɟns ʇou pןnoʍ ɹǝʎɐןԀ ˙boɟ ɥsɐ ǝɔnpǝᴚ",
+  "effect.lostlegends.death_curse": "ǝsɹnƆ ɹǝdɐǝᴚ",
+  "effect.lostlegends.death_curse.desc": "ʇɹnɥ uo ǝɯıןs pıɹʇnd suʍɐdS",
+  "effect.lostlegends.death_curse.description": "ʇɹnɥ uo ǝɯıןs pıɹʇnd suʍɐdS",
+  "effect.lostlegends.flame_curse": "ǝsɹnƆ ɹǝdɐǝᴚ",
+  "effect.lostlegends.flame_curse.desc": "ʇɹnɥ uo ǝɯıןs ɹǝɥʇǝu suʍɐdS",
+  "effect.lostlegends.flame_curse.description": "ʇɹnɥ uo ǝɯıןs ɹǝɥʇǝu suʍɐdS",
   "effect.lostlegends.lava_affinity": "ʎʇıuıɟɟⱯ ɐʌɐꞀ",
   "effect.lostlegends.lava_affinity.desc": "˙ʎʇıunɯɯı ǝɹıɟ ǝpıʌoɹԀ ˙ɐʌɐן ɹǝpun pǝǝds uoıʇoɯ ǝsɐǝɹɔuI ˙ɐʌɐן ɹǝpun uoısıʌ ǝʌoɹdɯI",
   "effect.lostlegends.lava_affinity.description": "˙ʎʇıunɯɯı ǝɹıɟ ǝpıʌoɹԀ ˙ɐʌɐן ɹǝpun pǝǝds uoıʇoɯ ǝsɐǝɹɔuI ˙ɐʌɐן ɹǝpun uoısıʌ ǝʌoɹdɯI",
@@ -100,6 +106,7 @@
   "entity.lostlegends.beholder": "ɹǝpןoɥǝᗺ",
   "entity.lostlegends.flaming_beholder": "ɹǝpןoɥǝᗺ buıɯɐןℲ",
   "entity.lostlegends.nether_slime": "ǝɯıןS ɹǝɥʇǝN",
+  "entity.lostlegends.pigslime": "ǝɯıןsbıԀ",
   "entity.lostlegends.poison_beholder": "ɹǝpןoɥǝᗺ uosıoԀ",
   "entity.lostlegends.putrid_slime": "ǝɯıןS pıɹʇnԀ",
   "entity.lostlegends.wanderer": "ɹǝɹǝpuɐM",
@@ -116,6 +123,7 @@
   "item.lostlegends.liquid_soul_bucket": "ʇǝʞɔnᗺ ןnoS pınbıꞀ",
   "item.lostlegends.molten_gold_bucket": "ʇǝʞɔnᗺ pןo⅁ uǝʇןoW",
   "item.lostlegends.nether_slime_spawn_egg": "bbƎ uʍɐdS ǝɯıןS ɹǝɥʇǝN",
+  "item.lostlegends.pigslime_spawn_egg": "bbƎ uʍɐdS ǝɯıןsbıԀ",
   "item.lostlegends.poison_beholder_spawn_egg": "bbƎ uʍɐdS ɹǝpןoɥǝᗺ uosıoԀ",
   "item.lostlegends.portal_dissonator": "ɹoʇɐuossıᗡ ןɐʇɹoԀ",
   "item.lostlegends.portal_dissonator.desc": "˙ɯǝɥʇ ʎoɹʇsǝp oʇ sʞɔoןq ןɐʇɹod ɹǝɥʇǝu dǝǝp / ɹǝɥʇǝu ʞɔıןɔ ʇɥbıᴚ",
@@ -176,5 +184,7 @@
   "lostlegends.title": "spuǝbǝꞀ ʇsoꞀ ǝɥ⟘",
   "spell_action.lostlegends.beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ",
   "spell_action.lostlegends.flaming_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ ǝɯɐןℲ",
-  "spell_action.lostlegends.poison_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ uosıoԀ"
+  "spell_action.lostlegends.poison_beholder_magic": "ɔıbɐW ɹǝpןoɥǝᗺ uosıoԀ",
+  "spell_action.lostlegends.reaper_bomb_magic": "ɔıbɐW qɯoᗺ ɹǝdɐǝᴚ",
+  "spell_action.lostlegends.reaper_burst_magic": "ɔıbɐW ʇsɹnᗺ ɹǝdɐǝᴚ"
 }
