@@ -1,6 +1,7 @@
 package dev.xkmc.lostlegends.init;
 
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererModel;
 import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeModel;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlimeModel;
@@ -40,6 +41,7 @@ public class LLClient {
 		event.registerLayerDefinition(PigSlimeModel.OUTER, PigSlimeModel::createOuter);
 		event.registerLayerDefinition(WandererModel.LAYER_LOCATION, WandererModel::createBodyLayer);
 		event.registerLayerDefinition(BeholderModelData.LAYER_LOCATION, BeholderModelData::createBodyLayer);
+		event.registerLayerDefinition(ReaperModelData.LAYER_LOCATION, ReaperModelData::createBodyLayer);
 	}
 
 	@SubscribeEvent

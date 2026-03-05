@@ -84,7 +84,7 @@ public class ReaperBombSpell extends LLSpellGenEntry {
 
 	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
 		return new ListLogic(List.of(
-				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 10, 3, 2, 20, 0.3),
+				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 20, 3, 2, 10, 0.15),
 				new ListLogic(List.of(
 						shoot(ctx, 40, PROJ),
 						new DelayedIterator(IntVariable.of("5"), IntVariable.of("2"),

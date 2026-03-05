@@ -71,7 +71,6 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 			strafingTime++;
 		else strafingTime = -1;
 		if (!inAttack) doStrafe(target, diff, dist);
-		mob.getLookControl().setLookAt(target, 30, 30);
 		tickAttack(target, see, dist < attackRadius);
 	}
 
@@ -138,6 +137,8 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 			startAttack(target);
 			inAttack = true;
 			if (mob.getMoveControl() instanceof FloaterMoveControl ctrl) ctrl.stop();
+		} else {
+			mob.getLookControl().setLookAt(target, 30, 30);
 		}
 	}
 

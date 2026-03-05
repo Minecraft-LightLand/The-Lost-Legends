@@ -2,6 +2,14 @@
   "filter": "ENEMY_NO_FAMILY",
   "hit": [
     {
+      "type": "l2magic:effect",
+      "ambient": false,
+      "amplifier": "1",
+      "duration": "200",
+      "effect": "lostlegends:flame_curse",
+      "visible": true
+    },
+    {
       "type": "l2magic:damage",
       "damage": "6",
       "damage_type": "minecraft:indirect_magic",

@@ -10,6 +10,7 @@ import dev.xkmc.l2magic.content.engine.modifier.ForwardOffsetModifier;
 import dev.xkmc.l2magic.content.engine.modifier.RotationModifier;
 import dev.xkmc.l2magic.content.engine.particle.SimpleParticleInstance;
 import dev.xkmc.l2magic.content.engine.processor.DamageProcessor;
+import dev.xkmc.l2magic.content.engine.processor.EffectProcessor;
 import dev.xkmc.l2magic.content.engine.processor.PropertyProcessor;
 import dev.xkmc.l2magic.content.engine.selector.SelectionType;
 import dev.xkmc.l2magic.content.engine.sound.SoundInstance;
@@ -25,6 +26,7 @@ import dev.xkmc.l2magic.content.particle.engine.RenderTypePreset;
 import dev.xkmc.l2magic.content.particle.engine.SimpleParticleData;
 import dev.xkmc.l2magic.init.data.DataGenCachedHolder;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import dev.xkmc.lostlegends.modules.spell.engine.IgniteBlock;
 import dev.xkmc.lostlegends.modules.spell.engine.ModelRenderData;
 import dev.xkmc.lostlegends.modules.spell.init.LLSpellGenEntry;
@@ -84,6 +86,7 @@ public class ReaperBurstSpell extends LLSpellGenEntry {
 		return ProjectileConfig.builder(SelectionType.ENEMY_NO_FAMILY)
 				.motion(SimpleMotion.ZERO)
 				.tick(new SimpleParticleInstance(ParticleTypes.SMALL_FLAME, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
+				.hit(new EffectProcessor(DeepNether.EFFECTS.FLAME_CURSE, IntVariable.of("200"), IntVariable.of("1"), false, true))
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
 				.hit(PropertyProcessor.Type.IGNITE.of("100"))
 				.land(new IgniteBlock())

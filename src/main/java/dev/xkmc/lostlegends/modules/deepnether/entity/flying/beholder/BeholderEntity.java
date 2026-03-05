@@ -1,10 +1,10 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
 import dev.xkmc.l2magic.content.engine.spell.SpellAction;
-import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.foundation.entity.floating.BaseFloatingEntity;
 import dev.xkmc.lostlegends.foundation.entity.flying.FlyerAttackGoal;
 import dev.xkmc.lostlegends.foundation.entity.flying.FlyerHurtByTargetGoal;
-import dev.xkmc.lostlegends.foundation.entity.floating.BaseFloatingEntity;
+import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -49,10 +49,14 @@ public class BeholderEntity extends BaseFloatingEntity {
 		super.aiStep();
 	}
 
+	protected BeholderAttackGoal createAttackGoal() {
+		return new BeholderAttackGoal(this, 1, 20, 16);
+	}
+
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		var atk = new BeholderAttackGoal(this, 1, 20, 16);
+		var atk = createAttackGoal();
 		motionGoals.add(atk);
 		this.goalSelector.addGoal(3, atk);
 		this.targetSelector.addGoal(1, new FlyerHurtByTargetGoal(this));
@@ -75,6 +79,9 @@ public class BeholderEntity extends BaseFloatingEntity {
 
 	public int spellDuration() {
 		return 20;
+	}
+
+	protected void afterInvokeSpell() {
 	}
 
 }

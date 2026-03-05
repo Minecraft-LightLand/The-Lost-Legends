@@ -5,6 +5,7 @@ import dev.xkmc.lostlegends.modules.deepnether.util.LavaEffectsHelper;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 @EventBusSubscriber(modid = LostLegends.MODID, bus = EventBusSubscriber.Bus.GAME)

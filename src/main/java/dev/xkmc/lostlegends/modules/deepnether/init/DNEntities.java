@@ -2,14 +2,16 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.FlamingBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperEntity;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
-import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlime;
@@ -31,6 +33,7 @@ public class DNEntities extends LLRegBase {
 	public final EntityEntry<BeholderEntity> BEHOLDER;
 	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
 	public final EntityEntry<FlamingBeholderEntity> FLAMING_BEHOLDER;
+	public final EntityEntry<ReaperEntity> REAPER;
 
 	public DNEntities(L2Registrate reg, String path) {
 		super(reg, path);
@@ -122,6 +125,21 @@ public class DNEntities extends LLRegBase {
 				.renderer(() -> BeholderRenderer::new)
 				.attributes(BeholderEntity::createAttributes)
 				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)
+						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
+						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+						BeholderEntity::checkSpawnRules,
+						RegisterSpawnPlacementsEvent.Operation.AND)
+				.tag(EntityTypeTags.UNDEAD)
+				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.spawnEgg(0x3B1F1F, 0x232222).build()
+				.register();
+
+		//TODO spawn, drop
+		REAPER = reg.entity("reaper", ReaperEntity::new, MobCategory.MONSTER)
+				.renderer(() -> ReaperRenderer::new)
+				.attributes(ReaperEntity::createAttributes)
+				.properties(p -> p.sized(0.9F, 1.6F).eyeHeight(1f)
 						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
 				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
 						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,

@@ -10,6 +10,7 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal implements Mot
 
 	private final BeholderEntity beholder;
 	private int attackTick = 0;
+	private int attackDelay = 0;
 
 	public BeholderAttackGoal(BeholderEntity e, double speed, int interval, float rad) {
 		super(e, speed, interval, rad);
@@ -19,7 +20,7 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal implements Mot
 	@Override
 	protected boolean checkPerformAttack(LivingEntity target) {
 		mob.setDeltaMovement(Vec3.ZERO);
-		return ++attackTick >= beholder.spellDuration();
+		return ++attackTick >= attackDelay;
 	}
 
 	@Override
@@ -29,11 +30,14 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal implements Mot
 	@Override
 	protected void startAttack(LivingEntity target) {
 		attackTick = 0;
-		var spell = mob.level().registryAccess().holderOrThrow(beholder.getSpell());
+		attackDelay = beholder.spellDuration();
+		var key = beholder.getSpell();
+		var spell = mob.level().registryAccess().holderOrThrow(key);
 		var ctx = SpellContext.castSpell(mob, spell.value(), 0, 1, 64, 0);
 		if (ctx != null && !mob.level().isClientSide()) {
 			spell.value().execute(spell, ctx);
 		}
+		beholder.afterInvokeSpell();
 	}
 
 	@Override

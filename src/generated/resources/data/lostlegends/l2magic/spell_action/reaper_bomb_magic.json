@@ -31,18 +31,18 @@
                                 "child": {
                                   "type": "l2magic:custom_particle",
                                   "collide": false,
-                                  "life": "20+min(10,10-i)",
+                                  "life": "10+min(10,20-i)",
                                   "motion": {
                                     "type": "lostlegends:stop",
-                                    "cond": "TickCount>=19"
+                                    "cond": "TickCount>=9"
                                   },
                                   "renderer": {
                                     "type": "l2magic:simple",
                                     "particle": "minecraft:flame",
                                     "renderType": "LIT"
                                   },
-                                  "scale": "0.3",
-                                  "speed": "-0.1"
+                                  "scale": "0.15",
+                                  "speed": "-0.2"
                                 },
                                 "modifiers": [
                                   {
@@ -63,7 +63,7 @@
                             },
                             "delay": "1",
                             "index": "i",
-                            "step": "10"
+                            "step": "20"
                           },
                           {
                             "type": "l2magic:delay",
