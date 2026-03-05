@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.foundation.entity.slime;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -11,16 +11,16 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class NetherSlimeRenderer<T extends BaseSlime> extends MobRenderer<T, NetherSlimeModel<T>> {
+public class BaseSlimeRenderer<T extends BaseSlime> extends MobRenderer<T, BaseSlimeModel<T>> {
 
-	public NetherSlimeRenderer(EntityRendererProvider.Context ctx) {
-		super(ctx, new NetherSlimeModel<>(ctx.bakeLayer(NetherSlimeModel.INNER)), 0.25F);
-		this.addLayer(new NetherSlimeOuterLayer<>(this, ctx.getModelSet()));
+	public BaseSlimeRenderer(EntityRendererProvider.Context ctx) {
+		super(ctx, new BaseSlimeModel<>(ctx.bakeLayer(BaseSlimeModel.INNER)), 0.25F);
+		this.addLayer(new BaseSlimeOuterLayer<>(this, ctx.getModelSet()));
 	}
 
-	public NetherSlimeRenderer(EntityRendererProvider.Context ctx, ModelLayerLocation base, ModelLayerLocation outer) {
-		super(ctx, new NetherSlimeModel<>(ctx.bakeLayer(base)), 0.25F);
-		this.addLayer(new NetherSlimeOuterLayer<>(this, ctx.getModelSet(), outer));
+	public BaseSlimeRenderer(EntityRendererProvider.Context ctx, ModelLayerLocation base, ModelLayerLocation outer) {
+		super(ctx, new BaseSlimeModel<>(ctx.bakeLayer(base)), 0.25F);
+		this.addLayer(new BaseSlimeOuterLayer<>(this, ctx.getModelSet(), outer));
 	}
 
 	public void render(T e, float yRot, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {

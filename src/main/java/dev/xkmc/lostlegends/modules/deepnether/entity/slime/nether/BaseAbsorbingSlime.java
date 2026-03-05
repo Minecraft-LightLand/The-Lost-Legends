@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
 
 import dev.xkmc.lostlegends.init.LLDamageTypes;
 import net.minecraft.nbt.CompoundTag;

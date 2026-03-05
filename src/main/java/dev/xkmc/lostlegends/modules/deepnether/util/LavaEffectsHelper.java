@@ -1,6 +1,6 @@
 package dev.xkmc.lostlegends.modules.deepnether.util;
 
-import dev.xkmc.lostlegends.foundation.entity.LavaSwimEntity;
+import dev.xkmc.lostlegends.foundation.entity.api.LavaSwimEntity;
 import dev.xkmc.lostlegends.modules.deepnether.init.DeepNether;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;

@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.foundation.entity.flying;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

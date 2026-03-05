@@ -1,9 +1,7 @@
 package dev.xkmc.lostlegends.event;
 
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseNetherSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlime;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobSplitEvent;

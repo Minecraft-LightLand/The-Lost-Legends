@@ -2,7 +2,6 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
 
 import dev.xkmc.lostlegends.init.LLDamageTypes;
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseAbsorbingSlime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;

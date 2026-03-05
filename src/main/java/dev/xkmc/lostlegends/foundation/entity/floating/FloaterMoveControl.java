@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating;
+package dev.xkmc.lostlegends.foundation.entity.floating;
 
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.Attributes;

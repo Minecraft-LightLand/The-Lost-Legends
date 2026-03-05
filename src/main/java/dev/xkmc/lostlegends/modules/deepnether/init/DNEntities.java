@@ -9,7 +9,7 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.FlamingBeh
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeRenderer;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlime;
@@ -37,7 +37,7 @@ public class DNEntities extends LLRegBase {
 
 		// TODO drop tweaks
 		NETHER_SLIME = reg.entity("nether_slime", NetherSlime::new, MobCategory.MONSTER)
-				.renderer(() -> NetherSlimeRenderer::new)
+				.renderer(() -> BaseSlimeRenderer::new)
 				.attributes(NetherSlime::createAttributes)
 				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
 						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
@@ -52,7 +52,7 @@ public class DNEntities extends LLRegBase {
 
 		// TODO drop tweaks
 		PUTRID_SLIME = reg.entity("putrid_slime", PutridSlime::new, MobCategory.MONSTER)
-				.renderer(() -> NetherSlimeRenderer::new)
+				.renderer(() -> BaseSlimeRenderer::new)
 				.attributes(PutridSlime::createAttributes)
 				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
 						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())

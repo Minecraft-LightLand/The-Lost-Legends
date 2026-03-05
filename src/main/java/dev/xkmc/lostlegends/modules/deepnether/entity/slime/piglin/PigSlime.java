@@ -2,7 +2,7 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;
 
 import dev.xkmc.l2core.init.reg.ench.EnchHelper;
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.BaseSlime;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlime;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;

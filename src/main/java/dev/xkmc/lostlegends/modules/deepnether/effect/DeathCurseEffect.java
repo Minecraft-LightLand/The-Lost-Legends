@@ -12,9 +12,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
-public class ReaperCurseEffect extends MobEffect {
+public class DeathCurseEffect extends MobEffect {
 
-	public ReaperCurseEffect(MobEffectCategory category, int color) {
+	public DeathCurseEffect(MobEffectCategory category, int color) {
 		super(category, color);
 	}
 

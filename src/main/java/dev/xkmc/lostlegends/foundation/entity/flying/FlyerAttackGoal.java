@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.flying.base;
+package dev.xkmc.lostlegends.foundation.entity.flying;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;

@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating;
+package dev.xkmc.lostlegends.foundation.entity.floating;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

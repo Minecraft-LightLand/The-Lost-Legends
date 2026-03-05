@@ -4,7 +4,7 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;// Made with
 
 
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeRenderer;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
@@ -47,7 +47,7 @@ public class PigSlimeModel {
 	}
 
 	public static EntityRenderer<? super PigSlime> createRenderer(EntityRendererProvider.Context context) {
-		return new NetherSlimeRenderer<>(context, INNER, OUTER);
+		return new BaseSlimeRenderer<>(context, INNER, OUTER);
 	}
 
 }

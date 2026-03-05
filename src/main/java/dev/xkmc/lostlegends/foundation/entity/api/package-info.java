@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.foundation.entity;
+package dev.xkmc.lostlegends.foundation.entity.api;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

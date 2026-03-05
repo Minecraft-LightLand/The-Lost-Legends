@@ -2,7 +2,7 @@ package dev.xkmc.lostlegends.init;
 
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererModel;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.base.NetherSlimeModel;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeModel;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlimeModel;
 import dev.xkmc.lostlegends.modules.spell.init.LLSpellClient;
 import net.neoforged.api.distmarker.Dist;
@@ -34,8 +34,8 @@ public class LLClient {
 
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(NetherSlimeModel.INNER, NetherSlimeModel::createInner);
-		event.registerLayerDefinition(NetherSlimeModel.OUTER, NetherSlimeModel::createOuter);
+		event.registerLayerDefinition(BaseSlimeModel.INNER, BaseSlimeModel::createInner);
+		event.registerLayerDefinition(BaseSlimeModel.OUTER, BaseSlimeModel::createOuter);
 		event.registerLayerDefinition(PigSlimeModel.INNER, PigSlimeModel::createInner);
 		event.registerLayerDefinition(PigSlimeModel.OUTER, PigSlimeModel::createOuter);
 		event.registerLayerDefinition(WandererModel.LAYER_LOCATION, WandererModel::createBodyLayer);

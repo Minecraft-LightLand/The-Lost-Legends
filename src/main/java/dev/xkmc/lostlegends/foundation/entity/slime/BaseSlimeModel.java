@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.foundation.entity.slime;
 
 import dev.xkmc.lostlegends.init.LostLegends;
 import net.minecraft.client.model.HierarchicalModel;
@@ -14,14 +14,14 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class NetherSlimeModel<T extends Entity> extends HierarchicalModel<T> {
+public class BaseSlimeModel<T extends Entity> extends HierarchicalModel<T> {
 
-	public static final ModelLayerLocation INNER = new ModelLayerLocation(LostLegends.loc("nether_slime"), "main");
-	public static final ModelLayerLocation OUTER = new ModelLayerLocation(LostLegends.loc("nether_slime"), "outer");
+	public static final ModelLayerLocation INNER = new ModelLayerLocation(LostLegends.loc("slime"), "main");
+	public static final ModelLayerLocation OUTER = new ModelLayerLocation(LostLegends.loc("slime"), "outer");
 
 	private final ModelPart root;
 
-	public NetherSlimeModel(ModelPart root) {
+	public BaseSlimeModel(ModelPart root) {
 		this.root = root;
 	}
 

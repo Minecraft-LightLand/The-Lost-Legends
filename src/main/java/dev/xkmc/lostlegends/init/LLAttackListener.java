@@ -2,7 +2,7 @@ package dev.xkmc.lostlegends.init;
 
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
-import dev.xkmc.lostlegends.foundation.entity.DamageModifierEntity;
+import dev.xkmc.lostlegends.foundation.entity.api.DamageModifierEntity;
 
 public class LLAttackListener implements AttackListener {
 

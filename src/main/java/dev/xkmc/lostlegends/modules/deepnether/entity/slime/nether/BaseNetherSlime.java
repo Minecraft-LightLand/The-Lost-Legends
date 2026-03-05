@@ -1,6 +1,7 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether;
 
-import dev.xkmc.lostlegends.foundation.entity.LavaSwimEntity;
+import dev.xkmc.lostlegends.foundation.entity.api.LavaSwimEntity;
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlime;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;

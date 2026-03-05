@@ -1,6 +1,6 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating;
+package dev.xkmc.lostlegends.foundation.entity.floating;
 
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerLookAtEntityGoal;
+import dev.xkmc.lostlegends.foundation.entity.flying.FlyerLookAtEntityGoal;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

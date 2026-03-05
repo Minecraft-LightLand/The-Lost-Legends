@@ -1,8 +1,8 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
 import dev.xkmc.l2magic.content.engine.context.SpellContext;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.FloaterStrafingAttackGoal;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.MotionBlockGoals;
+import dev.xkmc.lostlegends.foundation.entity.floating.FloaterStrafingAttackGoal;
+import dev.xkmc.lostlegends.foundation.entity.floating.MotionBlockGoals;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 

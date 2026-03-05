@@ -4,7 +4,6 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper;// Made wit
 
 
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 
@@ -31,7 +30,7 @@ public class ReaperModel<T extends BeholderEntity> extends HierarchicalModel<T> 
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.root.yRot += yrot * (float) (Math.PI / 180.0);
 		this.root.xRot += xrot * (float) (Math.PI / 180.0);
-		this.animate(e.states.idle, BeholderModelData.IDLE, tick);
+		this.animate(e.states.idle, ReaperModelData.IDLE, tick);
 	}
 
 }

@@ -6,8 +6,9 @@ import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.foundation.module.PotionSet;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.deepnether.effect.DeathCurseEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.EmptyEffect;
-import dev.xkmc.lostlegends.modules.deepnether.effect.ReaperCurseEffect;
+import dev.xkmc.lostlegends.modules.deepnether.effect.FlameCurseEffect;
 import dev.xkmc.lostlegends.modules.deepnether.effect.SoulDrainEffect;
 import dev.xkmc.lostlegends.modules.item.init.LLEquipments;
 import net.minecraft.core.registries.Registries;
@@ -19,7 +20,7 @@ import net.minecraft.world.item.alchemy.Potions;
 public class DNEffects extends LLRegBase {
 
 	public final SimpleEntry<MobEffect> SOUL_DRAIN, SOUL_SHELTER, LAVA_AFFINITY, ASH_BOUND, LAVA_WALKER,
-			REAPER_CURSE;
+			FLAME_CURSE, DEATH_CURSE;
 
 
 	public DNEffects(L2Registrate reg, String path) {
@@ -54,9 +55,14 @@ public class DNEffects extends LLRegBase {
 
 		LostLegends.REGISTRATE.addRegisterCallback(Registries.ITEM, () -> builder.regTab(LLEquipments.TAB.key()));
 
-		REAPER_CURSE = new SimpleEntry<>(reg.effect("reaper_curse",
-						() -> new ReaperCurseEffect(MobEffectCategory.HARMFUL, 0xFF0000),
+		FLAME_CURSE = new SimpleEntry<>(reg.effect("flame_curse",
+						() -> new FlameCurseEffect(MobEffectCategory.HARMFUL, 0xFF0000),
 						"Spawns nether slime on hurt")
+				.lang(MobEffect::getDescriptionId, "Reaper Curse").register());
+
+		DEATH_CURSE = new SimpleEntry<>(reg.effect("death_curse",
+						() -> new DeathCurseEffect(MobEffectCategory.HARMFUL, 0x000000),
+						"Spawns putrid slime on hurt")
 				.lang(MobEffect::getDescriptionId, "Reaper Curse").register());
 
 	}

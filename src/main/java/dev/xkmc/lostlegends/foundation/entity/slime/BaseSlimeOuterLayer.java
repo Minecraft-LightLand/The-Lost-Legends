@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.base;
+package dev.xkmc.lostlegends.foundation.entity.slime;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -16,16 +16,16 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class NetherSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T, NetherSlimeModel<T>> {
+public class BaseSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<T, BaseSlimeModel<T>> {
 	private final EntityModel<T> model;
 
-	public NetherSlimeOuterLayer(RenderLayerParent<T, NetherSlimeModel<T>> parent, EntityModelSet set) {
-		this(parent, set, NetherSlimeModel.OUTER);
+	public BaseSlimeOuterLayer(RenderLayerParent<T, BaseSlimeModel<T>> parent, EntityModelSet set) {
+		this(parent, set, BaseSlimeModel.OUTER);
 	}
 
-	public NetherSlimeOuterLayer(RenderLayerParent<T, NetherSlimeModel<T>> parent, EntityModelSet set, ModelLayerLocation loc) {
+	public BaseSlimeOuterLayer(RenderLayerParent<T, BaseSlimeModel<T>> parent, EntityModelSet set, ModelLayerLocation loc) {
 		super(parent);
-		this.model = new NetherSlimeModel<>(set.bakeLayer(loc));
+		this.model = new BaseSlimeModel<>(set.bakeLayer(loc));
 	}
 
 	public void render(

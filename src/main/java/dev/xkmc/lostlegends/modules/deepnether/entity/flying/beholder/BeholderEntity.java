@@ -2,9 +2,9 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
 import dev.xkmc.l2magic.content.engine.spell.SpellAction;
 import dev.xkmc.lostlegends.init.LostLegends;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerAttackGoal;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.base.FlyerHurtByTargetGoal;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.floating.BaseFloatingEntity;
+import dev.xkmc.lostlegends.foundation.entity.flying.FlyerAttackGoal;
+import dev.xkmc.lostlegends.foundation.entity.flying.FlyerHurtByTargetGoal;
+import dev.xkmc.lostlegends.foundation.entity.floating.BaseFloatingEntity;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
