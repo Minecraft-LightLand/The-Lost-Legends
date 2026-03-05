@@ -87,7 +87,9 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 		double dy = diff.y;
 		if (dy < 3) {
 			strafeUp = 0.5f;
-		} else if (dy > 5) {
+		} else if (dy > 7) {
+			strafeUp = -0.5f;
+		} else if (strafeUp > 0 && dy > 5 || strafeUp < 0 && dy < 5) {
 			strafeUp = 0;
 		}
 		if (strafingTime >= 20) {

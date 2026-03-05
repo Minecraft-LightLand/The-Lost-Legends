@@ -98,19 +98,19 @@ public class ReaperModelData {
 
 		PartDefinition Lower_Eyelid = Eye_Dominant.addOrReplaceChild("Lower_Eyelid", CubeListBuilder.create().texOffs(0, 29).addBox(-8.0F, -1.0F, -15.0F, 16.0F, 4.0F, 16.0F, new CubeDeformation(0.01F)), PartPose.offset(0.0F, 2.0F, 7.0F));
 
-		PartDefinition Right_Eye_Secondary = Head.addOrReplaceChild("Right_Eye_Secondary", CubeListBuilder.create(), PartPose.offset(-17.0F, 0.0F, 2.0F));
+		PartDefinition Right_Eye_Secondary = Head.addOrReplaceChild("Right_Eye_Secondary", CubeListBuilder.create(), PartPose.offset(-8.0F, 0.0F, 2.0F));
 
 		PartDefinition Right_Eyelid = Right_Eye_Secondary.addOrReplaceChild("Right_Eyelid", CubeListBuilder.create().texOffs(0, 98).addBox(-3.5F, -1.0F, -3.5F, 7.0F, 2.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 85).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+				.texOffs(0, 85).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-9.0F, 0.0F, 0.0F));
 
-		PartDefinition Right_Eye_Infarction = Right_Eye_Secondary.addOrReplaceChild("Right_Eye_Infarction", CubeListBuilder.create().texOffs(57, 0).addBox(-2.0F, -6.0F, 0.0F, 16.0F, 17.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition Right_Eye_Infarction = Right_Eye_Secondary.addOrReplaceChild("Right_Eye_Infarction", CubeListBuilder.create().texOffs(57, 0).addBox(-2.0F, -6.0F, 0.0F, 16.0F, 17.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(-9.0F, 0.0F, 0.0F));
 
-		PartDefinition Left_Eye_Secondary = Head.addOrReplaceChild("Left_Eye_Secondary", CubeListBuilder.create(), PartPose.offset(17.0F, 0.0F, 2.0F));
+		PartDefinition Left_Eye_Secondary = Head.addOrReplaceChild("Left_Eye_Secondary", CubeListBuilder.create(), PartPose.offset(8.0F, 0.0F, 2.0F));
 
 		PartDefinition Left_Eyelid = Left_Eye_Secondary.addOrReplaceChild("Left_Eyelid", CubeListBuilder.create().texOffs(0, 98).mirror().addBox(-3.5F, -1.0F, -3.5F, 7.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false)
-				.texOffs(0, 85).mirror().addBox(-3.0F, -6.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 0.0F, 0.0F));
+				.texOffs(0, 85).mirror().addBox(-3.0F, -6.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(9.0F, 0.0F, 0.0F));
 
-		PartDefinition Left_Eye_infarction = Left_Eye_Secondary.addOrReplaceChild("Left_Eye_infarction", CubeListBuilder.create().texOffs(57, 0).mirror().addBox(-14.0F, -6.0F, 0.0F, 16.0F, 17.0F, 0.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition Left_Eye_infarction = Left_Eye_Secondary.addOrReplaceChild("Left_Eye_infarction", CubeListBuilder.create().texOffs(57, 0).mirror().addBox(-14.0F, -6.0F, 0.0F, 16.0F, 17.0F, 0.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(9.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
