@@ -21,10 +21,10 @@ public class FlameCurseEffect extends MobEffect {
 	@Override
 	public void onMobHurt(LivingEntity e, int amplifier, DamageSource source, float amount) {
 		if (source.getEntity() == null && amount <= 2) return;
-		this.spawnSilverfish(e.level(), e, amplifier, e.getX(), e.getY() + (double) e.getBbHeight() / 2.0, e.getZ());
+		this.spawnSlime(e.level(), e, amplifier, e.getX(), e.getY() + (double) e.getBbHeight() / 2.0, e.getZ());
 	}
 
-	private void spawnSilverfish(Level level, LivingEntity e, int amp, double x, double y, double z) {
+	private void spawnSlime(Level level, LivingEntity e, int amp, double x, double y, double z) {
 		var slime = DeepNether.ENTITY.NETHER_SLIME.create(level);
 		if (slime != null) {
 			RandomSource r = e.getRandom();
@@ -33,6 +33,7 @@ public class FlameCurseEffect extends MobEffect {
 			slime.moveTo(x, y, z, level.getRandom().nextFloat() * 360, 0);
 			slime.setDeltaMovement(new Vec3(dir));
 			slime.setSize(amp + 1, true);
+			slime.setLastHurtByMob(e);
 			slime.setTarget(e);
 			level.addFreshEntity(slime);
 			slime.playSound(SoundEvents.MAGMA_CUBE_SQUISH);

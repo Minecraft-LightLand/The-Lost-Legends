@@ -133,6 +133,9 @@ public abstract class BaseSlime extends Slime {
 	public abstract ResourceLocation getTexture();
 
 	public void onDeathSplit(List<Mob> children) {
+		for (var e : children) {
+			e.setLastHurtByMob(getLastHurtByMob());
+		}
 	}
 
 }

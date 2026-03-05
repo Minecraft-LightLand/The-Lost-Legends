@@ -129,19 +129,19 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 			if (!see && seeTime < -60) {
 				stopAttack();
 				inAttack = false;
-			} else if (see) {
-				if (checkPerformAttack(target)) {
-					attackTime = getWaitTime();
-					inAttack = false;
-				}
-			}
-		} else if (--attackTime <= 0 && seeTime >= -60 && reach) {
-			startAttack(target);
-			inAttack = true;
-			if (mob.getMoveControl() instanceof FloaterMoveControl ctrl) ctrl.stop();
-		} else {
-			mob.getLookControl().setLookAt(target, 30, 30);
+			} else if (checkPerformAttack(target)) {
+				attackTime = getWaitTime();
+				inAttack = false;
+			} else return;
 		}
+		if (--attackTime <= 0 && seeTime >= -60 && reach) {
+			if (startAttack(target)) {
+				inAttack = true;
+				if (mob.getMoveControl() instanceof FloaterMoveControl ctrl) ctrl.stop();
+				return;
+			}
+		}
+		mob.getLookControl().setLookAt(target, 30, 30);
 	}
 
 	protected int getWaitTime() {
@@ -152,6 +152,6 @@ public abstract class FloaterStrafingAttackGoal extends Goal {
 
 	protected abstract void stopAttack();
 
-	protected abstract void startAttack(LivingEntity target);
+	protected abstract boolean startAttack(LivingEntity target);
 
 }

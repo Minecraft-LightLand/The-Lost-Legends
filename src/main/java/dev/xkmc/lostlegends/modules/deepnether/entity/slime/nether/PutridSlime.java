@@ -73,6 +73,7 @@ public class PutridSlime extends BaseAbsorbingSlime {
 
 	@Override
 	public void onDeathSplit(List<Mob> children) {
+		super.onDeathSplit(children);
 		int size = getSize();
 		if (size <= 0) return;
 		int n = children.size();

@@ -42,7 +42,8 @@ public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 	}
 
 	protected boolean wouldAttackOnTouch(Entity e) {
-		return super.wouldAttackOnTouch(e) || e instanceof Slime s && wantToAbsorb() && mayAbsorbSlime(s);
+		return super.wouldAttackOnTouch(e) || e instanceof Slime s && wantToAbsorb() && (mayAbsorbSlime(s) ||
+				s.getType() == getType() && getSize() >= s.getSize() && getHealth() >= s.getHealth());
 	}
 
 	protected boolean mayAbsorbSlime(Slime n) {
@@ -88,7 +89,7 @@ public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 			if (size < getSize()) {
 				setSize(size, false);
 			}
-			float ratio = (old - health) / getMaxHealth() * current;
+			float ratio = (old - health) / max * current;
 			splitOnHurt(size, ratio, source);
 		}
 	}
@@ -110,6 +111,7 @@ public abstract class BaseAbsorbingSlime extends BaseNetherSlime {
 		e.setNoAi(isNoAi());
 		e.setInvulnerable(isInvulnerable());
 		e.setSize(ans, true);
+		e.setLastHurtByMob(getLastHurtByMob());
 		s.maxSize = 0;
 		e.moveTo(getX(), getY() + getBbHeight(), getZ(), random.nextFloat() * 360, 0);
 		if (EventHooks.onMobSplit(this, List.of(e)).isCanceled()) return;

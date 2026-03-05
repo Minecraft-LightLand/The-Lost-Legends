@@ -107,6 +107,7 @@ public class PigSlime extends BaseSlime {
 
 	@Override
 	public void onDeathSplit(List<Mob> children) {
+		super.onDeathSplit(children);
 		int factor = 0;
 		if (children.size() > 1) {
 			children.remove(random.nextInt(children.size()));

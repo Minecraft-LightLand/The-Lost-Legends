@@ -97,8 +97,9 @@ public class ReaperBurstSpell extends LLSpellGenEntry {
 	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
 		return new ListLogic(List.of(
 				BeholderUtils.warn(ctx, 30, 0xFFFF0000, 30),
-				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 40),
-				new DelayedIterator(IntVariable.of("20"), IntVariable.of("2"),
+				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME),
+						40, 3, 2, 10, 0.15),
+				new DelayedIterator(IntVariable.of("10"), IntVariable.of("2"),
 						new ListLogic(List.of(
 								new SoundInstance(
 										SoundEvents.FIRECHARGE_USE,

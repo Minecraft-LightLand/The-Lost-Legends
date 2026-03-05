@@ -1,13 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
-import dev.xkmc.l2magic.content.engine.spell.SpellAction;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.spell.ai.MobSpellEntry;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.FlameBeholderSpell;
-import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class FlamingBeholderEntity extends BeholderEntity {
 
@@ -15,14 +14,14 @@ public class FlamingBeholderEntity extends BeholderEntity {
 		super(type, level);
 	}
 
-	@Override
-	public ResourceKey<SpellAction> getSpell() {
-		return FlameBeholderSpell.SPELL;
+
+	private static final MobSpellEntry<BeholderEntity> SPELL = new MobSpellEntry<>(FlameBeholderSpell.SPELL, e -> true, 100, 30);
+
+	@Nullable
+	public MobSpellEntry<? extends BeholderEntity> getSpell() {
+		return SPELL;
 	}
 
-	public int spellDuration() {
-		return 30;
-	}
 
 	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder/flaming_beholder.png");
 

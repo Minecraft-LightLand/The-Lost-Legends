@@ -8,6 +8,7 @@ import dev.xkmc.lostlegends.modules.spell.mob.beholder.FlameBeholderSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperBombSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperBurstSpell;
+import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperShootSpell;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class LLSpellGen {
 			new PoisonBeholderSpell(),
 			new FlameBeholderSpell(),
 			new ReaperBombSpell(),
-			new ReaperBurstSpell()
+			new ReaperBurstSpell(),
+			new ReaperShootSpell()
 	);
 
 	public static void gatherData(GatherDataEvent event) {

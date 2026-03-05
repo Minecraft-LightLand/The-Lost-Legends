@@ -38,7 +38,7 @@
                                   },
                                   "renderer": {
                                     "type": "l2magic:simple",
-                                    "particle": "minecraft:flame",
+                                    "particle": "minecraft:end_rod",
                                     "renderType": "LIT"
                                   },
                                   "scale": "0.15",

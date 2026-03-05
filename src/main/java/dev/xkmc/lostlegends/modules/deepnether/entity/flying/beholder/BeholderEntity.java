@@ -1,13 +1,12 @@
 package dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder;
 
-import dev.xkmc.l2magic.content.engine.spell.SpellAction;
 import dev.xkmc.lostlegends.foundation.entity.floating.BaseFloatingEntity;
 import dev.xkmc.lostlegends.foundation.entity.flying.FlyerAttackGoal;
 import dev.xkmc.lostlegends.foundation.entity.flying.FlyerHurtByTargetGoal;
 import dev.xkmc.lostlegends.init.LostLegends;
+import dev.xkmc.lostlegends.modules.spell.ai.MobSpellEntry;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -20,6 +19,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import org.jetbrains.annotations.Nullable;
 
 public class BeholderEntity extends BaseFloatingEntity {
 
@@ -67,21 +67,17 @@ public class BeholderEntity extends BaseFloatingEntity {
 				this, IronGolem.class, true));
 	}
 
-	public ResourceKey<SpellAction> getSpell() {
-		return BeholderSpell.SPELL;
+	private static final MobSpellEntry<BeholderEntity> SPELL = new MobSpellEntry<>(BeholderSpell.SPELL, e -> true, 100, 20);
+
+	@Nullable
+	public MobSpellEntry<? extends BeholderEntity> getSpell() {
+		return SPELL;
 	}
 
 	public static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/beholder/beholder.png");
 
 	public ResourceLocation getTexture() {
 		return TEX;
-	}
-
-	public int spellDuration() {
-		return 20;
-	}
-
-	protected void afterInvokeSpell() {
 	}
 
 }

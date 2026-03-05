@@ -28,16 +28,18 @@ public class BeholderAttackGoal extends FloaterStrafingAttackGoal implements Mot
 	}
 
 	@Override
-	protected void startAttack(LivingEntity target) {
+	protected boolean startAttack(LivingEntity target) {
 		attackTick = 0;
-		attackDelay = beholder.spellDuration();
-		var key = beholder.getSpell();
-		var spell = mob.level().registryAccess().holderOrThrow(key);
+		attackDelay = 0;
+		var entry = beholder.getSpell();
+		if (entry == null) return false;
+		attackDelay = entry.duration();
+		var spell = mob.level().registryAccess().holderOrThrow(entry.spell());
 		var ctx = SpellContext.castSpell(mob, spell.value(), 0, 1, 64, 0);
 		if (ctx != null && !mob.level().isClientSide()) {
 			spell.value().execute(spell, ctx);
 		}
-		beholder.afterInvokeSpell();
+		return true;
 	}
 
 	@Override
