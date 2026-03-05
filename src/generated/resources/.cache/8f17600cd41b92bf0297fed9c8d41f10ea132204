@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-05T14:41:07.862699	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2026-03-05T16:05:08.471774	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -394,7 +394,7 @@ ca6e14ee9adc30ba97d0d1b0e59af04584b55ccd data/lostlegends/l2magic/projectile/poi
 016def89da731e1fa49d4aebbf40a747493ee7bc data/lostlegends/l2magic/spell_action/beholder_magic.json
 a18424721d22283f2f1e3c15692cfa58de31c829 data/lostlegends/l2magic/spell_action/flaming_beholder_magic.json
 f8800ea6d5cbfd7faa839395d212f19eda57061f data/lostlegends/l2magic/spell_action/poison_beholder_magic.json
-b140a2531ab3d53db5487df12db1ae798e868ff6 data/lostlegends/l2magic/spell_action/reaper_bomb_magic.json
+ce9c188df252770e48e0253c3ef251d026cee1ad data/lostlegends/l2magic/spell_action/reaper_bomb_magic.json
 016f3cc2b6e1a19a356248e877e9aeb14f7fc0bf data/lostlegends/l2magic/spell_action/reaper_burst_magic.json
 feaa14cfcf14e12febdd0452b7be7a0f1e613de8 data/lostlegends/loot_table/blocks/amarast_ore.json
 ab1bc1d399b6709b678d3b3d3582bcb7965a4987 data/lostlegends/loot_table/blocks/amber_magma.json

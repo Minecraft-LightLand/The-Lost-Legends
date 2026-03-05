@@ -55,23 +55,27 @@ public class BeholderUtils {
 	}
 
 	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur) {
-		return charge(ctx, charge, dur, 1, 10);
+		return charge(ctx, charge, dur, 1, 1, 10, 0.05);
 	}
 
-	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur, double radius, int moveTime) {
+	public static ConfiguredEngine<?> charge(DataGenContext ctx, ParticleRenderData<?> charge, int dur, int count, double radius, int moveTime, double size) {
+		var ins = new CustomParticleInstance(
+				DoubleVariable.of("-" + (radius / moveTime)),
+				DoubleVariable.of("" + size),
+				IntVariable.of(moveTime + "+min(10," + dur + "-i)"),
+				false,
+				new StopMotion(BooleanVariable.of("TickCount>=" + (moveTime - 1))),
+				charge
+		).move(
+				new Dir2NormalModifier(),
+				RotationModifier.of("rand(0,360)"),
+				ForwardOffsetModifier.of("" + radius)
+		);
+		if (count > 1) {
+			ins = new LoopIterator(IntVariable.of("" + count), ins, null);
+		}
 		return new DelayedIterator(IntVariable.of("" + dur), IntVariable.of("1"),
-				new CustomParticleInstance(
-						DoubleVariable.of("-" + (radius / moveTime)),
-						DoubleVariable.of("0.05"),
-						IntVariable.of(moveTime + "+min(10," + dur + "-i)"),
-						false,
-						new StopMotion(BooleanVariable.of("TickCount>=" + (moveTime - 1))),
-						charge
-				).move(
-						new Dir2NormalModifier(),
-						RotationModifier.of("rand(0,360)"),
-						ForwardOffsetModifier.of("" + radius)
-				), "i"
+				ins, "i"
 		);
 	}
 

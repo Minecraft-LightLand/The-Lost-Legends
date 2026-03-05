@@ -15,12 +15,12 @@ public class ReaperUtils extends BeholderUtils {
 
 	public static ConfiguredEngine<?> spell(
 			DataGenContext ctx, int dist, int col, int moveTime,
-			int chargeMoveTime, double chargeRadius,
+			int count, int chargeMoveTime, double chargeRadius,
 			int delay,
 			Holder<ProjectileConfig> proj, ParticleRenderData<?> charge) {
 		return new ListLogic(List.of(
 				warn(ctx, dist, col, 20),
-				charge(ctx, charge, delay - chargeMoveTime, chargeRadius, chargeMoveTime),
+				charge(ctx, charge, delay - chargeMoveTime, count, chargeRadius, chargeMoveTime, 0.1),
 				shoot(ctx, dist, moveTime, proj).delay(IntVariable.of("" + delay))
 		));
 	}

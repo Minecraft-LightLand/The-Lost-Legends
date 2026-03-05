@@ -4,9 +4,10 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.l2magic.content.engine.context.DataGenContext;
 import dev.xkmc.l2magic.content.engine.core.ConfiguredEngine;
+import dev.xkmc.l2magic.content.engine.iterator.DelayedIterator;
 import dev.xkmc.l2magic.content.engine.logic.ListLogic;
 import dev.xkmc.l2magic.content.engine.modifier.ForwardOffsetModifier;
-import dev.xkmc.l2magic.content.engine.modifier.OffsetModifier;
+import dev.xkmc.l2magic.content.engine.modifier.RotationModifier;
 import dev.xkmc.l2magic.content.engine.modifier.SetDirectionModifier;
 import dev.xkmc.l2magic.content.engine.modifier.SetPosModifier;
 import dev.xkmc.l2magic.content.engine.particle.SimpleParticleInstance;
@@ -83,31 +84,31 @@ public class ReaperBombSpell extends LLSpellGenEntry {
 
 	private static ConfiguredEngine<?> spell(DataGenContext ctx) {
 		return new ListLogic(List.of(
-				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 60)
-						.move(OffsetModifier.of("0", "1", "0")),
+				BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 10, 3, 2, 20, 0.3),
 				new ListLogic(List.of(
-						BeholderUtils.charge(ctx, new SimpleParticleData(RenderTypePreset.LIT, ParticleTypes.FLAME), 20),
-						shoot(ctx, 1, 200, PROJ).delay(IntVariable.of("20"))
-				)).move(
-						SetPosModifier.of("CasterX", "CasterY+0.5", "CasterZ"),
-						SetDirectionModifier.of("vx*x/x0", "vy", "vx*z/x0"),
-						ForwardOffsetModifier.of("0.5")
-				).withVariables(
-						"d0", "sqrt(max(0,-g*g*x0*x0-2*y*g*v2+v2*v2))",
-						"vx", "x0/d*sqrt(max(0,v2-y*g-d0))/sqrt(2)",
-						"vy", "sqrt(v2-vx*vx)"
-				).withVariables(
-						"x0", "sqrt(x*x+z*z)",
-						"d", "sqrt(x*x+y*y+z*z)"
-				).withVariables(
-						"x", "CastX - CasterX",
-						"y", "CastY - (CasterY+0.5)",
-						"z", "CastZ - CasterZ"
-				).withVariables("v", "1", "v2", "1", "g", "0.03")
-		));
+						shoot(ctx, 40, PROJ),
+						new DelayedIterator(IntVariable.of("5"), IntVariable.of("2"),
+								shoot(ctx, 40, PROJ).move(RotationModifier.of("rand(-20,20)", "rand(-20,20)")),
+								null)
+				)).delay(IntVariable.of("20"))
+		)).move(
+				SetPosModifier.of("CasterX", "CasterY+1", "CasterZ"),
+				SetDirectionModifier.of("vx*x/x0", "vy", "vx*z/x0"),
+				ForwardOffsetModifier.of("0.5")
+		).withVariables(
+				"v", "sqrt(vx*vx+vy*vy)"
+		).withVariables(
+				"x0", "sqrt(x*x+z*z)",
+				"vx", "x0/t",
+				"vy", "y/t+g*t/2"
+		).withVariables(
+				"x", "PosX - CasterX",
+				"y", "PosY - CasterY",
+				"z", "PosZ - CasterZ"
+		).withVariables("t", "20", "g", "0.03");
 	}
 
-	public static ConfiguredEngine<?> shoot(DataGenContext ctx, double v, int time, Holder<ProjectileConfig> proj) {
+	public static ConfiguredEngine<?> shoot(DataGenContext ctx, int time, Holder<ProjectileConfig> proj) {
 
 		return new ListLogic(List.of(
 				new SoundInstance(
@@ -116,7 +117,7 @@ public class ReaperBombSpell extends LLSpellGenEntry {
 						DoubleVariable.of("1+rand(-0.1,0.1)+rand(-0.1,0.1)")
 				),
 				new CustomProjectileShoot(
-						DoubleVariable.of("" + v), proj,
+						DoubleVariable.of("v"), proj,
 						IntVariable.of("" + time),
 						false, false,
 						Map.of()
