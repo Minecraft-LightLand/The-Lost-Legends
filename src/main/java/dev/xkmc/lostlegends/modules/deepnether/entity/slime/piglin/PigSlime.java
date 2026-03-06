@@ -39,7 +39,7 @@ public class PigSlime extends BaseSlime {
 	}
 
 	@Override
-	protected int healthOfSize(int size) {
+	public int healthOfSize(int size) {
 		return size * size * size;
 	}
 

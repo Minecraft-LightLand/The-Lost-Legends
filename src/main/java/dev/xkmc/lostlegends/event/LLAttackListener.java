@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.init;
+package dev.xkmc.lostlegends.event;
 
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
@@ -17,7 +17,7 @@ public class LLAttackListener implements AttackListener {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void onCreateSource(CreateSourceEvent event) {
 		if (event.getAttacker() instanceof DamageModifierEntity e) {

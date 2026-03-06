@@ -52,10 +52,6 @@ public abstract class BaseNetherSlime extends BaseSlime implements LavaSwimEntit
 		return true;
 	}
 
-	protected int healthOfSize(int size) {
-		return size * Math.max(size, 4);
-	}
-
 	protected int damageOfSize(int size) {
 		return size * 2 + 1;
 	}

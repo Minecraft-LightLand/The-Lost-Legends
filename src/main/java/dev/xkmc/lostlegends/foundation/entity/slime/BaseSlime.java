@@ -27,7 +27,7 @@ public abstract class BaseSlime extends Slime {
 		super(type, level);
 	}
 
-	protected int healthOfSize(int size) {
+	public int healthOfSize(int size) {
 		return size * Math.max(size, 4);
 	}
 
