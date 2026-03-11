@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;// Made with Blockbench 5.0.7
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal;// Made with Blockbench 5.0.7
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
@@ -14,8 +14,8 @@ import net.minecraft.util.Mth;
 
 public class PigSlimeModel {
 
-	public static final ModelLayerLocation INNER = new ModelLayerLocation(LostLegends.loc("pigslime"), "main");
-	public static final ModelLayerLocation OUTER = new ModelLayerLocation(LostLegends.loc("pigslime"), "outer");
+	public static final ModelLayerLocation INNER = new ModelLayerLocation(LostLegends.loc("pig_slime"), "main");
+	public static final ModelLayerLocation OUTER = new ModelLayerLocation(LostLegends.loc("pig_slime"), "outer");
 
 	public static LayerDefinition createInner() {
 		MeshDefinition meshdefinition = new MeshDefinition();

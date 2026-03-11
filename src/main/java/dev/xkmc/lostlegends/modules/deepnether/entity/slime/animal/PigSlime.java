@@ -1,4 +1,4 @@
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal;
 
 import dev.xkmc.l2core.init.reg.ench.EnchHelper;
 import dev.xkmc.lostlegends.init.LostLegends;

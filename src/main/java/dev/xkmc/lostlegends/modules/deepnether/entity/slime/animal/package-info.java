@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin;
+package dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

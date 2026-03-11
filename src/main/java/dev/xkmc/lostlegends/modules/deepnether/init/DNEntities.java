@@ -13,8 +13,8 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEnt
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlimeModel;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal.PigSlime;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal.PigSlimeModel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -66,7 +66,7 @@ public class DNEntities extends LLRegBase {
 				.spawnEgg(0x231F1F, 0x53718F).build()
 				.register();
 
-		PIGSLIME = reg.entity("pigslime", PigSlime::new, MobCategory.MONSTER)
+		PIGSLIME = reg.entity("pig_slime", PigSlime::new, MobCategory.MONSTER)
 				.renderer(() -> PigSlimeModel::createRenderer)
 				.attributes(PigSlime::createAttributes)
 				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
