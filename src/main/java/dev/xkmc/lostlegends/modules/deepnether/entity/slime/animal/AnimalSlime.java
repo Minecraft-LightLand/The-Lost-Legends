@@ -5,6 +5,7 @@ import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlime;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -93,6 +94,14 @@ public abstract class AnimalSlime extends BaseSlime {
 	public void setHealth(float p_21154_) {
 		super.setHealth(p_21154_);
 		refreshDimensions();
+	}
+
+	@Override
+	public void onSyncedDataUpdated(EntityDataAccessor<?> p_33609_) {
+		super.onSyncedDataUpdated(p_33609_);
+		if (DATA_HEALTH_ID.equals(p_33609_)) {
+			this.refreshDimensions();
+		}
 	}
 
 	@Override

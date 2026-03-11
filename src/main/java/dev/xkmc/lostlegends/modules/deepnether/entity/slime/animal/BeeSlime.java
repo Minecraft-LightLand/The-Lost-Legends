@@ -78,7 +78,7 @@ public class BeeSlime extends AnimalSlime {
 		return Items.HONEY_BLOCK.getDefaultInstance();
 	}
 
-	private static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/sheep_slime.png");
+	private static final ResourceLocation TEX = LostLegends.loc("textures/entity/deepnether/bee_slime.png");
 
 	@Override
 	public ResourceLocation getTexture() {

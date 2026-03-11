@@ -22,12 +22,12 @@ public class PigSlimeModel {
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create(),
-				PartPose.offsetAndRotation(0.0F, 26.0F, 0.0F, 0, Mth.PI, 0));
+				PartPose.offsetAndRotation(0.0F, 0F, 0.0F, 0, Mth.PI, 0));
 
 		PartDefinition Core = Head.addOrReplaceChild("Core", CubeListBuilder.create()
 						.texOffs(0, 33).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
 						.texOffs(0, 50).addBox(-2.0F, 0.0F, 3.0F, 4.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0, -8, -0));
+				PartPose.offset(0, 18, -0));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
@@ -47,7 +47,7 @@ public class PigSlimeModel {
 	}
 
 	public static EntityRenderer<? super PigSlime> createRenderer(EntityRendererProvider.Context ctx) {
-		return new BaseSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
+		return new AnimalSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
 	}
 
 }

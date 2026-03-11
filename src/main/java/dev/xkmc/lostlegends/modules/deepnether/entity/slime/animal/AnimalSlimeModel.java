@@ -15,7 +15,9 @@ public class AnimalSlimeModel<T extends BaseSlime> extends BaseSlimeModel<T> {
 
 	@Override
 	public void setupAnim(T e, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		core.xScale = core.yScale = core.zScale = 1 / (0.75f + 0.25f * e.getHealth() / e.getMaxHealth());
+		var r = (0.75f + 0.25f * e.getHealth() / e.getMaxHealth());
+		core.resetPose();
+		core.xScale = core.yScale = core.zScale = 1 / r;
 	}
 
 }

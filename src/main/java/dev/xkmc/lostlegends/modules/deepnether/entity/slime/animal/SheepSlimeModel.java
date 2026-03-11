@@ -20,11 +20,11 @@ public class SheepSlimeModel {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create(), PartPose.offset(0.0F, 26.0F, 0.0F));
+		PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		PartDefinition Core = Head.addOrReplaceChild("Core", CubeListBuilder.create().texOffs(0, 33)
 				.addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, -8.0F, 0.0F));
+				PartPose.offset(0.0F, 18.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
@@ -41,7 +41,7 @@ public class SheepSlimeModel {
 	}
 
 	public static EntityRenderer<? super SheepSlime> createRenderer(EntityRendererProvider.Context ctx) {
-		return new BaseSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
+		return new AnimalSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
 	}
 
 }
