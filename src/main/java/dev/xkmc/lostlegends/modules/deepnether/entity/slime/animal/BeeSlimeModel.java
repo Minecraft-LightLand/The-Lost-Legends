@@ -23,13 +23,13 @@ public class BeeSlimeModel {
 
 		PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create(), PartPose.offset(0.0F, 26.0F, 0.0F));
 
-		PartDefinition Core = Head.addOrReplaceChild("Core", CubeListBuilder.create().texOffs(0, 33).addBox(-7.0F, -8.0F, -1.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, -4.0F, -3.0F));
+		PartDefinition Core = Head.addOrReplaceChild("Core", CubeListBuilder.create().texOffs(0, 33).addBox(-6.0F, -8.0F, -1.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, -4.0F, -3.0F));
 
-		PartDefinition Right_Tentacles = Core.addOrReplaceChild("Right_Tentacles", CubeListBuilder.create().texOffs(0, 48).addBox(-5.0F, -8.0F, -3.0F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition Right_Tentacles = Core.addOrReplaceChild("Right_Tentacles", CubeListBuilder.create().texOffs(0, 48).addBox(-5.0F, -8.0F, -3.0F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, 0.0F, 0.0F));
 
-		PartDefinition Left_Tentacles = Core.addOrReplaceChild("Left_Tentacles", CubeListBuilder.create().texOffs(0, 48).mirror().addBox(5.0F, -8.0F, -3.0F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-6.0F, 0.0F, 0.0F));
+		PartDefinition Left_Tentacles = Core.addOrReplaceChild("Left_Tentacles", CubeListBuilder.create().texOffs(0, 48).mirror().addBox(5.0F, -8.0F, -3.0F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-5.0F, 0.0F, 0.0F));
 
-		PartDefinition Sting = Core.addOrReplaceChild("Sting", CubeListBuilder.create().texOffs(5, 47).addBox(-3.0F, -5.5F, 6.0F, 0.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition Sting = Core.addOrReplaceChild("Sting", CubeListBuilder.create().texOffs(5, 47).addBox(-3.0F, -5.5F, 6.0F, 0.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}

@@ -31,7 +31,7 @@ import java.util.Set;
 public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, TWISTONE, DENSE_BONE, ASH_STONE,
-			NETHER_SOIL, DEMENTING_SOIL, SOUL_SHELL, SCORCHED_NETHERRACK;
+			NETHER_SOIL, DEMENTING_SOIL, SOUL_SHELL, SCORCHED_NETHERRACK, GRAVELSTONE, INSCRIBED_GRAVELSTONE;
 
 	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM, GOLDEN_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
@@ -196,8 +196,27 @@ public class DNBlocks extends LLRegBase {
 					.simpleItem()
 					.shardLoot(() -> DeepNether.ITEMS.DARK_COBBLE.get(), 2, 4)
 					.register();
+
+			GRAVELSTONE = block("gravelstone", Block::new)
+					.prop(MapColor.COLOR_GRAY, SoundType.STONE).strength(1f)
+					.cubeAll().pickaxe()
+					.tag(BlockTags.BASE_STONE_NETHER)
+					.simpleItem()
+					.itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
+					.register();
+
+			INSCRIBED_GRAVELSTONE = block("inscribed_gravelstone", Block::new)
+					.prop(MapColor.COLOR_GRAY, SoundType.STONE).strength(2f)
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models()
+							.cubeTop(ctx.getName(),
+									pvd.modLoc("block/" + path + "/gravelstone"),
+									pvd.modLoc("block/" + path + "/" + ctx.getName()))))
+					.pickaxe()
+					.simpleItem()
+					.register();
 		}
 
+		// nether jade
 		{
 			NETHERJADE = block("netherjade", Block::new)
 					.prop(MapColor.COLOR_BLACK, SoundType.STONE).strength(50, 1200)

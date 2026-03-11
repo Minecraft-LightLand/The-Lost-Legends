@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-11T14:31:08.886172	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2026-03-11T16:02:15.172518	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -42,9 +42,11 @@ aa8ad7bb88f3ef68cc1d548865d8d2f330790861 assets/lostlegends/blockstates/deep_net
 f0d5a9b0ffaf941ff8c4a8169c0e2df04e407d22 assets/lostlegends/blockstates/ectoplasm_bricks.json
 b9d4220fcb26b76ba1b02264cf33d94673ef4b57 assets/lostlegends/blockstates/ghoshroom.json
 a04518b65a877495f7bc6d110b76c3e25593ad10 assets/lostlegends/blockstates/golden_mycelium.json
+ff13999649ff4dbca0e4a06a120a1cc6551b148a assets/lostlegends/blockstates/gravelstone.json
 8d6014e4dc20f12b6b67d1fd533849cecfb6b9e5 assets/lostlegends/blockstates/hearth_ore.json
 6a3e47466746df26a65ac4474f1837d8f99246ed assets/lostlegends/blockstates/hearthroom.json
 61540e45c3095e75f3c44451ba9b65110144a493 assets/lostlegends/blockstates/horned_ghoshroom.json
+54c69ebeeae0af91c686d8eed7591275b3050023 assets/lostlegends/blockstates/inscribed_gravelstone.json
 9379b09395b0e29116ccef1e5fde753a603ef7bc assets/lostlegends/blockstates/large_hearthroom.json
 d724e1aa948574b06076aec8543b200c7ff0c49a assets/lostlegends/blockstates/lava_portal.json
 7f39717b8fb518390077c39844250247533d5a89 assets/lostlegends/blockstates/liquid_soul.json
@@ -82,8 +84,8 @@ f646be5ab920c0f5658be50774c62ace8836a682 assets/lostlegends/blockstates/twistone
 9ddef886a8613c84ecce676c2bccc55221dfd15d assets/lostlegends/blockstates/weeping_netherjade.json
 571bf6efbc26a764ee51a4e5300e5cedcbe96709 assets/lostlegends/blockstates/weeping_rust.json
 ca2d31a97028ac0971612e049c99216226f60a87 assets/lostlegends/blockstates/weeping_sand.json
-eac17b1be8a0316da6c2062e743d4962894bccce assets/lostlegends/lang/en_ud.json
-66e80e55e4f038600d8b2dcffee320ad28461b0f assets/lostlegends/lang/en_us.json
+6ff6c7f51921e71d2070701b4e5fd1ea47876c51 assets/lostlegends/lang/en_ud.json
+c49ef5d6f21823f343b138e096107e82e7a90a9a assets/lostlegends/lang/en_us.json
 528e08fb8accc8773ea426f20982080ffdda3ec1 assets/lostlegends/models/block/amarast_ore.json
 5f6c90342712b0a459f6596b485c306b1d13982c assets/lostlegends/models/block/amber_magma.json
 3c6777a6dcd5ff39a26dcd694d4572c57508b42e assets/lostlegends/models/block/amber_magma_bricks.json
@@ -153,10 +155,12 @@ c55a03fb1cad808ef450baf336031ee13646754b assets/lostlegends/models/block/ectopla
 d920bdc067dd357eda6453e00a26cbb5dff07e34 assets/lostlegends/models/block/ghoshroom.json
 34dd30339cbae3bf9326c9e484e457a538b85bcb assets/lostlegends/models/block/ghoshroom_small.json
 d9ced40f1553961637adb7095ce400fd0655fdd9 assets/lostlegends/models/block/golden_mycelium.json
+b8788572cc93b588f8d212db848b1855f170474f assets/lostlegends/models/block/gravelstone.json
 1518ddac763e6eefaddf9d5d88d4ea5072d92175 assets/lostlegends/models/block/hearth_ore.json
 dff05ef56836ae8ef9829ffd64c9dda5c4a48791 assets/lostlegends/models/block/hearthroom.json
 0fa87b508d65484a53f7fc027fbf698494adb442 assets/lostlegends/models/block/hearthroom_small.json
 2a363137b67f17952dbc910f982e3ae1ca238905 assets/lostlegends/models/block/horned_ghoshroom.json
+5f070cab2e05b1b8428fdfa0da185123deaecb58 assets/lostlegends/models/block/inscribed_gravelstone.json
 ab762075b5036b8ac67d65ac3eba472a78a332a8 assets/lostlegends/models/block/large_hearthroom.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/lostlegends/models/block/lava_portal.json
 61642c2bc310fba96c7908d64a2aee5b68b03ec8 assets/lostlegends/models/block/liquid_soul.json
@@ -260,10 +264,12 @@ c2eed7e16c13cc94461eec54ffc8e76fbd7a3ac9 assets/lostlegends/models/item/ectoplas
 125e6b9b245b071de57691a162f581a3548e5a2b assets/lostlegends/models/item/glorious_ingot.json
 bf60f4f64e575914861ce4b4c6c44b596fb728c6 assets/lostlegends/models/item/gold_debris.json
 81ab77fe96f61d042733544f713273d51fb2c58c assets/lostlegends/models/item/golden_mycelium.json
+3857e6efb80e9441f5b52ec9286da31d9932d2f6 assets/lostlegends/models/item/gravelstone.json
 6956935b81fd351cac0549f3c4d376984fa5ebbc assets/lostlegends/models/item/hearth_crystal.json
 d327e51fbc471d553077ad83a6e68499ae49e8cd assets/lostlegends/models/item/hearth_ore.json
 8ecb9d7918f2203210e4b7792b5803ba566642f7 assets/lostlegends/models/item/hearthroom.json
 065173693e6ae724ffa82b286a289fd6f768945f assets/lostlegends/models/item/horned_ghoshroom.json
+d711fb0c726c3e57530ad7a3a45bd2a213a3731a assets/lostlegends/models/item/inscribed_gravelstone.json
 38859c9e61b3d2b4749fb5840b6aa894bed1f77b assets/lostlegends/models/item/large_hearthroom.json
 b91d75972e63686016a2c5f29f0c0e19c450dd8d assets/lostlegends/models/item/liquid_soul_bucket.json
 dabb74f825cbb11294649befda2585be807d1e7b assets/lostlegends/models/item/maze_wall.json
@@ -446,9 +452,11 @@ da0e7be46238073ae1cb33702258989d29878e60 data/lostlegends/loot_table/blocks/deme
 9aadde377adc3d2783ff7690a203b41ccc7c1e3d data/lostlegends/loot_table/blocks/ectoplasm_bricks.json
 bcd9603cb49496e6dc6e8cc52a3be5c7da7f0d9a data/lostlegends/loot_table/blocks/ghoshroom.json
 f2813057ff651b48f3b5e0ac7040d3fb30e97477 data/lostlegends/loot_table/blocks/golden_mycelium.json
+2a9fe6bd3d72c1715471046993e7650892ef88ae data/lostlegends/loot_table/blocks/gravelstone.json
 b59f4c5be80cae82742e42f30f6a02e6f1c11f02 data/lostlegends/loot_table/blocks/hearth_ore.json
 77156e58dfecba4b2b0d0256e51dd73b60266a92 data/lostlegends/loot_table/blocks/hearthroom.json
 4904fff910c5fb9529a817f2d92937cbb0dd8e79 data/lostlegends/loot_table/blocks/horned_ghoshroom.json
+0f5dcf362c616295d806f877328e2e47903e2ce3 data/lostlegends/loot_table/blocks/inscribed_gravelstone.json
 11563b6e506ededcea81ae088d43758fc1fef325 data/lostlegends/loot_table/blocks/large_hearthroom.json
 29bf79180670d68b41d83e9682947524a7e9d5da data/lostlegends/loot_table/blocks/lava_portal.json
 3cbcffb3d848067d20dbfdfa244f5ddb47b4810d data/lostlegends/loot_table/blocks/nether_soil.json
@@ -674,13 +682,13 @@ a710a99e1a60434e5da658023ed35c3e363488b7 data/lostlegends/worldgen/placed_featur
 d4bdc961d76f544a8d9b6fdcc37a186e3c285e34 data/lostlegends/worldgen/placed_feature/deepnether/vegetation/weeping_vines_sparse.json
 4a14c67deb428964c89ded1d4c0927be75713051 data/lostlegends/worldgen/structure/maze.json
 a5736646445e6290798a1f2bee4d66324eb7bb21 data/lostlegends/worldgen/structure_set/maze.json
-2c6dd113cf091d28edd1573b9a0e8379ab4333d2 data/minecraft/tags/block/base_stone_nether.json
+3b1ee1797843bf9cdf0569d397b1275066d22051 data/minecraft/tags/block/base_stone_nether.json
 99e58e3abb43854b9f45dbf65222824a873e9185 data/minecraft/tags/block/climbable.json
 abeed6db98bac2399a83ab60059117a6d31a6947 data/minecraft/tags/block/combination_step_sound_blocks.json
 44ddd0ccaa621601c3254d2a3b504c1d331fb686 data/minecraft/tags/block/dragon_immune.json
 600ae36b45ef5d7e82542525a3c176111f363f5d data/minecraft/tags/block/flowers.json
 1de9a21ed15f62e8ca565e58436b11780673ce8a data/minecraft/tags/block/infiniburn_overworld.json
-5a240e352604e78991789aae5174e21e1bd6feca data/minecraft/tags/block/mineable/pickaxe.json
+5b1f68f256d3923834eca65cec3fc5c21f59c02c data/minecraft/tags/block/mineable/pickaxe.json
 12ef36db926fbbb4277b4e034cbdf06e60ff1bf0 data/minecraft/tags/block/mineable/shovel.json
 7ea851e819e784495a045421fc23d6672a190371 data/minecraft/tags/block/needs_diamond_tool.json
 f298b625567ab21192a7afb617d4ed0f70f5f19d data/minecraft/tags/block/nether_carver_replaceables.json
@@ -700,7 +708,7 @@ ecd98e41928ec1bc75fd05e42485e9aad9d5729b data/minecraft/tags/entity_type/undead.
 daba1a510bd44bf03869b9e4271b0c831e6f9918 data/minecraft/tags/item/slabs.json
 55bc92844856f57ae9fbd5265dd588d9d01f7761 data/minecraft/tags/item/soul_fire_base_blocks.json
 487ed003eb7ae8530b84315d83cc3a8da9272a8d data/minecraft/tags/item/stairs.json
-886d501b42ad806ae5e944d8dd5bc35601698ee4 data/minecraft/tags/item/stone_crafting_materials.json
-886d501b42ad806ae5e944d8dd5bc35601698ee4 data/minecraft/tags/item/stone_tool_materials.json
+e2e7e5f7b7c246877ae9a10930f9ac58b02569f2 data/minecraft/tags/item/stone_crafting_materials.json
+e2e7e5f7b7c246877ae9a10930f9ac58b02569f2 data/minecraft/tags/item/stone_tool_materials.json
 63f5ccb50370f92ec8253f74cf3a04377ebdd63c data/minecraft/tags/item/walls.json
 b81e73fd4781d1cee07d5fbff140379305a8b350 data/neoforge/data_maps/item/compostables.json
