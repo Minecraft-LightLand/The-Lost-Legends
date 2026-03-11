@@ -3,6 +3,7 @@ package dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal;// Made with
 // Paste this class into your mod and generate all required imports
 
 
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeModel;
 import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import dev.xkmc.lostlegends.init.LostLegends;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -44,8 +45,8 @@ public class BeeSlimeModel {
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
-	public static EntityRenderer<? super BeeSlime> createRenderer(EntityRendererProvider.Context context) {
-		return new BaseSlimeRenderer<>(context, INNER, OUTER);
+	public static EntityRenderer<? super BeeSlime> createRenderer(EntityRendererProvider.Context ctx) {
+		return new BaseSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
 	}
 
 }

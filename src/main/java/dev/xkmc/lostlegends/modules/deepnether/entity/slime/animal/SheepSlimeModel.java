@@ -38,8 +38,8 @@ public class SheepSlimeModel {
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
-	public static EntityRenderer<? super SheepSlime> createRenderer(EntityRendererProvider.Context context) {
-		return new BaseSlimeRenderer<>(context, INNER, OUTER);
+	public static EntityRenderer<? super SheepSlime> createRenderer(EntityRendererProvider.Context ctx) {
+		return new BaseSlimeRenderer<>(ctx, new AnimalSlimeModel<>(ctx.bakeLayer(INNER)), OUTER);
 	}
 
 }

@@ -18,8 +18,8 @@ public class BaseSlimeRenderer<T extends BaseSlime> extends MobRenderer<T, BaseS
 		this.addLayer(new BaseSlimeOuterLayer<>(this, ctx.getModelSet()));
 	}
 
-	public BaseSlimeRenderer(EntityRendererProvider.Context ctx, ModelLayerLocation base, ModelLayerLocation outer) {
-		super(ctx, new BaseSlimeModel<>(ctx.bakeLayer(base)), 0.25F);
+	public BaseSlimeRenderer(EntityRendererProvider.Context ctx, BaseSlimeModel<T> base, ModelLayerLocation outer) {
+		super(ctx, base, 0.25F);
 		this.addLayer(new BaseSlimeOuterLayer<>(this, ctx.getModelSet(), outer));
 	}
 
