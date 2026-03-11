@@ -8,11 +8,12 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class DNOres extends LLRegBase {
 
 	public final BlockEntry<Block> HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE, RESONANT_TWISTONE, CRYSTALIZED_BONE;
-	public final BlockEntry<Block> DEMENTING_LAZURITE, DEMENTING_RUST;
+	public final BlockEntry<Block> DEMENTING_LAZURITE, DEMENTING_RUST, INSCRIBED_BLEAKSTONE;
 	public final BlockEntry<WeepingSandBlock> WEEPING_LAZURITE, WEEPING_RUST;
 
 	public DNOres(L2Registrate reg, String path) {
@@ -92,6 +93,20 @@ public class DNOres extends LLRegBase {
 					.multiOreLoot(() -> DeepNether.ITEMS.SOUL_RUST.get(), 1, 2)
 					.register();
 
+			INSCRIBED_BLEAKSTONE = block("inscribed_bleakstone", Block::new)
+					.prop(MapColor.COLOR_GRAY, SoundType.STONE).strength(2f)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cube_top_highlight")))
+									.texture("base", pvd.modLoc("block/" + DeepNether.BLOCKS.path + "/bleakstone"))
+									.texture("top", pvd.modLoc("block/" + path + "/" + ctx.getName()))
+									.texture("highlight", pvd.modLoc("block/" + path + "/" + ctx.getName() + "_highlight"))
+									.texture("particle", pvd.modLoc("block/" + path + "/" + ctx.getName()))
+									.renderType("cutout")
+							))
+					.pickaxe()
+					.simpleItem()
+					.register();
 
 		}
 

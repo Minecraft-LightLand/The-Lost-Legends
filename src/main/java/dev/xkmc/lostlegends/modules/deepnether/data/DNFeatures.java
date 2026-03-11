@@ -93,7 +93,7 @@ public class DNFeatures extends LLFeatureReg {
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
 			FeatureUtils.register(ctx, inscribedRune.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
-					DeepNether.BLOCKS.INSCRIBED_BLEAKSTONE.getDefaultState(), bleak));
+					DeepNether.ORES.INSCRIBED_BLEAKSTONE.getDefaultState(), bleak));
 
 			var soil = new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 			var sand = new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get());
@@ -121,7 +121,7 @@ public class DNFeatures extends LLFeatureReg {
 			weepingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
 			dementingRust.place(ctx, cf, spread(40, uniform(10, 250)));
 			weepingRust.place(ctx, cf, spread(40, uniform(10, 250)));
-			inscribedRune.place(ctx, cf, spread(40, uniform(10, 250)));
+			inscribedRune.place(ctx, cf, spread(80, uniform(10, 128)));
 		}
 	}
 

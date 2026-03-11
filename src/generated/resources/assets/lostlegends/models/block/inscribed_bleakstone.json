@@ -1,7 +1,10 @@
 {
-  "parent": "minecraft:block/cube_top",
+  "parent": "lostlegends:custom/cube_top_highlight",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "side": "lostlegends:block/deepnether/block/bleakstone",
-    "top": "lostlegends:block/deepnether/block/inscribed_bleakstone"
+    "base": "lostlegends:block/deepnether/block/bleakstone",
+    "highlight": "lostlegends:block/deepnether/ore/inscribed_bleakstone_highlight",
+    "particle": "lostlegends:block/deepnether/ore/inscribed_bleakstone",
+    "top": "lostlegends:block/deepnether/ore/inscribed_bleakstone"
   }
 }

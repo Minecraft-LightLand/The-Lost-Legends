@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-11T16:48:10.338204	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2026-03-11T17:35:47.441047	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -160,7 +160,7 @@ d9ced40f1553961637adb7095ce400fd0655fdd9 assets/lostlegends/models/block/golden_
 dff05ef56836ae8ef9829ffd64c9dda5c4a48791 assets/lostlegends/models/block/hearthroom.json
 0fa87b508d65484a53f7fc027fbf698494adb442 assets/lostlegends/models/block/hearthroom_small.json
 2a363137b67f17952dbc910f982e3ae1ca238905 assets/lostlegends/models/block/horned_ghoshroom.json
-9e995a2801622376a0b40b9d32b8c3ef5345e8bb assets/lostlegends/models/block/inscribed_bleakstone.json
+6aa632dc7af74f4c7bb1b4970fc498d3784d9dbf assets/lostlegends/models/block/inscribed_bleakstone.json
 ab762075b5036b8ac67d65ac3eba472a78a332a8 assets/lostlegends/models/block/large_hearthroom.json
 2d1ade82820569936fd3021a877283474ced09d0 assets/lostlegends/models/block/lava_portal.json
 61642c2bc310fba96c7908d64a2aee5b68b03ec8 assets/lostlegends/models/block/liquid_soul.json
@@ -649,7 +649,7 @@ fc89b1534c5bd0f3067092854bab26cacabaff28 data/lostlegends/worldgen/placed_featur
 ef768cc6f12607e4eccb8555724838f405d951c3 data/lostlegends/worldgen/placed_feature/deepnether/ore/gold_debris.json
 a59995160ea882c7f445b05bd73eabfe1b4555c9 data/lostlegends/worldgen/placed_feature/deepnether/ore/gold_debris_close.json
 6c73d9c5d6a72a3180cd1bbce3024e3b9849ddbb data/lostlegends/worldgen/placed_feature/deepnether/ore/hearth_crystal.json
-b87b44095d5b25ae4f2e8b1fd377747a1d3b2b2a data/lostlegends/worldgen/placed_feature/deepnether/ore/inscribed_rune.json
+2dde4059e6922ae5598d03f6aab3f036a2da9a39 data/lostlegends/worldgen/placed_feature/deepnether/ore/inscribed_rune.json
 769f530df75f05ad2f0123f29691fb879c3330b7 data/lostlegends/worldgen/placed_feature/deepnether/ore/resonating_twistone.json
 31ec841e36834976072a060b65313bd6ffd1e74d data/lostlegends/worldgen/placed_feature/deepnether/ore/weeping_lazurite.json
 60d14ef5a9edb9ea7430d8400c9dbd3d5576762c data/lostlegends/worldgen/placed_feature/deepnether/ore/weeping_rust.json
@@ -690,7 +690,7 @@ abeed6db98bac2399a83ab60059117a6d31a6947 data/minecraft/tags/block/combination_s
 44ddd0ccaa621601c3254d2a3b504c1d331fb686 data/minecraft/tags/block/dragon_immune.json
 600ae36b45ef5d7e82542525a3c176111f363f5d data/minecraft/tags/block/flowers.json
 1de9a21ed15f62e8ca565e58436b11780673ce8a data/minecraft/tags/block/infiniburn_overworld.json
-0c7472b8f5f048198e65f0e19bc289bddb60b840 data/minecraft/tags/block/mineable/pickaxe.json
+4a408ede227f2463f81bef71eb7209095facb67e data/minecraft/tags/block/mineable/pickaxe.json
 12ef36db926fbbb4277b4e034cbdf06e60ff1bf0 data/minecraft/tags/block/mineable/shovel.json
 7ea851e819e784495a045421fc23d6672a190371 data/minecraft/tags/block/needs_diamond_tool.json
 f298b625567ab21192a7afb617d4ed0f70f5f19d data/minecraft/tags/block/nether_carver_replaceables.json

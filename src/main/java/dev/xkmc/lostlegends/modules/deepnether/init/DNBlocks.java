@@ -31,7 +31,7 @@ import java.util.Set;
 public class DNBlocks extends LLRegBase {
 
 	public final BlockEntry<Block> DEEP_NETHERRACK, DEEP_BLACKSTONE, TWISTONE, DENSE_BONE, ASH_STONE,
-			NETHER_SOIL, DEMENTING_SOIL, SOUL_SHELL, SCORCHED_NETHERRACK, BLEAKSTONE, INSCRIBED_BLEAKSTONE;
+			NETHER_SOIL, DEMENTING_SOIL, SOUL_SHELL, SCORCHED_NETHERRACK, BLEAKSTONE;
 
 	public final BlockEntry<SoilNyliumBlock> CRIMSON_MYCELIUM, GOLDEN_MYCELIUM;
 	public final BlockEntry<AshBlock> ASH_BLOCK;
@@ -203,16 +203,6 @@ public class DNBlocks extends LLRegBase {
 					.tag(BlockTags.BASE_STONE_NETHER)
 					.simpleItem()
 					.itemTag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS)
-					.register();
-
-			INSCRIBED_BLEAKSTONE = block("inscribed_bleakstone", Block::new)
-					.prop(MapColor.COLOR_GRAY, SoundType.STONE).strength(2f)
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models()
-							.cubeTop(ctx.getName(),
-									pvd.modLoc("block/" + path + "/bleakstone"),
-									pvd.modLoc("block/" + path + "/" + ctx.getName()))))
-					.pickaxe()
-					.simpleItem()
 					.register();
 		}
 
