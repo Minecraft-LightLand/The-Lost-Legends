@@ -8,6 +8,7 @@ import dev.xkmc.l2magic.init.registrate.EngineReg;
 import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.spell.engine.IgniteBlock;
 import dev.xkmc.lostlegends.modules.spell.engine.ModelRenderData;
+import dev.xkmc.lostlegends.modules.spell.engine.OrientedCrossRenderData;
 import dev.xkmc.lostlegends.modules.spell.engine.StopMotion;
 
 public class LLSpellRegistry {
@@ -18,6 +19,7 @@ public class LLSpellRegistry {
 	public static final Val<EngineType<IgniteBlock>> MT_FIRE = REG.reg("fire", () -> IgniteBlock.CODEC);
 
 	public static final Val<ProjectileRenderType<ModelRenderData>> PR_MODEL = REG.reg("model", () -> ModelRenderData.CODEC);
+	public static final Val<ProjectileRenderType<OrientedCrossRenderData>> PR_CROSS = REG.reg("cross", () -> OrientedCrossRenderData.CODEC);
 
 	public static void register() {
 

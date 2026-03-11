@@ -135,7 +135,7 @@
   "renderer": {
     "type": "lostlegends:model",
     "initial": "1",
-    "model": "lostlegends:spell/poison_beholder_projectile"
+    "model": "lostlegends:spell/beholder/poison_projectile"
   },
   "tick": {
     "type": "l2magic:move",

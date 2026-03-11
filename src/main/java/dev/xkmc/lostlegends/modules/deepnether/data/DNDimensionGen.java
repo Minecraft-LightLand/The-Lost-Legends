@@ -49,7 +49,7 @@ public class DNDimensionGen {
 					16, false, false,
 					0, 256, 256,
 					BlockTags.INFINIBURN_NETHER,
-					BuiltinDimensionTypes.NETHER_EFFECTS, 0, spawn
+					BuiltinDimensionTypes.NETHER_EFFECTS, 0.1f, spawn
 			));
 		});
 

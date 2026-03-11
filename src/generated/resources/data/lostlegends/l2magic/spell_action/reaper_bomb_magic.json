@@ -83,7 +83,7 @@
                                       "type": "l2magic:custom_projectile",
                                       "bypassEntity": false,
                                       "bypassWall": false,
-                                      "config": "lostlegends:reaper_bomb_projectile",
+                                      "config": "lostlegends:beholder/skull",
                                       "life": "40",
                                       "params": {},
                                       "speed": "v"
@@ -107,7 +107,7 @@
                                           "type": "l2magic:custom_projectile",
                                           "bypassEntity": false,
                                           "bypassWall": false,
-                                          "config": "lostlegends:reaper_bomb_projectile",
+                                          "config": "lostlegends:beholder/skull",
                                           "life": "40",
                                           "params": {},
                                           "speed": "v"

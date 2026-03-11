@@ -2,14 +2,6 @@
   "filter": "ENEMY_NO_FAMILY",
   "hit": [
     {
-      "type": "l2magic:effect",
-      "ambient": false,
-      "amplifier": "1",
-      "duration": "200",
-      "effect": "lostlegends:flame_curse",
-      "visible": true
-    },
-    {
       "type": "l2magic:damage",
       "damage": "6",
       "damage_type": "minecraft:indirect_magic",
@@ -34,7 +26,7 @@
   "renderer": {
     "type": "lostlegends:model",
     "initial": "1",
-    "model": "lostlegends:spell/reaper_burst_projectile"
+    "model": "lostlegends:spell/beholder/fireball"
   },
   "tick": {
     "type": "l2magic:move",

@@ -6,8 +6,7 @@ import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeRenderer;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderRenderer;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.FlamingBeholderEntity;
-import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.PoisonBeholderEntity;
+import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.SkullBeholderEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
@@ -31,8 +30,7 @@ public class DNEntities extends LLRegBase {
 	public final EntityEntry<PigSlime> PIGSLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
-	public final EntityEntry<PoisonBeholderEntity> POISON_BEHOLDER;
-	public final EntityEntry<FlamingBeholderEntity> FLAMING_BEHOLDER;
+	public final EntityEntry<SkullBeholderEntity> SKULL_BEHOLDER;
 	public final EntityEntry<ReaperEntity> REAPER;
 
 	public DNEntities(L2Registrate reg, String path) {
@@ -107,21 +105,7 @@ public class DNEntities extends LLRegBase {
 				.register();
 
 		//TODO spawn, drop
-		POISON_BEHOLDER = reg.entity("poison_beholder", PoisonBeholderEntity::new, MobCategory.MONSTER)
-				.renderer(() -> BeholderRenderer::new)
-				.attributes(BeholderEntity::createAttributes)
-				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)
-						.ridingOffset(-0.7f).clientTrackingRange(10).fireImmune())
-				.spawnPlacement(SpawnPlacementTypes.ON_GROUND,
-						Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-						BeholderEntity::checkSpawnRules,
-						RegisterSpawnPlacementsEvent.Operation.AND)
-				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
-				.spawnEgg(0x323935, 0x9A9985).build()
-				.register();
-
-		//TODO spawn, drop
-		FLAMING_BEHOLDER = reg.entity("flaming_beholder", FlamingBeholderEntity::new, MobCategory.MONSTER)
+		SKULL_BEHOLDER = reg.entity("skull_beholder", SkullBeholderEntity::new, MobCategory.MONSTER)
 				.renderer(() -> BeholderRenderer::new)
 				.attributes(BeholderEntity::createAttributes)
 				.properties(p -> p.sized(0.6F, 0.9F).eyeHeight(0.5f)

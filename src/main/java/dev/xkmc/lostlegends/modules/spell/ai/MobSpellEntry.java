@@ -13,4 +13,12 @@ public record MobSpellEntry<T extends Mob>(
 		int duration
 ) {
 
+	public static <T extends Mob> MobSpellEntry<T> near(ResourceKey<SpellAction> spell, int weight, int duration, int dist) {
+		return new MobSpellEntry<>(spell, e -> e.getTarget() != null && e.getTarget().distanceTo(e) < dist, weight, duration);
+	}
+
+	public static <T extends Mob> MobSpellEntry<T> far(ResourceKey<SpellAction> spell, int weight, int duration, int dist) {
+		return new MobSpellEntry<>(spell, e -> e.getTarget() != null && e.getTarget().distanceTo(e) > dist, weight, duration);
+	}
+
 }

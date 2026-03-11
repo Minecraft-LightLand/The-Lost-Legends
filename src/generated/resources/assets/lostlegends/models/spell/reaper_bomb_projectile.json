@@ -1,7 +1,0 @@
-{
-  "parent": "lostlegends:custom/beholder_projectile",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "all": "lostlegends:block/spell/beholder/projectile"
-  }
-}

@@ -43,9 +43,9 @@ import java.util.Map;
 
 public class ReaperShootSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("reaper_shoot_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("reaper_shoot_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/reaper_shoot_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("reaper/ray");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("reaper/ray_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/reaper/ray_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {

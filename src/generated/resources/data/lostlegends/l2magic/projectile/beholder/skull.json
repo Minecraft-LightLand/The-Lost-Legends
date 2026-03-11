@@ -1,0 +1,176 @@
+{
+  "filter": "ENEMY_NO_FAMILY",
+  "hit": [
+    {
+      "type": "l2magic:damage",
+      "damage": "8",
+      "damage_type": "minecraft:indirect_magic",
+      "indirect": true,
+      "positioned": true
+    },
+    {
+      "type": "l2magic:cast_at",
+      "child": {
+        "type": "l2magic:list",
+        "children": [
+          {
+            "type": "l2magic:sound",
+            "pitch": "0.8+rand(-0.1,0.1)+rand(-0.1,0.1)",
+            "sound": "minecraft:block.bone_block.break",
+            "volume": "1"
+          },
+          {
+            "type": "l2magic:move",
+            "child": {
+              "type": "l2magic:iterate",
+              "child": {
+                "type": "l2magic:move",
+                "child": {
+                  "type": "l2magic:iterate",
+                  "child": {
+                    "type": "l2magic:move",
+                    "child": {
+                      "type": "l2magic:custom_projectile",
+                      "bypassEntity": false,
+                      "bypassWall": false,
+                      "config": "lostlegends:beholder/bone",
+                      "life": "100",
+                      "params": {},
+                      "speed": "0.5"
+                    },
+                    "modifiers": [
+                      {
+                        "type": "l2magic:rotate",
+                        "degree": "60*j",
+                        "vertical": "30*(i+0.5)"
+                      }
+                    ]
+                  },
+                  "index": "j",
+                  "step": "6"
+                },
+                "modifiers": [
+                  {
+                    "type": "l2magic:rotate",
+                    "degree": "rand(0,360)",
+                    "vertical": "0"
+                  }
+                ]
+              },
+              "index": "i",
+              "step": "3"
+            },
+            "modifiers": [
+              {
+                "type": "l2magic:offset",
+                "x": "0",
+                "y": "0.1",
+                "z": "0"
+              },
+              {
+                "type": "l2magic:direction",
+                "x": "1",
+                "y": "0",
+                "z": "0"
+              }
+            ]
+          }
+        ]
+      },
+      "dir": "ORIGINAL",
+      "pos": "ORIGINAL"
+    }
+  ],
+  "land": {
+    "type": "l2magic:list",
+    "children": [
+      {
+        "type": "l2magic:sound",
+        "pitch": "0.8+rand(-0.1,0.1)+rand(-0.1,0.1)",
+        "sound": "minecraft:block.bone_block.break",
+        "volume": "1"
+      },
+      {
+        "type": "l2magic:move",
+        "child": {
+          "type": "l2magic:iterate",
+          "child": {
+            "type": "l2magic:move",
+            "child": {
+              "type": "l2magic:iterate",
+              "child": {
+                "type": "l2magic:move",
+                "child": {
+                  "type": "l2magic:custom_projectile",
+                  "bypassEntity": false,
+                  "bypassWall": false,
+                  "config": "lostlegends:beholder/bone",
+                  "life": "100",
+                  "params": {},
+                  "speed": "0.5"
+                },
+                "modifiers": [
+                  {
+                    "type": "l2magic:rotate",
+                    "degree": "60*j",
+                    "vertical": "30*(i+0.5)"
+                  }
+                ]
+              },
+              "index": "j",
+              "step": "6"
+            },
+            "modifiers": [
+              {
+                "type": "l2magic:rotate",
+                "degree": "rand(0,360)",
+                "vertical": "0"
+              }
+            ]
+          },
+          "index": "i",
+          "step": "3"
+        },
+        "modifiers": [
+          {
+            "type": "l2magic:offset",
+            "x": "0",
+            "y": "0.1",
+            "z": "0"
+          },
+          {
+            "type": "l2magic:direction",
+            "x": "1",
+            "y": "0",
+            "z": "0"
+          }
+        ]
+      }
+    ]
+  },
+  "motion": {
+    "type": "l2magic:simple",
+    "friction": "0",
+    "gravity": "0.03"
+  },
+  "params": [],
+  "renderer": {
+    "type": "lostlegends:model",
+    "initial": "1",
+    "model": "lostlegends:spell/beholder/skull"
+  },
+  "tick": {
+    "type": "l2magic:move",
+    "child": {
+      "type": "l2magic:particle",
+      "particle": "minecraft:end_rod",
+      "speed": "0"
+    },
+    "modifiers": [
+      {
+        "type": "l2magic:forward",
+        "distance": "-1"
+      }
+    ]
+  }
+}

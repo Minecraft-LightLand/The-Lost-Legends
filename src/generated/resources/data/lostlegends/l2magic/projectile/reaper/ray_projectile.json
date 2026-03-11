@@ -2,21 +2,21 @@
   "filter": "ENEMY_NO_FAMILY",
   "hit": [
     {
+      "type": "l2magic:effect",
+      "ambient": false,
+      "amplifier": "0",
+      "duration": "200",
+      "effect": "lostlegends:flame_curse",
+      "visible": true
+    },
+    {
       "type": "l2magic:damage",
       "damage": "6",
       "damage_type": "minecraft:indirect_magic",
       "indirect": true,
       "positioned": true
-    },
-    {
-      "type": "l2magic:property",
-      "duration": "100",
-      "property": "IGNITE"
     }
   ],
-  "land": {
-    "type": "lostlegends:fire"
-  },
   "motion": {
     "type": "l2magic:simple",
     "friction": "0",
@@ -26,13 +26,13 @@
   "renderer": {
     "type": "lostlegends:model",
     "initial": "1",
-    "model": "lostlegends:spell/flaming_beholder_projectile"
+    "model": "lostlegends:spell/reaper/ray_projectile"
   },
   "tick": {
     "type": "l2magic:move",
     "child": {
       "type": "l2magic:particle",
-      "particle": "minecraft:small_flame",
+      "particle": "minecraft:composter",
       "speed": "0"
     },
     "modifiers": [

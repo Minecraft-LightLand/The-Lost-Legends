@@ -8,10 +8,7 @@ import dev.xkmc.l2magic.content.engine.iterator.LinearIterator;
 import dev.xkmc.l2magic.content.engine.iterator.LoopIterator;
 import dev.xkmc.l2magic.content.engine.logic.ListLogic;
 import dev.xkmc.l2magic.content.engine.logic.ProcessorEngine;
-import dev.xkmc.l2magic.content.engine.modifier.Dir2NormalModifier;
-import dev.xkmc.l2magic.content.engine.modifier.ForwardOffsetModifier;
-import dev.xkmc.l2magic.content.engine.modifier.RandomDirModifier;
-import dev.xkmc.l2magic.content.engine.modifier.RotationModifier;
+import dev.xkmc.l2magic.content.engine.modifier.*;
 import dev.xkmc.l2magic.content.engine.particle.DustParticleInstance;
 import dev.xkmc.l2magic.content.engine.selector.BoxSelector;
 import dev.xkmc.l2magic.content.engine.selector.SelectionType;
@@ -130,4 +127,21 @@ public class BeholderUtils {
 		);
 	}
 
+	public static ConfiguredEngine<?> shootProj(ConfiguredEngine<?> ins, int time, double gravity) {
+		return ins.move(
+				SetPosModifier.of("CasterX", "CasterY+1", "CasterZ"),
+				SetDirectionModifier.of("vx*x/x0", "vy", "vx*z/x0"),
+				ForwardOffsetModifier.of("0.5")
+		).withVariables(
+				"v", "sqrt(vx*vx+vy*vy)"
+		).withVariables(
+				"x0", "sqrt(x*x+z*z)",
+				"vx", "x0/t",
+				"vy", "y/t+g*t/2"
+		).withVariables(
+				"x", "PosX - CasterX",
+				"y", "PosY - CasterY",
+				"z", "PosZ - CasterZ"
+		).withVariables("t", time + "", "g", gravity + "");
+	}
 }

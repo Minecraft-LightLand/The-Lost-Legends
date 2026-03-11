@@ -6,6 +6,7 @@ import dev.xkmc.lostlegends.init.LostLegends;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.BeholderSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.FlameBeholderSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.beholder.PoisonBeholderSpell;
+import dev.xkmc.lostlegends.modules.spell.mob.beholder.SkullBombSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperBombSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperBurstSpell;
 import dev.xkmc.lostlegends.modules.spell.mob.reaper.ReaperShootSpell;
@@ -19,6 +20,7 @@ public class LLSpellGen {
 			new BeholderSpell(),
 			new PoisonBeholderSpell(),
 			new FlameBeholderSpell(),
+			new SkullBombSpell(),
 			new ReaperBombSpell(),
 			new ReaperBurstSpell(),
 			new ReaperShootSpell()

@@ -1,9 +1,9 @@
 package dev.xkmc.lostlegends.init;
 
+import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeModel;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.beholder.BeholderModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperModelData;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererModel;
-import dev.xkmc.lostlegends.foundation.entity.slime.BaseSlimeModel;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.piglin.PigSlimeModel;
 import dev.xkmc.lostlegends.modules.spell.init.LLSpellClient;
 import net.neoforged.api.distmarker.Dist;

@@ -1,0 +1,140 @@
+{
+  "action": {
+    "type": "l2magic:variable",
+    "child": {
+      "type": "l2magic:variable",
+      "child": {
+        "type": "l2magic:variable",
+        "child": {
+          "type": "l2magic:variable",
+          "child": {
+            "type": "l2magic:variable",
+            "child": {
+              "type": "l2magic:variable",
+              "child": {
+                "type": "l2magic:variable",
+                "child": {
+                  "type": "l2magic:variable",
+                  "child": {
+                    "type": "l2magic:variable",
+                    "child": {
+                      "type": "l2magic:move",
+                      "child": {
+                        "type": "l2magic:list",
+                        "children": [
+                          {
+                            "type": "l2magic:iterate_delayed",
+                            "child": {
+                              "type": "l2magic:move",
+                              "child": {
+                                "type": "l2magic:custom_particle",
+                                "collide": false,
+                                "life": "10+min(10,20-i)",
+                                "motion": {
+                                  "type": "lostlegends:stop",
+                                  "cond": "TickCount>=9"
+                                },
+                                "renderer": {
+                                  "type": "l2magic:simple",
+                                  "particle": "minecraft:end_rod",
+                                  "renderType": "LIT"
+                                },
+                                "scale": "0.05",
+                                "speed": "-0.1"
+                              },
+                              "modifiers": [
+                                {
+                                  "type": "l2magic:direction_to_normal"
+                                },
+                                {
+                                  "type": "l2magic:rotate",
+                                  "degree": "rand(0,360)",
+                                  "vertical": "0"
+                                },
+                                {
+                                  "type": "l2magic:forward",
+                                  "distance": "1.0"
+                                }
+                              ]
+                            },
+                            "delay": "1",
+                            "index": "i",
+                            "step": "20"
+                          },
+                          {
+                            "type": "l2magic:delay",
+                            "child": {
+                              "type": "l2magic:list",
+                              "children": [
+                                {
+                                  "type": "l2magic:sound",
+                                  "pitch": "1+rand(-0.1,0.1)+rand(-0.1,0.1)",
+                                  "sound": "minecraft:item.firecharge.use",
+                                  "volume": "2"
+                                },
+                                {
+                                  "type": "l2magic:custom_projectile",
+                                  "bypassEntity": false,
+                                  "bypassWall": false,
+                                  "config": "lostlegends:beholder/skull",
+                                  "life": "40",
+                                  "params": {},
+                                  "speed": "v"
+                                }
+                              ]
+                            },
+                            "tick": "20"
+                          }
+                        ]
+                      },
+                      "modifiers": [
+                        {
+                          "type": "l2magic:set_position",
+                          "x": "CasterX",
+                          "y": "CasterY+1",
+                          "z": "CasterZ"
+                        },
+                        {
+                          "type": "l2magic:direction",
+                          "x": "vx*x/x0",
+                          "y": "vy",
+                          "z": "vx*z/x0"
+                        },
+                        {
+                          "type": "l2magic:forward",
+                          "distance": "0.5"
+                        }
+                      ]
+                    },
+                    "name": "v",
+                    "variable": "sqrt(vx*vx+vy*vy)"
+                  },
+                  "name": "vy",
+                  "variable": "y/t+g*t/2"
+                },
+                "name": "vx",
+                "variable": "x0/t"
+              },
+              "name": "x0",
+              "variable": "sqrt(x*x+z*z)"
+            },
+            "name": "z",
+            "variable": "PosZ - CasterZ"
+          },
+          "name": "y",
+          "variable": "PosY - CasterY"
+        },
+        "name": "x",
+        "variable": "PosX - CasterX"
+      },
+      "name": "g",
+      "variable": "0.03"
+    },
+    "name": "t",
+    "variable": "20"
+  },
+  "cast_type": "INSTANT",
+  "icon": "minecraft:gunpowder",
+  "order": 400,
+  "trigger_type": "TARGET_POS"
+}

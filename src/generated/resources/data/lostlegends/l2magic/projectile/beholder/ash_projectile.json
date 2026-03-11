@@ -9,6 +9,14 @@
       "positioned": true
     },
     {
+      "type": "l2magic:effect",
+      "ambient": false,
+      "amplifier": "0",
+      "duration": "60",
+      "effect": "minecraft:blindness",
+      "visible": true
+    },
+    {
       "type": "l2magic:cast_at",
       "child": {
         "type": "l2magic:list",
@@ -127,13 +135,13 @@
   "motion": {
     "type": "l2magic:simple",
     "friction": "0",
-    "gravity": "0.03"
+    "gravity": "0"
   },
   "params": [],
   "renderer": {
     "type": "lostlegends:model",
     "initial": "1",
-    "model": "lostlegends:spell/reaper_bomb_projectile"
+    "model": "lostlegends:spell/beholder/ash_projectile"
   },
   "tick": {
     "type": "l2magic:move",

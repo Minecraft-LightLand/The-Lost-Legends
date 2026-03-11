@@ -4,7 +4,7 @@
     {
       "type": "l2magic:effect",
       "ambient": false,
-      "amplifier": "0",
+      "amplifier": "1",
       "duration": "200",
       "effect": "lostlegends:flame_curse",
       "visible": true
@@ -15,8 +15,16 @@
       "damage_type": "minecraft:indirect_magic",
       "indirect": true,
       "positioned": true
+    },
+    {
+      "type": "l2magic:property",
+      "duration": "100",
+      "property": "IGNITE"
     }
   ],
+  "land": {
+    "type": "lostlegends:fire"
+  },
   "motion": {
     "type": "l2magic:simple",
     "friction": "0",
@@ -26,13 +34,13 @@
   "renderer": {
     "type": "lostlegends:model",
     "initial": "1",
-    "model": "lostlegends:spell/reaper_shoot_projectile"
+    "model": "lostlegends:spell/reaper/burst_projectile"
   },
   "tick": {
     "type": "l2magic:move",
     "child": {
       "type": "l2magic:particle",
-      "particle": "minecraft:composter",
+      "particle": "minecraft:small_flame",
       "speed": "0"
     },
     "modifiers": [

@@ -45,9 +45,9 @@ import java.util.Map;
 
 public class ReaperBurstSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("reaper_burst_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("reaper_burst_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/reaper_burst_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("reaper/burst");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("reaper/burst_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/reaper/burst_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {

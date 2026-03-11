@@ -38,7 +38,7 @@
           "modifiers": [
             {
               "type": "l2magic:rotate",
-              "degree": "(i-2)*20",
+              "degree": "(i-2)*15",
               "vertical": "0"
             }
           ]
@@ -55,7 +55,7 @@
             "child": {
               "type": "l2magic:custom_particle",
               "collide": false,
-              "life": "10+min(10,40-i)",
+              "life": "10+min(10,20-i)",
               "motion": {
                 "type": "lostlegends:stop",
                 "cond": "TickCount>=9"
@@ -87,7 +87,7 @@
         },
         "delay": "1",
         "index": "i",
-        "step": "40"
+        "step": "20"
       },
       {
         "type": "l2magic:delay",
@@ -108,10 +108,10 @@
                   "type": "l2magic:custom_projectile",
                   "bypassEntity": false,
                   "bypassWall": false,
-                  "config": "lostlegends:reaper_shoot_projectile",
+                  "config": "lostlegends:reaper/ray_projectile",
                   "life": "60",
                   "params": {},
-                  "speed": "0.5"
+                  "speed": "1"
                 },
                 "modifiers": [
                   {

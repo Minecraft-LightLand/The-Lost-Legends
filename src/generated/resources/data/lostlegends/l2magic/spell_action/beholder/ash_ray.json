@@ -17,7 +17,7 @@
           },
           "renderer": {
             "type": "l2magic:color",
-            "color": "-f937b3",
+            "color": "-1",
             "renderType": "LIT"
           },
           "scale": "0.07",
@@ -29,7 +29,7 @@
           0.0
         ],
         "startFromOrigin": false,
-        "step": "48"
+        "step": "40"
       },
       {
         "type": "l2magic:iterate_delayed",
@@ -45,7 +45,7 @@
             },
             "renderer": {
               "type": "l2magic:simple",
-              "particle": "minecraft:composter",
+              "particle": "minecraft:soul_fire_flame",
               "renderType": "LIT"
             },
             "scale": "0.05",
@@ -85,10 +85,10 @@
               "type": "l2magic:custom_projectile",
               "bypassEntity": false,
               "bypassWall": false,
-              "config": "lostlegends:poison_beholder_projectile",
-              "life": "16",
+              "config": "lostlegends:beholder/ash_projectile",
+              "life": "20",
               "params": {},
-              "speed": "1.5"
+              "speed": "1.0"
             }
           ]
         },
@@ -97,7 +97,7 @@
     ]
   },
   "cast_type": "INSTANT",
-  "icon": "minecraft:poisonous_potato",
-  "order": 401,
+  "icon": "minecraft:gunpowder",
+  "order": 400,
   "trigger_type": "FACING_FRONT"
 }

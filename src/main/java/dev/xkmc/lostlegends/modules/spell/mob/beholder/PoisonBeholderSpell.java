@@ -39,9 +39,9 @@ import java.util.List;
 
 public class PoisonBeholderSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("poison_beholder_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("poison_beholder_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/poison_beholder_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("beholder/poison_ray");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("beholder/poison_projectile");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/beholder/poison_projectile");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {

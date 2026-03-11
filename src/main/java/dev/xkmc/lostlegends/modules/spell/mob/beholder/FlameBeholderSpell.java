@@ -42,9 +42,9 @@ import java.util.Map;
 
 public class FlameBeholderSpell extends LLSpellGenEntry {
 
-	public static final ResourceKey<SpellAction> SPELL = spell("flaming_beholder_magic");
-	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("flaming_beholder_projectile");
-	public static final ResourceLocation MODEL = LostLegends.loc("spell/flaming_beholder_projectile");
+	public static final ResourceKey<SpellAction> SPELL = spell("beholder/fireball");
+	public static final DataGenCachedHolder<ProjectileConfig> PROJ = projectile("beholder/fireball");
+	public static final ResourceLocation MODEL = LostLegends.loc("spell/beholder/fireball");
 
 	@Override
 	public void genLang(RegistrateLangProvider pvd) {
