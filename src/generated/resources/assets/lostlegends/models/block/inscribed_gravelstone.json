@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "side": "lostlegends:block/deepnether/block/gravelstone",
-    "top": "lostlegends:block/deepnether/block/inscribed_gravelstone"
-  }
-}

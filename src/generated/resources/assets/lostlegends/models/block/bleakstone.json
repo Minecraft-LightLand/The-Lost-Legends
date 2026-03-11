@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "lostlegends:block/deepnether/block/gravelstone"
+    "all": "lostlegends:block/deepnether/block/bleakstone"
   }
 }

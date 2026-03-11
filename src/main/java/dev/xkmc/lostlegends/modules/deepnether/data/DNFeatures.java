@@ -62,6 +62,7 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey weepingLazurite = uni("weeping_lazurite");
 		public final FeatureKey dementingRust = uni("dementing_rust");
 		public final FeatureKey weepingRust = uni("weeping_rust");
+		public final FeatureKey inscribedRune = uni("inscribed_rune");
 
 		public Ores(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -73,6 +74,7 @@ public class DNFeatures extends LLFeatureReg {
 			var black = new BlockMatchTest(DeepNether.BLOCKS.DEEP_BLACKSTONE.get());
 			var bone = new BlockMatchTest(DeepNether.BLOCKS.DENSE_BONE.get());
 			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
+			var bleak = new BlockMatchTest(DeepNether.BLOCKS.BLEAKSTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(), 10));
@@ -90,6 +92,8 @@ public class DNFeatures extends LLFeatureReg {
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
+			FeatureUtils.register(ctx, inscribedRune.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
+					DeepNether.BLOCKS.INSCRIBED_BLEAKSTONE.getDefaultState(), bleak));
 
 			var soil = new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 			var sand = new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get());
@@ -117,6 +121,7 @@ public class DNFeatures extends LLFeatureReg {
 			weepingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
 			dementingRust.place(ctx, cf, spread(40, uniform(10, 250)));
 			weepingRust.place(ctx, cf, spread(40, uniform(10, 250)));
+			inscribedRune.place(ctx, cf, spread(40, uniform(10, 250)));
 		}
 	}
 

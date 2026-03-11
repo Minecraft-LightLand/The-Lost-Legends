@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "lostlegends:block/deepnether/block/bleakstone",
+    "top": "lostlegends:block/deepnether/block/inscribed_bleakstone"
+  }
+}

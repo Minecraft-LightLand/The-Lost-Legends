@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "lostlegends:inscribed_gravelstone"
+          "name": "lostlegends:bleakstone"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "lostlegends:blocks/inscribed_gravelstone"
+  "random_sequence": "lostlegends:blocks/bleakstone"
 }

@@ -29,6 +29,7 @@ public class DNSurfaceRuleData {
 		var soilSand = makeStateRule(DeepNether.BLOCKS.WEEPING_SAND.get());
 		var soulSoil = makeStateRule(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 		var bone = makeStateRule(DeepNether.BLOCKS.DENSE_BONE.get());
+		var bleak = makeStateRule(DeepNether.BLOCKS.BLEAKSTONE.get());
 
 		SurfaceRules.ConditionSource above30 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0);
 		SurfaceRules.ConditionSource above31 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(31), 0);
@@ -80,7 +81,8 @@ public class DNSurfaceRuleData {
 		waste.temp(e -> e.get(-1)).biome(DNBiomeGen.BIOME_ASH, 0.15f)
 				.addRule(SurfaceRules.UNDER_CEILING, ashStone)
 				.addRule(SurfaceRules.UNDER_FLOOR, ash, ashStone);
-		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0.15f);
+		waste.temp(e -> e.get(1)).biome(DNBiomeGen.BIOME_WASTE, 0.15f)
+				.addRule(SurfaceRules.UNDER_FLOOR, SurfaceRules.ifTrue(lowSelNoise, bleak));
 
 		builder.standalone(deepRack);
 		return builder.buildRules();
