@@ -44,7 +44,7 @@ public class BeeSlimeModel {
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
-	public static EntityRenderer<? super PigSlime> createRenderer(EntityRendererProvider.Context context) {
+	public static EntityRenderer<? super BeeSlime> createRenderer(EntityRendererProvider.Context context) {
 		return new BaseSlimeRenderer<>(context, INNER, OUTER);
 	}
 

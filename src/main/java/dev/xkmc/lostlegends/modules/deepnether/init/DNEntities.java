@@ -11,10 +11,9 @@ import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperEntity
 import dev.xkmc.lostlegends.modules.deepnether.entity.flying.reaper.ReaperRenderer;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererEntity;
 import dev.xkmc.lostlegends.modules.deepnether.entity.ghost.wanderer.WandererRenderer;
+import dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal.*;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.NetherSlime;
 import dev.xkmc.lostlegends.modules.deepnether.entity.slime.nether.PutridSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal.PigSlime;
-import dev.xkmc.lostlegends.modules.deepnether.entity.slime.animal.PigSlimeModel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -27,7 +26,9 @@ public class DNEntities extends LLRegBase {
 
 	public final EntityEntry<NetherSlime> NETHER_SLIME;
 	public final EntityEntry<PutridSlime> PUTRID_SLIME;
-	public final EntityEntry<PigSlime> PIGSLIME;
+	public final EntityEntry<PigSlime> PIG_SLIME;
+	public final EntityEntry<SheepSlime> SHEEP_SLIME;
+	public final EntityEntry<BeeSlime> BEE_SLIME;
 	public final EntityEntry<WandererEntity> WANDERER;
 	public final EntityEntry<BeholderEntity> BEHOLDER;
 	public final EntityEntry<SkullBeholderEntity> SKULL_BEHOLDER;
@@ -66,13 +67,31 @@ public class DNEntities extends LLRegBase {
 				.spawnEgg(0x231F1F, 0x53718F).build()
 				.register();
 
-		PIGSLIME = reg.entity("pig_slime", PigSlime::new, MobCategory.MONSTER)
+		PIG_SLIME = reg.entity("pig_slime", PigSlime::new, MobCategory.MONSTER)
 				.renderer(() -> PigSlimeModel::createRenderer)
 				.attributes(PigSlime::createAttributes)
 				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
 						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
-				.loot((pvd, e) -> pvd.add(e, LootTable.lootTable()))
+				.loot((pvd, e) -> pvd.add(e, PigSlime.buildLoot(pvd)))
 				.spawnEgg(0xFFBABD, 0xFC9191).build()
+				.register();
+
+		SHEEP_SLIME = reg.entity("sheep_slime", SheepSlime::new, MobCategory.MONSTER)
+				.renderer(() -> SheepSlimeModel::createRenderer)
+				.attributes(SheepSlime::createAttributes)
+				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
+						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
+				.loot((pvd, e) -> pvd.add(e, SheepSlime.buildLoot(pvd)))
+				.spawnEgg(0xF4F4F4, 0xBD997E).build()
+				.register();
+
+		BEE_SLIME = reg.entity("bee_slime", BeeSlime::new, MobCategory.MONSTER)
+				.renderer(() -> BeeSlimeModel::createRenderer)
+				.attributes(BeeSlime::createAttributes)
+				.properties(p -> p.sized(0.52F, 0.52F).eyeHeight(0.325F)
+						.spawnDimensionsScale(4.0F).clientTrackingRange(10).fireImmune())
+				.loot((pvd, e) -> pvd.add(e, BeeSlime.buildLoot(pvd)))
+				.spawnEgg(0xEBAE1A, 0x472012).build()
 				.register();
 
 		//TODO spawn, drop

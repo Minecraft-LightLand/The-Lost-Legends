@@ -10,7 +10,6 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.util.Mth;
 
 public class SheepSlimeModel {
 
@@ -39,7 +38,7 @@ public class SheepSlimeModel {
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
-	public static EntityRenderer<? super PigSlime> createRenderer(EntityRendererProvider.Context context) {
+	public static EntityRenderer<? super SheepSlime> createRenderer(EntityRendererProvider.Context context) {
 		return new BaseSlimeRenderer<>(context, INNER, OUTER);
 	}
 

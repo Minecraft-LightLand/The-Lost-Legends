@@ -16,7 +16,7 @@ public class BeholderModelData {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(LostLegends.loc("beholder"), "main");
 
-	public static final AnimationDefinition IDLE, FLAY;
+	public static final AnimationDefinition IDLE, FLY;
 
 	static {
 		IDLE = AnimationDefinition.Builder.withLength(3.0F).looping()
@@ -43,7 +43,7 @@ public class BeholderModelData {
 				))
 				.build();
 
-		FLAY = AnimationDefinition.Builder.withLength(1.0F)
+		FLY = AnimationDefinition.Builder.withLength(1.0F).looping()
 				.addAnimation("Right_Wing", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.0833F, KeyframeAnimations.degreeVec(100.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),

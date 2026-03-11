@@ -20,7 +20,7 @@ public class BeholderModel<T extends BeholderEntity> extends HierarchicalModel<T
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.root.yRot += yrot * (float) (Math.PI / 180.0);
 		this.root.xRot += xrot * (float) (Math.PI / 180.0);
-		this.animate(e.states.idle, BeholderModelData.IDLE, tick);
+		this.animate(e.states.idle, BeholderModelData.FLY, tick);
 	}
 
 }
