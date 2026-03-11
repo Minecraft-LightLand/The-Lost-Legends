@@ -90,7 +90,7 @@ public class ReaperBurstSpell extends LLSpellGenEntry {
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
 				.hit(PropertyProcessor.Type.IGNITE.of("100"))
 				.land(new IgniteBlock())
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.renderer(new ModelRenderData(MODEL))
 				.build();
 	}
 

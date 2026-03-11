@@ -89,7 +89,7 @@ public class PoisonBeholderSpell extends LLSpellGenEntry {
 				.land(land(ctx))
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.MAGIC), DoubleVariable.of("6"), true, true))
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.renderer(new ModelRenderData(MODEL))
 				.build();
 	}
 

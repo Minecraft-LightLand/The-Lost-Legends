@@ -11,13 +11,18 @@ import dev.xkmc.lostlegends.modules.spell.init.LLSpellRegistry;
 import net.minecraft.resources.ResourceLocation;
 
 public record ModelRenderData(
-		ResourceLocation model, DoubleVariable scale
+		ResourceLocation model, DoubleVariable scale, DoubleVariable zrot
 ) implements ProjectileRenderData<ModelRenderData> {
 
 	public static final MapCodec<ModelRenderData> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
 			ResourceLocation.CODEC.fieldOf("model").forGetter(ModelRenderData::model),
-			DoubleVariable.codec("initial", ModelRenderData::scale)
+			DoubleVariable.codec("scale", ModelRenderData::scale),
+			DoubleVariable.codec("zrot", ModelRenderData::zrot)
 	).apply(i, ModelRenderData::new));
+
+	public ModelRenderData(ResourceLocation model) {
+		this(model, DoubleVariable.of("1"), DoubleVariable.ZERO);
+	}
 
 	@Override
 	public ProjectileRenderType<ModelRenderData> type() {
@@ -26,7 +31,7 @@ public record ModelRenderData(
 
 	@Override
 	public ProjectileRenderer resolve(EngineContext ctx) {
-		return new ModelRenderer(model, (float) scale.eval(ctx));
+		return new ModelRenderer(model, (float) scale.eval(ctx), (float) zrot.eval(ctx));
 	}
 
 }

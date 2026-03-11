@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.client.RenderTypeHelper;
 import net.neoforged.neoforge.client.model.data.ModelData;
 
-public record ModelRenderer(ResourceLocation id, float scale) implements ProjectileRenderer {
+public record ModelRenderer(ResourceLocation id, float scale, float zrot) implements ProjectileRenderer {
 
 	@Override
 	public ResourceLocation getTexture() {
@@ -35,6 +35,7 @@ public record ModelRenderer(ResourceLocation id, float scale) implements Project
 		pose.scale(scale, scale, scale);
 		pose.mulPose(Axis.YP.rotationDegrees(180 - Mth.lerp(pTick, e.yRotO, e.getYRot())));
 		pose.mulPose(Axis.XP.rotationDegrees( - Mth.lerp(pTick, e.xRotO, e.getXRot())));
+		pose.mulPose(Axis.ZP.rotationDegrees(pTick * zrot));
 		pose.translate(-0.5, 0, -0.5);
 		var model = manager.getModel(ModelResourceLocation.standalone(id));
 		int seed = e.getId();

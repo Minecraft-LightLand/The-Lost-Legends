@@ -88,7 +88,7 @@ public class BeholderSpell extends LLSpellGenEntry {
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
 				.hit(new EffectProcessor(MobEffects.BLINDNESS, IntVariable.of("60"), IntVariable.of("0"), false, true))
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.renderer(new ModelRenderData(MODEL))
 				.build();
 	}
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-11T10:42:28.882561	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
+// 1.21.1	2026-03-11T13:17:54.251227	Registrate Provider for lostlegends [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type)]
 f115dd354af4e74150c1679f4e0070c264605f5f assets/lostlegends/blockstates/amarast_ore.json
 6d67703201a6b7ee5226656be1b6569e4fee12c0 assets/lostlegends/blockstates/amber_magma.json
 02c90e5d371996132f228e2c2930db96559b1b3e assets/lostlegends/blockstates/amber_magma_bricks.json
@@ -387,13 +387,13 @@ eb2458f4e0d31d6d3195f1d3144f155c64dadc9e data/lostlegends/advancement/recipes/mi
 26637b7ff44554149f2e0729f31ca4c729054867 data/lostlegends/advancement/recipes/misc/weeping_sand.json
 688f85844be918f315d86c16903d304e2e2433b2 data/lostlegends/dimension/deep_nether.json
 637f59b0bea42cb11816fffb725ffd927fff7e08 data/lostlegends/dimension_type/deep_nether.json
-407a22a055398673a725976fad6c10fea0a2cc07 data/lostlegends/l2magic/projectile/beholder/ash_projectile.json
+bb22bd8278d365f80cfe95aaea1116760a654a56 data/lostlegends/l2magic/projectile/beholder/ash_projectile.json
 0b8ad8fc97ec66f65409f7043d161abc0ddee124 data/lostlegends/l2magic/projectile/beholder/bone.json
-750f0e64b9c071a8e0cce330b84e9b46d64efc95 data/lostlegends/l2magic/projectile/beholder/fireball.json
-13007b7b67a70ac7398ceb00597308bf3e1e1314 data/lostlegends/l2magic/projectile/beholder/poison_projectile.json
-e8002925d815bdd89549aaa9788c09467cc4ce50 data/lostlegends/l2magic/projectile/beholder/skull.json
-be675c2b420ff885d0241cfde6331331ce6ecec5 data/lostlegends/l2magic/projectile/reaper/burst_projectile.json
-c1d0dde84022a92c41a559cedc5181f24eae004f data/lostlegends/l2magic/projectile/reaper/ray_projectile.json
+29f782d859490baec3f60d0184d7b36769c012b2 data/lostlegends/l2magic/projectile/beholder/fireball.json
+c363b791af8f9d95eb0cffca2a2c9a560743cbf3 data/lostlegends/l2magic/projectile/beholder/poison_projectile.json
+076f4c80d316663a71b32914975346a7a6402b30 data/lostlegends/l2magic/projectile/beholder/skull.json
+00f224d25c8c9a7c1b7efb049aa2a3e61a6de178 data/lostlegends/l2magic/projectile/reaper/burst_projectile.json
+22dd08998d3ed3a2615765c046454fda38549ad8 data/lostlegends/l2magic/projectile/reaper/ray_projectile.json
 408ab8c0f6f2b9d65318a82b0fc5101860a75c76 data/lostlegends/l2magic/spell_action/beholder/ash_ray.json
 98845c1e5d82ac393f98a9e57523ae4062bb347f data/lostlegends/l2magic/spell_action/beholder/fireball.json
 a165b1d9c41f555116b26ee7ee8b6511b9f6ba13 data/lostlegends/l2magic/spell_action/beholder/poison_ray.json

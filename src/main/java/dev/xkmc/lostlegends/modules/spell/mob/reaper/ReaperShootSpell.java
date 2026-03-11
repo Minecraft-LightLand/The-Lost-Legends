@@ -86,7 +86,7 @@ public class ReaperShootSpell extends LLSpellGenEntry {
 				.tick(new SimpleParticleInstance(ParticleTypes.COMPOSTER, DoubleVariable.ZERO).move(ForwardOffsetModifier.of("-1")))
 				.hit(new EffectProcessor(DeepNether.EFFECTS.FLAME_CURSE, IntVariable.of("200"), IntVariable.of("0"), false, true))
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), DoubleVariable.of("6"), true, true))
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.renderer(new ModelRenderData(MODEL))
 				.build();
 	}
 

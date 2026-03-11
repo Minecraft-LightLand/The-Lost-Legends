@@ -119,7 +119,7 @@ public class SkullBombSpell extends LLSpellGenEntry {
 				.land(land(ctx))
 				.hit(new DamageProcessor(ctx.damage(DamageTypes.INDIRECT_MAGIC), SKULL_DMG, true, true))
 				.hit(new CastAtProcessor(CastAtProcessor.PosType.ORIGINAL, CastAtProcessor.DirType.ORIGINAL, land(ctx)))
-				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1")))
+				.renderer(new ModelRenderData(MODEL, DoubleVariable.of("1"), DoubleVariable.of("72")))
 				.build();
 	}
 

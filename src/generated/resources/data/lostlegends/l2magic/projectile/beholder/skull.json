@@ -156,8 +156,9 @@
   "params": [],
   "renderer": {
     "type": "lostlegends:model",
-    "initial": "1",
-    "model": "lostlegends:spell/beholder/skull"
+    "model": "lostlegends:spell/beholder/skull",
+    "scale": "1",
+    "zrot": "72"
   },
   "tick": {
     "type": "l2magic:move",

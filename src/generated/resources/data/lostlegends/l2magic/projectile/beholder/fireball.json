@@ -25,8 +25,9 @@
   "params": [],
   "renderer": {
     "type": "lostlegends:model",
-    "initial": "1",
-    "model": "lostlegends:spell/beholder/fireball"
+    "model": "lostlegends:spell/beholder/fireball",
+    "scale": "1",
+    "zrot": "0"
   },
   "tick": {
     "type": "l2magic:move",
