@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.level.portal.PortalShape;
@@ -46,7 +47,7 @@ public class LavaPortalHelper {
 		}
 		int x0 = vecLow.getX(), x1 = vecHigh.getX(), z0 = vecLow.getZ(), z1 = vecHigh.getZ(), y = vecLow.getY();
 		var mpos = new BlockPos.MutableBlockPos();
-		int max = -1;
+		int max = -1, min = 16;
 		for (int x = x0; x <= x1; x++) {
 			for (int z = z0; z <= z1; z++) {
 				int height = -1;
@@ -59,8 +60,10 @@ public class LavaPortalHelper {
 					}
 				}
 				max = Math.max(max, height);
+				min = Math.min(min, height);
 			}
 		}
+		var falling = Blocks.LAVA.defaultBlockState().setValue(LiquidBlock.LEVEL, 8);
 		if (max > 0) {
 			for (int x = x0; x <= x1; x++) {
 				for (int z = z0; z <= z1; z++) {
@@ -68,7 +71,7 @@ public class LavaPortalHelper {
 						mpos.set(x, y - dy, z);
 						var state = sl.getBlockState(mpos);
 						if (state.isSolid()) {
-							sl.setBlockAndUpdate(mpos, Blocks.AIR.defaultBlockState());
+							sl.setBlockAndUpdate(mpos, falling);
 						} else break;
 					}
 				}
@@ -78,7 +81,7 @@ public class LavaPortalHelper {
 				for (int z = z0; z <= z1; z++) {
 					for (int dy = 1; dy <= 7; dy++) {
 						mpos.set(x, y - dy, z);
-						sl.setBlockAndUpdate(mpos, Blocks.AIR.defaultBlockState());
+						sl.setBlockAndUpdate(mpos, falling);
 					}
 				}
 			}

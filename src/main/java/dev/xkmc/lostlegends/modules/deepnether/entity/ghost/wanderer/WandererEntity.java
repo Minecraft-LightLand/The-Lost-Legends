@@ -45,7 +45,7 @@ public class WandererEntity extends BaseGhostEntity implements DamageModifierEnt
 	@Override
 	protected void customServerAiStep() {
 		if (tickCount % 20 == 0) {
-			if (isInFluidType(DeepNether.BLOCKS.LIQUID_SOUL.getType())) {
+			if (isInFluidType(DeepNether.FLUID.LIQUID_SOUL.getType())) {
 				heal(getMaxHealth() / 13);
 			}
 		}

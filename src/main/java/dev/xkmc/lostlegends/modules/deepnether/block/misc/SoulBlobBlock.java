@@ -35,7 +35,7 @@ public class SoulBlobBlock extends Block {
 	}
 
 	public static void buildBlockState(DataGenContext<Block, SoulBlobBlock> ctx, RegistrateBlockstateProvider pvd) {
-		var tex = DeepNether.BLOCKS.blockLoc(ctx.getName());
+		var tex = DeepNether.ORES.blockLoc(ctx.getName());
 		pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/soul_blob")))
 				.texture("all", tex)

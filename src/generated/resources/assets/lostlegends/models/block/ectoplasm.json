@@ -2,7 +2,7 @@
   "parent": "lostlegends:custom/slime_like",
   "render_type": "minecraft:translucent",
   "textures": {
-    "base": "lostlegends:block/deepnether/block/ectoplasm",
-    "overlay": "lostlegends:block/deepnether/block/ectoplasm_overlay"
+    "base": "lostlegends:block/deepnether/ore/ectoplasm",
+    "overlay": "lostlegends:block/deepnether/ore/ectoplasm_overlay"
   }
 }

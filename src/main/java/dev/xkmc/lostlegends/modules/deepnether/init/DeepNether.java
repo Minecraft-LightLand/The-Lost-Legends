@@ -31,6 +31,7 @@ public class DeepNether extends LLModuleBase {
 	public static final DNOres ORES = new DNOres(LostLegends.REGISTRATE, ID + "/ore");
 	public static final DNVegatation VEGE = new DNVegatation(LostLegends.REGISTRATE, ID + "/vegetation");
 	public static final DNShrooms SHROOM = new DNShrooms(LostLegends.REGISTRATE, ID + "/shroom");
+	public static final DNFluids FLUID = new DNFluids(LostLegends.REGISTRATE, ID + "/fluid");
 
 	public static final DNItems ITEMS = new DNItems(LostLegends.REGISTRATE, ID);
 	public static final DNEntities ENTITY = new DNEntities(LostLegends.REGISTRATE, ID);
@@ -40,7 +41,7 @@ public class DeepNether extends LLModuleBase {
 	@Override
 	public void commonInit() {
 		registerFluidInteraction(
-				BLOCKS.LIQUID_SOUL.get().getFluidType(),
+				FLUID.LIQUID_SOUL.get().getFluidType(),
 				NeoForgeMod.LAVA_TYPE.value(),
 				BLOCKS.WEEPING_NETHERJADE.getDefaultState(),
 				BLOCKS.SOUL_SHELL.getDefaultState(),
@@ -48,7 +49,7 @@ public class DeepNether extends LLModuleBase {
 		);
 
 		registerFluidInteraction(
-				BLOCKS.LIQUID_SOUL.get().getFluidType(),
+				FLUID.LIQUID_SOUL.get().getFluidType(),
 				NeoForgeMod.WATER_TYPE.value(),
 				BLOCKS.WEEPING_NETHERJADE.getDefaultState(),
 				BLOCKS.DEMENTING_SOIL.getDefaultState(),
@@ -56,7 +57,7 @@ public class DeepNether extends LLModuleBase {
 		);
 
 		registerFluidInteraction(
-				BLOCKS.MOLTEN_GOLD.get().getFluidType(),
+				FLUID.MOLTEN_GOLD.get().getFluidType(),
 				NeoForgeMod.WATER_TYPE.value(),
 				Blocks.GOLD_BLOCK.defaultBlockState(),//TODO
 				Blocks.NETHERRACK.defaultBlockState(),
@@ -83,10 +84,10 @@ public class DeepNether extends LLModuleBase {
 		public static void genRecipe(RegistrateRecipeProvider pvd) {
 			classic(pvd, ITEMS.HEARTH_CRYSTAL, Blocks.MAGMA_BLOCK, BLOCKS.DEEP_NETHERRACK, BLOCKS.MAGMA, 8);
 			circle(pvd, BLOCKS.DEEP_NETHERRACK, ITEMS.HEARTH_CRYSTAL, BLOCKS.SCORCHED_NETHERRACK, 8);
-			circle(pvd, Blocks.SOUL_SAND, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.WEEPING_SAND, 8);
-			circle(pvd, Blocks.SOUL_SOIL, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.DEMENTING_SOIL, 8);
-			classic(pvd, ITEMS.HEARTH_CRYSTAL, BLOCKS.MAGMA, Items.BLAZE_POWDER, BLOCKS.AMBER_MAGMA, 4);
-			circle(pvd, Items.GLOWSTONE_DUST, BLOCKS.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.ECTOPLASM, 2);
+			circle(pvd, Blocks.SOUL_SAND, FLUID.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.WEEPING_SAND, 8);
+			circle(pvd, Blocks.SOUL_SOIL, FLUID.LIQUID_SOUL.getBucket().orElseThrow(), BLOCKS.DEMENTING_SOIL, 8);
+			classic(pvd, ITEMS.HEARTH_CRYSTAL, BLOCKS.MAGMA, Items.BLAZE_POWDER, ORES.AMBER_MAGMA, 4);
+			circle(pvd, Items.GLOWSTONE_DUST, FLUID.LIQUID_SOUL.getBucket().orElseThrow(), ORES.ECTOPLASM, 2);
 			square(pvd, BLOCKS.ASH_BLOCK, BLOCKS.ASH_STONE);
 
 			pvd.singleItemUnfinished(DataIngredient.items(VEGE.SCORCHED_BONE_VINE.asItem()),

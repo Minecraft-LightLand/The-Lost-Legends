@@ -3,10 +3,13 @@ package dev.xkmc.lostlegends.modules.deepnether.init;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
+import dev.xkmc.lostlegends.modules.deepnether.block.misc.SoulBlobBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.WeepingSandBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
@@ -15,6 +18,9 @@ public class DNOres extends LLRegBase {
 	public final BlockEntry<Block> HEARTH_ORE, BURIED_GOLD_DEBRIS, AMARAST_ORE, RESONANT_TWISTONE, CRYSTALIZED_BONE;
 	public final BlockEntry<Block> DEMENTING_LAZURITE, DEMENTING_RUST, INSCRIBED_BLEAKSTONE;
 	public final BlockEntry<WeepingSandBlock> WEEPING_LAZURITE, WEEPING_RUST;
+
+	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
+	public final BlockEntry<SoulBlobBlock> SOUL_BLOB;
 
 	public DNOres(L2Registrate reg, String path) {
 		super(reg, path);
@@ -107,6 +113,42 @@ public class DNOres extends LLRegBase {
 					.pickaxe()
 					.simpleItem()
 					.register();
+
+		}
+
+
+		// deco
+		{
+
+			AMBER_MAGMA = block("amber_magma", HalfTransparentBlock::new)
+					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
+					.simpleItem().register();
+
+			ECTOPLASM = block("ectoplasm", HalfTransparentBlock::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.STONE).strength(1f).light(15)
+					.prop(BlockBehaviour.Properties::noOcclusion)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
+									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
+									.texture("base", blockLoc(ctx.getName()))
+									.renderType("translucent")))
+					.pickaxe()
+					.simpleItem().register();
+
+			SOUL_BLOB = block("soul_blob", SoulBlobBlock::new)
+					.prop(MapColor.COLOR_CYAN, SoundType.WET_GRASS).strength(0).light(13)
+					.fragile()
+					.blockstate(SoulBlobBlock::buildBlockState)
+					.simpleItem().register();
 
 		}
 

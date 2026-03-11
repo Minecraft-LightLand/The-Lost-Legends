@@ -198,9 +198,9 @@ public class DNFeatures extends LLFeatureReg {
 					List.of(soulSoil.get(), soulSand.get())));
 
 			FeatureUtils.register(ctx, amber.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
-					DeepNether.BLOCKS.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
+					DeepNether.ORES.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
 			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
-					DeepNether.BLOCKS.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
+					DeepNether.ORES.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
 		}
 
 		@Override
@@ -345,7 +345,7 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.BLOCKS.TWISTONE.getDefaultState(),
 					4, 16, 8, 4, 8, 6));
 			FeatureUtils.register(ctx, goldLake.cf, DeepNether.WG.LAKE.get(), new LakeFeature.Data(
-					DeepNether.BLOCKS.MOLTEN_GOLD.getSource().defaultFluidState().createLegacyBlock(),
+					DeepNether.FLUID.MOLTEN_GOLD.getSource().defaultFluidState().createLegacyBlock(),
 					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(),//TODO
 					4, 10, 8, 4, 6, 4));
 

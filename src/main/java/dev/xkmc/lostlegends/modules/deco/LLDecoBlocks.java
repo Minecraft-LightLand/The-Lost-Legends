@@ -48,21 +48,21 @@ public class LLDecoBlocks extends LLModuleBase {
 
 		{
 			AMBER_MAGMA_BRICKS = reg.block("amber_magma_bricks", HalfTransparentBlock::new)
-					.copyProp(DeepNether.BLOCKS.AMBER_MAGMA)
+					.copyProp(DeepNether.ORES.AMBER_MAGMA)
 					.blockstate((ctx, pvd) ->
 							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
 									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", DeepNether.BLOCKS.blockLoc("amber_magma_overlay"))
+									.texture("overlay", DeepNether.ORES.blockLoc("amber_magma_overlay"))
 									.texture("base", reg.blockLoc(ctx.getName()))
 									.renderType("translucent")))
 					.pickaxe().simpleItem().register();
 
 			ECTOPLASM_BRICKS = reg.block("ectoplasm_bricks", HalfTransparentBlock::new)
-					.copyProp(DeepNether.BLOCKS.ECTOPLASM)
+					.copyProp(DeepNether.ORES.ECTOPLASM)
 					.blockstate((ctx, pvd) ->
 							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
 									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", DeepNether.BLOCKS.blockLoc("ectoplasm_overlay"))
+									.texture("overlay", DeepNether.ORES.blockLoc("ectoplasm_overlay"))
 									.texture("base", reg.blockLoc(ctx.getName()))
 									.renderType("translucent")))
 					.pickaxe().simpleItem().register();
@@ -85,16 +85,16 @@ public class LLDecoBlocks extends LLModuleBase {
 			square(pvd, DeepNether.BLOCKS.DARK_STONE, DARK_STONE);
 			square(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			square(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
-			square(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
-			square(pvd, DeepNether.BLOCKS.ECTOPLASM, ECTOPLASM_BRICKS);
+			square(pvd, DeepNether.ORES.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
+			square(pvd, DeepNether.ORES.ECTOPLASM, ECTOPLASM_BRICKS);
 
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, TWISTONE_BRICKS.block);
 			cut(pvd, DeepNether.BLOCKS.TWISTONE, CHISELED_TWISTONE.block);
 			cut(pvd, DeepNether.BLOCKS.DARK_STONE, DARK_STONE);
 			cut(pvd, TWISTONE_BRICKS.block, CHISELED_TWISTONE.block);
 			cut(pvd, RESONANT_TWISTONE, CHISELED_RESONANT_TWISTONE.block);
-			cut(pvd, DeepNether.BLOCKS.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
-			cut(pvd, DeepNether.BLOCKS.ECTOPLASM, ECTOPLASM_BRICKS);
+			cut(pvd, DeepNether.ORES.AMBER_MAGMA, AMBER_MAGMA_BRICKS);
+			cut(pvd, DeepNether.ORES.ECTOPLASM, ECTOPLASM_BRICKS);
 
 			shaped(pvd, RESONANT_TWISTONE.get(), 8, DeepNether.ITEMS.RESONANT_SOULGEM)
 					.pattern("XXX").pattern("XAX").pattern("XXX")

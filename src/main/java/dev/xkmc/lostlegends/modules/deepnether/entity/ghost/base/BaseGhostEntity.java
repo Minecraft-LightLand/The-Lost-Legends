@@ -52,12 +52,12 @@ public class BaseGhostEntity extends Monster implements LavaSwimEntity {
 	@Override
 	public boolean canStandOnFluid(FluidState state) {
 		var type = state.getFluidType();
-		return type == NeoForgeMod.LAVA_TYPE.value() || type == DeepNether.BLOCKS.LIQUID_SOUL.getType();
+		return type == NeoForgeMod.LAVA_TYPE.value() || type == DeepNether.FLUID.LIQUID_SOUL.getType();
 	}
 
 	@Override
 	public boolean canSwimInFluidType(FluidType type) {
-		return type == NeoForgeMod.LAVA_TYPE.value() || type == DeepNether.BLOCKS.LIQUID_SOUL.getType() ||
+		return type == NeoForgeMod.LAVA_TYPE.value() || type == DeepNether.FLUID.LIQUID_SOUL.getType() ||
 				super.canSwimInFluidType(type);
 	}
 

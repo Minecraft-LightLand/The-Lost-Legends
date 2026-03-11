@@ -1,14 +1,9 @@
 package dev.xkmc.lostlegends.modules.deepnether.init;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.lostlegends.foundation.module.LLRegBase;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluid;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.LiquidSoulFluidType;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.MoltenGoldFluid;
-import dev.xkmc.lostlegends.modules.deepnether.block.fluid.MoltenGoldFluidType;
 import dev.xkmc.lostlegends.modules.deepnether.block.misc.SoulBlobBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.portal.LavaPortalBlock;
 import dev.xkmc.lostlegends.modules.deepnether.block.surface.*;
@@ -23,7 +18,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import java.util.Set;
@@ -39,16 +33,11 @@ public class DNBlocks extends LLRegBase {
 	public final BlockEntry<BonePileBlock> BONE_PILE;
 	public final BlockEntry<DeepMagmaBlock> MAGMA;
 
-	public final BlockEntry<HalfTransparentBlock> AMBER_MAGMA, ECTOPLASM;
-	public final BlockEntry<SoulBlobBlock> SOUL_BLOB;
-
 	public final BlockEntry<Block> NETHERJADE, ARCANE_NETHERJADE, WEEPING_NETHERJADE, RAGING_NETHERJADE;
 	public final BlockEntry<DarkStoneBlock> DARK_STONE;
 
 	public final BlockEntry<LavaPortalBlock> PORTAL;
 	public final SimpleEntry<PoiType> PORTAL_POI;
-	public final FluidEntry<LiquidSoulFluid.Flowing> LIQUID_SOUL;
-	public final FluidEntry<MoltenGoldFluid.Flowing> MOLTEN_GOLD;
 
 	DNBlocks(L2Registrate reg, String path) {
 		super(reg, path);
@@ -234,41 +223,6 @@ public class DNBlocks extends LLRegBase {
 
 		}
 
-		// deco
-		{
-
-			AMBER_MAGMA = block("amber_magma", HalfTransparentBlock::new)
-					.prop(MapColor.NETHER, SoundType.STONE).strength(1f).light(15)
-					.prop(BlockBehaviour.Properties::noOcclusion)
-					.blockstate((ctx, pvd) ->
-							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
-									.texture("base", blockLoc(ctx.getName()))
-									.renderType("translucent")))
-					.pickaxe()
-					.simpleItem().register();
-
-			ECTOPLASM = block("ectoplasm", HalfTransparentBlock::new)
-					.prop(MapColor.COLOR_CYAN, SoundType.STONE).strength(1f).light(15)
-					.prop(BlockBehaviour.Properties::noOcclusion)
-					.blockstate((ctx, pvd) ->
-							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/slime_like")))
-									.texture("overlay", blockLoc(ctx.getName() + "_overlay"))
-									.texture("base", blockLoc(ctx.getName()))
-									.renderType("translucent")))
-					.pickaxe()
-					.simpleItem().register();
-
-			SOUL_BLOB = block("soul_blob", SoulBlobBlock::new)
-					.prop(MapColor.COLOR_CYAN, SoundType.WET_GRASS).strength(0).light(13)
-					.fragile()
-					.blockstate(SoulBlobBlock::buildBlockState)
-					.simpleItem().register();
-
-		}
-
 		// portal
 		{
 			PORTAL = block("lava_portal", LavaPortalBlock::new)
@@ -280,21 +234,6 @@ public class DNBlocks extends LLRegBase {
 					.register();
 			PORTAL_POI = new SimpleEntry<>(reg.simple("lava_portal", Registries.POINT_OF_INTEREST_TYPE, () -> new PoiType(
 					Set.of(PORTAL.getDefaultState()), 0, 1)));
-		}
-
-		// fluid
-		{
-			LIQUID_SOUL = fluid("liquid_soul", LiquidSoulFluidType::new,
-					LiquidSoulFluid.Flowing::new, LiquidSoulFluid.Source::new)
-					.properties(p -> p.lightLevel(15).temperature(1500).pathType(PathType.LAVA))
-					.fluidProperties(p -> p.explosionResistance(100).tickRate(10))
-					.register();
-
-			MOLTEN_GOLD = fluid("molten_gold", MoltenGoldFluidType::new,
-					MoltenGoldFluid.Flowing::new, MoltenGoldFluid.Source::new)
-					.properties(p -> p.lightLevel(15).temperature(1500).pathType(PathType.LAVA))
-					.fluidProperties(p -> p.explosionResistance(100).tickRate(20))
-					.register();
 		}
 
 	}

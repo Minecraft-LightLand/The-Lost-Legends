@@ -17,7 +17,7 @@ public interface SimpleSoulLoggedBlock extends SimpleFluidloggedBlock {
 
 	@Override
 	default FlowingFluid fluid() {
-		return DeepNether.BLOCKS.LIQUID_SOUL.getSource();
+		return DeepNether.FLUID.LIQUID_SOUL.getSource();
 	}
 
 	@Override

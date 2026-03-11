@@ -11,7 +11,7 @@ public class GhostNodeEvaluator extends WalkNodeEvaluator {
 
 	private boolean isWalkableLiquid(FluidState state) {
 		return state.getFluidType() == NeoForgeMod.LAVA_TYPE.value() ||
-				state.getFluidType() == DeepNether.BLOCKS.LIQUID_SOUL.getType();
+				state.getFluidType() == DeepNether.FLUID.LIQUID_SOUL.getType();
 	}
 
 	protected double getFloorLevel(BlockPos pos) {

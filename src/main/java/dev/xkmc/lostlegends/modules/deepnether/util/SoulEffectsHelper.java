@@ -36,6 +36,6 @@ public class SoulEffectsHelper {
 	}
 
 	public static BlockState getFluidBlock() {
-		return DeepNether.BLOCKS.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock();
+		return DeepNether.FLUID.LIQUID_SOUL.getSource().defaultFluidState().createLegacyBlock();
 	}
 }
