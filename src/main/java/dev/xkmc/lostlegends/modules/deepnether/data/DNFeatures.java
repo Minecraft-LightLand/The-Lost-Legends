@@ -62,7 +62,6 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey weepingLazurite = uni("weeping_lazurite");
 		public final FeatureKey dementingRust = uni("dementing_rust");
 		public final FeatureKey weepingRust = uni("weeping_rust");
-		public final FeatureKey inscribedRune = uni("inscribed_rune");
 
 		public Ores(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -74,7 +73,6 @@ public class DNFeatures extends LLFeatureReg {
 			var black = new BlockMatchTest(DeepNether.BLOCKS.DEEP_BLACKSTONE.get());
 			var bone = new BlockMatchTest(DeepNether.BLOCKS.DENSE_BONE.get());
 			var warped = new BlockMatchTest(DeepNether.BLOCKS.TWISTONE.get());
-			var bleak = new BlockMatchTest(DeepNether.BLOCKS.BLEAKSTONE.get());
 			var all = new TagMatchTest(BlockTags.BASE_STONE_NETHER);
 			FeatureUtils.register(ctx, gold.cf, Feature.ORE, new OreConfiguration(rack,
 					DeepNether.ORES.BURIED_GOLD_DEBRIS.getDefaultState(), 10));
@@ -92,8 +90,6 @@ public class DNFeatures extends LLFeatureReg {
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 3, 0.8f));
 			FeatureUtils.register(ctx, debrisLarge.cf, Feature.ORE, new OreConfiguration(all,
 					Blocks.ANCIENT_DEBRIS.defaultBlockState(), 5, 1));
-			FeatureUtils.register(ctx, inscribedRune.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
-					DeepNether.ORES.INSCRIBED_BLEAKSTONE.getDefaultState(), bleak));
 
 			var soil = new BlockMatchTest(DeepNether.BLOCKS.DEMENTING_SOIL.get());
 			var sand = new BlockMatchTest(DeepNether.BLOCKS.WEEPING_SAND.get());
@@ -121,7 +117,6 @@ public class DNFeatures extends LLFeatureReg {
 			weepingLazurite.place(ctx, cf, spread(40, uniform(10, 250)));
 			dementingRust.place(ctx, cf, spread(40, uniform(10, 250)));
 			weepingRust.place(ctx, cf, spread(40, uniform(10, 250)));
-			inscribedRune.place(ctx, cf, spread(80, uniform(10, 128)));
 		}
 	}
 
@@ -173,6 +168,7 @@ public class DNFeatures extends LLFeatureReg {
 		public final FeatureKey soulfirePatch = uni("soul_fire_patch");
 		public final FeatureKey amber = uni("amber_magma");
 		public final FeatureKey ecto = uni("ectoplasm");
+		public final FeatureKey inscribedRune = uni("inscribed_rune");
 
 		public Simple(LLFeatureReg parent, String type) {
 			super(parent, type);
@@ -184,6 +180,7 @@ public class DNFeatures extends LLFeatureReg {
 			var ashStone = DeepNether.BLOCKS.ASH_STONE;
 			var soulSoil = DeepNether.BLOCKS.DEMENTING_SOIL;
 			var soulSand = DeepNether.BLOCKS.WEEPING_SAND;
+			var bleak = new BlockMatchTest(DeepNether.BLOCKS.BLEAKSTONE.get());
 
 			FeatureUtils.register(ctx, springOpen.cf, Feature.SPRING, new SpringConfiguration(
 					Fluids.LAVA.defaultFluidState(), false, 4, 1, HolderSet.direct(deepRack)));
@@ -201,6 +198,8 @@ public class DNFeatures extends LLFeatureReg {
 					DeepNether.ORES.AMBER_MAGMA.getDefaultState(), new BlockMatchTest(DeepNether.BLOCKS.DEEP_NETHERRACK.get())));
 			FeatureUtils.register(ctx, ecto.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
 					DeepNether.ORES.ECTOPLASM.getDefaultState(), new TagMatchTest(BlockTags.SOUL_SPEED_BLOCKS)));
+			FeatureUtils.register(ctx, inscribedRune.cf, DeepNether.WG.IN_GROUND.get(), new InGroundFeature.Data(
+					DeepNether.ORES.INSCRIBED_BLEAKSTONE.getDefaultState(), bleak));
 		}
 
 		@Override
@@ -213,6 +212,7 @@ public class DNFeatures extends LLFeatureReg {
 			soulfirePatch.place(ctx, cf, spread(2, 5, PlacementUtils.RANGE_4_4));
 			amber.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
 			ecto.place(ctx, cf, spread(20, PlacementUtils.RANGE_4_4));
+			inscribedRune.place(ctx, cf, spread(40, uniform(10, 128)));
 
 		}
 

@@ -47,7 +47,8 @@
     [
       "lostlegends:deepnether/simple/fire_patch",
       "lostlegends:deepnether/struct/darkstone_pile",
-      "lostlegends:deepnether/simple/amber_magma"
+      "lostlegends:deepnether/simple/amber_magma",
+      "lostlegends:deepnether/simple/inscribed_rune"
     ],
     [
       "lostlegends:deepnether/struct/deep_nether_portal",

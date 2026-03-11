@@ -1,9 +1,9 @@
 {
-  "feature": "lostlegends:deepnether/ore/inscribed_rune",
+  "feature": "lostlegends:deepnether/simple/inscribed_rune",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 80
+      "count": 40
     },
     {
       "type": "minecraft:in_square"

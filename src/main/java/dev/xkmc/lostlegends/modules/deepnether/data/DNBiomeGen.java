@@ -119,7 +119,7 @@ public class DNBiomeGen {
 					new DNBiomeDecoBuilder(pf, wc)
 							.lavaSprings().firePatch().lavaLake().lavaIsland()
 							.darkstonePile()
-							.blackstoneBolb().magmaBolb().amber()
+							.blackstoneBolb().magmaBolb().amber().rune()
 							.ores().hearthroom()
 							.build(),
 					Musics.createGameMusic(SoundEvents.MUSIC_BIOME_NETHER_WASTES)

@@ -109,6 +109,11 @@ public class DNBiomeDecoBuilder {
 		return this;
 	}
 
+	public DNBiomeDecoBuilder rune() {
+		ins.simple.inscribedRune.addTo(builder, UNDERGROUND_DECORATION);
+		return this;
+	}
+
 	public DNBiomeDecoBuilder ores() {
 		ins.ore.debrisLarge.addTo(builder, UNDERGROUND_ORES);
 		ins.ore.debrisSmall.addTo(builder, UNDERGROUND_ORES);
